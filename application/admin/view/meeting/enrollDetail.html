@@ -1,0 +1,75 @@
+<include file="public/layout" />
+<load href="__ROOT__/public/plugins/Ueditor/ueditor.config.js"/>
+<load href="__ROOT__/public/plugins/Ueditor/ueditor.all.min.js"/>
+<script type="text/javascript" charset="utf-8" src="__ROOT__/public/plugins/Ueditor/lang/zh-cn/zh-cn.js"></script>
+<script src="__ROOT__/public/static/js/layer/laydate/laydate.js"></script>
+
+<style type="text/css">
+html, body {overflow: visible;}
+</style>  
+<body style="background-color: #FFF; overflow: auto;">
+<div id="toolTipLayer" style="position: absolute; z-index: 9999; display: none; visibility: visible; left: 95px; top: 573px;"></div>
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title"><a class="back" href="javascript:history.back();" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+      <div class="subject">
+        <h3>报名管理 - 报名详情</h3>
+      </div>
+    </div>
+  </div>
+    <div class="ncap-form-default">
+      <dl class="row">
+        <dt class="tit">
+          <label>会议名称</label>
+        </dt>
+        <dd class="opt">{$info.title}</dd>
+      </dl> 
+      <dl class="row">
+        <dt class="tit">
+          <label>公司名称</label>
+        </dt>
+        <dd class="opt">{$info.company_name}</dd>
+      </dl> 
+      <dl class="row">
+        <dt class="tit">
+          <label>公司地址</label>
+        </dt>
+        <dd class="opt">{$info.address}</dd>
+      </dl> 
+      <dl class="row">
+        <dt class="tit">
+          <label>联系人</label>
+        </dt>
+        <dd class="opt">{$info.fullname}</dd>
+      </dl> 
+      <dl class="row">
+        <dt class="tit">
+          <label>电话</label>
+        </dt>
+        <dd class="opt">{$info.phone}</dd>
+      </dl> 
+      <dl class="row">
+        <dt class="tit">
+          <label>邮箱</label>
+        </dt>
+        <dd class="opt">{$info.email}</dd>
+      </dl> 
+      <dl class="row">
+        <dt class="tit">
+          <label>职位</label>
+        </dt>
+        <dd class="opt">{$info.position}</dd>
+      </dl> 
+      <dl class="row">
+        <dt class="tit">
+          <label>专业</label>
+        </dt>
+        <dd class="opt">{$info.profession}</dd>
+      </dl> 
+    </div>
+</div>
+
+</body>
+</html>

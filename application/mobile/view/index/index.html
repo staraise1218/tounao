@@ -1,0 +1,81 @@
+<!-- 首页 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>家政培训</title>
+    <script src="__STATIC__/js/rem.js"></script>
+    <link rel="stylesheet" href="__STATIC__/css/public.css">
+    <link rel="stylesheet" href="__STATIC__/css/index.css">
+</head>
+<body>
+    <!-- 首页轮播图 -->
+    <div class="poster">
+        <ul class="img-box">
+            
+            {foreach name="bannerList" item="item"}
+            <li class="posterItem"><a href="{if condition="$item.ad_link != ''"}{$item.ad_link}{else/}javascript:;{/if}"><img src="{$item.ad_code}" alt=""></a></li>
+            {/foreach} 
+            
+            <li><a href="{if condition="$bannerList[0].ad_link != ''"}{$bannerList[0].ad_link}{else/}javascript:;{/if}"><img src="{$bannerList[0]['ad_code']}" alt=""></a></li>
+        </ul>
+        <div class="btn">
+            <a href="javascript:;" class="prevBtn"><i>&lt;</i></a>
+            <a href="javascript:;" class="nextBtn"><i>&gt;</i></a>
+        </div>
+        <div class="order">
+            <ul>
+                {for start="0" end="count($bannerList)"}
+                <li class="item {$i == 0 ? 'activePoster' : ''}"></li>
+                {/for}
+            </ul>
+        </div>
+    </div>
+
+	<!-- <div class="jq22-container">
+        <article class="container">
+            <section>
+                <figure id="full_feature" class="swipslider">
+                <ul class="sw-slides">
+
+                    {foreach name="bannerList" item="item"}
+                    <li class="sw-slide">
+                        <img src="{$item.ad_code}" alt="">
+                    </li>
+                    {/foreach} 
+                </ul>
+                </figure>
+            </section>
+        </article>
+    </div> -->
+
+
+    <!-- 轮播图结束 -->
+
+    <div class="course-icon">
+        <img src="__STATIC__/image/home_common coueses@2x.png" alt="培训课程">
+        <h4>培训课程</h4>
+    </div>
+    <div class="wrapper">
+        <ul>
+           
+        </ul>
+    </div>
+
+
+
+    <!-- 底部导航 -->
+    {include file="public/footer"}
+    <!-- 底部导航结束 -->
+    
+    <script src="__STATIC__/js/jquery.js"></script>
+    <script src="__STATIC__/js/poster.js"></script>
+    <script src="__STATIC__/js/indexLesson.js"></script>
+
+
+
+</body>
+</html>

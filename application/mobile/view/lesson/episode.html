@@ -1,0 +1,70 @@
+<!-- 视频播放页 --- 线上 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>课程播放</title>
+    <script src="__STATIC__/js/rem.js"></script>
+    <link rel="stylesheet" href="__STATIC__/css/video_play.css">
+</head>
+<body>
+    <div class="video-play-wrapper">
+        <!-- <video class="video" style="background-color:#000;width:100%;height:100%" playsinline="isiPhoneShowPlaysinline" webkit-playsinline="isiPhoneShowPlaysinline" x-webkit-airplay="" src="{$episodeList_page_1[0]['video']}" poster="__STATIC__/image/course broadcast.jpg"></video> -->
+        <!-- <video class="video" playsinline webkit-playsinline x5-video-player-type="h5" src="{$episodeList_page_1[0]['video']}" poster="__STATIC__/image/course broadcast.jpg"></video> -->
+        <video class="video" preload="auto" x5-playsinline="true" src="{$episodeList_page_1[0]['video']}" poster="__STATIC__/image/coursebroadcast.jpg">
+        </video>
+        
+        <div class="video-play-btn">
+            <img class="video-play-play" src="__STATIC__/image/course broadcast_start@2x.png" alt="播放">
+        </div>
+    </div>
+        
+    <div class="hint-wrap" {if condition="empty($lastplay)"}style="display:none"{/if}>
+        <div class="hint-bg">
+            <img src="__STATIC__/image/course broadcast_record@2x.png" alt="">
+            <p>上次看到：<span>{$lastplay.title} {$lastplay.current_time} </span></p>
+        </div>
+        <button class="continue">继续学</button>
+    </div>
+    <div class="chapter">
+        <div class="chapter-title">
+            <p>课程集数:</p>
+            <span>已购买</span>
+        </div>
+        <div class="chapter-part">
+            <div class="order">
+                <ul>
+                    {for start="1" end="$pageCount+1"}
+                    <li class="item {$i == 1 ? 'active' : ''}" page="{$i}"><?php echo ($i-1)*$limit+1; ?>-{$i*$limit}</li>
+                    {/for}
+                </ul>
+            </div>
+            <ul class="wrap">
+                {for start="1" end="$pageCount+1" name="page"}
+                    <?php $episodeList = 'episodeList_page_'.$page; ?>
+                <li class="{$page == 1 ? 'active' : ''}">
+                    {foreach name="$$episodeList" item="item"}
+                    <span class="video-btn" data-video="{$item.video}" lesson_episode_id="{$item.id}" number="{$item.number}">{$item.number}</span>
+                    {/foreach}
+                </li>
+                {/for} 
+            </ul>
+        </div>
+    </div>
+
+    <input class="lastplay_title" type="hidden" name="lastplay_title" value="{$lastplay.title}">
+	<input class="current_time" type="hidden" name="current_time" value="{$lastplay.current_time}">
+	<input class="lesson_episode_id" type="hidden" name="lesson_episode_id" value="{$lastplay.lesson_episode_id}">
+	<input class="lastplay_number" type="hidden" name="lastplay_number" value="{$lastplay.number}">
+
+	<input class="lesson_id" type="hidden" name="lesson_id" value="{$lesson_id}">
+    <input class="order_id" type="hidden" name="order_id" value="{$order_id}">
+    
+    <script src="__STATIC__/js/jquery.js"></script>
+    <script src="__STATIC__/js/video.js"></script>
+
+</body>
+</html>

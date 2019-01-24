@@ -1,0 +1,170 @@
+body,html {width:100%;height:100%;background:#fff;}
+        .everyWeekDay .weekday,.everyDay .days {display: -moz-inline-box;display: inline-block;margin: 5px 0 0 20px;text-align: center;width: 20px;border: 1px solid #F7F7F7;cursor: pointer;}      
+        .marginTop{margin-top: 5px;}
+        .selectStyle{padding-left: 10px;border: none;border-radius: 3px;outline: none;appearance: none;-moz-appearance: none;-webkit-appearance: none;margin: 0 10px 0 10px;width: 60px;border-color: #0FB9EF;color: #0FB9EF;}       
+
+* {
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+i {
+    font-style: normal;
+}
+
+
+.wrapper {
+    width: 100%;
+    padding: 0.6rem 0.7rem 0;
+    box-sizing: border-box;
+}
+.wrapper .time-wrap {
+    position: relative;
+}
+.wrapper .time-wrap,
+.wrapper .choose-content,
+.wrapper .location-precise {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 0.8rem;
+    margin-bottom: 0.25rem;
+    border-radius: 0.1rem;
+    border: 1px solid #7ABEDF;
+    box-sizing: border-box;
+}
+.wrapper .location-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 0.8rem;
+    margin-bottom: 0.25rem;
+    box-sizing: border-box;
+}
+.wrapper .location-wrap .left {
+    height: 100%;
+    width: 3.7rem;
+    border-radius: 0.1rem;
+    border: 1px solid #7ABEDF;
+}
+.wrapper .location-wrap .left span,
+.wrapper .location-wrap .right span {
+    margin: 0.1rem 0;
+    box-sizing: border-box;
+}
+.wrapper .location-wrap .left select,
+.wrapper .location-wrap .right select {
+    height: 100%;
+    border: 0;
+    width: 100%;
+    color: #8b8b8b;
+}
+
+.wrapper .location-wrap .right {
+    height: 100%;
+    width: 2rem;
+    border-radius: 0.1rem;
+    border: 1px solid #7ABEDF;
+}
+.wrapper .location-wrap .right select {
+    padding: 0 0.2rem;
+    box-sizing: border-box
+}
+.wrapper .time-wrap .time-date {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.2rem;
+    box-sizing: border-box;
+    flex-grow: 1;
+}
+.wrapper .time-wrap .time-date  input {
+    width: 3rem;
+    display: inline-block;
+    flex-grow: 1;
+    border: 0;
+    color: #8b8b8b;
+    height: 0.6rem; 
+}
+.wrapper .time-wrap .time-date  span {
+    display: inline-block;
+    width: 0.4rem;
+    height: 0.4rem;
+}
+.wrapper .time-wrap .time-date  span img {
+    width: 100%;
+}
+.wrapper .title {
+    width: 1.5rem;
+    display: flex;
+    height: 80%;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid rgba(0,0,0,0.1);
+    text-align: center;
+    color: #8B8B8B;
+    font-size: 0.28rem;
+}
+.wrapper .choose-content .choose-wrap,
+.wrapper .location-precise .choose-wrap {
+    display: flex;
+    flex-grow: 1;
+    padding:  0 0.2rem;
+    box-sizing: border-box;
+}
+.wrapper .choose-content .choose-wrap select,
+.wrapper .location-precise select {
+    width: 100%;
+    height: 0.7rem;
+    border: 0;
+    color: #8B8B8B;
+}
+.wrapper .location-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+.wrapper .location-wrap .left {
+    display: flex;
+
+}
+.wrapper textarea {
+    width: 100%;
+    border-radius: 0.1rem;
+    padding: 0.2rem;
+    box-sizing: border-box;
+    border: 0.02rem solid #7ABEDF;
+    color: #8B8B8B;;
+}
+.wrapper .sub_btn {
+    width: 3.5rem;
+    height: 0.8rem;
+    display: block;
+    text-align: center;
+    line-height: 0.8rem;
+    color: #fff;
+    background: #7ABEDF;
+    border: 0;
+    border-radius: 0.1rem;
+    margin: 0 auto;
+    margin-top: 0.5rem;
+}
+
+
+.location-wrap .title {
+    
+    text-align: justify;
+}
+
+/* #marginTop{
+    display: block;
+    Word-break: break-all;
+} */
+

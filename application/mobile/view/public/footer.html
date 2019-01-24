@@ -1,0 +1,16 @@
+<div class="nav">
+    <ul>
+        <li class="index {if condition="CONTROLLER_NAME eq 'Index'"}active{/if}">
+            <a href="/">
+                <span ></span>
+                <p>首页</p>
+            </a>
+        </li>
+        <li class="mine {if condition="CONTROLLER_NAME eq 'User'"}active{/if}">
+            <a href="{:url('mobile/user/index')}">
+                <span></span>
+                <p>我的</p>
+            </a>
+        </li>
+    </ul>
+</div>
