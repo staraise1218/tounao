@@ -30,6 +30,6 @@ class Base extends Controller{
 
         	header("Location:/index.php/mobile/weixin/get_code");
         	die();
-        }
+        } 
     }
 }
