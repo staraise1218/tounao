@@ -9,7 +9,7 @@ class Base extends Controller{
     public function __construct(){
         
     	parent::__construct();
-p('1');
+
     	// $this->checkLogin();
     }
 
