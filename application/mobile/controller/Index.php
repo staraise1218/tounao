@@ -17,16 +17,9 @@ class Index extends Base{
 			->order('orderby desc, ad_id desc')
 			->select();
 
-		// 获取常规课程
-		$lessonList = Db::name('lesson')
-			->where('is_open', 1)
-			->where('is_delete', 0)
-			->limit(4)
-			->field('id, title, thumb, price')
-			->select();
 
 		$this->assign('bannerList', $bannerList);
-		$this->assign('lessonList', $lessonList);
+		// $this->assign('lessonList', $lessonList);
     	return $this->fetch('index');
     }
 }
