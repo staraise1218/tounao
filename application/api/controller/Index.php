@@ -15,24 +15,28 @@ class Index extends Base {
 		parent::__construct();
 	}
 
-	public function lessonList(){
-		$page = I('page', 1);
-		// 获取banner
-		$lessonList = Db::name('lesson')
-			->where('is_open', 1)
-			->where('is_delete', 0)
+	public function index(){
+		$page = I('page');
+		$searchKeyword = I('searchKeyword');
+
+		$where = '1=1';
+		$searchKeyword ? $where['nickname'] = array('like' => "%$nickname%");
+		$list = Db::name('users')
+			->where($where)
 			->page($page)
 			->limit(10)
-			->field('id, title, thumb, price')
+			->field('user_id, nickname, head_pic, province_code, city_code, school')
 			->select();
 
-		if(is_array($lessonList) && !empty($lessonList)){
-			foreach ($lessonList as &$item) {
-				$item['url'] = U('mobile/lesson/detail', array('id'=>$item['id']));
+		if(is_array($list) && !empty($list)){
+			foreach ($list as &$item) {
+				$item['province_city'] = '北京市朝阳区';
+				unset($item['province_code']);
+				unset($item['city_code']);
 			}
 		}
 
-		response_success($lessonList);
+		response_success($list);
 	}
 
 }

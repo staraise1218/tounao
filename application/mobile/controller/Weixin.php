@@ -27,28 +27,38 @@ class Weixin {
         // 拉取微信用户信息
         $userinfo = $WeixinPublicLogic->get_userinfo($access_token_info);
 
-        $user = Db::name('users')->where('openid', $userinfo['openid'])
-        	->field('user_id, mobile, nickname, fullname, head_pic')
+        $user = Db::name('users_weixin')->where('openid', $userinfo['openid'])
+        	->field('user_id')
         	->find();
         if($user){
-        	session('user',$user);
+        	$users = Db::name('users')->where('user_id', $user['user_id'])
+                ->field('user_id, nickname, head_pic')
+                ->find();
         } else {
         	$userdata = array(
         		'openid' => $userinfo['openid'],
         		'nickname' => $userinfo['nickname'],
-        		'sex' => $userinfo['sex'],
         		'head_pic' => $userinfo['headimgurl'],
         		'reg_time' => time(),
         	);
         	if($user_id = Db::name('users')->insertGetId($userdata)){
-        		$user = Db::name('users')->where('user_id', $user_id)
-		        	->field('user_id, mobile, nickname, fullname, head_pic')
-		        	->find();
+                // 向微信用户表写入数据
+                $weixindata = array(
+                    'user_id' => $user_id,
+                    'openid' => $userinfo['openid'],
+                    'nickname'=> $userinfo['nickname'],
+                );
+                Db::name('users_weixin')->insert($weixindata);
+
+        		$user = array(
+                    'user_id' => $user_id,
+                    'nickname' => $userinfo['nickname'],
+                    'head_pic' => $userinfo['headimgurl'],
+                );
 		        session('user',$user);
         	}
         }
 
-        header("Location:/index.php/mobile/index/index");
-        die();
+        return $this->fetch();
     }
 }

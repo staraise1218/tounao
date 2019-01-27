@@ -16,22 +16,6 @@ class Base extends Controller {
         // 请求写入log
         $this->requestToLog();
         $this->checkMethod();
-
-        if (session('?user')) {
-            $session_user = session('user');
-            $select_user = M('users')->where("user_id", $session_user['user_id'])->find();
-            $oauth_users = M('OauthUsers')->where(['user_id'=>$session_user['user_id']])->find();
-            empty($oauth_users) && $oauth_users = [];
-            $user =  array_merge($select_user,$oauth_users);
-            session('user', $user);  //覆盖session 中的 user
-            $this->user = $user;
-            $this->user_id = $user['user_id'];
-
-        } else {
-            if( ! in_array(CONTROLLER_NAME, $this->noLoginController)){
-                response_error('', '未登录');
-            }
-        }
     }
 
     protected function checkMethod(){
