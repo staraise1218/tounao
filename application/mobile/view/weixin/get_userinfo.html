@@ -54,7 +54,7 @@
         localStorage.setItem("mUserInfo", JSON.stringify(userinfo));
 
         var ws = new WebSocket("ws://120.92.10.2:2345");
-        var data: {
+        var data={
                 user_id:userinfo.user_id,
                 client_id:client_id      
               },
