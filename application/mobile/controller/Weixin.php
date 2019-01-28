@@ -26,9 +26,9 @@ class Weixin extends Base{
 
         // 拉取微信用户信息
         $userinfo = $WeixinPublicLogic->get_userinfo($access_token_info);
-p($userinfo);
+
         $user = Db::name('users_weixin')->where('openid', $userinfo['openid'])
-        	->field('user_id')
+        	->field('user_id, nickname, head_pic')
         	->find();
         if($user){
         	$users = Db::name('users')->where('user_id', $user['user_id'])
@@ -55,10 +55,11 @@ p($userinfo);
                     'nickname' => $userinfo['nickname'],
                     'head_pic' => $userinfo['headimgurl'],
                 );
-		        session('user',$user);
+		        
         	}
         }
 
+        $this->assign('userinfo', $user);
         return $this->fetch();
     }
 }
