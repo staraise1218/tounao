@@ -54,6 +54,8 @@ class Common extends Base {
         $client_id = I('client_id');
 
         Gateway::bindUid($client_id, $user_id);
+        
+        response_success();
     }
 
 }
