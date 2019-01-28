@@ -6,7 +6,18 @@ use think\Controller;
 use think\Db;
 use app\mobile\Logic\WeixinPublicLogic;
 
-class Weixin {
+class Weixin extends Base {
+
+	public function __construct(){
+		// 设置所有方法的默认请求方式
+		$this->method = '*';
+
+		parent::__construct();
+	}
+
+	public function configAuth(){
+		$param = I('get.');
+	}
 
 	// 第一步获取 code
     public function get_code(){

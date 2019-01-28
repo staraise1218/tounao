@@ -5,6 +5,9 @@ namespace app\api\controller;
 use think\Db;
 use app\api\logic\FileLogic;
 use app\api\logic\SmsLogic;
+use GatewayClient\Gateway;
+
+require_once '/GatewayClient/Gateway.php';
 
 class Common extends Base {
 
@@ -43,6 +46,13 @@ class Common extends Base {
         } else {
             response_error('', $error);
         }
+    }
+
+    public function bindUid(){
+        $user_id = I('user_id');
+        $client_id = I('client_id');
+
+        Gateway::bindUid($client_id, $uid);
     }
 
 }

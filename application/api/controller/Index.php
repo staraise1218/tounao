@@ -17,10 +17,10 @@ class Index extends Base {
 
 	public function index(){
 		$page = I('page');
-		$searchKeyword = I('searchKeyword');
+		$searchNickname = I('searchNickname');
 
 		$where = '1=1';
-		$searchKeyword ? $where['nickname'] = array('like' => "%$nickname%");
+		if($searchKeyword) $where['nickname'] = array('like' => "'%{$searchNickname}%'");
 		$list = Db::name('users')
 			->where($where)
 			->page($page)
