@@ -4,9 +4,9 @@ namespace app\mobile\controller;
 
 use think\Controller;
 use think\Db;
-use app\mobile\Logic\WeixinPublicLogic;
+use app\common\logic\WeixinPublicLogic;
 
-class Weixin {
+class Weixin extends Base{
 
 	// 第一步获取 code
     public function get_code(){
@@ -23,7 +23,7 @@ class Weixin {
     	// 通过code 获取access_token
     	$WeixinPublicLogic = new WeixinPublicLogic();
         $access_token_info = $WeixinPublicLogic->get_access_token($code);
-
+p($access_token_info);
         // 拉取微信用户信息
         $userinfo = $WeixinPublicLogic->get_userinfo($access_token_info);
 
