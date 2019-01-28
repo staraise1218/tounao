@@ -23,10 +23,10 @@ class Weixin extends Base{
     	// 通过code 获取access_token
     	$WeixinPublicLogic = new WeixinPublicLogic();
         $access_token_info = $WeixinPublicLogic->get_access_token($code);
-p($access_token_info);
+
         // 拉取微信用户信息
         $userinfo = $WeixinPublicLogic->get_userinfo($access_token_info);
-
+p($userinfo);
         $user = Db::name('users_weixin')->where('openid', $userinfo['openid'])
         	->field('user_id')
         	->find();
