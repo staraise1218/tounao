@@ -4,23 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>列表页</title>
+    <script src="__STATIC__/js/rem.js"></script>
+    <link rel="stylesheet" href="__STATIC__/css/global.css">
+    <link rel="stylesheet" href="__STATIC__/css/pkbang.css">
 </head>
-<body>
+<body class="pk-bg">
 
-
+    <div class="search-wrapper">
+            <i class="icon5 user-btn"></i>
+            <div class="input-wrapper">
+                <i class="icon5 search-icon"></i>
+                <input id="search" type="text" value="请输入用户名" onfocus="if(this.value=='请输入用户名'){this.value=''}" onblur="if(this.value==''){this.value='请输入用户名'}">
+                <input class="search-btn" type="submit" value="搜索">
+            </div>
+        </div>
+    
+        <ul>
+            <li class="item">
+                <div class="left">
+                    <div class="number">1</div>
+                    <div class="poster">
+                        <img src="__STATIC__/images/poster1.png" alt="">
+                    </div>
+                </div>
+                <div class="right">
+                    <div>
+                        <div class="user-name">晴天还是雨天</div>
+                        <span>北京六小</span>
+                    </div>
+                    <div>北京市朝阳区</div>
+                </div>
+                <div class="pk">PK</div>
+            </li>
+        </ul>
+    
+    
+        <div class="dangqian">
+            <div class="poster">
+                <img src="./src/images/poster1.png" alt="">
+            </div>
+            <p>当前排名<span>1/100</span></p>
+        </div>
+        
     <script>
-    var userinfo = {$userinfo};
-    console.log(userinfo)
+        var userinfo = {$userinfo};
+        console.log(userinfo)
 
-    localStorage["mUserInfo"] = JSON.stringify(userinfo);
-    localStorage.setItem("mUserInfo", JSON.stringify(userinfo));
-    
-
-    
-    </script>
-
-
-    
+        localStorage["mUserInfo"] = JSON.stringify(userinfo);
+        localStorage.setItem("mUserInfo", JSON.stringify(userinfo));
+    </script>    
 </body>
 </html>

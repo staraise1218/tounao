@@ -8,7 +8,7 @@ html {
 .body-wrapper {
     width: 100%;
     height: 100%;
-    position: relative;
+    position: absolute;
 }
 /* before */
 .user-info-wrapper {
