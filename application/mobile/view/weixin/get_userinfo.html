@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>列表页</title>
     <script src="__STATIC__/js/rem.js"></script>
+    <script src="__STATIC__/js/jquery.js"></script>
     <link rel="stylesheet" href="__STATIC__/css/global.css">
     <link rel="stylesheet" href="__STATIC__/css/pkbang.css">
 </head>
@@ -20,7 +21,7 @@
             </div>
         </div>
     
-        <ul>
+        <ul id="userList">
             <li class="item">
                 <div class="left">
                     <div class="number">1</div>
@@ -53,6 +54,24 @@
 
         localStorage["mUserInfo"] = JSON.stringify(userinfo);
         localStorage.setItem("mUserInfo", JSON.stringify(userinfo));
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $.ajax({
+              type: 'POST',
+              url: "http://tounao.staraise.com.cn/Api/index/index",
+              data: {page:1},
+              dataType: "json",
+              success: function(res){
+                console.log("res")
+                console.log(res)
+                // $("#userList").append()
+              },
+              error: function(e) {
+                    console.log("error");
+               }
+            })
+        })
     </script>    
 </body>
 </html>
