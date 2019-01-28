@@ -4,7 +4,7 @@ namespace app\api\controller;
 
 use think\Controller;
 use think\Db;
-use app\common\Logic\WeixinPublicLogic;
+use app\common\logic\WeixinPublicLogic;
 
 class Weixin extends Base {
 
