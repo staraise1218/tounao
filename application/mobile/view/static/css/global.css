@@ -9,30 +9,30 @@ budy, html {height: 100%; width: 100%; background: #fff;}
 
 
 .icon-bg {
-    background-image: url("../images/icon.png");
+    background-image: url("__STATIC__/images/icon.png");
     background-size: 5rem 5rem;
     background-position: -0.6rem -0.45rem;
 }
 .icon1 {
-    background-image: url('../images/icon1.png');
+    background-image: url('__STATIC__/images/icon1.png');
     background-size: 10rem 10rem;
     background-position: 0rem 0rem;    
     background-repeat: no-repeat;
 }
 .icon2 {
-    background-image: url('../images/icon2.png');
+    background-image: url('__STATIC__/images/icon2.png');
     background-size: 3.98rem 3.91rem;
     background-position: 0rem 0rem;    
     background-repeat: no-repeat;
 }
 .icon3 {
-    background-image: url('../images/icon3.png');
+    background-image: url('__STATIC__/images/icon3.png');
     background-size: 10rem 10rem;
     background-position: 0rem 0rem;    
     background-repeat: no-repeat;
 }
 .icon5 {
-    background-image: url('../images/icon5.png');
+    background-image: url('__STATIC__/images/icon5.png');
     background-size: 5.7rem 4.5rem;
     background-position: 0rem 0rem;    
     background-repeat: no-repeat;
