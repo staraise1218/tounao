@@ -28,7 +28,7 @@ class Weixin extends Base{
         $userinfo = $WeixinPublicLogic->get_userinfo($access_token_info);
 
         $user = Db::name('users_weixin')->where('openid', $userinfo['openid'])
-        	->field('user_id, nickname, head_pic')
+        	->field('user_id')
         	->find();
         if($user){
         	$users = Db::name('users')->where('user_id', $user['user_id'])
@@ -50,7 +50,7 @@ class Weixin extends Base{
                 );
                 Db::name('users_weixin')->insert($weixindata);
 
-        		$user = array(
+        		$users = array(
                     'user_id' => $user_id,
                     'nickname' => $userinfo['nickname'],
                     'head_pic' => $userinfo['headimgurl'],
@@ -59,7 +59,7 @@ class Weixin extends Base{
         	}
         }
 
-        $this->assign('userinfo', $user);
+        $this->assign('userinfo', $users);
         return $this->fetch();
     }
 }
