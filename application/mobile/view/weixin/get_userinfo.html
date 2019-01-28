@@ -52,6 +52,27 @@
 
         localStorage["mUserInfo"] = JSON.stringify(userinfo);
         localStorage.setItem("mUserInfo", JSON.stringify(userinfo));
+
+        var ws = new WebSocket("ws://120.92.10.2:2345");
+        ws.onmessage = function (evt) { 
+            var client_id = evt.data;
+            console.log(received_msg )
+            $.ajax({
+              type: 'POST',
+              url: "http://tounao.staraise.com.cn/Api/common/bindUid",
+              data: {
+                user_id:userinfo.user_id,
+                client_id:client_id      
+              },
+              dataType: "json",
+              success: function(res){
+                console.log("绑定成功")
+              },
+              error: function(e) {
+                    console.log("error");
+               }
+            })
+        };
     </script>
     <script type="text/javascript">
         $(document).ready(function(){
@@ -63,7 +84,26 @@
               success: function(res){
                 console.log("res")
                 console.log(res)
-                // $("#userList").append()
+                res.data.forEach(function(item){
+                   $("#userList").append(`
+                        <li class="item">
+                            <div class="left">
+                                <div class="number">1</div>
+                                <div class="poster">
+                                    <img src="${item.head_pic}" alt="">
+                                </div>
+                            </div>
+                            <div class="right">
+                                <div>
+                                    <div class="user-name">${item.nickname}</div>
+                                    <span>北京六小</span>
+                                </div>
+                                <div>${item.province_city}</div>
+                            </div>
+                            <div class="pk">PK</div>
+                        </li>
+                    `) 
+                })
               },
               error: function(e) {
                     console.log("error");
