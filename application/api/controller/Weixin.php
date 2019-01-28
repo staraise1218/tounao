@@ -1,10 +1,10 @@
 <?php
 
-namespace app\mobile\controller;
+namespace app\api\controller;
 
 use think\Controller;
 use think\Db;
-use app\mobile\Logic\WeixinPublicLogic;
+use app\common\Logic\WeixinPublicLogic;
 
 class Weixin extends Base {
 
@@ -17,6 +17,7 @@ class Weixin extends Base {
 
 	public function configAuth(){
 		$param = I('get.');
+		p($param);
 	}
 
 	// 第一步获取 code
