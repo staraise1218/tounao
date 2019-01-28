@@ -15,9 +15,17 @@ class Weixin extends Base {
 		parent::__construct();
 	}
 
+	/**
+	 * [configAuth 公众号配置url 验证消息来自微信服务器]
+	 * @return [type] [description]
+	 */
 	public function configAuth(){
-		$param = I('get.');
-		p($param);
+		$echoStr = $_GET["echostr"];
+		if($this->checkSignature()){
+            echo $echoStr;
+            exit;
+        }
+		
 	}
 
 	// 第一步获取 code
@@ -27,5 +35,24 @@ class Weixin extends Base {
     	$authUrl = $WeixinPublicLogic->getAuthUrl();
 
     	response_success(array('authUrl'=>$authUrl));
+    }
+
+    private function checkSignature()
+    {
+        $signature = $_GET["signature"];
+        $timestamp = $_GET["timestamp"];
+        $nonce = $_GET["nonce"];    
+                
+        $token = 'tounao';
+        $tmpArr = array($token, $timestamp, $nonce);
+        sort($tmpArr);
+        $tmpStr = implode( $tmpArr );
+        $tmpStr = sha1( $tmpStr );
+        
+        if( $tmpStr == $signature ){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
