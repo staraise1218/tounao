@@ -17,7 +17,7 @@ class Pk extends Base {
 		$user_id = input('user_id');
 		$to_user_id = I('to_user_id');
 		
-		response_success($list);
+		response_success();
 	}
 
 }

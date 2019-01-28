@@ -48,11 +48,12 @@ class Common extends Base {
         }
     }
 
+    // client_id 绑定uid
     public function bindUid(){
         $user_id = I('user_id');
         $client_id = I('client_id');
 
-        Gateway::bindUid($client_id, $uid);
+        Gateway::bindUid($client_id, $user_id);
     }
 
 }

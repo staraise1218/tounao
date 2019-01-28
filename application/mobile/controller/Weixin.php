@@ -59,7 +59,7 @@ class Weixin extends Base{
         	}
         }
 
-        $this->assign('userinfo', $users);
+        $this->assign('userinfo', json_encode($users));
         return $this->fetch();
     }
 }
