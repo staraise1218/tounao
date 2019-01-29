@@ -103,6 +103,12 @@
                }
             })
             $(".tanchutn-wrapper").css("display","block")
+            document.addEventListener("touchmove",function(e){
+                if($(".tanchutn-wrapper").css("display")=='none'){
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            })
             //接受邀请
             // if(messageData.action=='invite'){
             //     $(".tanchutn-wrapper").css("display","block")
