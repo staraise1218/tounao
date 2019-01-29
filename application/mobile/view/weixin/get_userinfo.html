@@ -62,7 +62,7 @@
                         </div>
                         <i class="icon5" style="width:100%;display:inline-block;height:0.04rem;margin: 0 auto;background-position: -2.5rem -3.6rem"></i>
                         <div class="btn">
-                        <div >拒绝</div>
+                        <div class="back">拒绝</div>
                         <div class="agreen">同意</div>
                         </div>
                         </div>
@@ -98,6 +98,8 @@
                     console.log("error");
                }
             })
+            // $(".tanchutn-wrapper").css("display","block")
+            // $(".back").css("display","none")
             //接受邀请
             // if(messageData.action=='invite'){
             //     $(".tanchutn-wrapper").css("display","block")
@@ -157,7 +159,7 @@
                 //接受邀请
                 $(".agreen").click(function(){
                    alert()
-                   window.location.href="../pk/index.html" 
+                   window.location.href="../pk/index.html?id=123" 
                 })
                
               },
