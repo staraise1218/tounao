@@ -17,7 +17,7 @@ class Pk extends Base {
 	}
 
 	public function invite(){
-		$user_id = input('user_id');
+		$user_id = I('user_id');
 		$to_user_id = I('to_user_id');
 
 		// if(!Gateway::isUidOnline($user_id)) response_error('', '您不在线');
@@ -40,7 +40,20 @@ class Pk extends Base {
 				'message' => $user['nickname'].'邀请您PK',
 			));
 			Gateway::sendToUid($to_user_id, $message);
-			response_success();
+
+			// 获取问题列表
+			// $knowledgeList = Db::name('knowledge')
+			// 	->where('is_open', 1)
+			// 	->where('is_delete', 0)
+			// 	->order('id desc')
+			// 	->limit(5)
+			// 	->field('title, a, b, c, d, answer')
+			// 	->select();
+			// foreach ($knowledgeList as $key => $value) {
+			// 	# code...
+			// }
+			// $result['knowledgeList'] = $knowledgeList;
+			response_success($knowledgeList);
 		} else {
 			response_error();
 		}
