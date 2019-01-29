@@ -112,8 +112,7 @@
             console.log($(".tanchutn-wrapper").css("display"))
             document.addEventListener("touchmove",function(e){
                 if($(".tanchutn-wrapper").css("display")=='block'){
-                    e.preventDefault();
-                    e.stopPropagation();
+                   $("html,body").addClass("overHiden")
                 }
             },false)
             // if($(".tanchutn-wrapper").css("display")=='block'){
