@@ -48,7 +48,26 @@ class Pk extends Base {
 
 	// 进入房间
 	public function intoRoom(){
+		$room_id = I('room_id');
+		$to_user_id = I('to_user_id');
 
+		$room = Db::name('room')->where('id', $room_id)->find();
+		// if($room['user_id_status'] == 2) response_error(array('status'=>1), '对方已退出');
+		// if($room['createtime']+20 > time()) response_error(array('status'=>2), '等待超时');
+
+		$userinfo = Db::name('users')
+			->where('user_id', $room['user_id'])
+			->field('user_id, head_pic, nickname')
+			->find();
+		$touserinfo = Db::name('users')
+			->where('user_id', $to_user_id)
+			->field('user_id, head_pic, nickname')
+			->find();
+
+		$result['userinfo'] = $userinfo;
+		$result['touserinfo'] = $touserinfo; 
+
+		response_success($result);
 	}
 
 }
