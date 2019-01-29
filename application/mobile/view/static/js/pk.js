@@ -83,7 +83,7 @@ function createQuestion(index) {
 $(".questions-wrapper").delegate(".choose-btn","touchstart", function () {
     var _this = $(this);
     var ws = new WebSocket("ws://120.92.10.2:2345")
-    ws.send("我选择了这个啦")
+    ws.send("imyourbaby")
     if($(".user1-active").length > 0 || quset_index > 5) {
         return
     }
