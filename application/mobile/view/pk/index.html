@@ -62,6 +62,34 @@
     
     <script src="__STATIC__/js/jquery.js"></script>   
     <script src="__STATIC__/js/pk.js"></script>
-
+    <script >
+        function getPageParams() {
+            var url = window.location.href
+            var option = {}
+            if (url.indexOf("?") > -1) {
+              var arr = url.split("?")[1].split("&")
+              arr.forEach(function (str) {
+                var arrTemp = str.split("=")
+                option[arrTemp[0]] = arrTemp[1]
+              })
+            }
+            return option
+        }
+        
+        let data=getPageParams()
+        console.log(data)
+        let id=data.id
+        $.ajax({
+          type: 'POST',
+          url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
+          data: {
+            room_id:id,
+          },
+          dataType: "json",
+          success:function(data){
+             console.log(data)
+          }
+        })
+    </script>
 </body>
 </html>
