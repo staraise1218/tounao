@@ -41,6 +41,7 @@ class Events
           'action' => 'client_id',
           'client_id'=>$client_id
         ));
+        
         Gateway::sendToClient($client_id, $message);
         // 向所有人发送
         // Gateway::sendToAll("$client_id login\r\n");

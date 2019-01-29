@@ -42,17 +42,18 @@ class Pk extends Base {
 			Gateway::sendToUid($to_user_id, $message);
 
 			// 获取问题列表
-			// $knowledgeList = Db::name('knowledge')
-			// 	->where('is_open', 1)
-			// 	->where('is_delete', 0)
-			// 	->order('id desc')
-			// 	->limit(5)
-			// 	->field('title, a, b, c, d, answer')
-			// 	->select();
-			// foreach ($knowledgeList as $key => $value) {
-			// 	# code...
-			// }
-			// $result['knowledgeList'] = $knowledgeList;
+			$knowledgeList = Db::name('knowledge')
+				->where('is_open', 1)
+				->where('is_delete', 0)
+				->order('id desc')
+				->limit(5)
+				->field('title, a, b, c, d, answer')
+				->select();
+			foreach ($knowledgeList as $k => $item) {
+				$item['room_id'] = $room_id;
+				$knowledgeList[$k]['room_knowledge_id'] = Db::name('room_knowledge')->insertGetId($item);
+			}
+			$result['knowledgeList'] = $knowledgeList;
 			response_success($knowledgeList);
 		} else {
 			response_error();
