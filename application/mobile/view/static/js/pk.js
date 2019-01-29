@@ -6,7 +6,7 @@ let timer = 5000;
 let timeText = 0;
 
 var user1_info = {
-    poster: '__STATIC__/PK-11.jpg',
+    poster: '/application/mobile/view/static/image/PK-11.jpg',
     user_name: '小明',
     user_id: '123456',
     count: 0,
@@ -19,7 +19,7 @@ var user1_info = {
     ],
     answers: [[],[],[],[],[]],
     duishou: {
-        poster: '__STATIC__/image/PK-12.jpg',
+        poster: '/application/mobile/view/static/image/PK-12.jpg',
         user_name: '小王',
         user_id: '654321',
         count: 0,
