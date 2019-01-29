@@ -74,18 +74,6 @@
             console.log(userinfo)
             localStorage["mUserInfo"] = JSON.stringify(userinfo);
             localStorage.setItem("mUserInfo", JSON.stringify(userinfo));
-
-        var ws = new WebSocket("ws://120.92.10.2:2345")
-        ws.onmessage = function (evt) { 
-            console.log("onmessage")
-            console.log(evt.data)
-            var client_id = evt.data;
-            console.log(client_id )
-            var data={
-                user_id:userinfo.user_id,
-                client_id:client_id      
-              }
-            console.log(data)
             $.ajax({
               type: 'POST',
               url: "http://tounao.staraise.com.cn/Api/common/bindUid",
@@ -98,6 +86,17 @@
                     console.log("error");
                }
             })
+        var ws = new WebSocket("ws://120.92.10.2:2345")
+        ws.onmessage = function (evt) { 
+            console.log("onmessage")
+            console.log(evt.data)
+            var client_id = evt.data;
+            console.log(client_id )
+            var data={
+                user_id:userinfo.user_id,
+                client_id:client_id      
+              }
+            console.log(data)
         };
     </script>
     <script type="text/javascript">
