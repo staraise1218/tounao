@@ -78,6 +78,7 @@
         ws.onmessage = function (evt) { 
             console.log("onmessage")
             console.log(evt.data)
+            console.log(typeof(evt.data))
             // let messageData=JSON.parse(evt.data)
             var client_id = evt.data;
             console.log(client_id )
@@ -99,7 +100,6 @@
                }
             })
             // $(".tanchutn-wrapper").css("display","block")
-            // $(".back").css("display","none")
             //接受邀请
             // if(messageData.action=='invite'){
             //     $(".tanchutn-wrapper").css("display","block")
@@ -160,6 +160,9 @@
                 $(".agreen").click(function(){
                    alert()
                    window.location.href="../pk/index.html?id=123" 
+                })
+                $(".back").click(function(){
+                    $(".tanchutn-wrapper").hide()
                 })
                
               },
