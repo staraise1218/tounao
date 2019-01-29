@@ -77,6 +77,8 @@
 
         var ws = new WebSocket("ws://120.92.10.2:2345")
         ws.onmessage = function (evt) { 
+            console.log("onmessage")
+            console.log(evt.data)
             var client_id = evt.data;
             console.log(client_id )
             var data={
@@ -124,7 +126,7 @@
                                 </div>
                                 <div>${item.province_city}</div>
                             </div>
-                            <div class="pk">PK</div>
+                            <div class="pk" data-id="'${item.user_id}'">PK</div>
                         </li>
                     `) 
                 })
@@ -132,11 +134,25 @@
                  //点击pk
                 $(".pk").click(function() {
                     $(".tanchutn-wrapper").css("display","block")
+                    let  user_id = {$userinfo}.user_id
+                    //邀请接口
+                    $.ajax({
+                      type: 'POST',
+                      url: "http://tounao.staraise.com.cn/Api/pk/invite",
+                      data: {
+                        user_id:user_id,
+                        to_user_id:$(this).data("id")
+                      },
+                      dataType: "json",
+                      success:function(){
+
+                      }
+                    })
                 })
                 //接受邀请
                 $(".agreen").click(function(){
                    alert()
-                   window.location.href="__STATIC__/pk-pk.html" 
+                   window.location.href="../pk/index.html" 
                 })
                
               },
