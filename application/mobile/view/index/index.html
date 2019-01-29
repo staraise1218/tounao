@@ -119,7 +119,8 @@
         $.ajax({
             type: 'POST',
             data: postData,
-            url: 'http://tounao.staraise.com.cn/api/weixin/get_code',
+            // url: 'http://tounao.staraise.com.cn/api/weixin/get_code',
+            url: 'http://tounao.staraise.com.cn/index.php/mobile/weixin/get_code'
             success: function(data) {
                 console.log(data)
                 obj = data;
