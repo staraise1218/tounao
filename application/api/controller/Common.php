@@ -7,7 +7,7 @@ use app\api\logic\FileLogic;
 use app\api\logic\SmsLogic;
 use GatewayClient\Gateway;
 
-require_once '/GatewayClient/Gateway.php';
+require_once './GatewayClient/Gateway.php';
 
 class Common extends Base {
 

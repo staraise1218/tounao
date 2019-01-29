@@ -5,7 +5,7 @@ namespace app\api\controller;
 use think\Db;
 use GatewayClient\Gateway;
 
-require_once '/GatewayClient/Gateway.php';
+require_once './GatewayClient/Gateway.php';
 
 class Pk extends Base {
 
@@ -26,15 +26,17 @@ class Pk extends Base {
 		// 获取用户信息
 		$user = Db::name('users')->where('user_id', $user_id)->find();
 
-		$result  = Db::name('room')->insert(array(
+		$room_id  = Db::name('room')->insertGetId(array(
 			'user_id' => $user_id,
 			'to_user_id' => $to_user_id,
 			'createtime' => time(),
 		));
 
-		if($result) {
+		if($room_id) {
 			$message = json_encode(array(
 				'action'=>'invite',
+				'user_id' => $user_id,
+				'room_id' => $room_id,
 				'message' => $user['nickname'].'邀请您PK',
 			));
 			Gateway::sendToUid($to_user_id, $message);
@@ -42,6 +44,11 @@ class Pk extends Base {
 		} else {
 			response_error();
 		}
+	}
+
+	// 进入房间
+	public function intoRoom(){
+
 	}
 
 }
