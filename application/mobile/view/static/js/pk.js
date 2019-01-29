@@ -2,14 +2,14 @@ let patentHeight = $(".jindu").height();
 let userHeight_1 = 0;
 let userHeight_2 = 0;
 let quset_index = 0;
-let timer = 10000;
+let timer = 5000;
 let timeText = 0;
 
 var user1_info = {
     poster: './src/images/PK-11.jpg',
     user_name: '小明',
     user_id: '123456',
-    fen: 0,
+    count: 0,
     questions: [
         {title:'问题1',answers:[['选项1','1'],['选项2','2'],['选项3','2'],['选项4','2']]},
         {title:'问题2',answers:[['选项1','2'],['选项2','1'],['选项3','2'],['选项4','2']]},
@@ -22,7 +22,7 @@ var user1_info = {
         poster: './src/images/PK-12.jpg',
         user_name: '小王',
         user_id: '654321',
-        fen: 0,
+        count: 0,
         answers: [[],[],[],[],[]]
     }
 }
@@ -38,12 +38,11 @@ window.onload = function () {
             setTimeout(function() {
                 createQuestion(quset_index);
                 quset_index++;
-                // console.log(timeText)
+                console.log(quset_index)
             }, j*timer)
         })(j)
     }
     timeFunc();
-    localStorage.setItem("begin",1)
 }
 
 // 设置定时器
@@ -63,7 +62,7 @@ function timeFunc () {
 
 
 function createQuestion(index) {
-    timeText = 10;
+    timeText = 5;
     let questionsStr = '';
     // user1_info.questions[index].answers[i][1] = 3;
     if(index < 5) {
@@ -84,6 +83,9 @@ function createQuestion(index) {
 $(".questions-wrapper").delegate(".choose-btn","touchstart", function () {
     var _this = $(this);
     if($(".user1-active").length > 0 || quset_index > 5) {
+        return
+    }
+    if(quset_index == 5 && timeText == 0) {
         return
     }
     if(quset_index < 5) {
