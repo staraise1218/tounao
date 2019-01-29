@@ -120,7 +120,6 @@
             type: 'POST',
             data: postData,
             url: 'http://tounao.staraise.com.cn/api/weixin/get_code',
-            // url: 'http://tounao.staraise.com.cn/index.php/mobile/weixin/get_code',
             success: function(data) {
                 console.log(data)
                 obj = data;
@@ -153,11 +152,17 @@
             $(".login-wrapper").hide();
         })
         $(".body-wrapper").delegate("#wx-login","click", function() {
+            //判断是否授权过
+            let userInfo= localStorage.getItem("mUserInfo")
+            console.log(userInfo)
+            if(userInfo){
+               window.location.href="../weixin.get_userinfo.html"
+            }
             // window.location.href = obj.data.authUrl;
              window.location.href='http://tounao.staraise.com.cn/index.php/mobile/weixin/get_code'
         })
 
-
+        
     
     </script>
 </body>
