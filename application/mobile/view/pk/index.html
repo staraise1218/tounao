@@ -15,47 +15,31 @@
 
     <div class="pk-wrapper">
         <div class="user1-title-wrapper icon3">
-            <!-- <div class="poster-wrapper">
-                <img src="image/poster1.png" alt="">
+            <div class="poster-wrapper">
+                <img class="user1_poster" src="./src/images/poster1.png" alt="">
             </div>
-            <div class="user1-name">晴天还是雨天</div> -->
+            <div class="user1-name">晴天还是雨天</div>
         </div>
 
         <div class="daojishi-wrapper">
             <i class="icon2 daojishi-icon"></i>
-            <span>剩余5:00</span>
+            <span>剩余 <span class="daojishi-content"></span> </span>
         </div>
-
         <div class="user2-title-wrapper icon3">
-            <!-- <div class="poster-wrapper">
-                <img src="image/poster1.png" alt="">
+            <div class="poster-wrapper">
+                <img class="user2_poster" src="./src/images/poster1.png" alt="">
             </div>
-            <div class="user2-name">晴天还是雨天</div> -->
+            <div class="user2-name">晴天还是雨天</div>
         </div>
     </div>
 
     <div class="pk-pk-choose">
         <ul>
             <li>
-                <form action="">
-                    <h5>现存关于语文书生产的年代是？</h5>
-                    <!-- class = user1-active 选中的class -->
-                    <label for="a" class="" data="1">
-                        <input type="checkbox" name="" id="a" style="display:none">汉代
-                    </label>
-                    <label for="a" class="cuo" data="2">
-                        <input type="checkbox" name="" id="a" style="display:none">汉代
-                    </label>
-                    <label for="a" class="" data="2">
-                        <input type="checkbox" name="" id="a" style="display:none">汉代
-                    </label>
-                    <label for="a" class="" data="2">
-                        <input type="checkbox" name="" id="a" style="display:none">汉代
-                    </label>
-                </form>
+                <form class="questions-wrapper" action=""></form>
             </li>
         </ul>
-        <!-- date : 1 正确， 2 错误， 3 其他 -->
+        <!-- date : 1 正确， 2 错误， 3 未选择 -->
         <div class="jindu1-wrapper jindu-wrapper">
             <em id="user1-number">0</em>
             <span class="user1_jindu jindu">
@@ -73,87 +57,11 @@
     <div class="fenye" style="position:absolute;bottom:0.5rem;width:100%;text-align: center;color:rgba(255,255,255,0.3);">
         <span>1/1</span>
     </div>
+    <!-- <button id="begin" style="width:80%;margin:0 auto;display:block;margin-top: 100px;">开始</button> -->
 
-
-    <script src="__STATIC__/js/jquery.js"></script>
-    <script>
-        let patentHeight = $(".jindu").height();
-        let userHeight_1 = 0;
-        let userHeight_2 = 0;
-
-
-
-        function cureteUser() {
-            var userStr_1 = `<div class="poster-wrapper">
-                                <img src="image/poster1.png" alt="">
-                            </div>
-                            <div class="user1-name">晴天还是雨天</div>`
-            var userStr_2 = `<div class="poster-wrapper">
-                                <img src="image/poster1.png" alt="">
-                            </div>
-                            <div class="user2-name">晴天还是雨天</div>`
-            $(".user1-title-wrapper").html(userStr_1);
-            $(".user2-title-wrapper").html(userStr_2);
-        }
-
-
-
-
-
-
-
-
-
-
-        // user1
-        $(".pk-pk-choose label").on("touchstart", function () {
-            var _this = $(this);
-            if($(".user1-active").length > 0) {
-                return
-            }
-            $(".user1-active").removeClass("user1-active");
-            _this.addClass("user1-active")
-            if($(this).attr("data") == 1) {
-                console.log("回答正确！")
-                setTimeout(function() {
-                    _this.addClass("user1-dui");
-                    $(".user1_jindu-con").animate({},function() {
-                        userHeight_1 += patentHeight / 5;
-                        $(".user1_jindu-con").animate({height:userHeight_1},"linear")
-                        $("#user1-number").get(0).innerText = Number($("#user1-number").get(0).innerText) + 100;
-                    })
-                }, 2000)
-                // $(this).attr("data","3");
-            } else if($(this).attr("data") == 2){
-                console.log("回答错误！")
-                setTimeout(function() {
-                    _this.addClass("user1-cuo");
-                }, 2000)
-            } else {
-                console.log("已经选择过正确答案")
-            }
-        })
-        // user2
-        // $(".pk-pk-choose label").on("touchstart", function () {
-        //     console.log($(this).attr("data"))
-        //     if($(this).attr("data") == 1) {
-        //         console.log("回答正确！")
-        //         $(".user2_jindu-con").animate({},function() {
-        //             userHeight_2 += patentHeight / 5;
-        //             $(".user2_jindu-con").animate({height:userHeight_2},"slow")
-        //             $("#user2-number").get(0).innerText = Number($("#user2-number").get(0).innerText) + 100;
-        //         })
-        //         // $(this).attr("data","3");
-        //     } else if($(this).attr("data") == 2){
-        //         console.log("回答错误！")
-        //     } else {
-        //         console.log("已经选择过正确答案")
-        //     }
-        // }) 
-        
     
-    
-    
-    </script>    
+    <script src="__STATIC__/js/jquery.js"></script>   
+    <script src="__STATIC__/js/pk.js"></script>
+
 </body>
 </html>
