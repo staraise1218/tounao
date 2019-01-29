@@ -51,7 +51,7 @@ class Pk extends Base {
 		$room_id = I('room_id');
 		$to_user_id = I('to_user_id');
 
-		$room = Db::name('room')->where('room_id', $room_id)->find();
+		$room = Db::name('room')->where('id', $room_id)->find();
 		// if($room['user_id_status'] == 2) response_error(array('status'=>1), '对方已退出');
 		// if($room['createtime']+20 > time()) response_error(array('status'=>2), '等待超时');
 
