@@ -75,7 +75,9 @@
             localStorage["mUserInfo"] = JSON.stringify(userinfo);
             localStorage.setItem("mUserInfo", JSON.stringify(userinfo));
         var ws = new WebSocket("ws://120.92.10.2:2345")
-        ws.send("youaremybaby")
+        ws.onopen(function(){
+            ws.send("youaremybaby")
+        })
         ws.onmessage = function (evt) { 
             console.log("onmessage")
             console.log(evt.data)
