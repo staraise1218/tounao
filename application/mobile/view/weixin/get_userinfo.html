@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>列表页</title>
     <script src="__STATIC__/js/rem.js"></script>
+    <script src="__STATIC__/js/jquery.js"></script>
     <link rel="stylesheet" href="__STATIC__/css/global.css">
     <link rel="stylesheet" href="__STATIC__/css/pkbang.css">
 </head>
@@ -19,8 +20,7 @@
                 <input class="search-btn" type="submit" value="搜索">
             </div>
         </div>
-    
-        <ul>
+        <ul id="userList">
             <li class="item">
                 <div class="left">
                     <div class="number">1</div>
@@ -39,7 +39,6 @@
             </li>
         </ul>
     
-    
         <div class="dangqian">
             <div class="poster">
                 <img src="__STATIC__/image/poster1.png" alt="">
@@ -48,11 +47,70 @@
         </div>
         
     <script>
-        var userinfo = {$userinfo};
-        console.log(userinfo)
+         var userinfo = {$userinfo};
+            console.log(userinfo)
+            localStorage["mUserInfo"] = JSON.stringify(userinfo);
+            localStorage.setItem("mUserInfo", JSON.stringify(userinfo));
 
-        localStorage["mUserInfo"] = JSON.stringify(userinfo);
-        localStorage.setItem("mUserInfo", JSON.stringify(userinfo));
+        var ws = new WebSocket("ws://120.92.10.2:2345")
+        ws.onmessage = function (evt) { 
+            var client_id = evt.data;
+            console.log(client_id )
+            var data={
+                user_id:userinfo.user_id,
+                client_id:client_id      
+              }
+            console.log(data)
+            $.ajax({
+              type: 'POST',
+              url: "http://tounao.staraise.com.cn/Api/common/bindUid",
+              data: data,
+              dataType: "json",
+              success: function(res){
+                console.log("绑定成功")
+              },
+              error: function(e) {
+                    console.log("error");
+               }
+            })
+        };
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $.ajax({
+              type: 'POST',
+              url: "http://tounao.staraise.com.cn/Api/index/index",
+              data: {page:1},
+              dataType: "json",
+              success: function(res){
+                console.log("res")
+                console.log(res)
+                res.data.forEach(function(item){
+                   $("#userList").append(`
+                        <li class="item">
+                            <div class="left">
+                                <div class="number">1</div>
+                                <div class="poster">
+                                    <img src="${item.head_pic}" alt="">
+                                </div>
+                            </div>
+                            <div class="right">
+                                <div>
+                                    <div class="user-name">${item.nickname}</div>
+                                    <span>北京六小</span>
+                                </div>
+                                <div>${item.province_city}</div>
+                            </div>
+                            <div class="pk">PK</div>
+                        </li>
+                    `) 
+                })
+              },
+              error: function(e) {
+                    console.log("error");
+               }
+            })
+        })
     </script>    
 </body>
 </html>
