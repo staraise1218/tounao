@@ -110,9 +110,15 @@
             })
             $(".tanchutn-wrapper").css("display","block")
             console.log($(".tanchutn-wrapper").css("display"))
-            if($(".tanchutn-wrapper").css("display")=='block'){
-                $("html,body").addClass("overHiden")
-            }
+            document.addEventListener("touchmove",function(e){
+                if($(".tanchutn-wrapper").css("display")=='block'){
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            },false)
+            // if($(".tanchutn-wrapper").css("display")=='block'){
+            //     $("html,body").addClass("overHiden")
+            // }
             //接受邀请
             // if(messageData.action=='invite'){
             //     $(".tanchutn-wrapper").css("display","block")
