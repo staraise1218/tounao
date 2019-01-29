@@ -82,6 +82,7 @@ function createQuestion(index) {
 // user1
 $(".questions-wrapper").delegate(".choose-btn","touchstart", function () {
     var _this = $(this);
+    ws.send("我选择了这个啦")
     if($(".user1-active").length > 0 || quset_index > 5) {
         return
     }
@@ -105,6 +106,8 @@ $(".questions-wrapper").delegate(".choose-btn","touchstart", function () {
                 $("#user2-number").get(0).innerText = Number($("#user1-number").get(0).innerText) + 100;
             })
         }, 500)
+
+
     } else {
         console.log("user2----错误")
     }
