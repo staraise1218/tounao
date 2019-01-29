@@ -78,6 +78,7 @@
         ws.onmessage = function (evt) { 
             console.log("onmessage")
             console.log(evt.data)
+            // let messageData=JSON.parse(evt.data)
             var client_id = evt.data;
             console.log(client_id )
             var data={
@@ -97,6 +98,11 @@
                     console.log("error");
                }
             })
+            //接受邀请
+            // if(messageData.action=='invite'){
+            //     $(".tanchutn-wrapper").css("display","block")
+            // }
+            
         };
     </script>
     <script type="text/javascript">

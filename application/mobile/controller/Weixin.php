@@ -19,7 +19,7 @@ class Weixin extends Base{
     }
     // 获取code 后的回调，获取用户信息，1先获取access_token, 2 获取用户信息
     public function get_userinfo(){
-    	$code = input('code', 0);
+    	$code = I('code', 0);
     	// 通过code 获取access_token
     	$WeixinPublicLogic = new WeixinPublicLogic();
         $access_token_info = $WeixinPublicLogic->get_access_token($code);

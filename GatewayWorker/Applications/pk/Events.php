@@ -37,7 +37,11 @@ class Events
     public static function onConnect($client_id)
     {
         // 向当前client_id发送数据 
-        Gateway::sendToClient($client_id, $client_id);
+        $message = json_encode(array(
+          'action' => 'client_id',
+          'client_id'=>$client_id
+        ));
+        Gateway::sendToClient($client_id, $message);
         // 向所有人发送
         // Gateway::sendToAll("$client_id login\r\n");
     }
