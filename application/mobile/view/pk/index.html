@@ -153,8 +153,10 @@
         
         let data=getPageParams()
         console.log(data)
-        var room_id=data.room_id
-        var to_user_id = data.to_user_id;
+        var room_id=data.roomId
+        var to_user_id = data.touserId
+        console.log("369")
+        console.log(room_id,to_user_id)
         var user_id = JSON.parse(localStorage.getItem("mUserInfo")).user_id
 
         if(localStorage.getItem(data.action) == 'intoroom') {
