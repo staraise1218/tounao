@@ -81,6 +81,7 @@
             localStorage["mUserInfo"] = JSON.stringify(userinfo);
             localStorage.setItem("mUserInfo", JSON.stringify(userinfo));
         var ws = new WebSocket("ws://120.92.10.2:2345");
+        let bangding = false;
         ws.onopen=function(){
             ws.send("youaremybaby")
         }
@@ -96,18 +97,21 @@
                 client_id:data.client_id
               }
             console.log(data)
-            $.ajax({
-              type: 'POST',
-              url: "http://tounao.staraise.com.cn/Api/common/bindUid",
-              data: data,
-              dataType: "json",
-              success: function(res){
-                console.log("绑定成功")
-              },
-              error: function(e) {
-                    console.log("error");
-               }
-            })
+            if(data.action != 'invite') {
+                $.ajax({
+                type: 'POST',
+                url: "http://tounao.staraise.com.cn/Api/common/bindUid",
+                data: data,
+                dataType: "json",
+                success: function(res){
+                    console.log("绑定成功")
+                    bangding = true;
+                },
+                error: function(e) {
+                        console.log("error");
+                }
+                })
+            }
             $(".tanchutn-wrapper").css("display","block")
             console.log($(".tanchutn-wrapper").css("display"))
             document.addEventListener("touchmove",function(e){
