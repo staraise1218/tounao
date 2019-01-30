@@ -116,10 +116,11 @@ $(".questions-wrapper").delegate(".choose-btn","touchstart", function () {
     }
     // user2 end
 
-
+    // user1
     if($(this).attr("data") == 1) {
         console.log("回答正确！")
         
+        user1_info.count += 100;
         user1_info.answers[quset_index] = 1;        
         localStorage.setItem("user1.answers",user1_info.answers[quset_index])
 
