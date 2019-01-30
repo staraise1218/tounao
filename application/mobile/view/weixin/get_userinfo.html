@@ -232,6 +232,8 @@
                 })
                 //接受邀请
                 $(".agreen").click(function(){
+                    let  user_id = {$userinfo}.user_id
+                    console.log({$userinfo})
                     alert()
                     $.ajax({
                       type: 'POST',
