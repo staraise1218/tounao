@@ -172,8 +172,8 @@
 
     <script>
         $(".begin").on('click', function () {
-            $("#load-wrapper").prop('display','none')
-            $("#pk-display").prop('display','block')
+            $("#load-wrapper").get(0).style.display = 'none';
+            $("#pk-display").get(0).style.display = 'block';
         })
     
     
