@@ -79,8 +79,7 @@
         let data=getPageParams()
         console.log(data)
         let id=data.id
-        if(data.action != 'invite') {
-            $.ajax({
+        $.ajax({
             type: 'POST',
             url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
             data: {
@@ -90,8 +89,7 @@
             success:function(data){
                 console.log(data)
             }
-            })
-        }
+        })
     </script>
 </body>
 </html>
