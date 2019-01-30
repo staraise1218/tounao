@@ -110,7 +110,7 @@ class Pk extends Base {
 			'answer' => $answer,
 			'is_right' => $is_right,
 		));
-		Gateway::sendToUid($to_user_id, $message);
+		Gateway::sendToUid($to_user_id, "$message");
 
 		// $updatedata = array(
 		// 	''
