@@ -221,6 +221,7 @@
                     })
                 })
                 //接受邀请
+                    localStorage.setItem("obj", JSON.stringify(obj));
                 $(".agreen").click(function(){
                    alert()
                    window.location.href="../pk/index.html?id="+ obj.room_id + '&' + obj.to_user_id;
