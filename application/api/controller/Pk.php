@@ -100,9 +100,22 @@ class Pk extends Base {
 
 	// 选择答案
 	public function choose(){
+		$room_knowledge_id = I('room_knowledge_id');
 		$user_id = I('user_id');
 		$to_user_id = I('to_user_id');
 		$answer = I('answer');
+		$is_right = I('is_right');
+
+		$message = json_encode(array(
+			'answer' => $answer,
+			'is_right' => $is_right,
+		));
+		Gateway::sendToUid($to_user_id, "$message");
+
+		// $updatedata = array(
+		// 	''
+		// );
+		// Db::name('room_knowledge')->where('id', $room_knowledge_id)->update($updatedata);
 	}
 
 }
