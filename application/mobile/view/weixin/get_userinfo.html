@@ -115,7 +115,7 @@
                 })
             // }
 
-
+            
             // invite
             obj_roomid = data.room_id;
             if(data.action == 'invite') {
@@ -160,6 +160,8 @@
                     }
                 },false)
             }
+
+            localStorage.setItem("data.action",data.action)
             // if($(".tanchutn-wrapper").css("display")=='block'){
             //     $("html,body").addClass("overHiden")
             // }

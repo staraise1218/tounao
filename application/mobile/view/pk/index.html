@@ -155,18 +155,37 @@
         console.log(data)
         var id=data.room_id
         var to_user_id = data.to_user_id;
-        $.ajax({
-            type: 'POST',
-            url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
-            data: {
-                room_id:id,
-                to_user_id:to_user_id
-            },
-            dataType: "json",
-            success:function(data){
-                console.log(data)
-            }
-        })
+
+        if(localStorage.getItem(data.action) == 'intoroom') {
+            $.ajax({
+                type: 'POST',
+                url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
+                data: {
+                    room_id:id,
+                    to_user_id:to_user_id
+                },
+                dataType: "json",
+                success:function(data){
+                    console.log(data)
+                }
+            })
+        }
+
+        if(localStorage.getItem(data.action) == 'invite') {
+            $.ajax({
+                type: 'POST',
+                url: "http://tounao.staraise.com.cn/Api/pk/invite",
+                data: {
+                    user_id:id,
+                    to_user_id:to_user_id
+                },
+                dataType: "json",
+                success:function(data){
+                    console.log(data)
+                }
+            })
+        }
+
 
     </script>
     <script>
