@@ -80,7 +80,6 @@
             localStorage["mUserInfo"] = JSON.stringify(userinfo);
             localStorage.setItem("mUserInfo", JSON.stringify(userinfo));
         let obj_roomid;
-        let obj_touserid;
         var ws = new WebSocket("ws://120.92.10.2:2345");
         ws.onopen=function(){
             ws.send("youaremybaby")
@@ -252,8 +251,8 @@
                       }
                     })
                     var to_user_id = user_id
-                    localStorage.setItem("obj_roomid",obj_roomid)
-                    localStorage.setItem("to_user_id",toUserId)
+                    // localStorage.setItem("obj_roomid",obj_roomid)
+                    // localStorage.setItem("to_user_id",toUserId)
                     window.location.href="../pk/index.html?"+ "room_id=" + obj_roomid + '&' + "to_user_id=" + to_user_id;
                 })
                 $(".back").click(function(){
