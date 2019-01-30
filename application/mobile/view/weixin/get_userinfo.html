@@ -49,7 +49,7 @@
             </div>
             <p>当前排名<span>1/100</span></p>
         </div>
-        <div class="tanchutn-wrapper"> 
+        <div class="tanchutn-wrapper" style="display:none"> 
             <div class="tanchuang">
                 <div class="poster">
                     <img src="__STATIC__/image/touxiang.png" alt="">
@@ -98,20 +98,20 @@
               }
             console.log(data)
             console.log(data.action)
+            $.ajax({
+                type: 'POST',
+                url: "http://tounao.staraise.com.cn/Api/common/bindUid",
+                data: postData,
+                dataType: "json",
+                success: function(res){
+                    console.log("绑定成功")
+                    bangding = true;
+                },
+                error: function(e) {
+                        console.log("error");
+                }
+            })
             if(data.action != 'invite') {
-                $.ajax({
-                    type: 'POST',
-                    url: "http://tounao.staraise.com.cn/Api/common/bindUid",
-                    data: postData,
-                    dataType: "json",
-                    success: function(res){
-                        console.log("绑定成功")
-                        bangding = true;
-                    },
-                    error: function(e) {
-                            console.log("error");
-                    }
-                })
                 $(".tanchutn-wrapper").css("display","block")
                 console.log($(".tanchutn-wrapper").css("display"))
                 document.addEventListener("touchmove",function(e){
