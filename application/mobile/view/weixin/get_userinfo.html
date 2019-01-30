@@ -81,7 +81,6 @@
             localStorage["mUserInfo"] = JSON.stringify(userinfo);
             localStorage.setItem("mUserInfo", JSON.stringify(userinfo));
         var ws = new WebSocket("ws://120.92.10.2:2345");
-        let bangding = false;
         ws.onopen=function(){
             ws.send("youaremybaby")
         }
@@ -96,7 +95,7 @@
                 user_id:userinfo.user_id,
                 client_id:data.client_id
               }
-            console.log(data)
+            console.log(postData)
             console.log(data.action)
             if(data.action != 'invite') {
                 $.ajax({
@@ -106,7 +105,6 @@
                     dataType: "json",
                     success: function(res){
                         console.log("绑定成功")
-                        bangding = true;
                     },
                     error: function(e) {
                         console.log("error");
