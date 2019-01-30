@@ -100,7 +100,7 @@
             }
             console.log(postData)
             console.log(data.action)
-            if(data.action != 'invite') {
+            // if(data.action != 'invite') {
                 $.ajax({
                     type: 'POST',
                     url: "http://tounao.staraise.com.cn/Api/common/bindUid",
@@ -113,7 +113,7 @@
                         console.log("error");
                     }
                 })
-            }
+            // }
             // invite
             if(data.action == 'invite') {
                 $.ajax({
