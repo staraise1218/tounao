@@ -79,17 +79,19 @@
         let data=getPageParams()
         console.log(data)
         let id=data.id
-        $.ajax({
-          type: 'POST',
-          url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
-          data: {
-            room_id:id,
-          },
-          dataType: "json",
-          success:function(data){
-             console.log(data)
-          }
-        })
+        if(data.action != 'invite') {
+            $.ajax({
+            type: 'POST',
+            url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
+            data: {
+                room_id:id,
+            },
+            dataType: "json",
+            success:function(data){
+                console.log(data)
+            }
+            })
+        }
     </script>
 </body>
 </html>
