@@ -155,12 +155,7 @@
         console.log(data)
         var room_id=data.room_id
         var to_user_id = data.to_user_id;
-        var user_id = localStorage.getItem("mUserInfo")
-        console.log(user_id)
-        console.log(typeof user_id)
-        console.log(JSON.parse("mUserInfo"))
-
-
+        var user_id = JSON.parse(localStorage.getItem("mUserInfo")).user_id
 
         if(localStorage.getItem(data.action) == 'intoroom') {
             $.ajax({
