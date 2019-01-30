@@ -84,7 +84,7 @@
         ws.onopen=function(){
             ws.send("youaremybaby")
         }
-        ws.onmessage = function (evt) { 
+        ws.onmessage = function (evt) {
             console.log("onmessage")
             console.log(evt.data)
             console.log(typeof(evt.data))
@@ -93,7 +93,7 @@
             console.log(client_id )
             var data={
                 user_id:userinfo.user_id,
-                client_id:client_id  
+                client_id:client_id
               }
             console.log(data)
             $.ajax({
@@ -171,7 +171,7 @@
                       },
                       dataType: "json",
                       success:function(data){
-                        console.log(data);
+                          console.log(data)
                       },
                       error: function() {
                           console.log("error")
