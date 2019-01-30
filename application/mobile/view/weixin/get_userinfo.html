@@ -113,11 +113,11 @@
                     }
                 })
             }
-            // roomid
+            // invite
             if(data.action == 'invite') {
                 $.ajax({
                     type: 'POST',
-                    url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
+                    url: "http://tounao.staraise.com.cn/Api/pk/invite",
                     data: { room_id:data.room_id,
                             to_user_id:data.to_user_id},
                     dataType: "json",
@@ -207,7 +207,7 @@
                 //接受邀请
                 $(".agreen").click(function(){
                    alert()
-                   window.location.href="../pk/index.html?id=123" 
+                   window.location.href="../pk/index.html?id=123"
                 })
                 $(".back").click(function(){
                     $(".tanchutn-wrapper").hide()
