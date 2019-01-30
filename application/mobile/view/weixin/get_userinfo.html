@@ -205,7 +205,6 @@
                 $(".pk").click(function() {
                     // $(".tanchutn-wrapper").css("display","block")
                     let  user_id = {$userinfo}.user_id
-                    var to_user_id = $(this).data("id")
                     //邀请接口
                     $.ajax({
                       type: 'POST',
@@ -216,7 +215,7 @@
                       },
                       dataType: "json",
                       success:function(res){
-                          console.log(res)          
+                          console.log(res)
                       },
                       error: function() {
                           console.log("error")
@@ -241,7 +240,8 @@
                           console.log("error")
                       }
                     })
-                   window.location.href="../pk/index.html?"+ "to_user_id" + to_user_id + '&' + "room_id" + obj_touserid;
+                    var to_user_id = $(this).data("id")
+                    window.location.href="../pk/index.html?"+ "room_id" + obj_touserid + '&' + "to_user_id" + to_user_id;
                 })
                 $(".back").click(function(){
                     $(".tanchutn-wrapper").hide()
