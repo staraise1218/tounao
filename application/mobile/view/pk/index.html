@@ -71,6 +71,7 @@
               arr.forEach(function (str) {
                 var arrTemp = str.split("=")
                 option[arrTemp[0]] = arrTemp[1]
+                option[arrTemp[1]] = arrTemp[2]
               })
             }
             return option
@@ -79,11 +80,13 @@
         let data=getPageParams()
         console.log(data)
         let id=data.id
+        let to_user_id = data.to_user_id;
         $.ajax({
             type: 'POST',
             url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
             data: {
                 room_id:id,
+                to_user_id:to_user_id
             },
             dataType: "json",
             success:function(data){
