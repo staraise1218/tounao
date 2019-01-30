@@ -95,6 +95,9 @@
                 user_id:userinfo.user_id,
                 client_id:data.client_id
               }
+            ws.onclose = function() {
+                console.log("close")
+            }
             console.log(postData)
             console.log(data.action)
             if(data.action != 'invite') {
