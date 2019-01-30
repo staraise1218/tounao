@@ -165,7 +165,7 @@ let timer = 10000;
 let timeText = 0;
 
 var user1_info = {
-    poster: './src/images/PK-11.jpg',
+    poster: '/application/mobile/view/static/image/PK-11.jpg',
     user_name: '小明',
     user_id: '123456',
     count: 0,
@@ -178,7 +178,7 @@ var user1_info = {
     ],
     answers: [[],[],[],[],[]],
     duishou: {
-        poster: './src/images/PK-12.jpg',
+        poster: '/application/mobile/view/static/image/PK-12.jpg',
         user_name: '小王',
         user_id: '654321',
         count: 0,
@@ -186,12 +186,12 @@ var user1_info = {
     }
 }
 
+
 window.onload = function () {
     $(".user1_poster").prop("src",user1_info.poster);
     $(".user1-name").text(user1_info.user_name);
     $(".user2_poster").prop("src",user1_info.duishou.poster);
     $(".user2-name").text(user1_info.duishou.user_name);
-    init();
 }
 
 
