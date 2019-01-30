@@ -119,7 +119,7 @@ class Pk extends Base {
 	}
 
 	// pk结果 
-	public function result(){
+	public function sendResult(){
 		$room_id = I('room_id');
 		$winer_id = I('winer_id');
 
