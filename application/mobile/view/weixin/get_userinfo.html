@@ -89,7 +89,6 @@
             console.log("onmessage")
             console.log(evt.data)
             console.log(typeof(evt.data))
-            // let messageData=JSON.parse(evt.data)
             var data = JSON.parse(evt.data);
             console.log(data)
             obj = data;
@@ -116,6 +115,8 @@
                     }
                 })
             // }
+
+            
             // invite
             obj_roomid = data.room_id;
             if(data.action == 'invite') {
