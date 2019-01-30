@@ -251,7 +251,9 @@
                       }
                     })
                     var to_user_id = $(this).data("id")
-                    window.location.href="../pk/index.html?"+ "room_id" + obj_touserid + '&' + "to_user_id" + to_user_id;
+                    localStorage.setItem("obj_touserid",obj_touserid)
+                    localStorage.setItem("to_user_id",to_user_id)
+                    window.location.href="../pk/index.html?"+ "room_id=" + obj_touserid + '&' + "to_user_id=" + to_user_id;
                 })
                 $(".back").click(function(){
                     $(".tanchutn-wrapper").hide()
