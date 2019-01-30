@@ -100,6 +100,7 @@
             }
             console.log(postData)
             console.log(data.action)
+            localStorage.setItem("data.action",data.action)
             // if(data.action != 'invite') {
                 $.ajax({
                     type: 'POST',
@@ -149,6 +150,7 @@
             }
 
             if(data.action == 'invite') {
+                localStorage.setItem("data.action",data.action)
                 console.log(data)
                 $(".tanchutn-wrapper").css("display","block")
                 console.log($(".tanchutn-wrapper").css("display"))
