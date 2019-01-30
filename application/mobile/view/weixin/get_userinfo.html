@@ -221,15 +221,14 @@
                     })
                 })
                 //接受邀请
-                    localStorage.setItem("obj", JSON.stringify(obj));
                 $(".agreen").click(function(){
-                   alert()
+                    alert()
+                    localStorage.setItem("obj", JSON.stringify(obj));
                    window.location.href="../pk/index.html?id="+ obj.room_id + '&' + obj.to_user_id;
                 })
                 $(".back").click(function(){
                     $(".tanchutn-wrapper").hide()
                 })
-               
               },
               error: function(e) {
                     console.log("error");
