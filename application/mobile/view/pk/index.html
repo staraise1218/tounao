@@ -15,9 +15,9 @@
 <body>
 
 
-
+<div id="load-wrapper">
 <!-- 接受者 -->
-<div class="user1-wrapper">
+    <div class="user1-wrapper">
         <div class="user1-info">
             <p>雨天还是晴天</p>
             <p>来自: <span class="user1_location">北京</span> </p>
@@ -72,7 +72,7 @@
             <p class="user2_school">上海小学</p>
         </div>
     </div>
-
+</div>
 
 
 
@@ -168,6 +168,16 @@
             }
         })
 
+    </script>
+
+    <script>
+        $(".begin").on('click', function () {
+            $("#load-wrapper").prop('display','none')
+            $("#pk-display").prop('display','block')
+        })
+    
+    
+    
     </script>
 </body>
 </html>
