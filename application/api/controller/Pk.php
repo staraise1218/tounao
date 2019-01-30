@@ -55,7 +55,8 @@ class Pk extends Base {
 				$knowledgeList[$k]['room_knowledge_id'] = Db::name('room_knowledge')->insertGetId($item);
 			}
 			$result['knowledgeList'] = $knowledgeList;
-			response_success($knowledgeList);
+			response_success($result);
+			
 		} else {
 			response_error();
 		}
@@ -97,6 +98,15 @@ class Pk extends Base {
 		response_success($result);
 	}
 
+	// 开始答题
+	public function start(){
+		$to_user_id = I('to_user_id');
+
+		$message = json_encode(array(
+			'action' => 'start',
+		));
+		Gateway::sendToUid($to_user_id, "$message");
+	}
 
 	// 选择答案
 	public function choose(){
@@ -107,6 +117,7 @@ class Pk extends Base {
 		$is_right = I('is_right');
 
 		$message = json_encode(array(
+			'action' => 'choose',
 			'answer' => $answer,
 			'is_right' => $is_right,
 		));
