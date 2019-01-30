@@ -90,10 +90,10 @@
             console.log(typeof(evt.data))
             // let messageData=JSON.parse(evt.data)
             var data = JSON.parse(evt.data);
-            console.log(client_id )
+            console.log(data )
             var data={
                 user_id:userinfo.user_id,
-                client_id:client_id
+                client_id:data
               }
             console.log(data)
             $.ajax({
