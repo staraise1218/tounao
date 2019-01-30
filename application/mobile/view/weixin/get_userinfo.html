@@ -224,6 +224,8 @@
                 $(".agreen").click(function(){
                     alert()
                     localStorage.setItem("obj", JSON.stringify(obj));
+                    localStorage.setItem("obj.room_id", JSON.stringify(obj.room_id));
+                    localStorage.setItem("obj.to_user_id", JSON.stringify(obj.to_user_id));
                    window.location.href="../pk/index.html?id="+ obj.room_id + '&' + obj.to_user_id;
                 })
                 $(".back").click(function(){
