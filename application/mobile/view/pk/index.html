@@ -10,9 +10,75 @@
     <script src="__STATIC__/js/rem.js"></script>
     <link rel="stylesheet" href="__STATIC__/css/global.css">
     <link rel="stylesheet" href="__STATIC__/css/pk-pk.css">
+    <link rel="stylesheet" href="__STATIC__/css/pk.css">
 </head>
 <body>
 
+
+
+<!-- 接受者 -->
+<div class="user1-wrapper">
+        <div class="user1-info">
+            <p>雨天还是晴天</p>
+            <p>来自: <span class="user1_location">北京</span> </p>
+            <p class="user1_school">北京小学</p>
+        </div>
+        <div class="user1-poster-wrapper icon3">
+            <span class="title_tag">5连胜</span>
+            <div class="poster">
+                <img src="./src/images/poster1.png" alt="">
+            </div>
+            <div class="user1_name">雨天还是晴天</div>
+        </div>
+    </div>
+
+<!-- 中间状态显示 -->
+    <div class="zhuangtai-wrapper">
+        <!-- vs -->
+        <div class="vs-poster" style="display:none">
+            <img src="./src/images/img_0742.jpg" alt="">
+        </div>
+        <!-- abandon -->
+        <div class="abandon-wrapper" style="display:none">
+            <div class="abandon">
+                <i class="icon5 abandon-icon"></i>
+                <span>放弃</span>
+            </div>
+        </div>
+        <!-- begin -->
+        <div class="begin-wrapper">
+            <div class="abandon-b">
+                <i class="icon1 abandon-b-icon"></i>
+                <span>放弃</span>
+            </div>
+            <div class="begin">
+                <i class="icon5 begin-icon"></i>
+                <span>开始</span>
+            </div>
+        </div>
+    </div>
+<!-- 发起者 -->
+    <div class="user2-wrapper">
+        <div class="user2-poster-wrapper icon3">
+            <span class="title_tag">5连胜</span>
+            <div class="poster">
+                <img src="./src/images/poster1.png" alt="">
+            </div>
+            <div class="user2_name">晴天还是雨天</div>
+        </div>
+        <div class="user2-info">
+            <p>晴天还是雨天</p>
+            <p>来自: <span class="user2_location">上海</span> </p>
+            <p class="user2_school">上海小学</p>
+        </div>
+    </div>
+
+
+
+
+    <!-- ****************** -->
+
+<div id="pk-display" style="display:none">
     <div class="pk-wrapper">
         <div class="user1-title-wrapper icon3">
             <div class="poster-wrapper">
@@ -58,6 +124,14 @@
         <span>1/1</span>
     </div>
     <!-- <button id="begin" style="width:80%;margin:0 auto;display:block;margin-top: 100px;">开始</button> -->
+</div>
+
+
+
+
+
+
+
 
     
     <script src="__STATIC__/js/jquery.js"></script>   
@@ -93,7 +167,7 @@
                 console.log(data)
             }
         })
-        
+
     </script>
 </body>
 </html>
