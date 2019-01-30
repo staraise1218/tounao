@@ -119,8 +119,6 @@
             // }
             // invite
             obj_roomid = data.room_id;
-            obj_touserid = data.to_user_id;
-            console.log(data)
             if(data.action == 'invite') {
                 $.ajax({
                     type: 'POST',
@@ -207,6 +205,7 @@
                 $(".pk").click(function() {
                     // $(".tanchutn-wrapper").css("display","block")
                     let  user_id = {$userinfo}.user_id
+                    var to_user_id = $(this).data("id")
                     //邀请接口
                     $.ajax({
                       type: 'POST',
@@ -217,7 +216,7 @@
                       },
                       dataType: "json",
                       success:function(res){
-                          console.log(res)
+                          console.log(res)          
                       },
                       error: function() {
                           console.log("error")
@@ -242,7 +241,7 @@
                           console.log("error")
                       }
                     })
-                   window.location.href="../pk/index.html?"+ "to_user_id" + obj_roomid + '&' + "room_id" + obj_touserid;
+                   window.location.href="../pk/index.html?"+ "to_user_id" + to_user_id + '&' + "room_id" + obj_touserid;
                 })
                 $(".back").click(function(){
                     $(".tanchutn-wrapper").hide()
