@@ -153,15 +153,21 @@
         
         let data=getPageParams()
         console.log(data)
-        var id=data.room_id
+        var room_id=data.room_id
         var to_user_id = data.to_user_id;
+        var user_id = localStorage.getItem(mUserInfo)
+        console.log(user_id)
+        console.log(typeof user_id)
+        console.log(JSON.parse(mUserInfo))
+
+
 
         if(localStorage.getItem(data.action) == 'intoroom') {
             $.ajax({
                 type: 'POST',
                 url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
                 data: {
-                    room_id:id,
+                    room_id:room_id,
                     to_user_id:to_user_id
                 },
                 dataType: "json",
@@ -196,17 +202,17 @@
                 init();
             }, 3000)
 
-            $.ajax({
-                type: 'POST',
-                url: "http://tounao.staraise.com.cn/Api/pk/start",
-                data: {
-                    to_user_id:to_user_id
-                },
-                dataType: "json",
-                success:function(data){
-                    console.log(data)
-                }
-            })
+            // $.ajax({
+            //     type: 'POST',
+            //     url: "http://tounao.staraise.com.cn/Api/pk/start",
+            //     data: {
+            //         to_user_id:to_user_id
+            //     },
+            //     dataType: "json",
+            //     success:function(data){
+            //         console.log(data)
+            //     }
+            // })
 
 
         })
