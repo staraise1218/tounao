@@ -50,29 +50,29 @@
             <p>当前排名<span>1/100</span></p>
         </div>
         <div class="tanchutn-wrapper"> 
-                        <div class="tanchuang">
-                        <div class="poster">
-                        <img src="__STATIC__/image/touxiang.png" alt="">
-                        </div>
-                        <div>
-                        <span class="user2-name">123456</span> <span class="location">123</span>
-                        </div>
-                        <div style="color: rgb(85, 79, 202);font-size: 0.4rem">邀请你加入游戏~~</div>
-                        <div style="display:flex;justify-content: center;margin-top: 0.5rem">
-                        <div style="color: rgb(85, 79, 202);font-size: 0.4rem;display:flex;align-items: center">
-                        <i class="icon2 icon-jinbi"></i> +10
-                        </div>
-                        <div style="color: rgb(85, 79, 202);margin-left: 0.3rem ;font-size: 0.4rem;display:flex;align-items: center">
-                        <i class="icon2 icon-jingyan"></i> +10
-                        </div>
-                        </div>
-                        <i class="icon5" style="width:100%;display:inline-block;height:0.04rem;margin: 0 auto;background-position: -2.5rem -3.6rem"></i>
-                        <div class="btn">
-                        <div class="back">拒绝</div>
-                        <div class="agreen">同意</div>
-                        </div>
-                        </div>
-                        </div>
+            <div class="tanchuang">
+                <div class="poster">
+                    <img src="__STATIC__/image/touxiang.png" alt="">
+                </div>
+                <div>
+                    <span class="user2-name">123456</span> <span class="location">123</span>
+                </div>
+                <div style="color: rgb(85, 79, 202);font-size: 0.4rem">邀请你加入游戏~~</div>
+                <div style="display:flex;justify-content: center;margin-top: 0.5rem">
+                <div style="color: rgb(85, 79, 202);font-size: 0.4rem;display:flex;align-items: center">
+                    <i class="icon2 icon-jinbi"></i> +10
+                </div>
+                <div style="color: rgb(85, 79, 202);margin-left: 0.3rem ;font-size: 0.4rem;display:flex;align-items: center">
+                    <i class="icon2 icon-jingyan"></i> +10
+                </div>
+                </div>
+                    <i class="icon5" style="width:100%;display:inline-block;height:0.04rem;margin: 0 auto;background-position: -2.5rem -3.6rem"></i>
+                <div class="btn">
+                    <div class="back">拒绝</div>
+                    <div class="agreen">同意</div>
+                </div>
+            </div>
+    </div>
     <script src="__STATIC__/js/rem.js"></script>
     <script src="__STATIC__/js/jquery.js"></script>   
     <script>
@@ -80,7 +80,7 @@
             console.log(userinfo)
             localStorage["mUserInfo"] = JSON.stringify(userinfo);
             localStorage.setItem("mUserInfo", JSON.stringify(userinfo));
-        var ws = new WebSocket("ws://120.92.10.2:2345")
+        var ws = new WebSocket("ws://120.92.10.2:2345");
         ws.onopen=function(){
             ws.send("youaremybaby")
         }
@@ -93,7 +93,7 @@
             console.log(client_id )
             var data={
                 user_id:userinfo.user_id,
-                client_id:client_id      
+                client_id:client_id  
               }
             console.log(data)
             $.ajax({
@@ -170,8 +170,11 @@
                         to_user_id:$(this).data("id")
                       },
                       dataType: "json",
-                      success:function(){
-
+                      success:function(data){
+                        console.log(data);
+                      },
+                      error: function() {
+                          console.log("error")
                       }
                     })
                 })
