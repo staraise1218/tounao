@@ -251,10 +251,10 @@
                           console.log("error")
                       }
                     })
-                    var to_user_id = toUserId
+                    var to_user_id = user_id
                     localStorage.setItem("obj_roomid",obj_roomid)
                     localStorage.setItem("to_user_id",toUserId)
-                    window.location.href="../pk/index.html?"+ "room_id=" + obj_roomid + '&' + "to_user_id=" + toUserId;
+                    window.location.href="../pk/index.html?"+ "room_id=" + obj_roomid + '&' + "to_user_id=" + to_user_id;
                 })
                 $(".back").click(function(){
                     $(".tanchutn-wrapper").hide()
