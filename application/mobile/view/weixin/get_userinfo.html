@@ -109,10 +109,28 @@
                         bangding = true;
                     },
                     error: function(e) {
+                        console.log("error");
+                    }
+                })
+            }
+            // roomid
+            if(data.action == 'invite') {
+                $.ajax({
+                    type: 'POST',
+                    url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
+                    data: data.room_id,
+                    dataType: "json",
+                    success: function(res){
+                        console.log(res)
+                    },
+                    error: function(e) {
                             console.log("error");
                     }
                 })
             }
+
+
+
             if(data.action == 'invite') {
                 $(".tanchutn-wrapper").css("display","block")
                 console.log($(".tanchutn-wrapper").css("display"))
