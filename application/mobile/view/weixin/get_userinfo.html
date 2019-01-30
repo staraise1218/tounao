@@ -89,7 +89,7 @@
             console.log(evt.data)
             console.log(typeof(evt.data))
             // let messageData=JSON.parse(evt.data)
-            var client_id = evt.data;
+            var data = JSON.parse(evt.data);
             console.log(client_id )
             var data={
                 user_id:userinfo.user_id,
@@ -175,7 +175,6 @@
                       },
                       error: function() {
                           console.log("error")
-                          console.log(data)
                       }
                     })
                 })
