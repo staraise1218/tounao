@@ -80,7 +80,7 @@
             localStorage["mUserInfo"] = JSON.stringify(userinfo);
             localStorage.setItem("mUserInfo", JSON.stringify(userinfo));
         let obj_roomid;
-        let obj_touserid;
+        // let to_user_id
         var ws = new WebSocket("ws://120.92.10.2:2345");
         ws.onopen=function(){
             ws.send("youaremybaby")
@@ -101,6 +101,7 @@
             }
             console.log(postData)
             console.log(data.action)
+            localStorage.setItem("data.action",data.action)
             // if(data.action != 'invite') {
                 $.ajax({
                     type: 'POST',
@@ -116,40 +117,42 @@
                 })
             // }
 
-
+            
             // invite
-            obj_roomid = data.room_id;
-            if(data.action == 'invite') {
-                $.ajax({
-                    type: 'POST',
-                    url: "http://tounao.staraise.com.cn/Api/pk/invite",
-                    data: { room_id:data.room_id,
-                            to_user_id:data.to_user_id},
-                    dataType: "json",
-                    success: function(res){
-                        console.log(res)
-                    },
-                    error: function(e) {
-                            console.log("error");
-                    }
-                })
-                $("#user2_name").text(data.message);
-                $.ajax({
-                    type: 'POST',
-                    url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
-                    data: { room_id:data.room_id,
-                            to_user_id:data.to_user_id},
-                    dataType: "json",
-                    success: function(res){
-                        console.log(res)
-                    },
-                    error: function(e) {
-                            console.log("error");
-                    }
-                })
-            }
+            // obj_roomid = data.room_id;
+            // if(data.action == 'invite') {
+            //     $.ajax({
+            //         type: 'POST',
+            //         url: "http://tounao.staraise.com.cn/Api/pk/invite",
+            //         data: { room_id:data.room_id,
+            //                 to_user_id:data.to_user_id},
+            //         dataType: "json",
+            //         success: function(res){
+            //             console.log(res)
+            //         },
+            //         error: function(e) {
+            //                 console.log("error");
+            //         }
+            //     })
+            //     $("#user2_name").text(data.message);
+            //     $.ajax({
+            //         type: 'POST',
+            //         url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
+            //         data: { room_id:data.room_id,
+            //                 to_user_id:data.to_user_id},
+            //         dataType: "json",
+            //         success: function(res){
+            //             console.log(res)
+            //         },
+            //         error: function(e) {
+            //                 console.log("error");
+            //         }
+            //     })
+            // }
 
             if(data.action == 'invite') {
+                localStorage.setItem("data.action",data.action)
+                console.log("aaaaaa")
                 console.log(data)
                 $(".tanchutn-wrapper").css("display","block")
                 console.log($(".tanchutn-wrapper").css("display"))
@@ -160,7 +163,11 @@
                        $("html,body").removeClass("overHiden")
                     }
                 },false)
+                // window.location.href="../pk/index.html?room_id="+data.room_id;
+                obj_roomid = data.room_id;
             }
+
+            localStorage.setItem("data.action",data.action)
             // if($(".tanchutn-wrapper").css("display")=='block'){
             //     $("html,body").addClass("overHiden")
             // }
@@ -176,6 +183,7 @@
         };
     </script>
     <script type="text/javascript">
+        let to_user_id=""
         $(document).ready(function(){
             $.ajax({
               type: 'POST',
@@ -207,12 +215,16 @@
                 })
               
 
-                let toUserId;
+                // let toUserId;
                  //点击pk
                 $(".pk").click(function() {
                     // $(".tanchutn-wrapper").css("display","block")
                     let  user_id = {$userinfo}.user_id
                     console.log({$userinfo})
+                    
+                    to_user_id=$(this).data("id")
+                    console.log("to_user_id")
+                    console.log(to_user_id)
                     //邀请接口
                     $.ajax({
                       type: 'POST',
@@ -230,31 +242,32 @@
                           console.log("error")
                       }
                     })
+                    window.location.href="../pk/index.html?touserId="+to_user_id;
                 })
                 //接受邀请
                 $(".agreen").click(function(){
                     let  user_id = {$userinfo}.user_id
                     console.log({$userinfo})
                     alert()
-                    $.ajax({
-                      type: 'POST',
-                      url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
-                      data: {
-                        user_id:user_id,
-                        to_user_id:toUserId
-                      },
-                      dataType: "json",
-                      success:function(res){
-                          console.log(res)
-                      },
-                      error: function() {
-                          console.log("error")
-                      }
-                    })
-                    var to_user_id = user_id
-                    localStorage.setItem("obj_roomid",obj_roomid)
-                    localStorage.setItem("to_user_id",toUserId)
-                    window.location.href="../pk/index.html?"+ "room_id=" + obj_roomid + '&' + "to_user_id=" + to_user_id;
+                    console.log(to_user_id)
+                    // $.ajax({
+                    //   type: 'POST',
+                    //   url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
+                    //   data: {
+                    //     user_id:user_id,
+                    //     to_user_id:toUserId
+                    //   },
+                    //   dataType: "json",
+                    //   success:function(res){
+                    //       console.log(res)
+                    //   },
+                    //   error: function() {
+                    //       console.log("error")
+                    //   }
+                    // })
+                    // localStorage.setItem("obj_roomid",obj_roomid)
+                    // localStorage.setItem("to_user_id",toUserId)
+                    window.location.href="../pk/index.html?roomId="+obj_roomid
                 })
                 $(".back").click(function(){
                     $(".tanchutn-wrapper").hide()
