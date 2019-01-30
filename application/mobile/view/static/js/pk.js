@@ -6,7 +6,7 @@ let timer = 5000;
 let timeText = 0;
 
 var user1_info = {
-    poster: './src/images/PK-11.jpg',
+    poster: '/application/mobile/view/static/image/PK-11.jpg',
     user_name: '小明',
     user_id: '123456',
     count: 0,
@@ -19,7 +19,7 @@ var user1_info = {
     ],
     answers: [[],[],[],[],[]],
     duishou: {
-        poster: './src/images/PK-12.jpg',
+        poster: '/application/mobile/view/static/image/PK-12.jpg',
         user_name: '小王',
         user_id: '654321',
         count: 0,
@@ -82,6 +82,10 @@ function createQuestion(index) {
 // user1
 $(".questions-wrapper").delegate(".choose-btn","touchstart", function () {
     var _this = $(this);
+    var ws = new WebSocket("ws://120.92.10.2:2345")
+    ws.onopen=function(){
+        ws.send("youaremybaby")
+    }
     if($(".user1-active").length > 0 || quset_index > 5) {
         return
     }
@@ -105,6 +109,8 @@ $(".questions-wrapper").delegate(".choose-btn","touchstart", function () {
                 $("#user2-number").get(0).innerText = Number($("#user1-number").get(0).innerText) + 100;
             })
         }, 500)
+
+
     } else {
         console.log("user2----错误")
     }
