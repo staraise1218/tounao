@@ -20,8 +20,8 @@ class Pk extends Base {
 		$user_id = I('user_id');
 		$to_user_id = I('to_user_id');
 
-		// if(!Gateway::isUidOnline($user_id)) response_error('', '您不在线');
-		// if(!Gateway::isUidOnline($to_user_id)) response_error('', '对方不在线');
+		if(!Gateway::isUidOnline($user_id)) response_error('', '您不在线');
+		if(!Gateway::isUidOnline($to_user_id)) response_error('', '对方不在线');
 
 		// 获取用户信息
 		$user = Db::name('users')->where('user_id', $user_id)->find();
@@ -35,9 +35,10 @@ class Pk extends Base {
 		if($room_id) {
 			$message = json_encode(array(
 				'action'=>'invite',
-				'user_id' => $user_id,
 				'room_id' => $room_id,
-				'message' => $user['nickname'].'邀请您PK',
+				'user_id' => $user_id,
+				'nickname' => $nickname,
+				'head_pic' => $user['head_pic'],
 			));
 			Gateway::sendToUid($to_user_id, $message);
 
@@ -79,9 +80,29 @@ class Pk extends Base {
 			->find();
 
 		$result['userinfo'] = $userinfo;
-		$result['touserinfo'] = $touserinfo; 
+		$result['touserinfo'] = $touserinfo;
+
+		// 获取题目
+		$knowledgeList = Db::name('room_knowledge')
+			->where('room_id', $room_id)
+			->field('room_knowledge_id, title, a, b, c, d, answer')
+			->select();
+		$result['knowledgeList'] = $knowledgeList;
+
+		$message = json_encode(array(
+			'action' => 'intoRoom',
+		));
+		Gateway::sendToUid($room['user_id'], "$message");
 
 		response_success($result);
+	}
+
+
+
+	public function choose(){
+		$user_id = I('user_id');
+		$to_user_id = I('to_user_id');
+		$answer = I('answer');
 	}
 
 }
