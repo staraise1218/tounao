@@ -80,6 +80,7 @@
             console.log(userinfo)
             localStorage["mUserInfo"] = JSON.stringify(userinfo);
             localStorage.setItem("mUserInfo", JSON.stringify(userinfo));
+        let obj;
         var ws = new WebSocket("ws://120.92.10.2:2345");
         ws.onopen=function(){
             ws.send("youaremybaby")
@@ -164,8 +165,7 @@
             // if(messageData.action=='invite'){
             //     $(".tanchutn-wrapper").css("display","block")
             // }
-            return data;
-            
+            obj = data;         
         };
     </script>
     <script type="text/javascript">
@@ -223,7 +223,7 @@
                 //接受邀请
                 $(".agreen").click(function(){
                    alert()
-                   window.location.href="../pk/index.html?id="+ data.room_id + '&' + data.to_user_id;
+                   window.location.href="../pk/index.html?id="+ obj.room_id + '&' + obj.to_user_id;
                 })
                 $(".back").click(function(){
                     $(".tanchutn-wrapper").hide()
