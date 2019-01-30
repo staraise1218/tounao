@@ -249,6 +249,7 @@
                     let  user_id = {$userinfo}.user_id
                     console.log({$userinfo})
                     alert()
+                    console.log(to_user_id)
                     // $.ajax({
                     //   type: 'POST',
                     //   url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
@@ -266,7 +267,7 @@
                     // })
                     // localStorage.setItem("obj_roomid",obj_roomid)
                     // localStorage.setItem("to_user_id",toUserId)
-                    window.location.href="../pk/index.html?roomId="+obj_roomid+"&touserId="+to_user_id
+                    // window.location.href="../pk/index.html?roomId="+obj_roomid+"&touserId="+to_user_id
                 })
                 $(".back").click(function(){
                     $(".tanchutn-wrapper").hide()
