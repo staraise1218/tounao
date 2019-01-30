@@ -57,7 +57,7 @@
                 <div>
                     <span class="user2-name">123456</span> <span class="location">123</span>
                 </div>
-                <div style="color: rgb(85, 79, 202);font-size: 0.4rem">邀请你加入游戏~~</div>
+                <div id="user2_name" style="color: rgb(85, 79, 202);font-size: 0.4rem">邀请你加入游戏~~</div>
                 <div style="display:flex;justify-content: center;margin-top: 0.5rem">
                 <div style="color: rgb(85, 79, 202);font-size: 0.4rem;display:flex;align-items: center">
                     <i class="icon2 icon-jinbi"></i> +10
@@ -127,6 +127,7 @@
                             console.log("error");
                     }
                 })
+                $("#user2_name").text(data.message);
             }
 
 
