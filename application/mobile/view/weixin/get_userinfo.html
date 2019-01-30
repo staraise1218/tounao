@@ -97,19 +97,20 @@
                 client_id:data.client_id
               }
             console.log(data)
+            console.log(data.action)
             if(data.action != 'invite') {
                 $.ajax({
-                type: 'POST',
-                url: "http://tounao.staraise.com.cn/Api/common/bindUid",
-                data: data,
-                dataType: "json",
-                success: function(res){
-                    console.log("绑定成功")
-                    bangding = true;
-                },
-                error: function(e) {
-                        console.log("error");
-                }
+                    type: 'POST',
+                    url: "http://tounao.staraise.com.cn/Api/common/bindUid",
+                    data: data,
+                    dataType: "json",
+                    success: function(res){
+                        console.log("绑定成功")
+                        bangding = true;
+                    },
+                    error: function(e) {
+                            console.log("error");
+                    }
                 })
                 $(".tanchutn-wrapper").css("display","block")
                 console.log($(".tanchutn-wrapper").css("display"))
