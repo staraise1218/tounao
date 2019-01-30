@@ -15,7 +15,6 @@
     </style>
 </head>
 <body class="pk-bg">
-
     <div class="search-wrapper">
             <i class="icon5 user-btn"></i>
             <div class="input-wrapper">
@@ -90,7 +89,6 @@
             console.log("onmessage")
             console.log(evt.data)
             console.log(typeof(evt.data))
-            // let messageData=JSON.parse(evt.data)
             var data = JSON.parse(evt.data);
             console.log(data)
             obj = data;
@@ -117,6 +115,8 @@
                     }
                 })
             // }
+
+
             // invite
             obj_roomid = data.room_id;
             if(data.action == 'invite') {
@@ -167,7 +167,12 @@
             //接受邀请
             // if(messageData.action=='invite'){
             //     $(".tanchutn-wrapper").css("display","block")
-            // }         
+            // }  
+            
+            
+
+            // asdgfagasgag
+            // asgas
         };
     </script>
     <script type="text/javascript">
@@ -201,11 +206,13 @@
                     `) 
                 })
               
+
+                let toUserId;
                  //点击pk
                 $(".pk").click(function() {
                     // $(".tanchutn-wrapper").css("display","block")
                     let  user_id = {$userinfo}.user_id
-                    var to_user_id = $(this).data("id")
+                    console.log({$userinfo})
                     //邀请接口
                     $.ajax({
                       type: 'POST',
@@ -216,7 +223,8 @@
                       },
                       dataType: "json",
                       success:function(res){
-                          console.log(res)          
+                          console.log(res)
+                          toUserId = $(this).data("id")
                       },
                       error: function() {
                           console.log("error")
@@ -225,13 +233,15 @@
                 })
                 //接受邀请
                 $(".agreen").click(function(){
+                    let  user_id = {$userinfo}.user_id
+                    console.log({$userinfo})
                     alert()
                     $.ajax({
                       type: 'POST',
-                      url: "http://tounao.staraise.com.cn/Api/pk/choose",
+                      url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
                       data: {
                         user_id:user_id,
-                        to_user_id:$(this).data("id")
+                        to_user_id:toUserId
                       },
                       dataType: "json",
                       success:function(res){
@@ -241,7 +251,10 @@
                           console.log("error")
                       }
                     })
-                   window.location.href="../pk/index.html?"+ "to_user_id" + to_user_id + '&' + "room_id" + obj_touserid;
+                    var to_user_id = user_id
+                    localStorage.setItem("obj_roomid",obj_roomid)
+                    localStorage.setItem("to_user_id",toUserId)
+                    window.location.href="../pk/index.html?"+ "room_id=" + obj_roomid + '&' + "to_user_id=" + to_user_id;
                 })
                 $(".back").click(function(){
                     $(".tanchutn-wrapper").hide()
