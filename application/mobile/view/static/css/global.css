@@ -3,7 +3,7 @@
 a { text-decoration: none; color: #222;}
 li { list-style: none;}
 i,em { font-style: normal;}
-budy, html {height: 100%; width: 100%; background: #fff;}
+budy, html {height: 100%; width: 100%; background: #fff;} 
 .icon-bg {
     background-image: url(../image/icon.png);
     background-size: 5rem 5rem;
