@@ -85,7 +85,7 @@ class Pk extends Base {
 		// 获取题目
 		$knowledgeList = Db::name('room_knowledge')
 			->where('room_id', $room_id)
-			->field('room_knowledge_id, title, a, b, c, d, answer')
+			->field('id room_knowledge_id, title, a, b, c, d, answer')
 			->select();
 		$result['knowledgeList'] = $knowledgeList;
 
@@ -98,7 +98,7 @@ class Pk extends Base {
 	}
 
 
-
+	// 选择答案
 	public function choose(){
 		$user_id = I('user_id');
 		$to_user_id = I('to_user_id');
