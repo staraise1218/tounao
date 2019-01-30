@@ -118,4 +118,14 @@ class Pk extends Base {
 		// Db::name('room_knowledge')->where('id', $room_knowledge_id)->update($updatedata);
 	}
 
+	// pk结果 
+	public function result(){
+		$room_id = I('room_id');
+		$winer_id = I('winer_id');
+
+		Db::name('room')->where('room_id', $room_id)->update(array('winer_id'=>$winer_id));
+
+		response_success();
+	}
+
 }
