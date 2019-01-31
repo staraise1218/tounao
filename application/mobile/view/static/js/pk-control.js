@@ -74,8 +74,9 @@ ws.onmessage = function (event) {
 
     // 接受者开始游戏
     if($data.action == 'start') {
-        $("#load-wrapper").get(0).style.display = 'none';
-        $("#pk-display").get(0).style.display = 'block';
+        $("#load-wrapper").css("display","none")
+        $(".list-wrapper").css("display","none")
+        $("#pk-display").css("display","block")
         console.log("接收者---开始游戏")
         gameStart();
     }
@@ -86,8 +87,9 @@ ws.onmessage = function (event) {
     $(".agreen").click(function(){
         console.log($room_id,$user_id)
         // window.location.href="../pk/index.html?roomId=" + $room_id + "&userId=" + $user_id; 
-        $("#load-wrapper").get(0).style.display = 'none';
-        $("#pk-display").get(0).style.display = 'block';
+        $("#load-wrapper").css("display","block")
+        $(".list-wrapper").css("display","none")
+        $("#pk-display").css("display","none")
     })
 };
 
@@ -121,9 +123,10 @@ console.log(localStorage.getItem("knowledgeList"))
 console.log( JSON.parse(localStorage.getItem("knowledgeList")))
 
 // 点击开始--进入PK
-$(".begin").click(function () {
-    $("#load-wrapper").hide();
-    $("#pk-display").show();
+$(".begin").click(function () {        
+    $("#load-wrapper").css("display","none")
+    $(".list-wrapper").css("display","none")
+    $("#pk-display").css("display","block")
     console.log("发起者---开始游戏")
     $.ajax({
         type: 'POST',
@@ -233,8 +236,9 @@ $(document).ready(function(){
                     console.log("通知发起者开始答题 ---- error")
                 }
             })
-            $(".list-wrapper").hide();
-            $("#load-wrapper").show();
+            $("#load-wrapper").css("display","block")
+            $(".list-wrapper").css("display","none")
+            $("#pk-display").css("display","none")
         })
 
         //   拒绝邀请
