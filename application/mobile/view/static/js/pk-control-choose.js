@@ -68,12 +68,11 @@ ws.onmessage = function (event) {
     console.log(event)
     console.log(event.data)
 
-    
-    $("#load-wrapper").get(0).style.display = 'none';
-    $("#pk-display").get(0).style.display = 'block';
-    setTimeout(function () {
-        init();
-    }, 1000)
+    // $("#load-wrapper").get(0).style.display = 'none';
+    // $("#pk-display").get(0).style.display = 'block';
+    // setTimeout(function () {
+    //     init();
+    // }, 1000)
 }
 
 
