@@ -96,8 +96,8 @@ ws.onmessage = function (event) {
         console.log( $user2_isright)
 
         // if($user2_isright == 1) {
-            console.log($(".questionsWrapper .choose-btn"))
-        $(".questionsWrapper .choose-btn").each(function(item) {
+            console.log($(".choose-wrapper .choose-btn"))
+        $(".choose-wrapper .choose-btn").each(function(item) {
             console.log(item.data())
             if($(this).data() == $user2_answer) {
                 console.log(2341241)
