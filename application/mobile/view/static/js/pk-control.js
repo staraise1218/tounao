@@ -16,6 +16,7 @@ $user_id = $userinfo.user_id;
 
 
 // 建立websocket链接
+var ws = new WebSocket("ws://120.92.10.2:2345");
 ws.onopen=function(){
     ws.send("youaremybaby")
     console.log("socket open  链接建立")
