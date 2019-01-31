@@ -94,7 +94,7 @@ ws.onmessage = function (event) {
 
 
         if($user2_isright) {
-            $(".questionsWrapper .choose-btn").forEach(function(item) {
+            $(".questionsWrapper .choose-btn").each(function(item) {
                 if(item.data() == $user2_answer) {
                     item.addClass("user2_dui");
                 }
@@ -107,12 +107,6 @@ ws.onmessage = function (event) {
                 }
             })
         }
-
-
-
-
-
-
     }
 
 
