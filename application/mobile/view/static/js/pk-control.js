@@ -47,30 +47,6 @@ ws.onmessage = function (event) {
     })
 
 
-    // 邀请PK
-    $(".pk").click(function () {
-        $to_user_id = $(this).data("id");
-        var postData = {
-            user_id : $user_id,
-            to_user_id : $to_user_id
-        }
-        $.ajax({
-            type: 'POST',
-            url: "http://tounao.staraise.com.cn/Api/pk/invite",
-            data: postData,
-            dataType: "json",
-            success: function (data) {
-                console.log("邀请PK成功")
-                console.log(data)  // 这里可能有room_id 保存到全局  // TODO
-                $room_id = data.room_id;
-            },
-            error: function () {
-                console.log("邀请PK失败")
-            }
-        })
-        // 发起者进入PK页面
-        window.location.href="../pk/index.html?touserId="+$to_user_id;
-    })
 
     // TODO
     // 接受邀请 -- 可能不在 omessage 中进行
@@ -135,6 +111,31 @@ $(document).ready(function(){
               `) 
           })
         
+          
+        // 邀请PK
+        $(".pk").click(function () {
+            $to_user_id = $(this).data("id");
+            var postData = {
+                user_id : $user_id,
+                to_user_id : $to_user_id
+            }
+            $.ajax({
+                type: 'POST',
+                url: "http://tounao.staraise.com.cn/Api/pk/invite",
+                data: postData,
+                dataType: "json",
+                success: function (data) {
+                    console.log("邀请PK成功")
+                    console.log(data)  // 这里可能有room_id 保存到全局  // TODO
+                    $room_id = data.room_id;
+                },
+                error: function () {
+                    console.log("邀请PK失败")
+                }
+            })
+            // 发起者进入PK页面
+            window.location.href="../pk/index.html?touserId="+$to_user_id;
+        })
 
           //接受邀请
           $(".agreen").click(function(){
