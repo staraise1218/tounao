@@ -286,12 +286,12 @@ let timeText = 0;
 
 function gameStart() {
     for(let j = 0; j < 5; j++) {
-        (function(j) {
+        createQuestion($quset_index);
+        $quset_index++;
+        // (function(j) {
             // setTimeout(function() {
-                createQuestion($quset_index);
-                $quset_index++;
             // }, j*timer)
-        })(j)
+        // })(j)
     }
     timeFunc();
 }
