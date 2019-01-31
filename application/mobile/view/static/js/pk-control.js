@@ -342,10 +342,10 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
     var _this = $(this);
     console.log(_this)
     if($(".user1-active").length > 0 || $quset_index > 5) {
-        return
+        // return
     }
     if($quset_index == 5 && timeText == 0) {
-        return
+        // return
     }
     if($quset_index < 5) {
         $(".user1-active").removeClass("user1-active");
