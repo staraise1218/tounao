@@ -4,7 +4,8 @@ let $action,
     $user_id,
     $to_user_id,
     $data,
-    $client_id
+    $client_id,
+    $knowledgeList = []
 
 // 保存用户登陆信息
 $user_id = userinfo.user_id;
@@ -142,23 +143,7 @@ $(".begin").click(function () {
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// *********************************************************************************
 
 
 
@@ -174,7 +159,6 @@ $(document).ready(function(){
         data: {page:1},
         dataType: "json",
         success: function(res){
-        //   console.log(res)
           res.data.forEach(function(item){
              $("#userList").append(`
                   <li class="item">
@@ -215,6 +199,7 @@ $(document).ready(function(){
                     console.log(data)  // 这里可能有room_id 保存到全局  // TODO
                     $room_id = data.room_id;
                     localStorage.setItem("knowledgeList",JSON.stringify(data))
+                    $knowledgeList = data.data.knowledgeList;
                 },
                 error: function () {
                     console.log("邀请PK失败")
@@ -259,7 +244,7 @@ $(document).ready(function(){
 let patentHeight = $(".jindu").height();
 let userHeight_1 = 0;
 let userHeight_2 = 0;
-let quset_index = 0;
+let $quset_index = 0;
 let timer = 10000;
 let timeText = 0;
 
@@ -268,8 +253,8 @@ function gameStart() {
     for(let j = 0; j < 5; j++) {
         (function(j) {
             setTimeout(function() {
-                createQuestion(quset_index);
-                quset_index++;
+                createQuestion($quset_index);
+                $quset_index++;
             }, j*timer)
         })(j)
     }
@@ -290,36 +275,48 @@ function timeFunc () {
     }, 1000)
 }
 
-
-
 function createQuestion(index) {
     timeText = 10;
     let questionsStr = '';
-    // user1_info.questions[index].answers[i][1] = 3;
+    let questionsWrapper = '';
     if(index < 5) {
-        questionsStr += `<h5>${user1_info.questions[index].title}</h5>`
-        for(var i = 0; i < 4; i++) {
-            questionsStr += `<label class="choose-btn" for="a" data="${user1_info.questions[index].answers[i][1]}">
-            <input type="checkbox" name="" style="display:none">${user1_info.questions[quset_index].answers[i][0]}
-            </label>`
-        }
-        $(".questions-wrapper").html(questionsStr);
+        questionsWrapper = `<form class="questions-wrapper" action="" data-know_id = ${$knowledgeList[index].room_knowledge_id} data-answer=${$knowledgeList[index].answer}>
+                                <h5> ${$knowledgeList[index].title} </h5>
+                                <label class="choose-btn" for="a" data="a">
+                                    <input type="checkbox" name="" style="display:none"> ${$knowledgeList[index].a}
+                                </label>
+                                <label class="choose-btn" for="a" data="b">
+                                    <input type="checkbox" name="" style="display:none"> ${$knowledgeList[index].b}
+                                </label>
+                                <label class="choose-btn" for="a" data="c">
+                                    <input type="checkbox" name="" style="display:none"> ${$knowledgeList[index].c}
+                                </label>
+                                <label class="choose-btn" for="a" data="d">
+                                    <input type="checkbox" name="" style="display:none"> ${$knowledgeList[index].d}
+                                </label>
+                            </form>`
+
+
+        $(".choose-wrapper").html(questionsWrapper);
     }
-    localStorage.setItem("user1.answers","")
-    localStorage.setItem("user2.answers","")
+    // localStorage.setItem("user1.answers","")
+    // localStorage.setItem("user2.answers","")
 }
 
 
-// user1
+
+var $answer = $(".questions-wrapper").attr("data-answer")
+// 选择答案部分
 $(".questions-wrapper").delegate(".choose-btn","touchstart", function () {
     var _this = $(this);
-    if($(".user1-active").length > 0 || quset_index > 5) {
+    console.log(_this)
+    if($(".user1-active").length > 0 || $quset_index > 5) {
         return
     }
-    if(quset_index == 5 && timeText == 0) {
+    if($quset_index == 5 && timeText == 0) {
         return
     }
-    if(quset_index < 5) {
+    if($quset_index < 5) {
         $(".user1-active").removeClass("user1-active");
     }
     _this.addClass("user1-active")
@@ -342,8 +339,8 @@ $(".questions-wrapper").delegate(".choose-btn","touchstart", function () {
     //     console.log("user2 未选择")
     // }
 
-
-    if(localStorage.getItem("user2_choose")!= "") {
+// TODO
+    if( false && 'localStorage.getItem("user2_choose")!= ""') {
         var user2_choose = localStorage.getItem("user2_choose") - 1;
         $(".questions-wrapper .choose-btn").eq(user2_choose)
         console.log($(".questions-wrapper .choose-btn").eq(user2_choose).attr("data")   )
@@ -366,14 +363,12 @@ $(".questions-wrapper").delegate(".choose-btn","touchstart", function () {
             console.log("user2 --- 未选择")
         }
     }
-
     // user2 end
 
-    if($(this).attr("data") == 1) {
+    if($(this).attr("data") == answer) {
         console.log("回答正确！")
         
-        user1_info.answers[quset_index] = 1;        
-        localStorage.setItem("user1.answers",user1_info.answers[quset_index])
+        // localStorage.setItem("user1.answers",user1_info.answers[quset_index])
 
         setTimeout(function() {
             _this.addClass("user1-dui");
@@ -383,10 +378,9 @@ $(".questions-wrapper").delegate(".choose-btn","touchstart", function () {
                 $("#user1-number").get(0).innerText = Number($("#user1-number").get(0).innerText) + 100;
             })
         }, 500)
-    } else if($(this).attr("data") == 2){
+    } else {
         console.log("回答错误！")
 
-        user1_info.answers[quset_index] = 2;
         localStorage.setItem("user1.answers",user1_info.answers[quset_index])
         console.log(localStorage.getItem("user2.answers"))
         
@@ -395,8 +389,6 @@ $(".questions-wrapper").delegate(".choose-btn","touchstart", function () {
             // quset_index++;
             // createQuestion(quset_index);
         }, 500)
-    } else {
-        console.log("已经选择过正确答案")
     }
 })
 
