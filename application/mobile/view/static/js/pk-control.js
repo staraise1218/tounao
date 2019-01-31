@@ -98,11 +98,11 @@ ws.onmessage = function (event) {
         // if($user2_isright == 1) {
             console.log($(".choose-wrapper .choose-btn"))
         $(".choose-wrapper .choose-btn").each(function(item) {
-            // if($(this).data() == $user2_answer) {
+            if($(this).attr("data") == $user2_answer) {
                 console.log(2341241)
+                console.log($(this).attr("data"))
                 $(this).addClass("user2-dui");
-                console.log($(this).data())
-            // }
+            }
         })
 
 
