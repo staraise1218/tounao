@@ -102,12 +102,12 @@ ws.onmessage = function (event) {
             console.log(index)
             // console.log($(item), $user2_answer)
             // console.log(item.attr("data"))
-            // if(item.attr("data") == $user2_answer) {
-            //     console.log(item)
-            //     console.log(item.attr("data"))
-            //     // console.log($(this)[0].attr("data"))
-            //     item.addClass("user2-dui");
-            // }
+            if($(item).attr("data") == $user2_answer) {
+                // console.log(item)
+                // console.log(item.attr("data"))
+                // console.log($(this)[0].attr("data"))
+                item.addClass("user2-dui");
+            }
         })
 
 
