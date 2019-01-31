@@ -9,7 +9,6 @@ let $action,
 // 保存用户登陆信息
 $user_id = userinfo.user_id;
 
-
 // 建立websocket链接
 var ws = new WebSocket("ws://120.92.10.2:2345");
 ws.onopen=function(){
@@ -45,9 +44,21 @@ ws.onmessage = function (event) {
     }
     if($data.action == 'invite') {
         console.log("发起者 action")
+        console.log("通知被邀请者进入房间")
+        console.log($data)
+        $room_id = $data.room_id;
+        $(".tanchutn-wrapper").css("display","block")
+        document.addEventListener("touchmove",function(e){
+            if($(".tanchutn-wrapper").css("display")=='block'){
+               $("html,body").addClass("overHiden")
+            }else{
+               $("html,body").removeClass("overHiden")
+            }
+        },false)
     }
-    if($data.action == 'intoroom') {
+    if($data.action == 'intoRoom') {
         console.log("接受者 action")
+        window.location.href="../pk/index.html"; 
     }
 
 
@@ -56,66 +67,9 @@ ws.onmessage = function (event) {
     $(".agreen").click(function(){
         // TODO
         // 这里的 to_user_id 可能是用户自己的 userid
-        window.location.href="../pk/index.html?roomId=" + $room_id + "user_id=" + $user_id; 
+        console.log(room_id,user_id)
+        // window.location.href="../pk/index.html?roomId=" + $room_id + "&userId=" + $user_id; 
     })
-
-    // 被邀请者进入房间
-    // if($data.action == 'invite') {
-    //     console.log("通知被邀请者进入房间")
-    //     console.log($data)
-                
-    //     $(".tanchutn-wrapper").css("display","block")
-    //     document.addEventListener("touchmove",function(e){
-    //         if($(".tanchutn-wrapper").css("display")=='block'){
-    //            $("html,body").addClass("overHiden")
-    //         }else{
-    //            $("html,body").removeClass("overHiden")
-    //         }
-    //     },false)
-    // }
-    
-    // if($data.action == 'intoroom') {
-    //     console.log("intoroom")
-    //     $(".tanchutn-wrapper").css("display","block")
-    //     document.addEventListener("touchmove",function(e){
-    //         if($(".tanchutn-wrapper").css("display")=='block'){
-    //            $("html,body").addClass("overHiden")
-    //         }else{
-    //            $("html,body").removeClass("overHiden")
-    //         }
-    //     },false)
-    // }
-
-
-    if($data.action == 'invite') {
-        $.ajax({
-            type: 'POST',
-            url: "http://tounao.staraise.com.cn/Api/pk/invite",
-            data: { room_id:$data.room_id,
-                    to_user_id:$data.to_user_id},
-            dataType: "json",
-            success: function(res){
-                console.log(res)
-            },
-            error: function(e) {
-                    console.log("error");
-            }
-        })
-    // $("#user2_name").text($data.message);
-        $.ajax({
-            type: 'POST',
-            url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
-            data: { room_id:$data.room_id,
-                    to_user_id:$data.to_user_id},
-            dataType: "json",
-            success: function(res){
-                console.log(res)
-            },
-            error: function(e) {
-                    console.log("error");
-            }
-        })
-    }
 };
 
 ws.onerror = function () {
