@@ -107,7 +107,7 @@ ws.onmessage = function (event) {
                 // console.log(item.attr("data"))
                 // console.log($(this)[0].attr("data"))
                 console.log(1234)
-                item.addClass("user2-dui");
+                $(item).addClass("user2-dui");
             }
         })
         // document.getElementsByClassName('choose-wrapper')[0].getElementsByClassName("choose-btn").forEach(function(ele,index) {
