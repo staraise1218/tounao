@@ -29,19 +29,20 @@ ws.onmessage = function (event) {
         client_id: $client_id
       }
       console.log(postData)
-    $.ajax({
-        type: 'POST',
-        url: "http://tounao.staraise.com.cn/Api/common/bindUid",
-        data: postData,
-        dataType: "json",
-        success: function(res){
-            console.log("socket ajax 绑定成功")
-        },
-        error: function(e) {
-            console.log("socket ajax 绑定失败");
-        }
-    })
-
+    if(data.action != 'invite') {
+        $.ajax({
+            type: 'POST',
+            url: "http://tounao.staraise.com.cn/Api/common/bindUid",
+            data: postData,
+            dataType: "json",
+            success: function(res){
+                console.log("socket ajax 绑定成功")
+            },
+            error: function(e) {
+                console.log("socket ajax 绑定失败");
+            }
+        })
+    }
 
 
     // TODO
