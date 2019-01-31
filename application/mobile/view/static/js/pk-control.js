@@ -298,6 +298,7 @@ function createQuestion(index) {
 
 
 var $answer = $(".questions-wrapper").attr("data-answer")
+console.log($answer)
 // 选择答案部分
 $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
     var _this = $(this);
@@ -357,7 +358,7 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
     }
     // user2 end
 
-    if($(this).attr("data") == answer) {
+    if($(this).attr("data") == $answer) {
         console.log("回答正确！")
         
         // localStorage.setItem("user1.answers",user1_info.answers[quset_index])
