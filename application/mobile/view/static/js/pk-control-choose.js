@@ -57,7 +57,17 @@ $(".begin").click(function () {
 })
 
 
+var ws = new WebSocket("ws://120.92.10.2:2345");
+ws.onopen=function(){
+    ws.send("youaremybaby")
+    console.log("socket open  链接建立")
+}
 
+// 请求绑定 uid 接口
+ws.onmessage = function (event) {
+    console.log(event)
+    console.log(event.data)
+}
 
 
 
