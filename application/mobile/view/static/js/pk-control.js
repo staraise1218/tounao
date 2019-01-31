@@ -5,7 +5,9 @@ let $action,
     $to_user_id,
     $data,
     $client_id,
-    $knowledgeList = []
+    $knowledgeList = [],
+    $user2_answer = '',
+    $user2_isright = '';
 
 // 保存用户登陆信息
 $user_id = userinfo.user_id;
@@ -81,6 +83,36 @@ ws.onmessage = function (event) {
         $("#load-wrapper").css("display","none")
         $(".list-wrapper").css("display","none")
         $("#pk-display").css("display","block")
+    }
+
+
+       // 接受者接到通知
+    if($data.action == 'choose') {
+        console.log("接收选择答案")
+        $user2_answer = $data.answer;
+        $user2_isright = $data.is_right;
+
+
+        if($user2_isright) {
+            $(".questionsWrapper .choose-btn").forEach(function(item) {
+                if(item.data() == $user2_answer) {
+                    item.addClass("user2_dui");
+                }
+            })
+        } else {
+            console.log("user2----错误")
+            $(".questionsWrapper .choose-btn").forEach(function(item) {
+                if(item.data() == $user2_answer) {
+                    item.addClass("user2_cuo");
+                }
+            })
+        }
+
+
+
+
+
+
     }
 
 
@@ -426,9 +458,6 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
                 console.log("选择 *************error")
             }
         })
-
-
-
     }
 })
 
