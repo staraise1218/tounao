@@ -28,6 +28,7 @@ ws.onmessage = function (event) {
         user_id: $user_id,
         client_id: $client_id
       }
+      console.log(postData)
     $.ajax({
         type: 'POST',
         url: "http://tounao.staraise.com.cn/Api/common/bindUid",
@@ -93,7 +94,7 @@ ws.onmessage = function (event) {
                     console.log("error");
             }
         })
-    $("#user2_name").text(data.message);
+    // $("#user2_name").text($data.message);
         $.ajax({
             type: 'POST',
             url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
