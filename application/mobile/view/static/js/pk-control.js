@@ -374,12 +374,12 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
     } else {
         console.log("回答错误！")
 
-        localStorage.setItem("user1.answers",user1_info.answers[quset_index])
-        console.log(localStorage.getItem("user2.answers"))
+        // localStorage.setItem("user1.answers",user1_info.answers[quset_index])
+        // console.log(localStorage.getItem("user2.answers"))
         
         setTimeout(function() {
             _this.addClass("user1-cuo");
-            // quset_index++;
+            $quset_index++;
             // createQuestion(quset_index);
         }, 500)
     }
