@@ -135,6 +135,19 @@ $(document).ready(function(){
                     console.log("邀请PK失败")
                 }
             })
+            $.ajax({
+                type: 'POST',
+                url: "http://tounao.staraise.com.cn/Api/pk/start",
+                data: {to_user_id: $to_user_id}, // 发起者id
+                dataType: "json",
+                success: function (data) {
+                    console.log("通知发起者开始答题 ---- success");
+                    console.log(data);
+                },
+                error: function () {
+                    console.log("通知发起者开始答题 ---- error")
+                }
+            })
         })
 
         //   拒绝邀请
