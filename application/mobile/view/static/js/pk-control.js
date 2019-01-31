@@ -88,9 +88,9 @@ ws.onmessage = function (event) {
 
     // 接受者开始游戏
     if($data.action == 'start') {
-        $("#load-wrapper").css("display","block")
+        $("#load-wrapper").css("display","none")
         $(".list-wrapper").css("display","none")
-        $("#pk-display").css("display","none")
+        $("#pk-display").css("display","block")
     }
 
 
@@ -114,8 +114,6 @@ ws.onerror = function () {
 ws.onclose = function() {
     console.log("socket---close")
 }
-
-
 
 
 // $.ajax({
