@@ -1,52 +1,83 @@
-var $action;
-
-
-if($action == 'intoroom') {
-    // 通知发起者开始答题
-    $.ajax({
-        type: 'POST',
-        url: "http://tounao.staraise.com.cn/Api/pk/start",
-        data: {to_user_id: $to_user_id}, // 发起者id
-        dataType: "json",
-        success: function (data) {
-            console.log("通知发起者开始答题 ---- success");
-            console.log(data);
-        },
-        error: function () {
-            console.log("通知发起者开始答题 ---- error")
-        }
-    })
-}
-ws.onmessage = function (event) {
-    console.log("socket onmessage 接受信息")
-    var $data = JSON.parse(evt);
-    console.log($data);  // TODO  action  ?
-    var postData = {
-        user_id:userinfo.user_id,
-        client_id:data.client_id
+function getPageParams() {
+    var url = window.location.href
+    var option = {}
+    if (url.indexOf("?") > -1) {
+      var arr = url.split("?")[1].split("&")
+      arr.forEach(function (str) {
+        var arrTemp = str.split("=")
+        option[arrTemp[0]] = arrTemp[1]
+        option[arrTemp[1]] = arrTemp[2]
+      })
     }
+    return option
+}
+
+let data=getPageParams()
+console.log(data)
+var $room_id=data.roomId
+var $to_user_id = data.userId
+
+
+$.ajax({
+    type: 'POST',
+    url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
+    data: {to_user_id: $to_user_id,
+            room_id: $room_id}, // 发起者id
+    dataType: "json",
+    success: function (data) {
+        console.log("通知发起者开始答题 ---- success");
+        console.log(data);
+    },
+    error: function () {
+        console.log("通知发起者开始答题 ---- error")
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ws.onmessage = function (event) {
+//     console.log("socket onmessage 接受信息")
+//     var $data = JSON.parse(evt);
+//     console.log($data);  // TODO  action  ?
+//     var postData = {
+//         user_id:userinfo.user_id,
+//         client_id:data.client_id
+//     }
     
-    // 发起者获取信息
-    if($action == 'invite') {
-        var posData = {
-            user_id: $to_user_id,
-            to_user_id: $to_user_id
-        }
-        $.ajax({
-            type: 'POST',
-            url: "http://tounao.staraise.com.cn/Api/pk/invite",
-            data: posData, // 发起者id
-            dataType: "json",
-            success: function (data) {
-                console.log("发起者获取数据 ---- success");
-                console.log(data);
-            },
-            error: function () {
-                console.log("发起者获取数据 ---- error")
-            }
-        })
-    }
-}
+//     // 发起者获取信息
+//     if($action == 'invite') {
+//         var posData = {
+//             user_id: $to_user_id,
+//             to_user_id: $to_user_id
+//         }
+//         $.ajax({
+//             type: 'POST',
+//             url: "http://tounao.staraise.com.cn/Api/pk/invite",
+//             data: posData, // 发起者id
+//             dataType: "json",
+//             success: function (data) {
+//                 console.log("发起者获取数据 ---- success");
+//                 console.log(data);
+//             },
+//             error: function () {
+//                 console.log("发起者获取数据 ---- error")
+//             }
+//         })
+//     }
+// }
 
 // 初始化用户信息
 window.onload = function () {

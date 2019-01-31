@@ -65,10 +65,8 @@ ws.onmessage = function (event) {
     // TODO
     // 接受邀请 -- 可能不在 omessage 中进行
     $(".agreen").click(function(){
-        // TODO
-        // 这里的 to_user_id 可能是用户自己的 userid
         console.log($room_id,$user_id)
-        // window.location.href="../pk/index.html?roomId=" + $room_id + "&userId=" + $user_id; 
+        window.location.href="../pk/index.html?roomId=" + $room_id + "&userId=" + $user_id; 
     })
 };
 
@@ -137,11 +135,6 @@ $(document).ready(function(){
             // 发起者进入PK页面
             // window.location.href="../pk/index.html?touserId="+$to_user_id;
         })
-
-          //接受邀请
-          $(".agreen").click(function(){
-              window.location.href="../pk/index.html?roomId="+$roomid
-          })
 
         //   拒绝邀请
           $(".back").click(function(){
