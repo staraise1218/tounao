@@ -66,48 +66,15 @@ ws.onmessage = function (event) {
                $("html,body").removeClass("overHiden")
             }
         },false)
-
-        if($room_id) {
-            console.log("接受者 action")
-            console.log($room_id,$user_id)
-            $.ajax({
-                type: 'POST',
-                url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
-                data: {room_id:$room_id,to_user_id:$user_id},
-                dataType: "json",
-                success: function(res){
-                    console.log(res)
-                    console.log("socket ajax 绑定成功")
-                    console.log($knowledgeList)
-                    $knowledgeList = data.data.knowledgeList;
-                },
-                error: function(e) {
-                    console.log("socket ajax 绑定失败");
-                }
-            })
-        }
     }
 
     
-    // if($data.action == 'intoRoom') {
-    //     console.log("接受者 action")
-    //     console.log($room_id,$user_id)
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
-    //         data: {room_id:$room_id,to_user_id:$user_id},
-    //         dataType: "json",
-    //         success: function(res){
-    //             console.log(res)
-    //             console.log("socket ajax 绑定成功")
-    //             console.log($knowledgeList)
-    //             $knowledgeList = data.data.knowledgeList;
-    //         },
-    //         error: function(e) {
-    //             console.log("socket ajax 绑定失败");
-    //         }
-    //     })
-    // }
+    if($data.action == 'intoRoom') {
+        console.log("接受者 action")
+        console.log($room_id,$user_id)
+        console.log($data)
+        $knowledgeList = $data.knowledgeList;
+    }
 
     // 接受者开始游戏
     if($data.action == 'start') {
@@ -122,6 +89,23 @@ ws.onmessage = function (event) {
     $(".agreen").click(function(){
         console.log($room_id,$user_id)
         // window.location.href="../pk/index.html?roomId=" + $room_id + "&userId=" + $user_id; 
+        console.log("接受者 action")
+        console.log($room_id,$user_id)
+        $.ajax({
+            type: 'POST',
+            url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
+            data: {room_id:$room_id,to_user_id:$user_id},
+            dataType: "json",
+            success: function(res){
+                console.log(res)
+                console.log("socket ajax 绑定成功")
+                console.log($knowledgeList)
+                console.log($data)
+            },
+            error: function(e) {
+                console.log("socket ajax 绑定失败");
+            }
+        })
         $("#load-wrapper").css("display","block")
         $(".list-wrapper").css("display","none")
         $("#pk-display").css("display","none")
