@@ -66,6 +66,7 @@ ws.onmessage = function (event) {
     // 接受邀请 -- 可能不在 omessage 中进行
     $(".agreen").click(function(){
         console.log($room_id,$user_id)
+        ws.close();
         window.location.href="../pk/index.html?roomId=" + $room_id + "&userId=" + $user_id; 
     })
 };
