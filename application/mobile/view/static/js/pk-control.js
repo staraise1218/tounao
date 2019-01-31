@@ -101,7 +101,7 @@ ws.onmessage = function (event) {
             // if($(this).data() == $user2_answer) {
                 console.log(2341241)
                 $(this).addClass("user2-dui");
-                console.log($(this).data)
+                console.log($(this).data())
             // }
         })
 
