@@ -57,61 +57,63 @@ ws.onmessage = function (event) {
     })
 
     // 被邀请者进入房间
-    if($data.action == 'invite') {
-        console.log("通知被邀请者进入房间")
-        console.log($data)
+    // if($data.action == 'invite') {
+    //     console.log("通知被邀请者进入房间")
+    //     console.log($data)
                 
-        $(".tanchutn-wrapper").css("display","block")
-        document.addEventListener("touchmove",function(e){
-            if($(".tanchutn-wrapper").css("display")=='block'){
-               $("html,body").addClass("overHiden")
-            }else{
-               $("html,body").removeClass("overHiden")
-            }
-        },false)
-    }
+    //     $(".tanchutn-wrapper").css("display","block")
+    //     document.addEventListener("touchmove",function(e){
+    //         if($(".tanchutn-wrapper").css("display")=='block'){
+    //            $("html,body").addClass("overHiden")
+    //         }else{
+    //            $("html,body").removeClass("overHiden")
+    //         }
+    //     },false)
+    // }
     
-    if($data.action == 'intoroom') {
-        console.log("intoroom")
-        $(".tanchutn-wrapper").css("display","block")
-        document.addEventListener("touchmove",function(e){
-            if($(".tanchutn-wrapper").css("display")=='block'){
-               $("html,body").addClass("overHiden")
-            }else{
-               $("html,body").removeClass("overHiden")
-            }
-        },false)
-    }
+    // if($data.action == 'intoroom') {
+    //     console.log("intoroom")
+    //     $(".tanchutn-wrapper").css("display","block")
+    //     document.addEventListener("touchmove",function(e){
+    //         if($(".tanchutn-wrapper").css("display")=='block'){
+    //            $("html,body").addClass("overHiden")
+    //         }else{
+    //            $("html,body").removeClass("overHiden")
+    //         }
+    //     },false)
+    // }
+
+
+    if($data.action == 'invite') {
+        $.ajax({
+            type: 'POST',
+            url: "http://tounao.staraise.com.cn/Api/pk/invite",
+            data: { room_id:data.room_id,
+                    to_user_id:data.to_user_id},
+            dataType: "json",
+            success: function(res){
+                console.log(res)
+            },
+            error: function(e) {
+                    console.log("error");
+        }
+    })
+    $("#user2_name").text(data.message);
+    $.ajax({
+        type: 'POST',
+        url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
+        data: { room_id:data.room_id,
+                to_user_id:data.to_user_id},
+        dataType: "json",
+        success: function(res){
+            console.log(res)
+        },
+        error: function(e) {
+                console.log("error");
+        }
+    })
+}
 };
-
-
-    // 被邀请者进入房间
-    if($data.action == 'invite') {
-        console.log("通知被邀请者进入房间")
-        console.log($data)
-                
-        $(".tanchutn-wrapper").css("display","block")
-        document.addEventListener("touchmove",function(e){
-            if($(".tanchutn-wrapper").css("display")=='block'){
-               $("html,body").addClass("overHiden")
-            }else{
-               $("html,body").removeClass("overHiden")
-            }
-        },false)
-    }
-    
-    if($data.action == 'intoroom') {
-        console.log("intoroom")
-        $(".tanchutn-wrapper").css("display","block")
-        document.addEventListener("touchmove",function(e){
-            if($(".tanchutn-wrapper").css("display")=='block'){
-               $("html,body").addClass("overHiden")
-            }else{
-               $("html,body").removeClass("overHiden")
-            }
-        },false)
-    }
-
 
 
 ws.onerror = function () {
