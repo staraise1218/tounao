@@ -70,10 +70,10 @@ ws.onmessage = function (event) {
 
     
     if($data.action == 'intoRoom') {
-        console.log("接受者 action")
-        console.log($room_id,$user_id)
-        console.log($data)
-        $knowledgeList = $data.knowledgeList;
+        // console.log("接受者 action")
+        // console.log($room_id,$user_id)
+        // console.log($data)
+        // $knowledgeList = $data.knowledgeList;
     }
 
     // 接受者开始游戏
@@ -100,7 +100,7 @@ ws.onmessage = function (event) {
                 console.log(res)
                 console.log("socket ajax 绑定成功")
                 console.log($knowledgeList)
-                console.log($data)
+                $knowledgeList = res.data.knowledgeList
             },
             error: function(e) {
                 console.log("socket ajax 绑定失败");
