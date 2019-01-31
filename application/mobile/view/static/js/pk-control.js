@@ -88,7 +88,7 @@ ws.onmessage = function (event) {
         }
     }
 
-    // 
+    
     // if($data.action == 'intoRoom') {
     //     console.log("接受者 action")
     //     console.log($room_id,$user_id)
