@@ -4,15 +4,14 @@ let $action,
     $user_id,
     $to_user_id,
     $data,
-    $userinfo,
     $client_id
 
 // 保存用户登陆信息
-$userinfo = {$userinfo};
-console.log($userinfo)
-localStorage["mUserInfo"] = JSON.stringify($userinfo);
-localStorage.setItem("mUserInfo", JSON.stringify($userinfo));
-$user_id = $userinfo.user_id;
+var userinfo = {$userinfo};
+console.log(userinfo)
+localStorage["mUserInfo"] = JSON.stringify(userinfo);
+localStorage.setItem("mUserInfo", JSON.stringify(userinfo));
+$user_id = userinfo.user_id;
 
 
 // 建立websocket链接
