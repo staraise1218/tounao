@@ -301,7 +301,7 @@ function createQuestion(index) {
 $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
     var $answer = $(".questions-wrapper").attr("data-answer")
     console.log($answer)
-    
+
     var _this = $(this);
     console.log(_this)
     if($(".user1-active").length > 0 || $quset_index > 5) {
@@ -348,31 +348,6 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
                     $("#user2-number").get(0).innerText = Number($("#user2-number").get(0).innerText) + 100;
                 })
             }, 500)
-
-            $.ajax({
-                type: 'POST',
-                url: "http://tounao.staraise.com.cn/Api/pk/choose",
-                data: {
-                    room_knowledge_id,
-                    user_id	,
-                    to_user_id	,
-                    answer	,
-                    is_right:1
-                },
-                dataType: "json",
-                success: function (data) {
-                    console.log("邀请PK成功")
-                    console.log(data)
-                    $room_id = data.room_id;              
-                    $knowledgeList = data.data.knowledgeList;
-                    console.log($knowledgeList)
-                },
-                error: function () {
-                    console.log("邀请PK失败")
-                }
-            })
-
-
         } else if($(".questions-wrapper .choose-btn").eq(user2_choose).attr("data") == 2) {
             console.log("user2 --- 错误")
             setTimeout(function() {
@@ -397,6 +372,29 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
                 $("#user1-number").get(0).innerText = Number($("#user1-number").get(0).innerText) + 100;
             })
         }, 500)
+
+
+        $.ajax({
+            type: 'POST',
+            url: "http://tounao.staraise.com.cn/Api/pk/choose",
+            data: {
+                room_knowledge_id: $(".questions-wrapper").attr("data-know_id"),
+                user_id: $user_id,
+                to_user_id: $to_user_id,
+                answer:	$(this).attr("data"),
+                is_right:1
+            },
+            dataType: "json",
+            success: function (data) {
+                console.log(data)
+                console.log("选择 ****************")
+            },
+            error: function () {
+                console.log("选择 *************error")
+            }
+        })
+
+
     } else {
         console.log("回答错误！")
 
@@ -408,6 +406,29 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
             $quset_index++;
             // createQuestion(quset_index);
         }, 500)
+
+        $.ajax({
+            type: 'POST',
+            url: "http://tounao.staraise.com.cn/Api/pk/choose",
+            data: {
+                room_knowledge_id: $(".questions-wrapper").attr("data-know_id"),
+                user_id: $user_id,
+                to_user_id: $to_user_id,
+                answer:	$(this).attr("data"),
+                is_right:2
+            },
+            dataType: "json",
+            success: function (data) {
+                console.log(data)
+                console.log("选择 ****************")
+            },
+            error: function () {
+                console.log("选择 *************error")
+            }
+        })
+
+
+
     }
 })
 
