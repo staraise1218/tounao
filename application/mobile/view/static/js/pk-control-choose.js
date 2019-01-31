@@ -36,18 +36,6 @@ $.ajax({
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 // ws.onmessage = function (event) {
 //     console.log("socket onmessage 接受信息")
 //     var $data = JSON.parse(evt);

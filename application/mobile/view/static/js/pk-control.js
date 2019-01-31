@@ -127,6 +127,7 @@ $(document).ready(function(){
                     console.log("邀请PK成功")
                     console.log(data)  // 这里可能有room_id 保存到全局  // TODO
                     $room_id = data.room_id;
+                    localStorage.setItem("knowledgeList",JSON.stringify(data))
                 },
                 error: function () {
                     console.log("邀请PK失败")
