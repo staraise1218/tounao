@@ -1,7 +1,3 @@
-var $userinfo = localStorage.getItem(JSON.parse("mUserInfo"));
-console.log($userinfo)
-
-
 function getPageParams() {
     var url = window.location.href
     var option = {}
@@ -22,6 +18,7 @@ var $room_id=data.roomId;
 var $to_user_id = data.userId;
 var $to_user_id = data.touserID;
 
+
 $.ajax({
     type: 'POST',
     url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
@@ -31,11 +28,6 @@ $.ajax({
     success: function (data) {
         console.log("通知发起者开始答题 ---- success");
         console.log(data);
-
-        // $(".user2_poster").prop("src",data.data.touserinfo.head_pic);
-        // $(".user2-name").text(data.data.touserinfo.nickname);
-        $(".user2_poster").prop("src",data.data.touserinfo.head_pic);
-        $(".user2-name").text(data.data.touserinfo.nickname);
     },
     error: function () {
         console.log("通知发起者开始答题 ---- error")
@@ -104,14 +96,17 @@ ws.onmessage = function (event) {
 
 
 
+
+
+// 初始化用户信息
 window.onload = function () {
-    $(".user1_poster").prop("src",user1_info.poster);
-    $(".user1-name").text(user1_info.user_name);
-    $(".user2_poster").prop("src",user1_info.duishou.poster);
-    $(".user2-name").text(user1_info.duishou.user_name);
+    // $(".user1_poster").prop("src",user1_info.poster);
+    // $(".user1-name").text(user1_info.user_name);
+    // $(".user2_poster").prop("src",user1_info.duishou.poster);
+    // $(".user2-name").text(user1_info.duishou.user_name);
 }
 
-
+// 开始函数
 function init() {
     for(let j = 0; j < 5; j++) {
         (function(j) {
@@ -125,22 +120,21 @@ function init() {
     timeFunc();
 }
 
+
 // 设置定时器
 function timeFunc () {
     setInterval(function() {
         if(timeText >= 0) {
-            // console.log(timeText)
             if(timeText > 0) {
                 timeText--;
             }
             $(".daojishi-content").text(timeText);
         }
-        // console.log(localStorage.getItem("user2.answers"))
     }, 1000)
 }
 
 
-
+// 渲染题目与用户信息
 function createQuestion(index) {
     timeText = 10;
     let questionsStr = '';
@@ -159,100 +153,9 @@ function createQuestion(index) {
 }
 
 
-// user1
+
+// 选择答案
 $(".questions-wrapper").delegate(".choose-btn","touchstart", function () {
-    var _this = $(this);
-    if($(".user1-active").length > 0 || quset_index > 5) {
-        return
-    }
-    if(quset_index == 5 && timeText == 0) {
-        return
-    }
-    if(quset_index < 5) {
-        $(".user1-active").removeClass("user1-active");
-    }
-    _this.addClass("user1-active")
-    
-    // user2
-    // console.log(localStorage.getItem("user2.answers"))
-    // if(localStorage.getItem("user2.answers") == 1) {
-    //     console.log('user2选择完毕---正确')
-    //     setTimeout(function() {
-    //         _this.addClass("user2-dui");
-    //         $(".user2_jindu-con").animate({},function() {
-    //             userHeight_2 += patentHeight / 5;
-    //             $(".user2_jindu-con").animate({height:userHeight_2},"fast")
-    //             $("#user2-number").get(0).innerText = Number($("#user1-number").get(0).innerText) + 100;
-    //         })
-    //     }, 500)
-    // } else if(localStorage.getItem("user2.answers") == 2) {
-    //     console.log("user2----错误")
-    // } else {
-    //     console.log("user2 未选择")
-    // }
-
-
-    if(localStorage.getItem("user2_choose")!= "") {
-        var user2_choose = localStorage.getItem("user2_choose") - 1;
-        $(".questions-wrapper .choose-btn").eq(user2_choose)
-        console.log($(".questions-wrapper .choose-btn").eq(user2_choose).attr("data")   )
-        if($(".questions-wrapper .choose-btn").eq(user2_choose).attr("data") == 1) {
-            console.log("user2 --- 正确")
-            setTimeout(function() {
-                $(".questions-wrapper .choose-btn").eq(user2_choose).addClass("user2-dui");
-                $(".user2_jindu-con").animate({},function() {
-                    userHeight_2 += patentHeight / 5;
-                    $(".user2_jindu-con").animate({height:userHeight_2},"fast")
-                    $("#user2-number").get(0).innerText = Number($("#user2-number").get(0).innerText) + 100;
-                })
-            }, 500)
-        } else if($(".questions-wrapper .choose-btn").eq(user2_choose).attr("data") == 2) {
-            console.log("user2 --- 错误")
-            setTimeout(function() {
-                $(".questions-wrapper .choose-btn").eq(user2_choose).addClass("user2-cuo");
-            }, 500)
-        } else {
-            console.log("user2 --- 未选择")
-        }
-    }
-
-    // user2 end
-
-    if($(this).attr("data") == 1) {
-        console.log("回答正确！")
-        
-        user1_info.answers[quset_index] = 1;        
-        localStorage.setItem("user1.answers",user1_info.answers[quset_index])
-
-        setTimeout(function() {
-            _this.addClass("user1-dui");
-            $(".user1_jindu-con").animate({},function() {
-                userHeight_1 += patentHeight / 5;
-                $(".user1_jindu-con").animate({height:userHeight_1},"fast")
-                $("#user1-number").get(0).innerText = Number($("#user1-number").get(0).innerText) + 100;
-            })
-        }, 500)
-    } else if($(this).attr("data") == 2){
-        console.log("回答错误！")
-
-        user1_info.answers[quset_index] = 2;
-        localStorage.setItem("user1.answers",user1_info.answers[quset_index])
-        console.log(localStorage.getItem("user2.answers"))
-        
-        setTimeout(function() {
-            _this.addClass("user1-cuo");
-            // quset_index++;
-            // createQuestion(quset_index);
-        }, 500)
-    } else {
-        console.log("已经选择过正确答案")
-    }
+   console.log($(this))
+   console.log($(this).attr("data"))
 })
-
-function remove() {
-    $(".user1-active").removeClass("user1-active");
-    $(".user1-dui").removeClass("user1-dui");
-    $(".user1-cuo").removeClass("user1-cuo");
-    $(".user2-dui").removeClass("user2-dui");
-    $(".user2-cuo").removeClass("user2-cuo");
-}
