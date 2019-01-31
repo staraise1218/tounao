@@ -67,7 +67,7 @@ ws.onmessage = function (event) {
     $(".agreen").click(function(){
         // TODO
         // 这里的 to_user_id 可能是用户自己的 userid
-        console.log(room_id,user_id)
+        console.log($room_id,$user_id)
         // window.location.href="../pk/index.html?roomId=" + $room_id + "&userId=" + $user_id; 
     })
 };
