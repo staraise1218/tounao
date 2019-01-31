@@ -83,8 +83,8 @@ ws.onmessage = function (event) {
         $.ajax({
             type: 'POST',
             url: "http://tounao.staraise.com.cn/Api/pk/invite",
-            data: { room_id:data.room_id,
-                    to_user_id:data.to_user_id},
+            data: { room_id:$data.room_id,
+                    to_user_id:$data.to_user_id},
             dataType: "json",
             success: function(res){
                 console.log(res)
