@@ -134,7 +134,11 @@ class Pk extends Base {
 		$room_id = I('room_id');
 		$winer_id = I('winer_id');
 
-		Db::name('room')->where('room_id', $room_id)->update(array('winer_id'=>$winer_id));
+		$updatedata = array(
+			'winer_id'=>$winer_id,
+			'status' => 3,
+		);
+		Db::name('room')->where('room_id', $room_id)->update($updatedata);
 
 		response_success();
 	}
