@@ -518,7 +518,7 @@ html  {
 
 
 html  {
-    background-image: url('__STATIC__/image/PK-6.jpg');
+    background-image: url('../image/PK-6.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
