@@ -95,7 +95,7 @@ ws.onmessage = function (event) {
         console.log( $user2_answer)
         console.log( $user2_isright)
 
-        if($user2_isright == 1) {
+        if($user2_isright == "1") {
             console.log($(".choose-wrapper .choose-btn"))
             $.each($(".choose-wrapper .choose-btn"),function(index,item) {
                 if($(item).attr("data") == $user2_answer) {
@@ -110,7 +110,7 @@ ws.onmessage = function (event) {
                     }, 500)
                 }
             })
-        } else {
+        } else if ($user2_isright == "0"){
             $.each($(".choose-wrapper .choose-btn"),function(index,item) {
                 if($(item).attr("data") == $user2_answer) {
                     console.log("user2错误")
