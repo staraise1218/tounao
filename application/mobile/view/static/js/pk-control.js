@@ -71,6 +71,19 @@ ws.onmessage = function (event) {
     // 
     if($data.action == 'intoRoom') {
         console.log("接受者 action")
+        $.ajax({
+            type: 'POST',
+            url: "http://tounao.staraise.com.cn/Api/common/intoroom",
+            data: {room_id:$room_id,to_user_id:$user_id},
+            dataType: "json",
+            success: function(res){
+                console.log("socket ajax 绑定成功")
+                $knowledgeList = data.data.knowledgeList;
+            },
+            error: function(e) {
+                console.log("socket ajax 绑定失败");
+            }
+        })
     }
 
     // 接受者开始游戏
@@ -198,8 +211,9 @@ $(document).ready(function(){
                     console.log("邀请PK成功")
                     console.log(data)  // 这里可能有room_id 保存到全局  // TODO
                     $room_id = data.room_id;
-                    localStorage.setItem("knowledgeList",JSON.stringify(data))
+                    // localStorage.setItem("knowledgeList",JSON.stringify(data))                
                     $knowledgeList = data.data.knowledgeList;
+                    console.log($knowledgeList)
                 },
                 error: function () {
                     console.log("邀请PK失败")
@@ -274,6 +288,7 @@ function timeFunc () {
         // console.log(localStorage.getItem("user2.answers"))
     }, 1000)
 }
+
 
 function createQuestion(index) {
     timeText = 10;
