@@ -342,10 +342,10 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
     var _this = $(this);
     console.log(_this)
     if($(".user1-active").length > 0 || $quset_index > 5) {
-        // return
+        return
     }
     if($quset_index == 5 && timeText == 0) {
-        // return
+        return
     }
     if($quset_index < 5) {
         $(".user1-active").removeClass("user1-active");
@@ -409,18 +409,19 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
                 $("#user1-number").get(0).innerText = Number($("#user1-number").get(0).innerText) + 100;
             })
         }, 500)
+        var asdf = {
+            room_knowledge_id: $(".questions-wrapper").attr("data-know_id"),
+            user_id: $user_id,
+            to_user_id: $to_user_id,
+            answer:	$(this).attr("data"),
+            is_right:1
+        }
 
-
+        console.log(asdf)
         $.ajax({
             type: 'POST',
             url: "http://tounao.staraise.com.cn/Api/pk/choose",
-            data: {
-                room_knowledge_id: $(".questions-wrapper").attr("data-know_id"),
-                user_id: $user_id,
-                to_user_id: $to_user_id,
-                answer:	$(this).attr("data"),
-                is_right:1
-            },
+            data: asdf,
             dataType: "json",
             success: function (data) {
                 console.log(data)
