@@ -16,6 +16,7 @@ ws.onopen=function(){
     console.log("socket open  链接建立")
 }
 
+localStorage.setItem("ws",JSON.stringify(ws))
 // 请求绑定 uid 接口
 ws.onmessage = function (event) {
     console.log("socket onmessage 接受信息")
