@@ -74,11 +74,9 @@ ws.onmessage = function (event) {
 
     // 接受者开始游戏
     if($data.action == 'start') {
-        $("#load-wrapper").css("display","none")
+        $("#load-wrapper").css("display","block")
         $(".list-wrapper").css("display","none")
-        $("#pk-display").css("display","block")
-        console.log("接收者---开始游戏")
-        gameStart();
+        $("#pk-display").css("display","none")
     }
 
 
@@ -87,9 +85,11 @@ ws.onmessage = function (event) {
     $(".agreen").click(function(){
         console.log($room_id,$user_id)
         // window.location.href="../pk/index.html?roomId=" + $room_id + "&userId=" + $user_id; 
-        $("#load-wrapper").css("display","block")
+        $("#load-wrapper").css("display","none")
         $(".list-wrapper").css("display","none")
-        $("#pk-display").css("display","none")
+        $("#pk-display").css("display","block")
+        console.log("接收者---开始游戏")
+        gameStart();
     })
 };
 
@@ -104,23 +104,20 @@ ws.onclose = function() {
 
 
 
-$.ajax({
-    type: 'POST',
-    url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
-    data: {to_user_id: $to_user_id,
-            room_id: $room_id}, // 发起者id
-    dataType: "json",
-    success: function (data) {
-        console.log("通知发起者开始答题 ---- success");
-        console.log(data);
-    },
-    error: function () {
-        console.log("通知发起者开始答题 ---- error")
-    }
-})
-
-console.log(localStorage.getItem("knowledgeList"))
-console.log( JSON.parse(localStorage.getItem("knowledgeList")))
+// $.ajax({
+//     type: 'POST',
+//     url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
+//     data: {to_user_id: $to_user_id,
+//             room_id: $room_id}, // 发起者id
+//     dataType: "json",
+//     success: function (data) {
+//         console.log("通知发起者开始答题 ---- success");
+//         console.log(data);
+//     },
+//     error: function () {
+//         console.log("通知发起者开始答题 ---- error")
+//     }
+// })
 
 // 点击开始--进入PK
 $(".begin").click(function () {        
@@ -223,19 +220,19 @@ $(document).ready(function(){
                     console.log("邀请PK失败")
                 }
             })
-            $.ajax({
-                type: 'POST',
-                url: "http://tounao.staraise.com.cn/Api/pk/start",
-                data: {to_user_id: $to_user_id}, // 发起者id
-                dataType: "json",
-                success: function (data) {
-                    console.log("通知发起者开始答题 ---- success");
-                    console.log(data);
-                },
-                error: function () {
-                    console.log("通知发起者开始答题 ---- error")
-                }
-            })
+            // $.ajax({
+            //     type: 'POST',
+            //     url: "http://tounao.staraise.com.cn/Api/pk/start",
+            //     data: {to_user_id: $to_user_id}, // 发起者id
+            //     dataType: "json",
+            //     success: function (data) {
+            //         console.log("通知发起者开始答题 ---- success");
+            //         console.log(data);
+            //     },
+            //     error: function () {
+            //         console.log("通知发起者开始答题 ---- error")
+            //     }
+            // })
             $("#load-wrapper").css("display","block")
             $(".list-wrapper").css("display","none")
             $("#pk-display").css("display","none")
