@@ -17,9 +17,9 @@ ws.onopen=function(){
 }
 
 // 初始化页面
-$(".list-wrapper").show();
-$("#load-wrapper").hide();
-$("#pk-display").hide();
+$(".list-wrapper").get(0).style.display = 'block'
+$("#load-wrapper").get(0).style.display = 'none';
+$("#pk-display").get(0).style.display = 'none';
 
 
 
@@ -74,8 +74,8 @@ ws.onmessage = function (event) {
 
     // 接受者开始游戏
     if($data.action == 'start') {
-        $("#load-wrapper").hide();
-        $("#pk-display").show();
+        $("#load-wrapper").get(0).style.display = 'none';
+        $("#pk-display").get(0).style.display = 'block';
         console.log("接收者---开始游戏")
         gameStart();
     }
@@ -86,8 +86,8 @@ ws.onmessage = function (event) {
     $(".agreen").click(function(){
         console.log($room_id,$user_id)
         // window.location.href="../pk/index.html?roomId=" + $room_id + "&userId=" + $user_id; 
-        $(".list-wrapper").hide();
-        $("#load-wrapper").show();
+        $("#load-wrapper").get(0).style.display = 'none';
+        $("#pk-display").get(0).style.display = 'block';
     })
 };
 
