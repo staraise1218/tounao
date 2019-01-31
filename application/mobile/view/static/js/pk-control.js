@@ -82,8 +82,37 @@ ws.onmessage = function (event) {
             }
         },false)
     }
-
 };
+
+
+    // 被邀请者进入房间
+    if($data.action == 'invite') {
+        console.log("通知被邀请者进入房间")
+        console.log($data)
+                
+        $(".tanchutn-wrapper").css("display","block")
+        document.addEventListener("touchmove",function(e){
+            if($(".tanchutn-wrapper").css("display")=='block'){
+               $("html,body").addClass("overHiden")
+            }else{
+               $("html,body").removeClass("overHiden")
+            }
+        },false)
+    }
+    
+    if($data.action == 'intoroom') {
+        console.log("intoroom")
+        $(".tanchutn-wrapper").css("display","block")
+        document.addEventListener("touchmove",function(e){
+            if($(".tanchutn-wrapper").css("display")=='block'){
+               $("html,body").addClass("overHiden")
+            }else{
+               $("html,body").removeClass("overHiden")
+            }
+        },false)
+    }
+
+
 
 ws.onerror = function () {
     console.log("socket---error")
