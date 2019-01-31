@@ -92,6 +92,8 @@ ws.onmessage = function (event) {
         $user2_answer = $data.answer;
         $user2_isright = $data.is_right;
 
+        console.log( $user2_answer)
+        console.log( $user2_isright)
 
         if($user2_isright) {
             $(".questionsWrapper .choose-btn").each(function(item) {
