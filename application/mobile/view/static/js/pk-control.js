@@ -118,6 +118,12 @@ ws.onmessage = function (event) {
     }
 };
 
+if($data.action == 'invite') {
+    console.log("发起者 action")
+}
+if($data.action == 'intoroom') {
+    console.log("接受者 action")
+}
 
 ws.onerror = function () {
     console.log("socket---error")
