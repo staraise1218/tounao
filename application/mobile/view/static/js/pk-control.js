@@ -58,7 +58,7 @@ ws.onmessage = function (event) {
     }
     if($data.action == 'intoRoom') {
         console.log("接受者 action")
-        window.location.href="../pk/index.html"; 
+        window.location.href="../pk/index.html?touserID="+$to_user_id; 
     }
 
 
@@ -133,8 +133,6 @@ $(document).ready(function(){
                     console.log("邀请PK失败")
                 }
             })
-            // 发起者进入PK页面
-            // window.location.href="../pk/index.html?touserId="+$to_user_id;
         })
 
         //   拒绝邀请

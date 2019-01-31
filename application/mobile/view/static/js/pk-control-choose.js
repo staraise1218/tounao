@@ -14,8 +14,9 @@ function getPageParams() {
 
 let data=getPageParams()
 console.log(data)
-var $room_id=data.roomId
-var $to_user_id = data.userId
+var $room_id=data.roomId;
+var $to_user_id = data.userId;
+var $to_user_id = data.touserID;
 
 
 $.ajax({
@@ -38,36 +39,54 @@ console.log( JSON.parse(localStorage.getItem("knowledgeList")))
 
 
 
-// ws.onmessage = function (event) {
-//     console.log("socket onmessage 接受信息")
-//     var $data = JSON.parse(evt);
-//     console.log($data);  // TODO  action  ?
-//     var postData = {
-//         user_id:userinfo.user_id,
-//         client_id:data.client_id
-//     }
-    
-//     // 发起者获取信息
-//     if($action == 'invite') {
-//         var posData = {
-//             user_id: $to_user_id,
-//             to_user_id: $to_user_id
-//         }
-//         $.ajax({
-//             type: 'POST',
-//             url: "http://tounao.staraise.com.cn/Api/pk/invite",
-//             data: posData, // 发起者id
-//             dataType: "json",
-//             success: function (data) {
-//                 console.log("发起者获取数据 ---- success");
-//                 console.log(data);
-//             },
-//             error: function () {
-//                 console.log("发起者获取数据 ---- error")
-//             }
-//         })
-//     }
-// }
+
+$(".begin").click(function () {
+    $.ajax({
+        type: 'POST',
+        url: "http://tounao.staraise.com.cn/Api/pk/start",
+        data: {to_user_id: $to_user_id}, // 发起者id
+        dataType: "json",
+        success: function (data) {
+            console.log("通知发起者开始答题 ---- success");
+            console.log(data);
+        },
+        error: function () {
+            console.log("通知发起者开始答题 ---- error")
+        }
+    })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // 初始化用户信息
 window.onload = function () {
@@ -135,4 +154,5 @@ if('接受到通知') {
 $(".questions-wrapper").delegate(".choose-btn","touchstart", function () {
    console.log($(this))
    console.log($(this).attr("data"))
+
 })
