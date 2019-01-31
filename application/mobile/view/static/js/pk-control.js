@@ -29,7 +29,7 @@ ws.onmessage = function (event) {
         client_id: $client_id
       }
       console.log(postData)
-    if($data.action == 'invite' || $data.action == 'intoroom') {
+    if($data.action == 'action') {
         $.ajax({
             type: 'POST',
             url: "http://tounao.staraise.com.cn/Api/common/bindUid",
