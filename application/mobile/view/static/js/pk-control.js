@@ -99,9 +99,9 @@ ws.onmessage = function (event) {
     $(".agreen").click(function(){
         console.log($room_id,$user_id)
         // window.location.href="../pk/index.html?roomId=" + $room_id + "&userId=" + $user_id; 
-        $("#load-wrapper").css("display","none")
+        $("#load-wrapper").css("display","block")
         $(".list-wrapper").css("display","none")
-        $("#pk-display").css("display","block")
+        $("#pk-display").css("display","none")
         console.log("接收者---开始游戏")
         gameStart();
     })
@@ -193,7 +193,6 @@ $(document).ready(function(){
               `) 
           })
         
-          
         // 邀请PK
         $(".pk").click(function () {
             $to_user_id = $(this).data("id");
@@ -209,9 +208,8 @@ $(document).ready(function(){
                 dataType: "json",
                 success: function (data) {
                     console.log("邀请PK成功")
-                    console.log(data)  // 这里可能有room_id 保存到全局  // TODO
-                    $room_id = data.room_id;
-                    // localStorage.setItem("knowledgeList",JSON.stringify(data))                
+                    console.log(data)
+                    $room_id = data.room_id;              
                     $knowledgeList = data.data.knowledgeList;
                     console.log($knowledgeList)
                 },
@@ -219,19 +217,6 @@ $(document).ready(function(){
                     console.log("邀请PK失败")
                 }
             })
-            // $.ajax({
-            //     type: 'POST',
-            //     url: "http://tounao.staraise.com.cn/Api/pk/start",
-            //     data: {to_user_id: $to_user_id}, // 发起者id
-            //     dataType: "json",
-            //     success: function (data) {
-            //         console.log("通知发起者开始答题 ---- success");
-            //         console.log(data);
-            //     },
-            //     error: function () {
-            //         console.log("通知发起者开始答题 ---- error")
-            //     }
-            // })
             $("#load-wrapper").css("display","block")
             $(".list-wrapper").css("display","none")
             $("#pk-display").css("display","none")
