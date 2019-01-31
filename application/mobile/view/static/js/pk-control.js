@@ -138,7 +138,7 @@ ws.onmessage = function (event) {
                 console.log("socket ajax 绑定成功")
                 console.log($knowledgeList)
                 $knowledgeList = res.data.knowledgeList
-                $to_user_id = res.data.touserinfo.user_id
+                $to_user_id = res.data.userinfo.user_id
 
                 console.log("success*******************************************")
             },
