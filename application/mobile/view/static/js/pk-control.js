@@ -29,7 +29,7 @@ ws.onmessage = function (event) {
         client_id: $client_id
       }
       console.log("请求绑定 uid",postData)
-    if($data.action == 'action') {
+    if($data.action == 'client_id') {
         $.ajax({
             type: 'POST',
             url: "http://tounao.staraise.com.cn/Api/common/bindUid",
