@@ -134,7 +134,7 @@ $(document).ready(function(){
                 }
             })
             // 发起者进入PK页面
-            window.location.href="../pk/index.html?touserId="+$to_user_id;
+            // window.location.href="../pk/index.html?touserId="+$to_user_id;
         })
 
           //接受邀请
