@@ -33,6 +33,8 @@ $.ajax({
     }
 })
 
+console.log(localStorage.getItem(knowledgeList))
+console.log( JSON.parse(localStorage.getItem(knowledgeList)))
 
 
 
