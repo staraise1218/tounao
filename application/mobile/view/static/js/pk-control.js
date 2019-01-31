@@ -96,23 +96,23 @@ ws.onmessage = function (event) {
             },
             error: function(e) {
                     console.log("error");
-        }
-    })
+            }
+        })
     $("#user2_name").text(data.message);
-    $.ajax({
-        type: 'POST',
-        url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
-        data: { room_id:data.room_id,
-                to_user_id:data.to_user_id},
-        dataType: "json",
-        success: function(res){
-            console.log(res)
-        },
-        error: function(e) {
-                console.log("error");
-        }
-    })
-}
+        $.ajax({
+            type: 'POST',
+            url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
+            data: { room_id:data.room_id,
+                    to_user_id:data.to_user_id},
+            dataType: "json",
+            success: function(res){
+                console.log(res)
+            },
+            error: function(e) {
+                    console.log("error");
+            }
+        })
+    }
 };
 
 
@@ -164,6 +164,7 @@ $(document).ready(function(){
                 user_id : $user_id,
                 to_user_id : $to_user_id
             }
+            console.log(postData)
             $.ajax({
                 type: 'POST',
                 url: "http://tounao.staraise.com.cn/Api/pk/invite",
