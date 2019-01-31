@@ -287,10 +287,10 @@ let timeText = 0;
 function gameStart() {
     for(let j = 0; j < 5; j++) {
         (function(j) {
-            setTimeout(function() {
+            // setTimeout(function() {
                 createQuestion($quset_index);
                 $quset_index++;
-            }, j*timer)
+            // }, j*timer)
         })(j)
     }
     timeFunc();
