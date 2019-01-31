@@ -95,13 +95,15 @@ ws.onmessage = function (event) {
 
         if($user2_isright) {
             $(".questionsWrapper .choose-btn").each(function(item) {
+                console.log(item.data())
                 if(item.data() == $user2_answer) {
                     item.addClass("user2_dui");
                 }
             })
         } else {
             console.log("user2----错误")
-            $(".questionsWrapper .choose-btn").forEach(function(item) {
+            $(".questionsWrapper .choose-btn").each(function(item) {
+                console.log(item.data())
                 if(item.data() == $user2_answer) {
                     item.addClass("user2_cuo");
                 }
