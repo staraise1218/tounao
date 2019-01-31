@@ -299,7 +299,7 @@ function createQuestion(index) {
 
 var $answer = $(".questions-wrapper").attr("data-answer")
 // 选择答案部分
-$(".questions-wrapper").delegate(".choose-btn","touchstart", function () {
+$(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
     var _this = $(this);
     console.log(_this)
     if($(".user1-active").length > 0 || $quset_index > 5) {
