@@ -95,22 +95,26 @@ ws.onmessage = function (event) {
         console.log( $user2_answer)
         console.log( $user2_isright)
 
-        if($user2_isright) {
+        // if($user2_isright == 1) {
             $(".questionsWrapper .choose-btn").each(function(item) {
                 console.log(item.data())
-                if(item.data() == $user2_answer) {
-                    item.addClass("user2_dui");
+                if($(this).data() == $user2_answer) {
+                    $(this).addClass("user2_dui");
                 }
             })
-        } else {
-            console.log("user2----错误")
-            $(".questionsWrapper .choose-btn").each(function(item) {
-                console.log(item.data())
-                if(item.data() == $user2_answer) {
-                    item.addClass("user2_cuo");
-                }
-            })
-        }
+
+
+
+
+        // } else {
+            // console.log("user2----错误")
+            // $(".questionsWrapper .choose-btn").each(function(item) {
+            //     console.log(item.data())
+            //     if(item.data() == $user2_answer) {
+            //         item.addClass("user2_cuo");
+            //     }
+            // })
+        // }
     }
 
 
