@@ -73,7 +73,7 @@ ws.onmessage = function (event) {
         console.log("接受者 action")
         $.ajax({
             type: 'POST',
-            url: "http://tounao.staraise.com.cn/Api/common/intoroom",
+            url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
             data: {room_id:$room_id,to_user_id:$user_id},
             dataType: "json",
             success: function(res){
@@ -116,20 +116,7 @@ ws.onclose = function() {
 }
 
 
-// $.ajax({
-//     type: 'POST',
-//     url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
-//     data: {to_user_id: $to_user_id,
-//             room_id: $room_id}, // 发起者id
-//     dataType: "json",
-//     success: function (data) {
-//         console.log("通知发起者开始答题 ---- success");
-//         console.log(data);
-//     },
-//     error: function () {
-//         console.log("通知发起者开始答题 ---- error")
-//     }
-// })
+
 
 // 点击开始--进入PK
 $(".begin").click(function () {        
