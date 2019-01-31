@@ -67,6 +67,13 @@ ws.onopen=function(){
 ws.onmessage = function (event) {
     console.log(event)
     console.log(event.data)
+
+    
+    $("#load-wrapper").get(0).style.display = 'none';
+    $("#pk-display").get(0).style.display = 'block';
+    setTimeout(function () {
+        init();
+    }, 1000)
 }
 
 
@@ -152,17 +159,10 @@ function createQuestion(index) {
     localStorage.setItem("user2.answers","")
 }
 
-// 接到 接受者通知 ，点击开始后 3秒后开始答题
-if('接受到通知') {
-    setTimeout(function () {
-        // 答题init执行
-        // 显示与隐藏控件
-    })
-}
+
 
 // 选择答案
 $(".questions-wrapper").delegate(".choose-btn","touchstart", function () {
    console.log($(this))
    console.log($(this).attr("data"))
-
 })
