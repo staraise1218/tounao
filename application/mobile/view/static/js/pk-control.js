@@ -95,37 +95,29 @@ ws.onmessage = function (event) {
         console.log( $user2_answer)
         console.log( $user2_isright)
 
-        // if($user2_isright == 1) {
+        if($user2_isright == 1) {
             console.log($(".choose-wrapper .choose-btn"))
-        $.each($(".choose-wrapper .choose-btn"),function(index,item) {
-            console.log(item)
-            console.log(index)
-            // console.log($(item), $user2_answer)
-            // console.log(item.attr("data"))
-            console.log($(item).attr("data"))
-            if($(item).attr("data") == $user2_answer) {
-                // console.log(item.attr("data"))
-                // console.log($(this)[0].attr("data"))
-                console.log(1234)
-                $(item).addClass("user2-dui");
-            }
-        })
-        // document.getElementsByClassName('choose-wrapper')[0].getElementsByClassName("choose-btn").forEach(function(ele,index) {
-
-        // })
-
-
-
-
-        // } else {
-            // console.log("user2----错误")
-            // $(".questionsWrapper .choose-btn").each(function(item) {
-            //     console.log(item.data())
-            //     if(item.data() == $user2_answer) {
-            //         item.addClass("user2_cuo");
-            //     }
-            // })
-        // }
+            $.each($(".choose-wrapper .choose-btn"),function(index,item) {
+                if($(item).attr("data") == $user2_answer) {
+                    console.log("user2正确")
+                    $(item).addClass("user2-dui");
+                    setTimeout(function() {
+                        $(".user2_jindu-con").animate({},function() {
+                            userHeight_2 += patentHeight / 5;
+                            $(".user2_jindu-con").animate({height:userHeight_2},"fast")
+                            $("#user2-number").get(0).innerText = Number($("#user2-number").get(0).innerText) + 100;
+                        })
+                    }, 500)
+                }
+            })
+        } else {
+            $.each($(".choose-wrapper .choose-btn"),function(index,item) {
+                if($(item).attr("data") == $user2_answer) {
+                    console.log("user2错误")
+                    $(item).addClass("user2-cuo");
+                }
+            })
+        }
     }
 
 
