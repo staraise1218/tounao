@@ -1,58 +1,7 @@
-function getPageParams() {
-    var url = window.location.href
-    var option = {}
-    if (url.indexOf("?") > -1) {
-      var arr = url.split("?")[1].split("&")
-      arr.forEach(function (str) {
-        var arrTemp = str.split("=")
-        option[arrTemp[0]] = arrTemp[1]
-        option[arrTemp[1]] = arrTemp[2]
-      })
-    }
-    return option
-}
-
-let data=getPageParams()
-console.log(data)
-var $room_id=data.roomId;
-var $to_user_id = data.userId;
-var $to_user_id = data.touserID;
 
 
-$.ajax({
-    type: 'POST',
-    url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
-    data: {to_user_id: $to_user_id,
-            room_id: $room_id}, // 发起者id
-    dataType: "json",
-    success: function (data) {
-        console.log("通知发起者开始答题 ---- success");
-        console.log(data);
-    },
-    error: function () {
-        console.log("通知发起者开始答题 ---- error")
-    }
-})
-
-console.log(localStorage.getItem("knowledgeList"))
-console.log( JSON.parse(localStorage.getItem("knowledgeList")))
 
 
-$(".begin").click(function () {
-    $.ajax({
-        type: 'POST',
-        url: "http://tounao.staraise.com.cn/Api/pk/start",
-        data: {to_user_id: $to_user_id}, // 发起者id
-        dataType: "json",
-        success: function (data) {
-            console.log("通知发起者开始答题 ---- success");
-            console.log(data);
-        },
-        error: function () {
-            console.log("通知发起者开始答题 ---- error")
-        }
-    })
-})
 
 
 

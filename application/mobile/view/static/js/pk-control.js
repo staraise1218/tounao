@@ -28,6 +28,8 @@ ws.onmessage = function (event) {
         client_id: $client_id
       }
       console.log("请求绑定 uid",postData)
+    
+    // 绑定Uid
     if($data.action == 'client_id') {
         $.ajax({
             type: 'POST',
@@ -42,6 +44,8 @@ ws.onmessage = function (event) {
             }
         })
     }
+
+    // 
     if($data.action == 'invite') {
         console.log("发起者 action")
         console.log("通知被邀请者进入房间")
@@ -56,11 +60,20 @@ ws.onmessage = function (event) {
             }
         },false)
     }
+
+    // 
     if($data.action == 'intoRoom') {
         console.log("接受者 action")
         // window.location.href="../pk/index.html?touserID="+$to_user_id; 
         // $(".list-wrapper").hide();
         // $("#load-wrapper").show();
+    }
+
+    // 接受者开始游戏
+    if($data.action == 'start') {
+        $("#load-wrapper").hide();
+        $("#pk-display").show();
+        console.log("接收者---开始游戏")
     }
 
 
@@ -82,11 +95,68 @@ ws.onclose = function() {
     console.log("socket---close")
 }
 
-// 点击开始进入PK
-$(".begin").on('click', function () {
+
+
+
+$.ajax({
+    type: 'POST',
+    url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
+    data: {to_user_id: $to_user_id,
+            room_id: $room_id}, // 发起者id
+    dataType: "json",
+    success: function (data) {
+        console.log("通知发起者开始答题 ---- success");
+        console.log(data);
+    },
+    error: function () {
+        console.log("通知发起者开始答题 ---- error")
+    }
+})
+
+console.log(localStorage.getItem("knowledgeList"))
+console.log( JSON.parse(localStorage.getItem("knowledgeList")))
+
+// 点击开始--进入PK
+$(".begin").click(function () {
     $("#load-wrapper").hide();
     $("#pk-display").show();
+    console.log("发起者---开始游戏")
+    $.ajax({
+        type: 'POST',
+        url: "http://tounao.staraise.com.cn/Api/pk/start",
+        data: {to_user_id: $to_user_id}, // 发起者id
+        dataType: "json",
+        success: function (data) {
+            console.log("通知发起者开始答题 ---- success");
+            console.log(data);
+        },
+        error: function () {
+            console.log("通知发起者开始答题 ---- error")
+        }
+    })
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
