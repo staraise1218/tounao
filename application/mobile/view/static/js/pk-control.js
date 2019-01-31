@@ -16,7 +16,6 @@ ws.onopen=function(){
     console.log("socket open  链接建立")
 }
 
-localStorage.setItem("ws",JSON.stringify(ws))
 // 请求绑定 uid 接口
 ws.onmessage = function (event) {
     console.log("socket onmessage 接受信息")
@@ -59,7 +58,9 @@ ws.onmessage = function (event) {
     }
     if($data.action == 'intoRoom') {
         console.log("接受者 action")
-        window.location.href="../pk/index.html?touserID="+$to_user_id; 
+        // window.location.href="../pk/index.html?touserID="+$to_user_id; 
+        // $(".list-wrapper").hide();
+        // $("#load-wrapper").show();
     }
 
 
@@ -67,8 +68,9 @@ ws.onmessage = function (event) {
     // 接受邀请 -- 可能不在 omessage 中进行
     $(".agreen").click(function(){
         console.log($room_id,$user_id)
-        ws.close();
-        window.location.href="../pk/index.html?roomId=" + $room_id + "&userId=" + $user_id; 
+        // window.location.href="../pk/index.html?roomId=" + $room_id + "&userId=" + $user_id; 
+        $(".list-wrapper").hide();
+        $("#load-wrapper").show();
     })
 };
 
@@ -79,6 +81,14 @@ ws.onerror = function () {
 ws.onclose = function() {
     console.log("socket---close")
 }
+
+// 点击开始进入PK
+$(".begin").on('click', function () {
+    $("#load-wrapper").hide();
+    $("#pk-display").show();
+})
+
+
 
 
 // 渲染列表
@@ -148,6 +158,8 @@ $(document).ready(function(){
                     console.log("通知发起者开始答题 ---- error")
                 }
             })
+            $(".list-wrapper").hide();
+            $("#load-wrapper").show();
         })
 
         //   拒绝邀请

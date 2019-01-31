@@ -7,6 +7,8 @@
     <title>列表页</title>
     <link rel="stylesheet" href="__STATIC__/css/global.css">
     <link rel="stylesheet" href="__STATIC__/css/pkbang.css">
+    <link rel="stylesheet" href="__STATIC__/css/pk-pk.css">
+    <link rel="stylesheet" href="__STATIC__/css/pk.css">
     <style type="text/css">
         .overHiden{
           overflow: hidden;
@@ -15,271 +17,219 @@
     </style>
 </head>
 <body class="pk-bg">
+
+    <!-- 列表页面 -->
+<div class="list-wrapper">
     <div class="search-wrapper">
-            <i class="icon5 user-btn"></i>
-            <div class="input-wrapper">
-                <i class="icon5 search-icon"></i>
-                <input id="search" type="text" value="请输入用户名" onfocus="if(this.value=='请输入用户名'){this.value=''}" onblur="if(this.value==''){this.value='请输入用户名'}">
-                <input class="search-btn" type="submit" value="搜索">
-            </div>
+        <i class="icon5 user-btn"></i>
+        <div class="input-wrapper">
+            <i class="icon5 search-icon"></i>
+            <input id="search" type="text" value="请输入用户名" onfocus="if(this.value=='请输入用户名'){this.value=''}" onblur="if(this.value==''){this.value='请输入用户名'}">
+            <input class="search-btn" type="submit" value="搜索">
         </div>
-        <ul id="userList">
-            <li class="item">
-                <div class="left">
-                    <div class="number">1</div>
-                    <div class="poster">
-                        <img src="__STATIC__/image/poster1.png" alt="">
-                    </div>
-                </div>
-                <div class="right">
-                    <div>
-                        <div class="user-name">晴天还是雨天</div>
-                        <span>北京六小</span>
-                    </div>
-                    <div>北京市朝阳区</div>
-                </div>
-                <div class="pk">PK</div>
-            </li>
-        </ul>
-    
-        <div class="dangqian">
-            <div class="poster">
-                <img src="__STATIC__/image/poster1.png" alt="">
-            </div>
-            <p>当前排名<span>1/100</span></p>
-        </div>
-        <div class="tanchutn-wrapper" style="display:none"> 
-            <div class="tanchuang">
+    </div>
+    <ul id="userList">
+        <li class="item">
+            <div class="left">
+                <div class="number">1</div>
                 <div class="poster">
-                    <img src="__STATIC__/image/touxiang.png" alt="">
+                    <img src="__STATIC__/image/poster1.png" alt="">
                 </div>
+            </div>
+            <div class="right">
                 <div>
-                    <span class="user2-name">123456</span> <span class="location">123</span>
+                    <div class="user-name">晴天还是雨天</div>
+                    <span>北京六小</span>
                 </div>
-                <div id="user2_name" style="color: rgb(85, 79, 202);font-size: 0.4rem">邀请你加入游戏~~</div>
-                <div style="display:flex;justify-content: center;margin-top: 0.5rem">
+                <div>北京市朝阳区</div>
+            </div>
+            <div class="pk">PK</div>
+        </li>
+    </ul>
+
+    <div class="dangqian">
+        <div class="poster">
+            <img src="__STATIC__/image/poster1.png" alt="">
+        </div>
+        <p>当前排名<span>1/100</span></p>
+    </div>
+    <div class="tanchutn-wrapper" style="display:none"> 
+        <div class="tanchuang">
+            <div class="poster">
+                <img src="__STATIC__/image/touxiang.png" alt="">
+            </div>
+            <div>
+                <span class="user2-name">123456</span> <span class="location">123</span>
+            </div>
+            <div id="user2_name" style="color: rgb(85, 79, 202);font-size: 0.4rem">邀请你加入游戏~~</div>
+            <div style="display:flex;justify-content: center;margin-top: 0.5rem">
                 <div style="color: rgb(85, 79, 202);font-size: 0.4rem;display:flex;align-items: center">
                     <i class="icon2 icon-jinbi"></i> +10
                 </div>
                 <div style="color: rgb(85, 79, 202);margin-left: 0.3rem ;font-size: 0.4rem;display:flex;align-items: center">
                     <i class="icon2 icon-jingyan"></i> +10
                 </div>
+            </div>
+                <i class="icon5" style="width:100%;display:inline-block;height:0.04rem;margin: 0 auto;background-position: -2.5rem -3.6rem"></i>
+            <div class="btn">
+                <div class="back">拒绝</div>
+                <div class="agreen">同意</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 列表页面 end -->
+
+<!-- 加载页面 -->
+<div id="load-wrapper" style="display:none">
+    <!-- 接受者 -->
+        <div class="user1-wrapper">
+            <div class="user1-info">
+                <p>雨天还是晴天</p>
+                <p>来自: <span class="user1_location">北京</span> </p>
+                <p class="user1_school">北京小学</p>
+            </div>
+            <div class="user1-poster-wrapper icon3">
+                <span class="title_tag">5连胜</span>
+                <div class="poster">
+                    <img src="__STATIC__/image/poster1.png" alt="">
                 </div>
-                    <i class="icon5" style="width:100%;display:inline-block;height:0.04rem;margin: 0 auto;background-position: -2.5rem -3.6rem"></i>
-                <div class="btn">
-                    <div class="back">拒绝</div>
-                    <div class="agreen">同意</div>
+                <div class="user1_name">雨天还是晴天</div>
+            </div>
+        </div>
+    
+    <!-- 中间状态显示 -->
+        <div class="zhuangtai-wrapper">
+            <!-- vs -->
+            <div class="vs-poster" style="display:none">
+                <img src="__STATIC__/image/img_0742.jpg" alt="">
+            </div>
+            <!-- abandon -->
+            <div class="abandon-wrapper" style="display:none">
+                <div class="abandon">
+                    <i class="icon5 abandon-icon"></i>
+                    <span>放弃</span>
                 </div>
             </div>
+            <!-- begin -->
+            <div class="begin-wrapper">
+                <div class="abandon-b">
+                    <i class="icon1 abandon-b-icon"></i>
+                    <span>放弃</span>
+                </div>
+                <div class="begin">
+                    <i class="icon5 begin-icon"></i>
+                    <span>开始</span>
+                </div>
+            </div>
+        </div>
+    <!-- 发起者 -->
+        <div class="user2-wrapper">
+            <div class="user2-poster-wrapper icon3">
+                <span class="title_tag">5连胜</span>
+                <div class="poster">
+                    <img src="__STATIC__/image/poster1.png" alt="">
+                </div>
+                <div class="user2_name">晴天还是雨天</div>
+            </div>
+            <div class="user2-info">
+                <p>晴天还是雨天</p>
+                <p>来自: <span class="user2_location">上海</span> </p>
+                <p class="user2_school">上海小学</p>
+            </div>
+        </div>
     </div>
+<!-- load end -->
+
+<!-- pk -->
+    <div id="pk-display" style="display:none">
+        <div class="pk-wrapper">
+            <div class="user1-title-wrapper icon3">
+                <div class="poster-wrapper">
+                    <img class="user1_poster" src="__STATIC__/image/poster1.png" alt="">
+                </div>
+                <div class="user1-name">晴天还是雨天</div>
+            </div>
+
+            <div class="daojishi-wrapper">
+                <i class="icon2 daojishi-icon"></i>
+                <span>剩余 <span class="daojishi-content"></span> </span>
+            </div>
+            <div class="user2-title-wrapper icon3">
+                <div class="poster-wrapper">
+                    <img class="user2_poster" src="__STATIC__/image/poster1.png" alt="">
+                </div>
+                <div class="user2-name">晴天还是雨天</div>
+            </div>
+        </div>
+
+        <div class="pk-pk-choose">
+            <ul>
+                <li>
+                    <form class="questions-wrapper" action=""></form>
+                </li>
+            </ul>
+            <!-- date : 1 正确， 2 错误， 3 未选择 -->
+            <div class="jindu1-wrapper jindu-wrapper">
+                <em id="user1-number">0</em>
+                <span class="user1_jindu jindu">
+                    <span class="user1_jindu-con jindu-con"></span>
+                </span>
+            </div>
+            <div class="jindu2-wrapper jindu-wrapper">
+                <em id="user2-number">0</em>
+                <span class="user2_jindu jindu">
+                    <span class="user2_jindu-con jindu-con"></span>                    
+                </span>
+            </div>
+        </div>
+        <div class="fenye" style="position:absolute;bottom:0.5rem;width:100%;text-align: center;color:rgba(255,255,255,0.3);">
+            <span>1/1</span>
+        </div>
+        <!-- <button id="begin" style="width:80%;margin:0 auto;display:block;margin-top: 100px;">开始</button> -->
+    </div>
+
+    <!-- pk ---end -->
+
+
+
+
+
+
+
+
+
     <script src="__STATIC__/js/rem.js"></script>
     <script src="__STATIC__/js/jquery.js"></script>   
-
      <script>
          var userinfo = {$userinfo};
             console.log(userinfo)
             localStorage["mUserInfo"] = JSON.stringify(userinfo);
             localStorage.setItem("mUserInfo", JSON.stringify(userinfo));
-    //     let obj_roomid;
-    //     // let to_user_id
-    //     var ws = new WebSocket("ws://120.92.10.2:2345");
-    //     ws.onopen=function(){
-    //         ws.send("youaremybaby")
-    //     }
-    //     ws.onmessage = function (evt) {
-    //         console.log("onmessage")
-    //         console.log(evt.data)
-    //         console.log(typeof(evt.data))
-    //         var data = JSON.parse(evt.data);
-    //         console.log(data)
-    //         obj = data;
-    //         var postData={
-    //             user_id:userinfo.user_id,
-    //             client_id:data.client_id
-    //           }
-    //         ws.onclose = function() {
-    //             console.log("close")
-    //         }
-    //         console.log(postData)
-    //         console.log(data.action)
-    //         localStorage.setItem("data.action",data.action)
-    //         // if(data.action != 'invite') {
-    //             $.ajax({
-    //                 type: 'POST',
-    //                 url: "http://tounao.staraise.com.cn/Api/common/bindUid",
-    //                 data: postData,
-    //                 dataType: "json",
-    //                 success: function(res){
-    //                     console.log("绑定成功")
-    //                 },
-    //                 error: function(e) {
-    //                     console.log("error");
-    //                 }
-    //             })
-    //         // }
 
-            
-    //         // invite
-    //         // obj_roomid = data.room_id;
-    //         // if(data.action == 'invite') {
-    //         //     $.ajax({
-    //         //         type: 'POST',
-    //         //         url: "http://tounao.staraise.com.cn/Api/pk/invite",
-    //         //         data: { room_id:data.room_id,
-    //         //                 to_user_id:data.to_user_id},
-    //         //         dataType: "json",
-    //         //         success: function(res){
-    //         //             console.log(res)
-    //         //         },
-    //         //         error: function(e) {
-    //         //                 console.log("error");
-    //         //         }
-    //         //     })
-    //         //     $("#user2_name").text(data.message);
-    //         //     $.ajax({
-    //         //         type: 'POST',
-    //         //         url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
-    //         //         data: { room_id:data.room_id,
-    //         //                 to_user_id:data.to_user_id},
-    //         //         dataType: "json",
-    //         //         success: function(res){
-    //         //             console.log(res)
-    //         //         },
-    //         //         error: function(e) {
-    //         //                 console.log("error");
-    //         //         }
-    //         //     })
-    //         // }
-
-    //         if(data.action == 'invite') {
-    //             localStorage.setItem("data.action",data.action)
-    //             console.log("aaaaaa")
-    //             console.log(data)
-    //             $(".tanchutn-wrapper").css("display","block")
-    //             console.log($(".tanchutn-wrapper").css("display"))
-    //             document.addEventListener("touchmove",function(e){
-    //                 if($(".tanchutn-wrapper").css("display")=='block'){
-    //                    $("html,body").addClass("overHiden")
-    //                 }else{
-    //                    $("html,body").removeClass("overHiden")
-    //                 }
-    //             },false)
-    //             // window.location.href="../pk/index.html?room_id="+data.room_id;
-    //             obj_roomid = data.room_id;
-    //         }
-
-    //         localStorage.setItem("data.action",data.action)
-    //         // if($(".tanchutn-wrapper").css("display")=='block'){
-    //         //     $("html,body").addClass("overHiden")
-    //         // }
-    //         //接受邀请
-    //         // if(messageData.action=='invite'){
-    //         //     $(".tanchutn-wrapper").css("display","block")
-    //         // }  
-            
-            
-
-    //         // asdgfagasgag
-    //         // asgas
-    //     };
-    // </script>
-    // <script type="text/javascript">
-    //     let to_user_id=""
-    //     $(document).ready(function(){
-    //         $.ajax({
-    //           type: 'POST',
-    //           url: "http://tounao.staraise.com.cn/Api/index/index",
-    //           data: {page:1},
-    //           dataType: "json",
-    //           success: function(res){
-    //             console.log("res")
-    //             console.log(res)
-    //             res.data.forEach(function(item){
-    //                $("#userList").append(`
-    //                     <li class="item">
-    //                         <div class="left">
-    //                             <div class="number">1</div>
-    //                             <div class="poster">
-    //                                 <img src="${item.head_pic}" alt="">
-    //                             </div>
-    //                         </div>
-    //                         <div class="right">
-    //                             <div>
-    //                                 <div class="user-name">${item.nickname}</div>
-    //                                 <span>北京六小</span>
-    //                             </div>
-    //                             <div>${item.province_city}</div>
-    //                         </div>
-    //                         <div class="pk" data-id="${item.user_id}">PK</div>
-    //                     </li>
-    //                 `) 
-    //             })
-              
-    //              //点击pk
-    //             $(".pk").click(function() {
-    //                 // $(".tanchutn-wrapper").css("display","block")
-    //                 let  user_id = {$userinfo}.user_id
-    //                 console.log({$userinfo})
-                    
-    //                 to_user_id=$(this).data("id")
-    //                 console.log("to_user_id")
-    //                 console.log(to_user_id)
-    //                 //邀请接口
-    //                 $.ajax({
-    //                   type: 'POST',
-    //                   url: "http://tounao.staraise.com.cn/Api/pk/invite",
-    //                   data: {
-    //                     user_id:user_id,
-    //                     to_user_id:$(this).data("id")
-    //                   },
-    //                   dataType: "json",
-    //                   success:function(res){
-    //                       console.log(res)
-    //                       toUserId = $(this).data("id")
-    //                   },
-    //                   error: function() {
-    //                       console.log("error")
-    //                   }
-    //                 })
-    //                 window.location.href="../pk/index.html?touserId="+to_user_id;
-    //             })
-    //             //接受邀请
-    //             $(".agreen").click(function(){
-    //                 let  user_id = {$userinfo}.user_id
-    //                 console.log({$userinfo})
-    //                 alert()
-    //                 console.log(to_user_id)
-    //                 // $.ajax({
-    //                 //   type: 'POST',
-    //                 //   url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
-    //                 //   data: {
-    //                 //     user_id:user_id,
-    //                 //     to_user_id:toUserId
-    //                 //   },
-    //                 //   dataType: "json",
-    //                 //   success:function(res){
-    //                 //       console.log(res)
-    //                 //   },
-    //                 //   error: function() {
-    //                 //       console.log("error")
-    //                 //   }
-    //                 // })
-    //                 // localStorage.setItem("obj_roomid",obj_roomid)
-    //                 // localStorage.setItem("to_user_id",toUserId)
-    //                 window.location.href="../pk/index.html?roomId="+obj_roomid
-    //             })
-    //             $(".back").click(function(){
-    //                 $(".tanchutn-wrapper").hide()
-    //             })
-    //           },
-    //           error: function(e) {
-    //                 console.log("error");
-    //            }
-    //         })
-    //     })
     </script>
-    
-    
     <script src="__STATIC__/js/pk-control.js"></script>
+    <script src="__STATIC__/js/pk-control-choose.js"></script>
+
+
+    <script>
+        $(".begin").on('click', function () {
+            $("#load-wrapper").get(0).style.display = 'none';
+            $("#pk-display").get(0).style.display = 'block';
+            setTimeout(function () {
+                init();
+            }, 1000)
+        })
+    </script>
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
