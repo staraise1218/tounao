@@ -1,36 +1,5 @@
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // 初始化用户信息
 window.onload = function () {
     // $(".user1_poster").prop("src",user1_info.poster);
