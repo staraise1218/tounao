@@ -99,7 +99,8 @@ ws.onmessage = function (event) {
             $(".questionsWrapper .choose-btn").each(function(item) {
                 console.log(item.data())
                 if($(this).data() == $user2_answer) {
-                    $(this).addClass("user2_dui");
+                    console.log(2341241)
+                    $(this).addClass("user2-dui");
                 }
             })
 
