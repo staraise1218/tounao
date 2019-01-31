@@ -28,7 +28,7 @@ ws.onmessage = function (event) {
         user_id: $user_id,
         client_id: $client_id
       }
-      console.log(postData)
+      console.log("请求绑定 uid",postData)
     if($data.action == 'action') {
         $.ajax({
             type: 'POST',
@@ -136,8 +136,7 @@ $(document).ready(function(){
         data: {page:1},
         dataType: "json",
         success: function(res){
-          console.log("res")
-          console.log(res)
+        //   console.log(res)
           res.data.forEach(function(item){
              $("#userList").append(`
                   <li class="item">
@@ -167,7 +166,7 @@ $(document).ready(function(){
                 user_id : $user_id,
                 to_user_id : $to_user_id
             }
-            console.log(postData)
+            console.log('邀请PK',postData)
             $.ajax({
                 type: 'POST',
                 url: "http://tounao.staraise.com.cn/Api/pk/invite",
