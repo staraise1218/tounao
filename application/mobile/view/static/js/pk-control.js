@@ -97,15 +97,17 @@ ws.onmessage = function (event) {
 
         // if($user2_isright == 1) {
             console.log($(".choose-wrapper .choose-btn"))
-        $($(".choose-wrapper .choose-btn")).each(function(item) {
-            console.log(item, $user2_answer)
-            console.log(item.attr("data"))
-            if(item.attr("data") == $user2_answer) {
-                console.log(item)
-                console.log(item.attr("data"))
-                // console.log($(this)[0].attr("data"))
-                item.addClass("user2-dui");
-            }
+        $.each($(".choose-wrapper .choose-btn"),function(item,index) {
+            console.log(item)
+            console.log(index)
+            // console.log($(item), $user2_answer)
+            // console.log(item.attr("data"))
+            // if(item.attr("data") == $user2_answer) {
+            //     console.log(item)
+            //     console.log(item.attr("data"))
+            //     // console.log($(this)[0].attr("data"))
+            //     item.addClass("user2-dui");
+            // }
         })
 
 
