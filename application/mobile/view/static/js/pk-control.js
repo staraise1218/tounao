@@ -139,7 +139,7 @@ ws.onmessage = function (event) {
                 console.log($knowledgeList)
                 $knowledgeList = res.data.knowledgeList
                 $to_user_id = res.data.userinfo.user_id
-
+                gameStart();
                 console.log("success*******************************************")
             },
             error: function(e) {
@@ -151,7 +151,7 @@ ws.onmessage = function (event) {
         $("#pk-display").css("display","none")
         console.log("接收者---开始游戏")
         // setTimeout(function () {
-            gameStart();
+            // gameStart();
         // }, 3000)
     })
 };
@@ -168,7 +168,7 @@ ws.onclose = function() {
 
 
 // 点击开始--进入PK
-$(".begin").click(function () {        
+$(".begin").click(function () {
     $("#load-wrapper").css("display","none")
     $(".list-wrapper").css("display","none")
     $("#pk-display").css("display","block")
