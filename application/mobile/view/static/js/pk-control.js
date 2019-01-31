@@ -97,7 +97,7 @@ ws.onmessage = function (event) {
 
         // if($user2_isright == 1) {
             console.log($(".choose-wrapper .choose-btn"))
-        $.each($(".choose-wrapper .choose-btn"),function(item,index) {
+        $.each($(".choose-wrapper .choose-btn"),function(index,item) {
             console.log(item)
             console.log(index)
             // console.log($(item), $user2_answer)
@@ -110,6 +110,9 @@ ws.onmessage = function (event) {
                 item.addClass("user2-dui");
             }
         })
+        // document.getElementsByClassName('choose-wrapper')[0].getElementsByClassName("choose-btn").forEach(function(ele,index) {
+
+        // })
 
 
 
