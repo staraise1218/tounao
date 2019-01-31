@@ -66,28 +66,48 @@ ws.onmessage = function (event) {
                $("html,body").removeClass("overHiden")
             }
         },false)
+
+        if($room_id) {
+            console.log("接受者 action")
+            console.log($room_id,$user_id)
+            $.ajax({
+                type: 'POST',
+                url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
+                data: {room_id:$room_id,to_user_id:$user_id},
+                dataType: "json",
+                success: function(res){
+                    console.log(res)
+                    console.log("socket ajax 绑定成功")
+                    console.log($knowledgeList)
+                    $knowledgeList = data.data.knowledgeList;
+                },
+                error: function(e) {
+                    console.log("socket ajax 绑定失败");
+                }
+            })
+        }
     }
 
     // 
-    if($data.action == 'intoRoom') {
-        console.log("接受者 action")
-        console.log($room_id,$user_id)
-        $.ajax({
-            type: 'POST',
-            url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
-            data: {room_id:$room_id,to_user_id:$user_id},
-            dataType: "json",
-            success: function(res){
-                console.log(res)
-                console.log("socket ajax 绑定成功")
-                console.log($knowledgeList)
-                $knowledgeList = data.data.knowledgeList;
-            },
-            error: function(e) {
-                console.log("socket ajax 绑定失败");
-            }
-        })
-    }
+    // if($data.action == 'intoRoom') {
+    //     console.log("接受者 action")
+    //     console.log($room_id,$user_id)
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
+    //         data: {room_id:$room_id,to_user_id:$user_id},
+    //         dataType: "json",
+    //         success: function(res){
+    //             console.log(res)
+    //             console.log("socket ajax 绑定成功")
+    //             console.log($knowledgeList)
+    //             $knowledgeList = data.data.knowledgeList;
+    //         },
+    //         error: function(e) {
+    //             console.log("socket ajax 绑定失败");
+    //         }
+    //     })
+    // }
 
     // 接受者开始游戏
     if($data.action == 'start') {
