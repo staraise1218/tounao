@@ -26,6 +26,7 @@ ws.onopen=function(){
 ws.onmessage = function (event) {
     console.log("socket onmessage 接受信息")
     // $data = JSON.parse(event);
+    console.log(event)
     console.log($data)
     $client_id = $data.client_id;
     var postData = {
