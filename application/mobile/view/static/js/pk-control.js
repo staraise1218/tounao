@@ -7,17 +7,6 @@ let $action,
     $client_id
 
 // 保存用户登陆信息
-
-
-var userinfo = {$userinfo};
-console.log(userinfo)
-localStorage["mUserInfo"] = JSON.stringify(userinfo);
-localStorage.setItem("mUserInfo", JSON.stringify(userinfo));
-
-// var userinfo = {$userinfo};
-// console.log(userinfo)
-// localStorage["mUserInfo"] = JSON.stringify(userinfo);
-// localStorage.setItem("mUserInfo", JSON.stringify(userinfo));
 $user_id = userinfo.user_id;
 
 
