@@ -150,9 +150,9 @@ ws.onmessage = function (event) {
         $(".list-wrapper").css("display","none")
         $("#pk-display").css("display","none")
         console.log("接收者---开始游戏")
-        setTimeout(function () {
+        // setTimeout(function () {
             gameStart();
-        }, 3000)
+        // }, 3000)
     })
 };
 
@@ -186,9 +186,9 @@ $(".begin").click(function () {
             console.log("通知发起者开始答题 ---- error")
         }
     })
-    setTimeout(function () {
+    // setTimeout(function () {
         gameStart();
-    }, 3000)
+    // }, 3000)
 })
 
 
