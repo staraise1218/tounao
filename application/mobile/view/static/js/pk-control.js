@@ -428,12 +428,14 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
             setTimeout(function () {
                 createQuestion($_index);                
                 if($_index == 5 ) {
-                    if($score_1 > score_2) {
+                    if($score_1 > $score_2) {
                         $winer_id = $user_id
                         alert("赢了")
-                    } else if ($score_1 < score_2) {
+                    } else if ($score_1 < $score_2) {
                         $winer_id = $to_user_id
                         alert("输了")
+                    } else {
+                        alert("平局")
                     }
                     alert("结束")
                     $.ajax({
