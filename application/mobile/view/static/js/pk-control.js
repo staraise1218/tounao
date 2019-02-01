@@ -253,8 +253,8 @@ $(document).ready(function(){
             console.log($(this).parents())
             console.log($($(this).parents()).eq(0))
             console.log($($(this).parents()).get(0))
-            $touserinfo.head_pic = $("$($(this).parents()):eq(0) .poster img").prop("src");
-            $touserinfo.nickname = $("$($(this).parents()):eq(0) .user-name").text();
+            $touserinfo.nickname = $($($(this).parents()).eq(0) .user-name).text();
+            $touserinfo.head_pic = $("$($(this).parents()).eq(0) img").prop("src");
 
             createUser();
             $to_user_id = $(this).data("id");
