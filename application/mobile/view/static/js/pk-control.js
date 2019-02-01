@@ -470,10 +470,10 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
                         console.log("平局")
                         $(".pk-end-wrapper .info").text("平居");
                     }
-                    $("#load-wrapper").css("display","block");
+                    $("#load-wrapper").css("display","none");
                     $(".list-wrapper").css("display","none");
-                    $("#pk-display").css("display","block");
-                    $(".pk-end-wrapper").css("display","none");
+                    $("#pk-display").css("display","none");
+                    $(".pk-end-wrapper").css("display","block");
                     
                     console.log($score_1)
                     console.log($score_2)
