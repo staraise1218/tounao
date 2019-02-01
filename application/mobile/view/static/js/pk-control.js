@@ -296,6 +296,8 @@ $(document).ready(function(){
 // *************************************
 
 function createUser() {
+    console.log($userinfo)
+    console.log($touserinfo)
     $(".user1-wrapper .poster img").get(0).src = $touserinfo.head_pic;
     $(".user1-wrapper .user1-info p").eq(1).text($touserinfo.nickname)
     $(".user2-wrapper .user1-info p").eq(1).text($userinfo.nickname)
