@@ -426,7 +426,6 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
             $can_choose = true;
             console.log("$_index", $_index ,"$can_choose",$can_choose)
             setTimeout(function () {
-                clearInterval(timer);
                 createQuestion($_index);
                 if($_index == 5 ) {
                     if($score_1 > $score_2) {
@@ -460,6 +459,7 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
                     })
                 }
             },1500)
+            clearInterval(timer);
         }   
     },500)
 })
