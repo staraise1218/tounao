@@ -255,6 +255,10 @@ $(document).ready(function(){
         $(".pk").click(function () {
             console.log(this)
             console.log($(this).parents())
+            console.log($($(this).parents()).eq(0))
+            console.log($($(this).parents()).get(0))
+
+
             $to_user_id = $(this).data("id");
             var postData = {
                 user_id : $user_id,
