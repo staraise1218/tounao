@@ -144,9 +144,18 @@ class Pk extends Base {
 			'score'=>$score,
 			'res' => $res,
 		);
-		Db::name('room_result')->insert($data);
+		$insert_id = Db::name('room_result')->insert($data);
+		if($insert_id){
+			if($res == '1'){
+				Db::name('users')->where('user_id', $user_id)->setInc('goldcoin', $score); 
+			}
 
-		response_success();
+			response_success();
+		} else {
+			response_error();
+		}
+
+		
 	}
 
 }
