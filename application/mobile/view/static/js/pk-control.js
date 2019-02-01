@@ -26,7 +26,7 @@ let $sendResult_data = {}
 
 
 // 保存用户登陆信息
-$user_id = userinfo.user_id;
+$user_id = $userinfo.user_id;
 
 // 建立websocket链接
 var ws = new WebSocket("ws://120.92.10.2:2345");
