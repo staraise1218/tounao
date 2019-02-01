@@ -430,12 +430,12 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
                 if($_index == 5 ) {
                     if($score_1 > $score_2) {
                         $winer_id = $user_id
-                        alert("赢了")
+                        console.log("赢了")
                     } else if ($score_1 < $score_2) {
                         $winer_id = $to_user_id
-                        alert("输了")
+                        console.log("输了")
                     } else {
-                        alert("平局")
+                        console.log("平局")
                     }
                     console.log($score_1)
                     console.log($score_2)
