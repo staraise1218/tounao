@@ -322,7 +322,10 @@ function timeFunc () {
 // 渲染题目
 function createQuestion(index) {
     // timeText = 10;
+    $is_choose_2 = false;
+    $can_choose = false;
     let questionsWrapper = '';
+    remove();
     if(index < 5) {
         questionsWrapper = `<form class="questions-wrapper" action="" data-know_id = ${$knowledgeList[index].room_knowledge_id} data-answer=${$knowledgeList[index].answer}>
                                 <h5> ${$knowledgeList[index].title} </h5>
