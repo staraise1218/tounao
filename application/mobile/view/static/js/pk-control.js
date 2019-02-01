@@ -252,7 +252,7 @@ $(document).ready(function(){
           })
         
         // 邀请PK
-        $(".pk").click(function () {
+        $(".userList .item").delegate(".pk",'click',function () {
             console.log(this)
             console.log($(this))
             $to_user_id = $(this).data("id");
