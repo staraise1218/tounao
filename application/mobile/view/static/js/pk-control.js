@@ -447,14 +447,15 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
     }
     // 判断user2是否选择完
     setInterval(function () {
+        console.log($is_choose_2)
         if($is_choose_2) {
             $can_choose = true;
+            console.log($can_choose)
         }
     },500)
     if($can_choose) {
         createQuestion($_index);
     }
-    
 })
 
 
