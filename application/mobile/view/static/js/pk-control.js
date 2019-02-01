@@ -438,6 +438,9 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
                     } else {
                         alert("平局")
                     }
+                    console.log($score_1)
+                    console.log($score_2)
+                    console.log("$winer_id", $winer_id ,"***************************************************************************")
                     alert("结束")
                     $.ajax({
                         type: 'POST',
