@@ -426,7 +426,8 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
             $can_choose = true;
             console.log("$_index", $_index ,"$can_choose",$can_choose)
             setTimeout(function () {
-                createQuestion($_index);                
+                clearInterval(timer);
+                createQuestion($_index);
                 if($_index == 5 ) {
                     if($score_1 > $score_2) {
                         $winer_id = $user_id
@@ -455,7 +456,6 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
                         }
                     })
                 }
-                clearInterval(timer);
             },1500)
         }   
     },500)
