@@ -196,7 +196,7 @@ ws.onclose = function() {
 // 点击开始--进入PK
 $(".begin").click(function () {
     createUser();
-    $("#load-wrapper").css("display","block");
+    $("#load-wrapper").css("display","none");
     $(".list-wrapper").css("display","none");
     $("#pk-display").css("display","block");
     $(".pk-end-wrapper").css("display","none");
