@@ -325,7 +325,7 @@ function createQuestion(index) {
     $is_choose_2 = false;
     $can_choose = false;
     let questionsWrapper = '';
-    if($_index <= 5) {
+    if($_index < 5) {
         remove();
     }
     if(index < 5) {
@@ -344,8 +344,6 @@ function createQuestion(index) {
                                     <input type="checkbox" name="" style="display:none"> ${$knowledgeList[index].d}
                                 </label>
                             </form>`
-
-
         $(".choose-wrapper").html(questionsWrapper);
     }
 }
@@ -361,10 +359,10 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
 
     // if($(".user1-active").length > 0) { return }
     // if($_index == 5 && timeText == 0) {
-    if($(".user1-active").length > 0 || $_index > 5) { return }
     if($_index < 5) { $(".user1-active").removeClass("user1-active");}
+    if($(".user1-active").length > 0 || $_index >= 5) { return }
     
-    if($_index  <= 5) { $_index ++; }
+    $_index ++
     console.log($_index)
 
     _this.addClass("user1-active")    
