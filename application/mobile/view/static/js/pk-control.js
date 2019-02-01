@@ -254,9 +254,11 @@ $(document).ready(function(){
             console.log($($(this).parents()).eq(0))
             console.log($($(this).parents()).get(0))
 
-
-            $touserinfo.nickname = $($($(this).parents()).get(0).getElementsByTagName("img")[0]).prop("src")
-            $touserinfo.head_pic = $($(this).parents()).get(0).getElementsByClassName.innerText();
+            var $Li = $($(this).parents()).get(0);
+            console.log($("$Li img").prop("src"))
+            console.log($("$Li img").attr("src"))
+            $touserinfo.nickname = $("$Li .user-name").text();
+            $touserinfo.head_pic = $("$Li img").prop("src")
 
             createUser();
             $to_user_id = $(this).data("id");
