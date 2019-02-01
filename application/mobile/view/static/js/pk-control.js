@@ -21,7 +21,7 @@ let $can_choose  = false;
 let $score_1 = 0;
 let $score_2 = 0;
 let $winer_id = '';
-let $sendResult_data = {}    
+let $sendResult_data = {}
 
 
 // 保存用户登陆信息
@@ -295,19 +295,6 @@ $(document).ready(function(){
 // *************************************
 
 
-
-// function gameStart() {
-//     for(let j = 0; j < 5; j++) {
-//         (function(j) {
-//             setTimeout(function() {
-//                 createQuestion($quset_index);
-//                 $quset_index++;
-//             }, j*timer)
-//         })(j)
-//     }
-//     timeFunc();
-// }
-
 function gameStart() {
     createQuestion($_index);
     timeFunc();
@@ -439,14 +426,21 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
             $can_choose = true;
             console.log("$_index", $_index ,"$can_choose",$can_choose)
             setTimeout(function () {
-                createQuestion($_index);
+                createQuestion($_index);                
                 if($_index == 5 ) {
+                    if($score_1 > score_2) {
+                        $winer_id = $user_id
+                        alert("赢了")
+                    } else if ($score_1 < score_2) {
+                        $winer_id = $to_user_id
+                        alert("输了")
+                    }
                     alert("结束")
                     $.ajax({
                         type: 'POST',
                         url: "http://tounao.staraise.com.cn/Api/pk/sendResult",
                         data: { room_id :$room_id,
-                                winer_id: $winer_id = $user_id > $to_user_id ? $user_id : $to_user_id
+                                winer_id: $winer_id
                         },
                         dataType: "json",
                         success: function (data) {
@@ -459,7 +453,7 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
                         }
                     })
                 }
-                clearInterval(timer);    
+                clearInterval(timer);
             },1500)
         }   
     },500)
