@@ -13,7 +13,7 @@ let patentHeight = $(".jindu").height();
 let userHeight_1 = 0;
 let userHeight_2 = 0;
 let $quset_index = 0;
-let timer = 10000;
+// let timer = 10000;
 let timeText = 0;
 let $_index = 0;  // 渲染
 let $is_choose_2 = false;
@@ -449,20 +449,26 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
         })
     }
     // 判断user2是否选择完
-    setInterval(function () {
+    let timer = setInterval(function () {
         console.log($is_choose_2)
         if($is_choose_2) {
             $can_choose = true;
             console.log($can_choose)
-        }
+            clearInterval(timer);
+        }   
     },500)
+    if($can_choose) {
+        console.log("**********************执行了************************")
+        createQuestion($_index);
+    }
+    
 })
 if($can_choose) {
     console.log("**********************执行了************************")
     createQuestion($_index);
 }
 
-
+// 选择样式
 function remove() {
     $(".user1-active").removeClass("user1-active");
     $(".user1-dui").removeClass("user1-dui");
