@@ -356,7 +356,8 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
     var _this = $(this);
     console.log($answer)
 
-    if($_index  < 5) { $_index ++; }
+    if($_index  <= 5) { $_index ++; }
+    console.log($_index)
 
     if($(".user1-active").length > 0 || $_index > 5) { return }
     // if($_index == 5 && timeText == 0) {
