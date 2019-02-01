@@ -14,7 +14,7 @@ let patentHeight = $(".jindu").height();
 let userHeight_1 = 0;
 let userHeight_2 = 0;
 let $quset_index = 0;
-// let timer = 10000;
+let $timer = 10;
 let timeText = 0;
 let $_index = 0;  // 渲染
 let $is_choose_2 = false;
@@ -23,7 +23,7 @@ let $score_1 = 0;
 let $score_2 = 0;
 let $winer_id = '';
 let $sendResult_data = {}
-
+let $result = '';
 
 // 保存用户登陆信息
 $user_id = $userinfo.user_id;
@@ -327,20 +327,19 @@ function createUser() {
 
 function gameStart() {
     createQuestion($_index);
-    timeFunc();
 }
 
-
-// 设置定时器
-function timeFunc () {
-    setInterval(function() {
-        if(timeText >= 0) {
-            if(timeText > 0) {
-                timeText--;
-            }
-            $(".daojishi-content").text(timeText);
-        }
+function gameTimer () {
+    setInterval(function () {
+        // 渲染页面时间
     }, 1000)
+    setTimeout(function () {
+        console.log($_index);
+        if($_index < 5) {
+            $_index++;
+        }
+        gameStart();
+    }, $timer * 1000)
 }
 
 // 渲染题目
@@ -460,20 +459,22 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
                 if($_index == 5 ) {
                     if($score_1 > $score_2) {
                         $winer_id = $user_id
+                        $result = "胜利"
                         console.log("赢了")
-                        $(".pk-end-wrapper .info").text("挑战成功");
                     } else if ($score_1 < $score_2) {
                         $winer_id = $to_user_id
                         console.log("输了")
-                        $(".pk-end-wrapper .info").text("挑战失败");
+                        $result = "失败"
                     } else {
                         console.log("平局")
-                        $(".pk-end-wrapper .info").text("平局");
+                        $result = "平局"
                     }
                     $("#load-wrapper").css("display","none");
                     $(".list-wrapper").css("display","none");
                     $("#pk-display").css("display","none");
                     $(".pk-end-wrapper").css("display","block");
+
+                    $(".pk-end-wrapper .info").text($result);
                     $("#score1").text($score_1);
                     $("#score2").text($score_2);
                     console.log($score_1)
@@ -484,7 +485,10 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
                         type: 'POST',
                         url: "http://tounao.staraise.com.cn/Api/pk/sendResult",
                         data: { room_id :$room_id,
-                                winer_id: $winer_id
+                                // winer_id: $winer_id,
+                                user_id: $user_id,
+                                score: $score_1,
+                                res: $result
                         },
                         dataType: "json",
                         success: function (data) {
