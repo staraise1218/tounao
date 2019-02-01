@@ -154,6 +154,10 @@ ws.onmessage = function (event) {
         $("body").addClass("pk-bg");
         console.log($room_id,$user_id)
         console.log("接受者 agreen")
+        $("#load-wrapper").css("display","none");
+        $(".list-wrapper").css("display","none");
+        $("#pk-display").css("display","block");
+        $(".pk-end-wrapper").css("display","none");
         $.ajax({
             type: 'POST',
             url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
@@ -174,12 +178,7 @@ ws.onmessage = function (event) {
             error: function(e) {
                 console.log("接受者 agreen error");
             }
-        })
-        $("#load-wrapper").css("display","block");
-        $(".list-wrapper").css("display","none");
-        $("#pk-display").css("display","block");
-        $(".pk-end-wrapper").css("display","none");
-        
+        })       
     })
 };
 
