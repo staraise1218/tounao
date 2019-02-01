@@ -97,10 +97,11 @@ ws.onmessage = function (event) {
 
     // 接受者开始游戏
     if($data.action == 'start') {
-        console.log("action **************** start")
-        $("#load-wrapper").css("display","none")
-        $(".list-wrapper").css("display","none")
-        $("#pk-display").css("display","block")
+        console.log("action **************** start");
+        $("#load-wrapper").css("display","none");
+        $(".list-wrapper").css("display","none");
+        $("#pk-display").css("display","block");
+        $(".pk-end-wrapper").css("display","none");
     }
 
 
@@ -173,9 +174,11 @@ ws.onmessage = function (event) {
                 console.log("接受者 agreen error");
             }
         })
-        $("#load-wrapper").css("display","block")
-        $(".list-wrapper").css("display","none")
-        $("#pk-display").css("display","none")
+        $("#load-wrapper").css("display","block");
+        $(".list-wrapper").css("display","none");
+        $("#pk-display").css("display","block");
+        $(".pk-end-wrapper").css("display","none");
+        
     })
 };
 
@@ -193,9 +196,11 @@ ws.onclose = function() {
 // 点击开始--进入PK
 $(".begin").click(function () {
     createUser();
-    $("#load-wrapper").css("display","none")
-    $(".list-wrapper").css("display","none")
-    $("#pk-display").css("display","block")
+    $("#load-wrapper").css("display","block");
+    $(".list-wrapper").css("display","none");
+    $("#pk-display").css("display","block");
+    $(".pk-end-wrapper").css("display","none");
+    
     console.log("发起者---开始游戏")
     $.ajax({
         type: 'POST',
@@ -283,9 +288,10 @@ $(document).ready(function(){
                     console.log("邀请PK失败")
                 }
             })
-            $("#load-wrapper").css("display","block")
-            $(".list-wrapper").css("display","none")
-            $("#pk-display").css("display","none")
+            $("#load-wrapper").css("display","block");
+            $(".list-wrapper").css("display","none");
+            $("#pk-display").css("display","none");
+            $(".pk-end-wrapper").css("display","none");
         })
 
         //   拒绝邀请
@@ -455,12 +461,20 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
                     if($score_1 > $score_2) {
                         $winer_id = $user_id
                         console.log("赢了")
+                        $(".pk-end-wrapper .info").text("挑战成功");
                     } else if ($score_1 < $score_2) {
                         $winer_id = $to_user_id
                         console.log("输了")
+                        $(".pk-end-wrapper .info").text("挑战失败");
                     } else {
                         console.log("平局")
+                        $(".pk-end-wrapper .info").text("平居");
                     }
+                    $("#load-wrapper").css("display","block");
+                    $(".list-wrapper").css("display","none");
+                    $("#pk-display").css("display","block");
+                    $(".pk-end-wrapper").css("display","none");
+                    
                     console.log($score_1)
                     console.log($score_2)
                     console.log("$winer_id", $winer_id ,"***************************************************************************")
