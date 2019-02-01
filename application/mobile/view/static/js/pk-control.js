@@ -16,8 +16,8 @@ let $quset_index = 0;
 let timer = 10000;
 let timeText = 0;
 let $_index = 0;  // 渲染
-let $canchoose = false;
 let $is_choose_2 = false;
+let $can_choose  = false;
 
     
 
