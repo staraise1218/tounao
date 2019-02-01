@@ -459,22 +459,25 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
                 if($_index == 5 ) {
                     if($score_1 > $score_2) {
                         $winer_id = $user_id
-                        $result = "胜利"
-                        console.log("赢了")
+                        $result = 1
+                        console.log("胜利")
+                        $(".pk-end-wrapper .info").text(胜利);
                     } else if ($score_1 < $score_2) {
                         $winer_id = $to_user_id
-                        console.log("输了")
-                        $result = "失败"
+                        console.log("失败")
+                        $result = 2
+                        $(".pk-end-wrapper .info").text(失败);
                     } else {
                         console.log("平局")
-                        $result = "平局"
+                        $result = 3
+                        $(".pk-end-wrapper .info").text(平局);
                     }
                     $("#load-wrapper").css("display","none");
                     $(".list-wrapper").css("display","none");
                     $("#pk-display").css("display","none");
                     $(".pk-end-wrapper").css("display","block");
 
-                    $(".pk-end-wrapper .info").text($result);
+                    
                     $("#score1").text($score_1);
                     $("#score2").text($score_2);
                     console.log($score_1)
@@ -485,7 +488,6 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
                         type: 'POST',
                         url: "http://tounao.staraise.com.cn/Api/pk/sendResult",
                         data: { room_id :$room_id,
-                                // winer_id: $winer_id,
                                 user_id: $user_id,
                                 score: $score_1,
                                 res: $result
