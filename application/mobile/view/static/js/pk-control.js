@@ -468,7 +468,7 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
                         $(".pk-end-wrapper .info").text("挑战失败");
                     } else {
                         console.log("平局")
-                        $(".pk-end-wrapper .info").text("平居");
+                        $(".pk-end-wrapper .info").text("平局");
                     }
                     $("#load-wrapper").css("display","none");
                     $(".list-wrapper").css("display","none");

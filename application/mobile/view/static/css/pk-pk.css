@@ -631,6 +631,9 @@
     box-sizing: border-box;
     margin-top: -0.2rem;
 }
+.pk-end-wrapper .info-wrapper .info {
+    text-align: center;
+}
 
 .pk-end-wrapper .jiangli-wrapper {
     margin-top: 0.6rem;
@@ -691,6 +694,7 @@
 .pk-end-wrapper .btn-wrapper .contain-btn {
     position: relative;
     background: rgb(140, 204, 231);
+    margin: 0;
 }
 .pk-end-wrapper .btn-wrapper .share {
     background: rgb(252, 52, 101);
