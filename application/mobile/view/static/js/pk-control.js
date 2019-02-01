@@ -148,15 +148,14 @@ ws.onmessage = function (event) {
     }
 
 
-    // TODO
-    // 接受邀请 -- 可能不在 omessage 中进行
+    // 接受邀请 
     $(".agreen").click(function(){    
         $("body").addClass("pk-bg");
         console.log($room_id,$user_id)
         console.log("接受者 agreen")
-        $("#load-wrapper").css("display","none");
+        $("#load-wrapper").css("display","block");
         $(".list-wrapper").css("display","none");
-        $("#pk-display").css("display","block");
+        $("#pk-display").css("display","none");
         $(".pk-end-wrapper").css("display","none");
         $.ajax({
             type: 'POST',
@@ -475,7 +474,8 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
                     $(".list-wrapper").css("display","none");
                     $("#pk-display").css("display","none");
                     $(".pk-end-wrapper").css("display","block");
-                    
+                    $("#score1").text($score_1);
+                    $("#score2").text($score_2);
                     console.log($score_1)
                     console.log($score_2)
                     console.log("$winer_id", $winer_id ,"***************************************************************************")
