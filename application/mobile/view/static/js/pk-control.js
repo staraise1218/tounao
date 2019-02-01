@@ -125,8 +125,8 @@ ws.onmessage = function (event) {
                             userHeight_2 += patentHeight / 5;
                             $(".user2_jindu-con").animate({height:userHeight_2},"fast")
                             // $("#user2-number").get(0).innerText = Number($("#user2-number").get(0).innerText) + 100;
-                            $score_2 = Number($("#user1-number").get(0).innerText) + 100;
-                            $("#user1-number").text($score_2);
+                            $score_2 = Number($("#user2-number").get(0).innerText) + 100;
+                            $("#user2-number").text($score_2);
                         })
                     }, 500)
                 }
@@ -354,10 +354,11 @@ function createQuestion(index) {
 
 // 选择答案部分
 $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
+    
+    console.log("$_index", $_index ,"$can_choose",$can_choose)
     var $answer = $(".questions-wrapper").attr("data-answer")
     var _this = $(this);
     console.log($answer)
-
 
     // if($(".user1-active").length > 0) { return }
     // if($_index == 5 && timeText == 0) {
@@ -367,9 +368,8 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
     }
     if($_index < 5) { $(".user1-active").removeClass("user1-active");}
     
-    $_index ++
-    console.log($_index)
-
+    $_index ++;
+    console.log("$_index", $_index ,"$can_choose",$can_choose)
     _this.addClass("user1-active")
 
     if($(this).attr("data") == $answer) {
@@ -435,7 +435,7 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
         console.log($is_choose_2)
         if($is_choose_2) {
             $can_choose = true;
-            console.log($can_choose)
+            console.log("$_index", $_index ,"$can_choose",$can_choose)
             setTimeout(function () {
                 createQuestion($_index);
                 clearInterval(timer);
