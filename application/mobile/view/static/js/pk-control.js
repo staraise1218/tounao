@@ -151,7 +151,6 @@ ws.onmessage = function (event) {
     // TODO
     // 接受邀请 -- 可能不在 omessage 中进行
     $(".agreen").click(function(){
-        createUser();
         console.log($room_id,$user_id)
         console.log("接受者 agreen")
         $.ajax({
@@ -167,8 +166,8 @@ ws.onmessage = function (event) {
                 $to_user_id = data.data.userinfo.user_id
                 $touserinfo = data.data.touserinfo;
                 $userinfo = data.data.userinfo;
-
-                gameStart();
+                createUser();
+                // gameStart();
                 console.log("接受者 agreen*******************************************")
             },
             error: function(e) {
