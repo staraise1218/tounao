@@ -51,13 +51,14 @@ ws.onmessage = function (event) {
 
     // 绑定Uid
     if($data.action == 'client_id') {
+        console.log("action **************** client_id")
         $.ajax({
             type: 'POST',
             url: "http://tounao.staraise.com.cn/Api/common/bindUid",
             data: postData,
             dataType: "json",
             success: function(res){
-                console.log("socket ajax 绑定成功")
+                console.log(res,"socket ajax 绑定成功")
             },
             error: function(e) {
                 console.log("socket ajax 绑定失败");
@@ -67,6 +68,7 @@ ws.onmessage = function (event) {
 
     // 接受者接到通知
     if($data.action == 'invite') {
+        console.log("action **************** invite")
         console.log("发起者 action")
         console.log("通知被邀请者进入房间")
         console.log($data)
@@ -83,6 +85,7 @@ ws.onmessage = function (event) {
 
     
     if($data.action == 'intoRoom') {
+        console.log("action **************** intoroom")
         // console.log("接受者 action")
         // console.log($room_id,$user_id)
         // console.log($data)
@@ -91,6 +94,7 @@ ws.onmessage = function (event) {
 
     // 接受者开始游戏
     if($data.action == 'start') {
+        console.log("action **************** start")
         $("#load-wrapper").css("display","none")
         $(".list-wrapper").css("display","none")
         $("#pk-display").css("display","block")
@@ -99,6 +103,7 @@ ws.onmessage = function (event) {
 
     // 收到对方选择
     if($data.action == 'choose') {
+        console.log("action **************** choose")
         $is_choose_2 = true;
         $user2_answer = $data.answer;
         $user2_isright = $data.is_right;
@@ -137,9 +142,7 @@ ws.onmessage = function (event) {
     // 接受邀请 -- 可能不在 omessage 中进行
     $(".agreen").click(function(){
         console.log($room_id,$user_id)
-        // window.location.href="../pk/index.html?roomId=" + $room_id + "&userId=" + $user_id; 
-        console.log("接受者 action")
-        console.log($room_id,$user_id)
+        console.log("接受者 agreen")
         $.ajax({
             type: 'POST',
             url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
@@ -152,19 +155,15 @@ ws.onmessage = function (event) {
                 $knowledgeList = res.data.knowledgeList
                 $to_user_id = res.data.userinfo.user_id
                 gameStart();
-                console.log("success*******************************************")
+                console.log("接受者 agreen*******************************************")
             },
             error: function(e) {
-                console.log("socket ajax 绑定失败");
+                console.log("接受者 agreen error");
             }
         })
         $("#load-wrapper").css("display","block")
         $(".list-wrapper").css("display","none")
         $("#pk-display").css("display","none")
-        console.log("接收者---开始游戏")
-        // setTimeout(function () {
-            // gameStart();
-        // }, 3000)
     })
 };
 
@@ -198,9 +197,7 @@ $(".begin").click(function () {
             console.log("通知发起者开始答题 ---- error")
         }
     })
-    // setTimeout(function () {
-        gameStart();
-    // }, 3000)
+    gameStart();
 })
 
 
