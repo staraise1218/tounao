@@ -150,7 +150,8 @@ ws.onmessage = function (event) {
 
     // TODO
     // 接受邀请 -- 可能不在 omessage 中进行
-    $(".agreen").click(function(){
+    $(".agreen").click(function(){    
+        $("body").addClass("pk-bg");
         console.log($room_id,$user_id)
         console.log("接受者 agreen")
         $.ajax({
@@ -253,7 +254,8 @@ $(document).ready(function(){
           })
         
         // 邀请PK
-        $(".pk").click(function () {
+        $(".pk").click(function () {    
+            $("body").addClass("pk-bg");
             console.log(this)
             console.log($(this).parents())
             console.log($($(this).parents()).eq(0))
