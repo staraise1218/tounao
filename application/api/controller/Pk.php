@@ -20,6 +20,8 @@ class Pk extends Base {
 		$user_id = I('user_id');
 		$to_user_id = I('to_user_id');
 
+
+		if($user_id == $to_user_id) response_error('', '不能邀请自己');
 		if(!Gateway::isUidOnline($user_id)) response_error('', '您不在线');
 		if(!Gateway::isUidOnline($to_user_id)) response_error('', '对方不在线');
 
@@ -138,7 +140,7 @@ class Pk extends Base {
 			'winer_id'=>$winer_id,
 			'status' => 3,
 		);
-		Db::name('room')->where('room_id', $room_id)->update($updatedata);
+		Db::name('room')->where('id', $room_id)->update($updatedata);
 
 		response_success();
 	}
