@@ -134,13 +134,17 @@ class Pk extends Base {
 	// pk结果 
 	public function sendResult(){
 		$room_id = I('room_id');
-		$winer_id = I('winer_id');
+		$user_id = I('user_id');
+		$score = I('score');
+		$res = I('res');
 
-		$updatedata = array(
-			'winer_id'=>$winer_id,
-			'status' => 3,
+		$data = array(
+			'room_id'=>$room_id,
+			'user_id' => $user_id,
+			'score'=>$score,
+			'res' => $res,
 		);
-		Db::name('room')->where('id', $room_id)->update($updatedata);
+		Db::name('room_result')->insert($data);
 
 		response_success();
 	}
