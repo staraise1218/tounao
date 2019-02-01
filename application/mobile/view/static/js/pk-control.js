@@ -119,12 +119,11 @@ ws.onmessage = function (event) {
             $.each($(".choose-wrapper .choose-btn"),function(index,item) {
                 if($(item).attr("data") == $user2_answer) {
                     console.log("user2正确")
-                    $(item).addClass("user2-dui");
+                    // $(item).addClass("user2-dui");
                     setTimeout(function() {
                         $(".user2_jindu-con").animate({},function() {
                             userHeight_2 += patentHeight / 5;
                             $(".user2_jindu-con").animate({height:userHeight_2},"fast")
-                            // $("#user2-number").get(0).innerText = Number($("#user2-number").get(0).innerText) + 100;
                             $score_2 = Number($("#user2-number").get(0).innerText) + 100;
                             $("#user2-number").text($score_2);
                         })
@@ -135,7 +134,7 @@ ws.onmessage = function (event) {
             $.each($(".choose-wrapper .choose-btn"),function(index,item) {
                 if($(item).attr("data") == $user2_answer) {
                     console.log("user2错误")
-                    $(item).addClass("user2-cuo");
+                    // $(item).addClass("user2-cuo");
                 }
             })
         }
@@ -459,6 +458,32 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
                     })
                 }
             },1500)
+
+
+            if($user2_isright == 1) {
+                $.each($(".choose-wrapper .choose-btn"),function(index,item) {
+                    if($(item).attr("data") == $user2_answer) {
+                        console.log("user2正确")
+                        $(item).addClass("user2-dui");
+                        // setTimeout(function() {
+                        //     $(".user2_jindu-con").animate({},function() {
+                        //         userHeight_2 += patentHeight / 5;
+                        //         $(".user2_jindu-con").animate({height:userHeight_2},"fast")
+                        //         // $("#user2-number").get(0).innerText = Number($("#user2-number").get(0).innerText) + 100;
+                        //         $score_2 = Number($("#user2-number").get(0).innerText) + 100;
+                        //         $("#user2-number").text($score_2);
+                        //     })
+                        // }, 500)
+                    }
+                })
+            } else if ($user2_isright == 2){
+                $.each($(".choose-wrapper .choose-btn"),function(index,item) {
+                    if($(item).attr("data") == $user2_answer) {
+                        console.log("user2错误")
+                        $(item).addClass("user2-cuo");
+                    }
+                })
+            }
             clearInterval(timer);
         }   
     },500)
