@@ -151,6 +151,7 @@ ws.onmessage = function (event) {
     // TODO
     // 接受邀请 -- 可能不在 omessage 中进行
     $(".agreen").click(function(){
+        createUser();
         console.log($room_id,$user_id)
         console.log("接受者 agreen")
         $.ajax({
@@ -193,6 +194,7 @@ ws.onclose = function() {
 
 // 点击开始--进入PK
 $(".begin").click(function () {
+    createUser();
     $("#load-wrapper").css("display","none")
     $(".list-wrapper").css("display","none")
     $("#pk-display").css("display","block")
@@ -304,10 +306,6 @@ function createUser() {
     $(".user2-title-wrapper img").get(0).src = $touserinfo.head_pic;
     $(".user2-title-wrapper .user1-name").text($touserinfo.nickname);
 }
-
-
-
-
 
 
 // *************************************
