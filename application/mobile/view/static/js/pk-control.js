@@ -456,10 +456,10 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
             console.log($can_choose)
         }
     },500)
-    if($can_choose) {
-        createQuestion($_index);
-    }
 })
+if($can_choose) {
+    createQuestion($_index);
+}
 
 
 function remove() {
