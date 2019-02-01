@@ -461,23 +461,22 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
                         $winer_id = $user_id
                         $result = 1
                         console.log("胜利")
-                        $(".pk-end-wrapper .info").text(胜利);
+                        $(".pk-end-wrapper .info").text("胜利");
                     } else if ($score_1 < $score_2) {
                         $winer_id = $to_user_id
                         console.log("失败")
                         $result = 2
-                        $(".pk-end-wrapper .info").text(失败);
+                        $(".pk-end-wrapper .info").text("失败");
                     } else {
                         console.log("平局")
                         $result = 3
-                        $(".pk-end-wrapper .info").text(平局);
+                        $(".pk-end-wrapper .info").text("平局");
                     }
                     $("#load-wrapper").css("display","none");
                     $(".list-wrapper").css("display","none");
                     $("#pk-display").css("display","none");
                     $(".pk-end-wrapper").css("display","block");
 
-                    
                     $("#score1").text($score_1);
                     $("#score2").text($score_2);
                     console.log($score_1)
