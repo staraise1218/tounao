@@ -326,8 +326,10 @@ function createUser() {
 
 function gameStart() {
     createQuestion($_index);
+    gameTimer();
 }
 
+// 定时器
 function gameTimer () {
     setInterval(function () {
         // 渲染页面时间
