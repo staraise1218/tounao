@@ -7,7 +7,9 @@ let $action,
     $client_id,
     $knowledgeList = [],
     $user2_answer = '',
-    $user2_isright = '';
+    $user2_isright = '',
+    $userinfo = {},
+    $touserinfo = {}
 
 let patentHeight = $(".jindu").height();
 let userHeight_1 = 0;
@@ -156,12 +158,15 @@ ws.onmessage = function (event) {
             url: "http://tounao.staraise.com.cn/Api/pk/intoroom",
             data: {room_id:$room_id,to_user_id:$user_id},
             dataType: "json",
-            success: function(res){
-                console.log(res)
+            success: function(data){
+                console.log(data)
                 console.log("socket ajax 绑定成功")
-                console.log($knowledgeList)
-                $knowledgeList = res.data.knowledgeList
-                $to_user_id = res.data.userinfo.user_id
+                $data = data;
+                $knowledgeList = data.data.knowledgeList
+                $to_user_id = data.data.userinfo.user_id
+                $touserinfo = data.data.touserinfo;
+                $userinfo = data.data.userinfo;
+
                 gameStart();
                 console.log("接受者 agreen*******************************************")
             },
@@ -285,6 +290,20 @@ $(document).ready(function(){
          }
       })
 })
+
+// *************************************
+
+function createUser() {
+    $(".user1-wrapper .poster img").get(0).src = $touserinfo.head_pic;
+    $(".user1-wrapper .user1-info p").eq(1).text($touserinfo.nickname)
+    $(".user2-wrapper .user1-info p").eq(1).text($userinfo.nickname)
+    $(".user2-wrapper .poster img").get(0).src = $userinfo.head_pic;
+
+    $(".user1-title-wrapper img").get(0).src = $userinfo.head_pic;
+    $(".user1-title-wrapper .user1-name").text($userinfo.nickname);
+    $(".user2-title-wrapper img").get(0).src = $touserinfo.head_pic;
+    $(".user2-title-wrapper .user1-name").text($touserinfo.nickname);
+}
 
 
 
@@ -459,21 +478,12 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
                 }
             },1500)
 
-
+            // 对手class显示
             if($user2_isright == 1) {
                 $.each($(".choose-wrapper .choose-btn"),function(index,item) {
                     if($(item).attr("data") == $user2_answer) {
                         console.log("user2正确")
                         $(item).addClass("user2-dui");
-                        // setTimeout(function() {
-                        //     $(".user2_jindu-con").animate({},function() {
-                        //         userHeight_2 += patentHeight / 5;
-                        //         $(".user2_jindu-con").animate({height:userHeight_2},"fast")
-                        //         // $("#user2-number").get(0).innerText = Number($("#user2-number").get(0).innerText) + 100;
-                        //         $score_2 = Number($("#user2-number").get(0).innerText) + 100;
-                        //         $("#user2-number").text($score_2);
-                        //     })
-                        // }, 500)
                     }
                 })
             } else if ($user2_isright == 2){
