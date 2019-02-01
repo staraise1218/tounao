@@ -277,9 +277,8 @@
      <script>
          let $userinfo = {$userinfo};
             console.log($userinfo)
-            localStorage["mUserInfo"] = JSON.stringify(userinfo);
-            localStorage.setItem("mUserInfo", JSON.stringify(userinfo));
-
+            localStorage["mUserInfo"] = JSON.stringify($userinfo);
+            localStorage.setItem("mUserInfo", JSON.stringify($userinfo));
     </script>
     <script src="__STATIC__/js/pk-control.js"></script>
     <script src="__STATIC__/js/pk-control-choose.js"></script>
