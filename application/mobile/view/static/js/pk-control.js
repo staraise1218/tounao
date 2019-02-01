@@ -325,7 +325,9 @@ function createQuestion(index) {
     $is_choose_2 = false;
     $can_choose = false;
     let questionsWrapper = '';
-    remove();
+    if($_index <= 5) {
+        remove();
+    }
     if(index < 5) {
         questionsWrapper = `<form class="questions-wrapper" action="" data-know_id = ${$knowledgeList[index].room_knowledge_id} data-answer=${$knowledgeList[index].answer}>
                                 <h5> ${$knowledgeList[index].title} </h5>
