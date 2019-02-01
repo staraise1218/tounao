@@ -20,8 +20,8 @@ let $is_choose_2 = false;
 let $can_choose  = false;
 let $score_1 = 0;
 let $score_2 = 0;
-
-    
+let $winer_id = '';
+let $sendResult_data = {}    
 
 
 // 保存用户登陆信息
@@ -139,6 +139,11 @@ ws.onmessage = function (event) {
                 }
             })
         }
+    }
+    // 结束 --- 胜利者
+    if($data.action == 'sendResult') {
+        console.log("action **************** sendResult")
+        console.log($sendResult_data)
     }
 
 
@@ -437,6 +442,22 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
                 createQuestion($_index);
                 if($_index == 5 ) {
                     alert("结束")
+                    $.ajax({
+                        type: 'POST',
+                        url: "http://tounao.staraise.com.cn/Api/pk/sendResult",
+                        data: { room_id :$room_id,
+                                winer_id: $winer_id = $user_id > $to_user_id ? $user_id : $to_user_id
+                        },
+                        dataType: "json",
+                        success: function (data) {
+                            console.log(data)
+                            console.log("结束 **************** success")
+                            $sendResult_data = data;
+                        },
+                        error: function () {
+                            console.log("结束 ************* error")
+                        }
+                    })
                 }
                 clearInterval(timer);    
             },1500)
