@@ -322,7 +322,6 @@ function createUser() {
     $(".user2-title-wrapper .user2-name").text($touserinfo.nickname);
 }
 
-
 // *************************************
 
 function gameStart() {
@@ -533,3 +532,7 @@ function remove() {
     $(".user2-dui").removeClass("user2-dui");
     $(".user2-cuo").removeClass("user2-cuo");
 }
+
+$(".contain-btn").on("click", function () {
+    window.location.href='http://tounao.staraise.com.cn/index.php/mobile/weixin/get_userinfo'
+})
