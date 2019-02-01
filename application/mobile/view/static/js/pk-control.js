@@ -363,9 +363,6 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
     // if($(".user1-active").length > 0) { return }
     // if($_index == 5 && timeText == 0) {
     if($(".user1-active").length > 0 || $_index >= 5) { return }
-    if($_index == 5 ) {
-        alert("结束")
-    }
     if($_index < 5) { $(".user1-active").removeClass("user1-active");}
     
     $_index ++;
@@ -438,7 +435,10 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
             console.log("$_index", $_index ,"$can_choose",$can_choose)
             setTimeout(function () {
                 createQuestion($_index);
-                clearInterval(timer);
+                if($_index == 5 ) {
+                    alert("结束")
+                }
+                clearInterval(timer);    
             },1500)
         }   
     },500)
