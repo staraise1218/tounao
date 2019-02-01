@@ -353,7 +353,7 @@ function createQuestion(index) {
 
 
 // 选择答案部分
-$(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
+$(".choose-wrapper").delegate(".choose-btn","click", function () {
     
     console.log("$_index", $_index ,"$can_choose",$can_choose)
     var $answer = $(".questions-wrapper").attr("data-answer")
