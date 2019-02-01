@@ -458,6 +458,7 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
     },500)
 })
 if($can_choose) {
+    console.log("**********************执行了************************")
     createQuestion($_index);
 }
 
