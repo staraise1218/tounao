@@ -18,6 +18,8 @@ let timeText = 0;
 let $_index = 0;  // 渲染
 let $is_choose_2 = false;
 let $can_choose  = false;
+let $score_1 = 0;
+let $score_2 = 0;
 
     
 
@@ -122,7 +124,9 @@ ws.onmessage = function (event) {
                         $(".user2_jindu-con").animate({},function() {
                             userHeight_2 += patentHeight / 5;
                             $(".user2_jindu-con").animate({height:userHeight_2},"fast")
-                            $("#user2-number").get(0).innerText = Number($("#user2-number").get(0).innerText) + 100;
+                            // $("#user2-number").get(0).innerText = Number($("#user2-number").get(0).innerText) + 100;
+                            $score_2 = Number($("#user1-number").get(0).innerText) + 100;
+                            $("#user1-number").text($score_2);
                         })
                     }, 500)
                 }
@@ -309,13 +313,11 @@ function gameStart() {
 function timeFunc () {
     setInterval(function() {
         if(timeText >= 0) {
-            // console.log(timeText)
             if(timeText > 0) {
                 timeText--;
             }
             $(".daojishi-content").text(timeText);
         }
-        // console.log(localStorage.getItem("user2.answers"))
     }, 1000)
 }
 
@@ -360,39 +362,15 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
     // if($(".user1-active").length > 0) { return }
     // if($_index == 5 && timeText == 0) {
     if($(".user1-active").length > 0 || $_index >= 5) { return }
+    if($_index == 5 ) {
+        alert("结束")
+    }
     if($_index < 5) { $(".user1-active").removeClass("user1-active");}
     
     $_index ++
     console.log($_index)
 
-    _this.addClass("user1-active")    
-
-
-
-    if( false && 'localStorage.getItem("user2_choose")!= ""') {
-        var user2_choose = localStorage.getItem("user2_choose") - 1;
-        $(".questions-wrapper .choose-btn").eq(user2_choose)
-        console.log($(".questions-wrapper .choose-btn").eq(user2_choose).attr("data")   )
-        if($(".questions-wrapper .choose-btn").eq(user2_choose).attr("data") == 1) {
-            console.log("user2 --- 正确")
-            setTimeout(function() {
-                $(".questions-wrapper .choose-btn").eq(user2_choose).addClass("user2-dui");
-                $(".user2_jindu-con").animate({},function() {
-                    userHeight_2 += patentHeight / 5;
-                    $(".user2_jindu-con").animate({height:userHeight_2},"fast")
-                    $("#user2-number").get(0).innerText = Number($("#user2-number").get(0).innerText) + 100;
-                })
-            }, 500)
-        } else if($(".questions-wrapper .choose-btn").eq(user2_choose).attr("data") == 2) {
-            console.log("user2 --- 错误")
-            setTimeout(function() {
-                $(".questions-wrapper .choose-btn").eq(user2_choose).addClass("user2-cuo");
-            }, 500)
-        } else {
-            console.log("user2 --- 未选择")
-        }
-    }
-    // user2 end
+    _this.addClass("user1-active")
 
     if($(this).attr("data") == $answer) {
         console.log("user1 ------- 回答正确！")
@@ -401,7 +379,9 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
             $(".user1_jindu-con").animate({},function() {
                 userHeight_1 += patentHeight / 5;
                 $(".user1_jindu-con").animate({height:userHeight_1},"fast");
-                $("#user1-number").get(0).innerText = Number($("#user1-number").get(0).innerText) + 100;
+                $score_1 = Number($("#user1-number").get(0).innerText) + 100;
+                $("#user1-number").text($score_1);
+                // $("#user1-number").get(0).innerText = Number($("#user1-number").get(0).innerText) + 100;
             })
         }, 500)
         var postData = {
@@ -461,7 +441,7 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
                 clearInterval(timer);
             },1500)
         }   
-    },500)   
+    },500)
 })
 
 // 选择样式
