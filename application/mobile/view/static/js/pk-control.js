@@ -298,14 +298,14 @@ function createUser() {
     console.log($userinfo)
     console.log($touserinfo)
     $(".user1-wrapper .poster img").get(0).src = $touserinfo.head_pic;
-    $(".user1-wrapper .user1-info p").eq(1).text($touserinfo.nickname)
-    $(".user2-wrapper .user1-info p").eq(1).text($userinfo.nickname)
+    $(".user1-wrapper .user1_name").eq(1).text($touserinfo.nickname)
     $(".user2-wrapper .poster img").get(0).src = $userinfo.head_pic;
+    $(".user2-wrapper .user2_name").eq(1).text($userinfo.nickname)
 
     $(".user1-title-wrapper img").get(0).src = $userinfo.head_pic;
     $(".user1-title-wrapper .user1-name").text($userinfo.nickname);
     $(".user2-title-wrapper img").get(0).src = $touserinfo.head_pic;
-    $(".user2-title-wrapper .user1-name").text($touserinfo.nickname);
+    $(".user2-title-wrapper .user2-name").text($touserinfo.nickname);
 }
 
 
