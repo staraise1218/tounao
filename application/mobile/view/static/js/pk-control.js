@@ -8,7 +8,6 @@ let $action,
     $knowledgeList = [],
     $user2_answer = '',
     $user2_isright = '',
-    $userinfo = {},
     $touserinfo = {}
 
 let patentHeight = $(".jindu").height();
@@ -254,6 +253,8 @@ $(document).ready(function(){
         
         // 邀请PK
         $(".pk").click(function () {
+            console.log(this)
+            console.log($(this))
             $to_user_id = $(this).data("id");
             var postData = {
                 user_id : $user_id,
