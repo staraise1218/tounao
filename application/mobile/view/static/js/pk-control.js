@@ -252,9 +252,9 @@ $(document).ready(function(){
           })
         
         // 邀请PK
-        $(".userList .item").delegate(".pk",'click',function () {
+        $(".pk").click(function () {
             console.log(this)
-            console.log($(this))
+            console.log($(this).parents())
             $to_user_id = $(this).data("id");
             var postData = {
                 user_id : $user_id,
