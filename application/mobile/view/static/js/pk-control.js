@@ -218,10 +218,6 @@ $(".begin").click(function () {
 
 
 
-
-
-
-
 // 渲染列表
 $(document).ready(function(){
     $.ajax({
