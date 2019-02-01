@@ -454,19 +454,11 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
         if($is_choose_2) {
             $can_choose = true;
             console.log($can_choose)
+            createQuestion($_index);
             clearInterval(timer);
         }   
-    },500)
-    if($can_choose) {
-        console.log("**********************执行了************************")
-        createQuestion($_index);
-    }
-    
+    },500)   
 })
-if($can_choose) {
-    console.log("**********************执行了************************")
-    createQuestion($_index);
-}
 
 // 选择样式
 function remove() {
