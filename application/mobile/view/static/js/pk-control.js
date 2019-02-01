@@ -454,8 +454,10 @@ $(".choose-wrapper").delegate(".choose-btn","touchstart", function () {
         if($is_choose_2) {
             $can_choose = true;
             console.log($can_choose)
-            createQuestion($_index);
-            clearInterval(timer);
+            setTimeout(function () {
+                createQuestion($_index);
+                clearInterval(timer);
+            },1500)
         }   
     },500)   
 })
