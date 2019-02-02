@@ -241,15 +241,8 @@ $(document).ready(function(){
         $(".pk").click(function () {
             $("body").addClass("pk-bg");
             console.log(this)
-
-            console.log($(this).parent().find("img").attr("src"));
-
-            console.log($(this).parent().find(".user-name").text())
-
-            // console.log($("$Li img").prop("src"))
-            // console.log($("$Li img").attr("src"))
-            // $touserinfo.nickname = $("$Li .user-name").text();
-            // $touserinfo.head_pic = $("$Li img").prop("src")
+            $touserinfo.nickname = $(this).parent().find(".user-name").text();
+            $touserinfo.head_pic = $(this).parent().find("img").attr("src");
 
             createUser();
             $to_user_id = $(this).data("id");
