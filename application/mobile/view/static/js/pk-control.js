@@ -610,4 +610,5 @@ $(".contain-btn").on("click", function () {
             $("#pk-display").css("display","none");
             $(".pk-end-wrapper").css("display","none");
             $(".list-wrapper").css("display","block");
+            $(".list-wrapper").css("display","none")
 })
