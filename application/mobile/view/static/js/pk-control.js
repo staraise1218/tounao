@@ -44,6 +44,9 @@ $("#pk-display").get(0).style.display = 'none';
 
 // 请求绑定 uid 接口
 ws.onmessage = function (event) {
+    setInterval(function(){
+      ws.send("heart")
+    },3000)
     console.log("socket onmessage 接受信息")
     $data = JSON.parse(event.data);
     console.log(event)
