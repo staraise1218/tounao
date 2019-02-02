@@ -9,6 +9,7 @@ let $action = '',
     $user2_answer = '',
     $user2_isright = '',
     $touserinfo = {}
+    $comeMe=false//告诉我进来了
 
 let patentHeight = $(".jindu").height(),
     userHeight_1 = 0,
@@ -91,6 +92,7 @@ ws.onmessage = function (event) {
 
     if($data.action == 'intoRoom') {
         console.log("action **************** intoroom")
+        $comeMe=true
     }
 
     // 接受者开始游戏
@@ -192,6 +194,10 @@ ws.onclose = function(data) {
 // 点击开始--进入PK
 $(".begin").click(function () {
     // createUser();
+    if(!$comeMe){
+        alert("对方还没准备好")
+        return
+    }
     $("#load-wrapper").css("display","none");
     $(".list-wrapper").css("display","none");
     $("#pk-display").css("display","block");
