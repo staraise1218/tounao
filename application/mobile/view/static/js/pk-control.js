@@ -282,6 +282,8 @@ $(document).ready(function(){
                         $(".list-wrapper").css("display","none");
                         $("#pk-display").css("display","none");
                         $(".pk-end-wrapper").css("display","none");                        
+                    } else {
+                        alert("对方不在线！")
                     }
                     $room_id = data.room_id;              
                     $knowledgeList = data.data.knowledgeList;
