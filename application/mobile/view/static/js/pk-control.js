@@ -24,7 +24,8 @@ let patentHeight = $(".jindu").height(),
     $sendResult_data = {},
     $result = '',
     $time_number = 10,
-    $time_text = 0;
+    $time_text = 0,
+    $answer_end = false;
 
 // 保存用户登陆信息
 $user_id = $userinfo.user_id;
@@ -333,6 +334,7 @@ function gameTimerStart () {
             createQuestion($_index);
             if($_index == 5) {
                 clearInterval($timerstart);
+                $answer_end = true;
             }
             $_index++;
         }
@@ -452,10 +454,13 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
             $time_number = 1;
             
             $can_choose = true;
+            if($_index == 5) {
+                $answer_end = true;
+            }
             console.log("$_index", $_index ,"$can_choose",$can_choose)
             setTimeout(function () {
                 // createQuestion($_index);
-                if($_index == 5 ) {
+                if($answer_end) {
                     // 判断胜负
                     if($score_1 > $score_2) {
                         $winer_id = $user_id
