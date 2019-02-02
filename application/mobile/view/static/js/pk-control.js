@@ -328,7 +328,7 @@ function gameTimerStart () {
         }
         if($time_number == 0) {
             console.log($_index)
-            if($_index == 5) {
+            if($_index == 4) {
                 clearInterval($timerstart);
             }
             createQuestion($_index);
