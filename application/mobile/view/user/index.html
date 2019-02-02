@@ -69,6 +69,7 @@
     <script>
         // 全局变量
         var $userinfo = {};
+        var $user_id = JSON.parse(localStorage.getItem("mUserInfo")).user_id;
 
         // 更改昵称
         $("#user-name").on("click", function() {
