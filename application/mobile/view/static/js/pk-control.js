@@ -227,6 +227,7 @@ $(".begin").click(function () {
 
 // 渲染列表
 $(document).ready(function(){
+    $(".dangqian img").get(0).src = $userinfo.head_pic;
     $.ajax({
         type: 'POST',
         url: "http://tounao.staraise.com.cn/Api/index/index",
