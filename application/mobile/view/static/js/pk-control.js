@@ -645,7 +645,10 @@ $(".contain-btn").on("click", function () {
             $result = '',
             $time_number = 10,
             $time_text = 0,
-            $answer_end = false;       
+            $answer_end = false;
+
+            $("#user1-number").text($score_1);
+            $("#user2-number").text($score_2);
 })
 
 // 点击头像跳转我的页面
