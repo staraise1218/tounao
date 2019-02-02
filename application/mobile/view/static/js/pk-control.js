@@ -35,7 +35,7 @@ var ws = new WebSocket("ws://120.92.10.2:2345");
 ws.onopen=function(){
     ws.send("youaremybaby")
     console.log("socket open  链接建立")
-}
+
 
 // 初始化页面
 $(".list-wrapper").get(0).style.display = 'block'
@@ -144,7 +144,7 @@ ws.onmessage = function (event) {
 
 
     // 接受邀请 
-    $(".agreen").click(function() {
+    $(".agreen").click(function() {    
         $("body").addClass("pk-bg");
         console.log($room_id,$user_id)
         console.log("接受者 agreen")
@@ -165,7 +165,8 @@ ws.onmessage = function (event) {
                 $to_user_id = data.data.userinfo.user_id
                 $touserinfo = data.data.touserinfo;
                 $userinfo = data.data.userinfo;
-                console.log("接受者 agreen*******************************************")
+                console.log("接受者 agreen*******************************************")        
+                createUser();
             },
             error: function(e) {
                 console.log("接受者 agreen error");
@@ -244,9 +245,13 @@ $(document).ready(function(){
             console.log($($(this).parents()).eq(0))
             console.log($($(this).parents()).get(0))
 
-            // var $Li = $($(this).parents()).get(0);
-            // console.log($("$Li img").prop("src"))
-            // console.log($("$Li img").attr("src"))
+            var $Li = $($(this).parents()).get(0);
+            console.log($("$Li .user-name").text())
+            console.log($("$Li img").prop("src"))
+
+
+            // console.log($("$Li img").prop("src"));
+            // console.log($("$Li img").attr("src"));
             // $touserinfo.nickname = $("$Li .user-name").text();
             // $touserinfo.head_pic = $("$Li img").prop("src")
 
@@ -306,10 +311,8 @@ function createUser() {
     // $(".load-wrapper .user2-name").text($touserinfo.nickname);
 }
 
-// *************************************
 
 // 游戏开始函数
-
 // 答题定时器
 function gameTimerStart () {
     var $timerstart =  setInterval(function () {
