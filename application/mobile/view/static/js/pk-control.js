@@ -433,7 +433,7 @@ function createQuestion(index) {
                                     <input type="checkbox" name="" style="display:none"> ${$knowledgeList[index].d}
                                 </label>
                             </form>`
-        $(".choose-wrapper").html(questionsWrapper);
+        $(".choose-wrapper").html($questionsWrapper);
     }
 }
 
