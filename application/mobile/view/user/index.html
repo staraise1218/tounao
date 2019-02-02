@@ -68,8 +68,7 @@
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script>
         // 全局变量
-        var $userinfo = JSON.parse(localStorage.getItem("mUserInfo"))
-        var $user_id = $userinfo.user_id;
+        var $userinfo = {};
 
         // 更改昵称
         $("#user-name").on("click", function() {
@@ -81,23 +80,26 @@
             console.log($("#username-edi").val())
             $(".edit-info-wrapper").css("display","none");
         })
-    
+
         $.ajax({
             type:"POST",
             url: "http://tounao.staraise.com.cn/api/user/userinfo",
             data: {user_id:$user_id},
             success: function (data) {
                 console.log(data)
-                console.log($user_id)
-                console.log($userinfo)
+                $userinfo = data;               
+                // 渲染
+                $(".user-poster-wrapper img").attr("src",data.head_pic);
+                $("#user-name").text($userinfo.nickname);
+                $("#grade").text($userinfo.school_display)
+
+
             },
             error: function () {
                 console.log('error')
             }
         })
     
-        // 渲染头像
-        $(".user-poster-wrapper img").attr("src",$userinfo.head_pic);
     
     </script>
 

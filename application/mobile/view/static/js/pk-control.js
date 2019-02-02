@@ -9,6 +9,7 @@ let $action = '',
     $user2_answer = '',
     $user2_isright = '',
     $touserinfo = {}
+    $comeMe=false//告诉我进来了
 
 let patentHeight = $(".jindu").height(),
     userHeight_1 = 0,
@@ -44,6 +45,9 @@ $("#pk-display").get(0).style.display = 'none';
 
 // 请求绑定 uid 接口
 ws.onmessage = function (event) {
+    setInterval(function(){
+      ws.send("heart")
+    },3000)
     console.log("socket onmessage 接受信息")
     $data = JSON.parse(event.data);
     console.log(event)
@@ -88,6 +92,7 @@ ws.onmessage = function (event) {
 
     if($data.action == 'intoRoom') {
         console.log("action **************** intoroom")
+        $comeMe=true
     }
 
     // 接受者开始游戏
@@ -180,13 +185,19 @@ ws.onerror = function () {
     console.log("socket---error")
 }
 
-ws.onclose = function() {
+ws.onclose = function(data) {
+    console.log("断开连接啦啦啦啦啦啦")
     console.log("socket---close")
+    console.log(data)
 }
 
 // 点击开始--进入PK
 $(".begin").click(function () {
     // createUser();
+    if(!$comeMe){
+        alert("对方还没准备好")
+        return
+    }
     $("#load-wrapper").css("display","none");
     $(".list-wrapper").css("display","none");
     $("#pk-display").css("display","block");
@@ -336,6 +347,60 @@ function gameTimerStart () {
             if($_index == 5) {
                 clearInterval($timerstart);
                 $answer_end = true;
+
+                 //newAdd 20190202
+                if($answer_end) {
+                    // 判断胜负
+                    if($score_1 > $score_2) {
+                        $winer_id = $user_id
+                        $result = 1
+                        console.log("胜利")
+                        $(".pk-end-wrapper .info").text("胜利");
+                    } else if ($score_1 < $score_2) {
+                        $winer_id = $to_user_id
+                        console.log("失败")
+                        $result = 2
+                        $(".pk-end-wrapper .info").text("失败");
+                    } else {
+                        console.log("平局")
+                        $result = 3
+                        $(".pk-end-wrapper .info").text("平局");
+                    }
+                    // 答题分数
+                    $("#score1").text($score_1);
+                    $("#score2").text($score_2);
+
+                    // 胜负页面显示
+                    $("#load-wrapper").css("display","none");
+                    $(".list-wrapper").css("display","none");
+                    $("#pk-display").css("display","none");
+                    $(".pk-end-wrapper").css("display","block");
+
+                    console.log("postData", postData ,"***************************************************************************")
+
+                    var postData =  {
+                        room_id :$room_id,
+                        user_id: $user_id,
+                        score: $score_1,
+                        res: $result
+                    }
+                    $.ajax({
+                        type: 'POST',
+                        url: "http://tounao.staraise.com.cn/Api/pk/sendResult",
+                        data: postData,
+                        dataType: "json",
+                        success: function (data) {
+                            console.log(data)
+                            console.log("结束 **************** success")
+                            $sendResult_data = data;
+                        },
+                        error: function () {
+                            console.log("结束 ************* error")
+                        }
+                    })
+                }
+
+
             }
             $_index++;
         }
@@ -401,7 +466,7 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
             room_knowledge_id: $(".questions-wrapper").attr("data-know_id"),
             user_id: $user_id,
             to_user_id: $to_user_id,
-            answer:	$(this).attr("data"),
+            answer: $(this).attr("data"),
             is_right:1
         }
         console.log(postData)
@@ -428,7 +493,7 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
             room_knowledge_id: $(".questions-wrapper").attr("data-know_id"),
             user_id: $user_id,
             to_user_id: $to_user_id,
-            answer:	$(this).attr("data"),
+            answer: $(this).attr("data"),
             is_right:2
         }
         console.log(postData)
@@ -449,7 +514,7 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
 
     // 判断user2是否选择完
     let timer = setInterval(function () {
-        // console.log($is_choose_2);
+        console.log($is_choose_2);
         if($is_choose_2) {
             $time_number = 1;
             
@@ -544,7 +609,43 @@ function remove() {
 
 // 点击继续挑战按钮  ----》 跳转首页
 $(".contain-btn").on("click", function () {
-    window.location.href='http://tounao.staraise.com.cn/index.php/mobile/weixin/get_userinfo'
+    // window.location.href='http://tounao.staraise.com.cn/index.php/mobile/weixin/get_userinfo'
+            // 显示加载页面
+            $("#load-wrapper").css("display","none");
+            $(".list-wrapper").css("display","none");
+            $("#pk-display").css("display","none");
+            $(".pk-end-wrapper").css("display","none");
+            $(".list-wrapper").css("display","block");
+            $(".tanchutn-wrapper").css("display","none")
+
+            // $user_id = '',
+            // $client_id = '',
+            $touserinfo = {}
+            $action = '',
+            $room_id = '',
+            $to_user_id = '',
+            $data = {},
+            $knowledgeList = [],
+            $user2_answer = '',
+            $user2_isright = '',
+            $comeMe=false//告诉我进来了
+        
+            patentHeight = $(".jindu").height(),
+            userHeight_1 = 0,
+            userHeight_2 = 0,
+            $quset_index = 0,
+            timeText = 0,
+            $_index = 0,  // 渲
+            $is_choose_2 = false,
+            $can_choose  = false,
+            $score_1 = 0,
+            $score_2 = 0,
+            $winer_id = '',
+            $sendResult_data = {},
+            $result = '',
+            $time_number = 10,
+            $time_text = 0,
+            $answer_end = false;       
 })
 
 // 点击头像跳转我的页面
