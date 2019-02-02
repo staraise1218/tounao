@@ -24,8 +24,17 @@ class User extends Base {
 			->field('head_pic, nickname, grade_id, goldcoin, school, school_display')
 			->find();
 
+		// 获取年级
+		if($userinfo['grade_id']){
+			$grade = Db::name('grade')->where('id', $userinfo['grade_id'])->find();
+			$userinfo['grade'] = $grade['title'];
+			unset($userinfo['grade']);
+		}
+
 		response_success($userinfo);
 	}
+
+	public function 
 
     /**
      * [uploadFile 上传头像/认证视频 app 原生调用]
