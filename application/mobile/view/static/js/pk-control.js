@@ -162,8 +162,8 @@ ws.onmessage = function (event) {
                 console.log("socket ajax 绑定成功")
                 $data = data;
                 $knowledgeList = data.data.knowledgeList
-                $to_user_id = data.data.userinfo.user_id
-                $touserinfo = data.data.touserinfo;
+                $touserinfo = data.data.userinfo.user_id
+                $to_user_id = data.data.touserinfo;
                 $userinfo = data.data.userinfo;
                 console.log("接受者 agreen*******************************************")
                 createUser();
