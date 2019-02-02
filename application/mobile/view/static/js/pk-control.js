@@ -166,6 +166,7 @@ ws.onmessage = function (event) {
                 $touserinfo = data.data.touserinfo;
                 $userinfo = data.data.userinfo;
                 console.log("接受者 agreen*******************************************")
+                createUser();
             },
             error: function(e) {
                 console.log("接受者 agreen error");
@@ -244,7 +245,12 @@ $(document).ready(function(){
             console.log($($(this).parents()).eq(0))
             console.log($($(this).parents()).get(0))
 
-            // var $Li = $($(this).parents()).get(0);
+            var $Li = $($(this).parents()).get(0);
+
+            console.log($($(this).parents()).find("img").attr("src"));
+
+            console.log($($(this).parents()).find(".user-name").text())
+
             // console.log($("$Li img").prop("src"))
             // console.log($("$Li img").attr("src"))
             // $touserinfo.nickname = $("$Li .user-name").text();
@@ -294,8 +300,8 @@ $(document).ready(function(){
 // TODO  ---- > 渲染位置相同
 // 渲染对战用户信息
 function createUser() {
-    // console.log($userinfo)
-    // console.log($touserinfo)
+    console.log($userinfo)
+    console.log($touserinfo)
     // $(".user1-wrapper .poster img").get(0).src = $touserinfo.head_pic;
     // $(".user1-wrapper .user1_name").text($touserinfo.nickname)
     // $(".user2-wrapper .poster img").get(0).src = $userinfo.head_pic;
