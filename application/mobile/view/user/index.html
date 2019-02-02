@@ -67,6 +67,10 @@
 
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script>
+        // 全局变量
+        var $userinfo = JSON.parse(localStorage.getItem("mUserInfo"))
+        var $user_id = $userinfo.user_id;
+
         // 更改昵称
         $("#user-name").on("click", function() {
             $("#username-edi").val($("#user-name").text())
@@ -78,12 +82,10 @@
             $(".edit-info-wrapper").css("display","none");
         })
     
-    
-
         $.ajax({
             type:"POST",
             url: "http://tounao.staraise.com.cn/api/user/userinfo",
-            data: {},
+            data: {user_id:$user_id},
             success: function (data) {
                 console.log(data)
             },
