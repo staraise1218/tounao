@@ -695,8 +695,8 @@ $(".abandon-b").on("click", function () {
     // 显示加载页面
     $(".list-wrapper").css("display","block");
     $("#load-wrapper").css("display","none");
-    $(".list-wrapper").css("display","none");
     $("#pk-display").css("display","none");
     $(".pk-end-wrapper").css("display","none");
-    $(".tanchutn-wrapper").css("display","none")  
+    $(".tanchutn-wrapper").css("display","none");
+    $("body").addClass("pkb-bg");
 })
