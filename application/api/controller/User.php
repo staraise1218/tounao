@@ -17,6 +17,14 @@ class User extends Base {
 
 	public function userinfo(){
 		$user_id = I('user_id');
+
+		$userinfo = Db::name('users')
+			->where('user_id', $user_id)
+			->where('is_lock', 0)
+			->field('head_pic, nickname, grade_id, goldcoin, school, school_display')
+			->find();
+
+		response_success($userinfo);
 	}
 
     /**
