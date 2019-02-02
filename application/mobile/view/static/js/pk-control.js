@@ -256,6 +256,7 @@ $(document).ready(function(){
               if(item.user_id == $user_id) {
                 // linear-gradient(#fddb92,#fee140)
                 $(".item").eq(index).css("background","linear-gradient(#fddb92,#fee140)")
+                $(".item").eq(index).find($(".pk")).css("display","none")
               }
           })
           
