@@ -330,10 +330,10 @@ function gameTimerStart () {
         }
         if($time_number == 0) {
             console.log($_index)
+            createQuestion($_index);
             if($_index == 5) {
                 clearInterval($timerstart);
             }
-            createQuestion($_index);
             $_index++;
         }
     },  1000)
