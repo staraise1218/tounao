@@ -605,8 +605,8 @@ function remove() {
 $(".contain-btn").on("click", function () {
     // window.location.href='http://tounao.staraise.com.cn/index.php/mobile/weixin/get_userinfo'
             // 显示加载页面
-            $("#load-wrapper").css("display","none");
-            $(".list-wrapper").css("display","block");
+            $("#load-wrapper").css("display","block");
+            $(".list-wrapper").css("display","none");
             $("#pk-display").css("display","none");
             $(".pk-end-wrapper").css("display","none");
 })
