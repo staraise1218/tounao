@@ -26,7 +26,8 @@ let patentHeight = $(".jindu").height(),
     $result = '',
     $time_number = 10,
     $time_text = 0,
-    $answer_end = false;
+    $answer_end = false,
+    $questionsWrapper = '';
 
 // 保存用户登陆信息
 $user_id = $userinfo.user_id;
@@ -412,12 +413,12 @@ function createQuestion(index) {
     $is_choose_2 = false;
     $can_choose = false;
     $time_number = 10;
-    let questionsWrapper = '';
+    // let questionsWrapper = '';
     if($_index < 5) {
         remove();
     }
     if(index < 5) {
-        questionsWrapper = `<form class="questions-wrapper" action="" data-know_id = ${$knowledgeList[index].room_knowledge_id} data-answer=${$knowledgeList[index].answer}>
+        $questionsWrapper = `<form class="questions-wrapper" action="" data-know_id = ${$knowledgeList[index].room_knowledge_id} data-answer=${$knowledgeList[index].answer}>
                                 <h5> ${$knowledgeList[index].title} </h5>
                                 <label class="choose-btn" for="a" data="a">
                                     <input type="checkbox" name="" style="display:none"> ${$knowledgeList[index].a}
@@ -649,7 +650,12 @@ $(".contain-btn").on("click", function () {
 
             $("#user1-number").text($score_1);
             $("#user2-number").text($score_2);
-})
+            $questionsWrapper = '';          
+            $(".user1_jindu-con").animate({height:0},"fast")
+            $(".user2_jindu-con").animate({height:0},"fast")
+
+
+        })
 
 // 点击头像跳转我的页面
 $(".user-btn").on("click", function () {
