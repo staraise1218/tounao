@@ -688,3 +688,13 @@ $(".user-btn").on("click", function () {
     console.log("go mine")
     window.location.href='http://tounao.staraise.com.cn/index.php/mobile/user/index'
 })
+
+$(".abandon-b").on("click", function () {
+    // 显示加载页面
+    $(".list-wrapper").css("display","block");
+    $("#load-wrapper").css("display","none");
+    $(".list-wrapper").css("display","none");
+    $("#pk-display").css("display","none");
+    $(".pk-end-wrapper").css("display","none");
+    $(".tanchutn-wrapper").css("display","none")  
+})
