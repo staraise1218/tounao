@@ -651,10 +651,26 @@ $(".contain-btn").on("click", function () {
             $("#user1-number").text($score_1);
             $("#user2-number").text($score_2);
             // $questionsWrapper = '';          
-            $(".choose-wrapper").html($questionsWrapper);
+            // $(".choose-wrapper").html($questionsWrapper);
             $(".user1_jindu-con").animate({height:0},"fast")
             $(".user2_jindu-con").animate({height:0},"fast")
-
+            
+            let  $questionsWrapper = `<form class="questions-wrapper" action="" data-know_id = ${$knowledgeList[index].room_knowledge_id} data-answer=${$knowledgeList[index].answer}>
+                                <h5></h5>
+                                <label class="choose-btn" for="a" data="a">
+                                    <input type="checkbox" name="" style="display:none">
+                                </label>
+                                <label class="choose-btn" for="a" data="b">
+                                    <input type="checkbox" name="" style="display:none"> 
+                                </label>
+                                <label class="choose-btn" for="a" data="c">
+                                    <input type="checkbox" name="" style="display:none"> 
+                                </label>
+                                <label class="choose-btn" for="a" data="d">
+                                    <input type="checkbox" name="" style="display:none">
+                                </label>
+                            </form>`
+            $(".choose-wrapper").html($questionsWrapper);
 
         })
 
