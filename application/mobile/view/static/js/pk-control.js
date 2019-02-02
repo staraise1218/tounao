@@ -96,6 +96,7 @@ ws.onmessage = function (event) {
         $(".list-wrapper").css("display","none");
         $("#pk-display").css("display","block");
         $(".pk-end-wrapper").css("display","none");
+        gameTimerStart();
     }
 
 
@@ -142,7 +143,7 @@ ws.onmessage = function (event) {
 
 
     // 接受邀请 
-    $(".agreen").click(function(){    
+    $(".agreen").click(function() {
         $("body").addClass("pk-bg");
         console.log($room_id,$user_id)
         console.log("接受者 agreen")
@@ -165,7 +166,6 @@ ws.onmessage = function (event) {
                 $userinfo = data.data.userinfo;
                 // createUser();
                 // gameStart();
-                gameTimerStart()
                 console.log("接受者 agreen*******************************************")
             },
             error: function(e) {
@@ -205,7 +205,6 @@ $(".begin").click(function () {
             console.log("通知发起者开始答题 ---- error")
         }
     })
-    // gameStart();
     gameTimerStart();
 })
 
@@ -239,7 +238,7 @@ $(document).ready(function(){
           })
         
         // 邀请PK
-        $(".pk").click(function () {    
+        $(".pk").click(function () {
             $("body").addClass("pk-bg");
             console.log(this)
             console.log($(this).parents())
@@ -323,6 +322,10 @@ function gameTimerStart () {
         console.log($time_number)
         var $time_str = "" + $time_number;
         $(".daojishi-wrapper .daojishi-content").text($time_str);
+        if($_index == 0) {
+            createQuestion($_index);
+            $_index ++;
+        }
         if($time_number == 0) {
             console.log($_index)
             if($_index == 5) {
@@ -445,6 +448,7 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
         console.log($is_choose_2);
         if($is_choose_2) {
             $time_number = 1;
+            
             $can_choose = true;
             console.log("$_index", $_index ,"$can_choose",$can_choose)
             setTimeout(function () {
