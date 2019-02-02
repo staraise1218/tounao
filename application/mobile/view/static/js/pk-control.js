@@ -241,15 +241,10 @@ $(document).ready(function(){
         $(".pk").click(function () {
             $("body").addClass("pk-bg");
             console.log(this)
-            console.log($(this).parents())
-            console.log($($(this).parents()).eq(0))
-            console.log($($(this).parents()).get(0))
 
-            var $Li = $($(this).parents()).get(0);
+            console.log($(this).parent().find("img").attr("src"));
 
-            console.log($($(this).parents()).find("img").attr("src"));
-
-            console.log($($(this).parents()).find(".user-name").text())
+            console.log($(this).parent().find(".user-name").text())
 
             // console.log($("$Li img").prop("src"))
             // console.log($("$Li img").attr("src"))
