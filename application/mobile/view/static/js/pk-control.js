@@ -324,6 +324,7 @@ function gameTimerStart () {
         var $time_str = "" + $time_number;
         $(".daojishi-wrapper .daojishi-content").text($time_str);
         if($time_number == 0) {
+            console.log($_index)
             if($_index == 5) {
                 clearInterval($timerstart);
             }
