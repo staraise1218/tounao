@@ -183,8 +183,9 @@ ws.onerror = function () {
     console.log("socket---error")
 }
 
-ws.onclose = function() {
+ws.onclose = function(data) {
     console.log("socket---close")
+    console.log(data)
 }
 
 // 点击开始--进入PK
