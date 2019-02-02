@@ -85,6 +85,8 @@ ws.onmessage = function (event) {
         console.log($data)
         $room_id = $data.room_id;
         $(".tanchutn-wrapper").css("display","block")
+        var $fheihgt = $(".list-wrapper").height();
+        $(".tanchutn-wrapper").css("height",$fheihgt)
         document.addEventListener("touchmove",function(e){
             if($(".tanchutn-wrapper").css("display")=='block'){
                $("html,body").addClass("overHiden")
