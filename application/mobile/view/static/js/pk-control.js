@@ -708,6 +708,6 @@ $(".abandon-b").on("click", function () {
     $(".pk-end-wrapper").css("display","none");
     $(".tanchutn-wrapper").css("display","none");
     
-    $("body").removeClass("pk-bg");
+    $(".pk-bg").removeClass("pk-bg");
     $("body").addClass("pkb-bg");
 })
