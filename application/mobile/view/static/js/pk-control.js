@@ -618,16 +618,16 @@ $(".contain-btn").on("click", function () {
             $(".list-wrapper").css("display","block");
             $(".tanchutn-wrapper").css("display","none")
 
+            // $user_id = '',
+            // $client_id = '',
+            $touserinfo = {}
             $action = '',
             $room_id = '',
-            $user_id = '',
             $to_user_id = '',
             $data = {},
-            $client_id = '',
             $knowledgeList = [],
             $user2_answer = '',
             $user2_isright = '',
-            $touserinfo = {}
             $comeMe=false//告诉我进来了
         
             patentHeight = $(".jindu").height(),
