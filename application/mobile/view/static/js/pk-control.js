@@ -372,6 +372,8 @@ function gameTimerStart () {
                     $("#score2").text($score_2);
 
                     // 胜负页面显示
+                    $questionsWrapper = '';          
+                    $(".choose-wrapper").html($questionsWrapper);
                     $("#load-wrapper").css("display","none");
                     $(".list-wrapper").css("display","none");
                     $("#pk-display").css("display","none");
@@ -547,7 +549,9 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
                     $("#score1").text($score_1);
                     $("#score2").text($score_2);
 
-                    // 胜负页面显示
+                    // 胜负页面显示        
+                    $questionsWrapper = '';          
+                    $(".choose-wrapper").html($questionsWrapper);
                     $("#load-wrapper").css("display","none");
                     $(".list-wrapper").css("display","none");
                     $("#pk-display").css("display","none");
