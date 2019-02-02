@@ -233,11 +233,11 @@ $(document).ready(function(){
         data: {page:1},
         dataType: "json",
         success: function(res){
-          res.data.forEach(function(item){
+          res.data.forEach(function(item, index){
              $("#userList").append(`
                   <li class="item">
                       <div class="left">
-                          <div class="number">1</div>
+                          <div class="number">${index + 1}</div>
                           <div class="poster">
                               <img src="${item.head_pic}" alt="">
                           </div>
