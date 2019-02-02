@@ -153,7 +153,8 @@ ws.onmessage = function (event) {
 
 
     // 接受邀请 
-    $(".agreen").click(function() {
+    $(".agreen").click(function() {        
+        $("body").removeClass("pkb-bg");
         $("body").addClass("pk-bg");
         console.log($room_id,$user_id)
         console.log("接受者 agreen")
@@ -277,6 +278,7 @@ $(document).ready(function(){
                     console.log(data)
                     if(data.msg != "对方不在线") {
                         // 显示加载页面
+                        $("body").removeClass("pkb-bg");
                         $("body").addClass("pk-bg");
                         $("#load-wrapper").css("display","block");
                         $(".list-wrapper").css("display","none");
@@ -697,5 +699,7 @@ $(".abandon-b").on("click", function () {
     $("#pk-display").css("display","none");
     $(".pk-end-wrapper").css("display","none");
     $(".tanchutn-wrapper").css("display","none");
+    
+    $("body").removeClass("pk-bg");
     $("body").addClass("pkb-bg");
 })
