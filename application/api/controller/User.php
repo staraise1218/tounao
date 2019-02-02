@@ -15,52 +15,49 @@ class User extends Base {
 		parent::__construct();
 	}
 
-	public function myLesson(){
-		$user_id = $this->user_id;
-		$page = I('page/d', 1);
-
-		$list = Db::name('lesson_order')->alias('lo')
-			->join('lesson l', 'lo.lesson_id=l.id')
-			->where('lo.user_id', $user_id)
-			->where('lo.paystatus', 1)
-			->page($page)
-			->limit(10)
-			->field('lo.lesson_id, lo.price, lo.paytime, title, thumb')
-			->select();
-
-		response_success($list);
+	public function userinfo(){
+		$user_id = I('user_id');
 	}
 
-	public function collectLesson(){
-		$user_id = $this->user_id;
-		$page = I('page/d', 1);
+    /**
+     * [uploadFile 上传头像/认证视频 app 原生调用]
+     * @param [type] $[type] [文件类型 head_pic 头像 auth_video 视频认证]
+     * @param  $[action] [ 默认 add 添加 edit 修改]
+     * @return [type] [description]
+     */
+    public function changeHeadPic(){
+        $user_id = $this->user_id;
 
-		$list = Db::name('user_collect')->alias('uc')
-			->join('lesson l', 'uc.table_id=l.id')
-			->where('uc.user_id', $user_id)
-			->where('uc.table_name', 'lesson')
-			->page($page)
-			->limit(10)
-			->field('uc.table_id lesson_id, uc.add_time, title, thumb, price')
-			->select();
+        $uploadPath = UPLOAD_PATH.'head_pic/';
 
-		response_success($list);
-	}
+        $FileLogic = new FileLogic();
+        $result = $FileLogic->uploadSingleFile('file', $uploadPath);
+        if($result['status'] == '1'){
+            $fullPath = $result['fullPath'];
 
-	// 取消收藏
-	public function cancleCollect(){
-		$user_id = $this->user_id;
-		$lesson_id = I('lesson_id');
-		$table_name = I('table_name');
+            Db::name('users')->update(array('user_id'=>$user_id, 'head_pic'=>$fullPath));
 
-		if( false !== Db::name('user_collect')
-			->where('user_id', $user_id)
-			->where('table_name', $table_name)
-			->where('table_id', $lesson_id)
-			->delete()){
-			response_success('', '取消成功');
-		} else {
-			reponse_error('', '取消失败');
-		}
-	}
+            $resultdata = array('head_pic'=>$fullPath);
+            response_success($resultdata, '上传成功');
+            
+        } else {
+            response_error('', '提交失败');
+        }
+    }
+
+    public function changeField(){
+        $field = input('post.field');
+        $fieldValue = input('post.fieldValue');
+
+        if(!in_array($field, array('nickname', 'grade_id', 'school', 'school_display'))) response_error('', '不被允许的字段');
+
+        if($field == 'nickname'){
+            if(mb_strlen($fieldValue) > 6 || mb_strlen($fieldValue) < 2){
+                response_error('', '昵称长度在2-6个字之间');
+            }
+        }
+
+        Db::name('users')->where('user_id', $this->user_id)->update(array($field=>$fieldValue));
+        response_success('', '修改成功');
+    }
 }
