@@ -184,6 +184,7 @@ ws.onerror = function () {
 }
 
 ws.onclose = function(data) {
+    console.log("断开连接啦啦啦啦啦啦")
     console.log("socket---close")
     console.log(data)
 }
