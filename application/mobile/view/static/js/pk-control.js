@@ -553,3 +553,4 @@ $(".user-btn").on("click", function () {
     console.log("go mine")
     window.location.href='http://tounao.staraise.com.cn/index.php/mobile/index/mine'
 })
+
