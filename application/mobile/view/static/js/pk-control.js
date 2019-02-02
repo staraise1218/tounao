@@ -255,10 +255,10 @@ $(document).ready(function(){
               `) 
               if(item.user_id == $user_id) {
                 // linear-gradient(#fddb92,#fee140)
-                $(".item").eq(index).css("background","linear-gradient(#fddb92,#fee140)")
+                $(".item").eq(index).css("background","linear-gradient(#3C8CE7,#00EAFF)")
                 $(".item").eq(index).find($(".pk")).css("display","none");
-                var $paiming = index + 1 + '/' + $(".item").length;
-                $("#paiming").text($paiming)
+                // var $paiming = index + 1 + '/' + $(".item").length;
+                // $("#paiming").text($paiming)
               }
           })
           
