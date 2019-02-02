@@ -10,7 +10,7 @@ let $action = '',
     $user2_isright = '',
     $touserinfo = {}
     $comeMe=false//告诉我进来了
-
+    
 let patentHeight = $(".jindu").height(),
     userHeight_1 = 0,
     userHeight_2 = 0,
@@ -27,7 +27,10 @@ let patentHeight = $(".jindu").height(),
     $time_number = 10,
     $time_text = 0,
     $answer_end = false,
-    $questionsWrapper = '';
+    $questionsWrapper = '',
+    $is_online = "对方不在线";
+
+
 
 // 保存用户登陆信息
 $user_id = $userinfo.user_id;
@@ -273,6 +276,13 @@ $(document).ready(function(){
                 success: function (data) {
                     console.log("邀请PK成功")
                     console.log(data)
+                    if(data.msg != "对方不在线") {
+                        // 显示加载页面
+                        $("#load-wrapper").css("display","block");
+                        $(".list-wrapper").css("display","none");
+                        $("#pk-display").css("display","none");
+                        $(".pk-end-wrapper").css("display","none");                        
+                    }
                     $room_id = data.room_id;              
                     $knowledgeList = data.data.knowledgeList;
                     console.log($knowledgeList)
@@ -281,11 +291,6 @@ $(document).ready(function(){
                     console.log("邀请PK失败")
                 }
             })
-            // 显示加载页面
-            $("#load-wrapper").css("display","block");
-            $(".list-wrapper").css("display","none");
-            $("#pk-display").css("display","none");
-            $(".pk-end-wrapper").css("display","none");
         })
 
         //   拒绝邀请
