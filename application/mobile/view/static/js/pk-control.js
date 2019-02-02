@@ -617,6 +617,35 @@ $(".contain-btn").on("click", function () {
             $(".pk-end-wrapper").css("display","none");
             $(".list-wrapper").css("display","block");
             $(".tanchutn-wrapper").css("display","none")
+
+            $action = '',
+            $room_id = '',
+            $user_id = '',
+            $to_user_id = '',
+            $data = {},
+            $client_id = '',
+            $knowledgeList = [],
+            $user2_answer = '',
+            $user2_isright = '',
+            $touserinfo = {}
+            $comeMe=false//告诉我进来了
+        
+            patentHeight = $(".jindu").height(),
+            userHeight_1 = 0,
+            userHeight_2 = 0,
+            $quset_index = 0,
+            timeText = 0,
+            $_index = 0,  // 渲
+            $is_choose_2 = false,
+            $can_choose  = false,
+            $score_1 = 0,
+            $score_2 = 0,
+            $winer_id = '',
+            $sendResult_data = {},
+            $result = '',
+            $time_number = 10,
+            $time_text = 0,
+            $answer_end = false;       
 })
 
 // 点击头像跳转我的页面
