@@ -255,7 +255,6 @@ $(document).ready(function(){
           
         // 邀请PK
         $(".pk").click(function () {
-            $("body").addClass("pk-bg");
             console.log(this)
             $touserinfo.nickname = $(this).parent().find(".user-name").text();
             $touserinfo.head_pic = $(this).parent().find("img").attr("src");
@@ -278,6 +277,7 @@ $(document).ready(function(){
                     console.log(data)
                     if(data.msg != "对方不在线") {
                         // 显示加载页面
+                        $("body").addClass("pk-bg");
                         $("#load-wrapper").css("display","block");
                         $(".list-wrapper").css("display","none");
                         $("#pk-display").css("display","none");
@@ -682,7 +682,6 @@ $(".contain-btn").on("click", function () {
                                 </label>
                             </form>`
             $(".choose-wrapper").html($questionsWrapper);
-
         })
 
 // 点击头像跳转我的页面
