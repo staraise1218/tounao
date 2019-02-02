@@ -449,7 +449,7 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
 
     // 判断user2是否选择完
     let timer = setInterval(function () {
-        console.log($is_choose_2);
+        // console.log($is_choose_2);
         if($is_choose_2) {
             $time_number = 1;
             
@@ -545,4 +545,11 @@ function remove() {
 // 点击继续挑战按钮  ----》 跳转首页
 $(".contain-btn").on("click", function () {
     window.location.href='http://tounao.staraise.com.cn/index.php/mobile/weixin/get_userinfo'
+})
+
+
+// 点击头像跳转我的页面
+$(".user-btn").on("click", function () {
+    console.log("go mine")
+    window.location.href='http://tounao.staraise.com.cn/index.php/mobile/index/mine'
 })
