@@ -286,7 +286,6 @@ $(document).ready(function(){
       })
 })
 
-// TODO  ---- > 渲染位置相同
 // 渲染对战用户信息
 function createUser() {
     console.log($userinfo)
@@ -305,7 +304,6 @@ function createUser() {
     $(".user1-title-wrapper .user1-name").text($userinfo.nickname);
 }
 
-// 游戏开始函数
 // 答题定时器
 function gameTimerStart () {
     var $timerstart =  setInterval(function () {
