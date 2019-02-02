@@ -319,8 +319,10 @@ function gameTimerStart () {
         // 渲染页面时间
         $time_number --;
         // console.log($(".daojishi-wrapper .daojishi-content"))
+
         console.log($time_number)
-        $(".daojishi-wrapper .daojishi-content")[0].text($time_number);
+        var $time_str = "" + $time_number;
+        $(".daojishi-wrapper .daojishi-content").text($time_str);
         if($time_number == 0) {
             if($_index == 5) {
                 clearInterval($timerstart);
@@ -335,6 +337,7 @@ function gameTimerStart () {
 function createQuestion(index) {
     $is_choose_2 = false;
     $can_choose = false;
+    $time_number = 10;
     let questionsWrapper = '';
     if($_index < 5) {
         remove();
