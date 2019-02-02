@@ -249,7 +249,7 @@ $(document).ready(function(){
                   </li>
               `) 
           })
-        
+          
         // 邀请PK
         $(".pk").click(function () {
             $("body").addClass("pk-bg");
