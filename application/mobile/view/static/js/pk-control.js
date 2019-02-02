@@ -319,7 +319,7 @@ function gameTimerStart () {
         // 渲染页面时间
         $time_number --;
         console.log($(".daojishi-wrapper .daojishi-content"))
-        $(".daojishi-wrapper .daojishi-content").text("$time_number");
+        $(".daojishi-wrapper .daojishi-content").text($time_number);
         if($time_number == 0) {
             if($_index == 5) {
                 clearInterval($timerstart);
