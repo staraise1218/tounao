@@ -244,6 +244,7 @@ $(document).ready(function(){
             $touserinfo.nickname = $(this).parent().find(".user-name").text();
             $touserinfo.head_pic = $(this).parent().find("img").attr("src");
 
+            console.log($touserinfo)
             createUser();
             $to_user_id = $(this).data("id");
             var postData = {
