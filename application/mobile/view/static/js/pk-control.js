@@ -299,11 +299,11 @@ function createUser() {
 
 // LOAD
     // user2
-    $(".load-wrapper .user1-wrapper user1-poster-wrapper img").get(0).src = $userinfo.head_pic;
-    $(".load-wrapper .user1-name").text($userinfo.nickname);
-    // user1
-    $(".load-wrapper user2-poster-wrapper img").get(0).src = $touserinfo.head_pic;
-    $(".load-wrapper .user2-name").text($touserinfo.nickname);
+    // $(".load-wrapper .user1-wrapper user1-poster-wrapper img").get(0).src = $touserinfo.head_pic;
+    // $(".load-wrapper .user1-name").text($userinfo.nickname);
+    // // user1
+    // $(".load-wrapper user2-poster-wrapper img").get(0).src = $userinfo.head_pic;
+    // $(".load-wrapper .user2-name").text($touserinfo.nickname);
 }
 
 // *************************************
