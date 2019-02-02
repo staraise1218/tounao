@@ -90,9 +90,12 @@
                 console.log(data)
                 $userinfo = data.data;               
                 // 渲染
-                $(".user-poster-wrapper img").attr("src",data.head_pic);
+                $(".user-poster-wrapper img").prop("src",$userinfo.head_pic);
                 $("#user-name").text($userinfo.nickname);
                 $("#grade").text($userinfo.school_display)
+                $(".icon-user-location").text($userinfo.grade_id)
+                $(".jinbi p").text($userinfo.goldcoin);
+                $(".school-btn p").text($userinfo.school);
 
 
             },
