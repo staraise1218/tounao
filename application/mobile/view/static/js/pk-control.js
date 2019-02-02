@@ -316,7 +316,9 @@ function createUser() {
 function gameTimerStart () {
     var $timerstart =  setInterval(function () {
         // 渲染页面时间
-        $time_number --;
+        if($time_number > 0) {
+            $time_number --;
+        }
         // console.log($(".daojishi-wrapper .daojishi-content"))
 
         console.log($time_number)
@@ -452,7 +454,7 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
             $can_choose = true;
             console.log("$_index", $_index ,"$can_choose",$can_choose)
             setTimeout(function () {
-                createQuestion($_index);
+                // createQuestion($_index);
                 if($_index == 5 ) {
                     // 判断胜负
                     if($score_1 > $score_2) {
