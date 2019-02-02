@@ -185,7 +185,7 @@ ws.onclose = function() {
 
 // 点击开始--进入PK
 $(".begin").click(function () {
-    createUser();
+    // createUser();
     $("#load-wrapper").css("display","none");
     $(".list-wrapper").css("display","none");
     $("#pk-display").css("display","block");
@@ -291,7 +291,7 @@ $(document).ready(function(){
 function createUser() {
     console.log($userinfo)
     console.log($touserinfo)
-    
+
     $(".user1-wrapper .poster img").get(0).src = $touserinfo.head_pic;
     $(".user1-wrapper .user1_name").text($touserinfo.nickname)
     $(".user2-wrapper .poster img").get(0).src = $userinfo.head_pic;
@@ -305,10 +305,7 @@ function createUser() {
     $(".user1-title-wrapper .user1-name").text($userinfo.nickname);
 }
 
-// *************************************
-
 // 游戏开始函数
-
 // 答题定时器
 function gameTimerStart () {
     var $timerstart =  setInterval(function () {
