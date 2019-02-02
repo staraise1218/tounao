@@ -166,7 +166,7 @@ ws.onmessage = function (event) {
                 $touserinfo = data.data.touserinfo;
                 $userinfo = data.data.userinfo;
                 console.log("接受者 agreen*******************************************")        
-                createUser();
+                // createUser();
             },
             error: function(e) {
                 console.log("接受者 agreen error");
@@ -185,7 +185,7 @@ ws.onclose = function() {
 
 // 点击开始--进入PK
 $(".begin").click(function () {
-    createUser();
+    // createUser();
     $("#load-wrapper").css("display","none");
     $(".list-wrapper").css("display","none");
     $("#pk-display").css("display","block");
@@ -255,7 +255,7 @@ $(document).ready(function(){
             // $touserinfo.nickname = $("$Li .user-name").text();
             // $touserinfo.head_pic = $("$Li img").prop("src")
 
-            createUser();
+            // createUser();
             $to_user_id = $(this).data("id");
             var postData = {
                 user_id : $user_id,
@@ -539,6 +539,6 @@ function remove() {
 }
 
 // 点击继续挑战按钮  ----》 跳转首页
-// $(".contain-btn").on("click", function () {
-//     window.location.href='http://tounao.staraise.com.cn/index.php/mobile/weixin/get_userinfo'
-// })
+$(".contain-btn").on("click", function () {
+    window.location.href='http://tounao.staraise.com.cn/index.php/mobile/weixin/get_userinfo'
+})
