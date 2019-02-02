@@ -336,6 +336,60 @@ function gameTimerStart () {
             if($_index == 5) {
                 clearInterval($timerstart);
                 $answer_end = true;
+
+                 //newAdd 20190202
+                if($answer_end) {
+                    // 判断胜负
+                    if($score_1 > $score_2) {
+                        $winer_id = $user_id
+                        $result = 1
+                        console.log("胜利")
+                        $(".pk-end-wrapper .info").text("胜利");
+                    } else if ($score_1 < $score_2) {
+                        $winer_id = $to_user_id
+                        console.log("失败")
+                        $result = 2
+                        $(".pk-end-wrapper .info").text("失败");
+                    } else {
+                        console.log("平局")
+                        $result = 3
+                        $(".pk-end-wrapper .info").text("平局");
+                    }
+                    // 答题分数
+                    $("#score1").text($score_1);
+                    $("#score2").text($score_2);
+
+                    // 胜负页面显示
+                    $("#load-wrapper").css("display","none");
+                    $(".list-wrapper").css("display","none");
+                    $("#pk-display").css("display","none");
+                    $(".pk-end-wrapper").css("display","block");
+
+                    console.log("postData", postData ,"***************************************************************************")
+
+                    var postData =  {
+                        room_id :$room_id,
+                        user_id: $user_id,
+                        score: $score_1,
+                        res: $result
+                    }
+                    $.ajax({
+                        type: 'POST',
+                        url: "http://tounao.staraise.com.cn/Api/pk/sendResult",
+                        data: postData,
+                        dataType: "json",
+                        success: function (data) {
+                            console.log(data)
+                            console.log("结束 **************** success")
+                            $sendResult_data = data;
+                        },
+                        error: function () {
+                            console.log("结束 ************* error")
+                        }
+                    })
+                }
+
+
             }
             $_index++;
         }
