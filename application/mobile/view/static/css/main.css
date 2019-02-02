@@ -82,7 +82,6 @@ html {
 }
 .user-info-wrapper .user-info .school-info div {
     display: flex;
-
 }
 .user-info-wrapper .user-info .school-info {
     display: flex;
@@ -150,7 +149,7 @@ html {
 .content-wrapper .jinbi::after {
     display: none;
 }
-.content-wrapper .school-btn::after {
+/* .content-wrapper .school-btn::after {
     content: "";
     display: inline-block;
     width: 0.3rem;
@@ -159,7 +158,7 @@ html {
     background-size: 3.98rem 3.91rem;
     background-position: -3.3rem 0.02rem;
     background-repeat: no-repeat;
-}
+} */
 .content-wrapper .item i {
     position: absolute;
     left: -0.3rem;
