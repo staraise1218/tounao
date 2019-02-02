@@ -1,0 +1,168 @@
+<!-- 我的 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的</title>
+    <script src="__STATIC__/js/rem.js"></script>
+    <link rel="stylesheet" href="__STATIC__/css/global.css">
+    <link rel="stylesheet" href="__STATIC__/css/main.css">
+</head>
+<body class="body-wrapper">
+    <!-- <div class="user-info-wrapper"> 
+        <div class="dengji-wrapper">
+            <div>
+                <div>
+                    <i class="dengji-icon icon-bg"></i>
+                </div>
+                <div class="dengji">状元</div>
+            </div>
+            <div>
+                <div>
+                    <i class="jinbi-icon icon-bg"></i>
+                </div>
+                <div class="jinbi">100</div>
+            </div>
+        </div>
+
+        <div class="user-info">
+            <div class="user-poster">
+                <img src="./src/image/poster1.png" alt="">
+            </div>
+            <input class="user-name" type="text" value="晴天还是雨天" readonly>
+            <div class="school-info">
+                <input type="text" class="grade" value="二年级" readonly>
+                <div>
+                    <input type="text" class="school" value="北京小学" style="display:block" readonly>
+                    <i class="icon-bg icon"></i>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="user-poster-wrapper">
+        <div>
+            <img src="__STATIC__/image/poster1.png" alt="">
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="item-wrapper">
+            <div class="item">
+                <i class="icon6 icon-user-name"></i>
+                <p id="user-name">晴天还是雨天</p>
+            </div>
+        </div>
+        <div class="item-wrapper">
+            <div class="item">
+                <i class="icon6 icon-user-grade"></i>
+                <p id="login">登陆</p>
+            </div>
+        </div>
+        <div class="item-wrapper">
+            <div class="item">
+                <i class="icon6 icon-user-location"></i>
+                <p>北京朝阳市</p>
+            </div>
+        </div>
+        <div class="item-wrapper">
+            <div class="item jinbi">
+                <i class="icon6 icon-user-jinbi"></i>
+                <p>100</p>
+            </div>
+        </div>
+        <div class="item-wrapper">
+            <div class="item school-btn">
+                <i class="icon6 icon-user-school"></i>
+                <p>北京小学</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="edit-info-wrapper" style="display:none;">
+        <div class="edit-content">
+            <div class="title">编辑信息</div>
+            <div class="content">
+                <input type="text" id="username-edi" 
+                    value="请输入您的昵称">
+                <i class="icon5"></i>
+                <input type="submit" id="tijiao" value="保存">
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- 导航菜单 -->
+    <div class="footer">
+        <i class="icon1 index-icon"></i>
+        <i class="icon1 pc-icon"></i>
+        <i class="icon1 mine-icon"></i>
+    </div>
+
+
+
+
+
+
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- <script src="./src/js/jquery.js"></script> -->
+    <script>
+
+        let postData = {
+            page: 1
+        }
+        var obj = {};
+
+        $.ajax({
+            type: 'POST',
+            data: postData,
+            url: 'http://tounao.staraise.com.cn/api/weixin/get_code',
+            success: function(data) {
+                console.log(data)
+                obj = data;
+            },
+            error: function(e) {
+                console.log("error -- 关闭页面");
+            }
+        })
+
+        $("#user-name").on("click", function() {
+            $("#username-edi").val($("#user-name").text())
+            $(".edit-info-wrapper").css("display","block");
+        })
+        $("#tijiao").on("click", function() {
+            $("#user-name").text($("#username-edi").val())
+            console.log($("#username-edi").val())
+            $(".edit-info-wrapper").css("display","none");
+        })
+
+        // 登陆
+        var str = `    <div class="login-wrapper">
+                            <h4>用户登陆</h4> 
+                            <span class="wx-close">X</span>
+                            <div id="wx-login">微信用户快速登陆</div>
+                        </div>`
+        $("#login").on("click", function() {
+            $(".body-wrapper").append(str)
+        })
+        $(".body-wrapper").delegate(".wx-close","click", function() {
+            $(".login-wrapper").hide();
+        })
+        $(".body-wrapper").delegate("#wx-login","click", function() {
+            //判断是否授权过
+            let userInfo= localStorage.getItem("mUserInfo")
+            console.log(userInfo)
+            // if(userInfo!=null){
+            //    window.location.href="http://tounao.staraise.com.cn/application/mobile/view/weixin/get_userinfo.html"
+            // }else{
+            //     window.location.href='http://tounao.staraise.com.cn/index.php/mobile/weixin/get_code'
+            // }
+            // window.location.href = obj.data.authUrl;
+             window.location.href='http://tounao.staraise.com.cn/index.php/mobile/weixin/get_code'
+        })
+    </script>
+</body>
+</html>

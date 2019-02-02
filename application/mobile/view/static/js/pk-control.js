@@ -44,9 +44,6 @@ $("#pk-display").get(0).style.display = 'none';
 
 // 请求绑定 uid 接口
 ws.onmessage = function (event) {
-    setInterval(function(){
-      ws.send("heart")
-    },3000)
     console.log("socket onmessage 接受信息")
     $data = JSON.parse(event.data);
     console.log(event)
@@ -339,60 +336,6 @@ function gameTimerStart () {
             if($_index == 5) {
                 clearInterval($timerstart);
                 $answer_end = true;
-
-                 //newAdd 20190202
-                if($answer_end) {
-                    // 判断胜负
-                    if($score_1 > $score_2) {
-                        $winer_id = $user_id
-                        $result = 1
-                        console.log("胜利")
-                        $(".pk-end-wrapper .info").text("胜利");
-                    } else if ($score_1 < $score_2) {
-                        $winer_id = $to_user_id
-                        console.log("失败")
-                        $result = 2
-                        $(".pk-end-wrapper .info").text("失败");
-                    } else {
-                        console.log("平局")
-                        $result = 3
-                        $(".pk-end-wrapper .info").text("平局");
-                    }
-                    // 答题分数
-                    $("#score1").text($score_1);
-                    $("#score2").text($score_2);
-
-                    // 胜负页面显示
-                    $("#load-wrapper").css("display","none");
-                    $(".list-wrapper").css("display","none");
-                    $("#pk-display").css("display","none");
-                    $(".pk-end-wrapper").css("display","block");
-
-                    console.log("postData", postData ,"***************************************************************************")
-
-                    var postData =  {
-                        room_id :$room_id,
-                        user_id: $user_id,
-                        score: $score_1,
-                        res: $result
-                    }
-                    $.ajax({
-                        type: 'POST',
-                        url: "http://tounao.staraise.com.cn/Api/pk/sendResult",
-                        data: postData,
-                        dataType: "json",
-                        success: function (data) {
-                            console.log(data)
-                            console.log("结束 **************** success")
-                            $sendResult_data = data;
-                        },
-                        error: function () {
-                            console.log("结束 ************* error")
-                        }
-                    })
-                }
-
-
             }
             $_index++;
         }
@@ -506,7 +449,7 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
 
     // 判断user2是否选择完
     let timer = setInterval(function () {
-        console.log($is_choose_2);
+        // console.log($is_choose_2);
         if($is_choose_2) {
             $time_number = 1;
             
@@ -602,4 +545,10 @@ function remove() {
 // 点击继续挑战按钮  ----》 跳转首页
 $(".contain-btn").on("click", function () {
     window.location.href='http://tounao.staraise.com.cn/index.php/mobile/weixin/get_userinfo'
+})
+
+// 点击头像跳转我的页面
+$(".user-btn").on("click", function () {
+    console.log("go mine")
+    window.location.href='http://tounao.staraise.com.cn/index.php/mobile/user/index'
 })
