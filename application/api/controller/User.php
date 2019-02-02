@@ -34,7 +34,14 @@ class User extends Base {
 		response_success($userinfo);
 	}
 
-	public function 
+	public function gradeList(){
+		$gradeList = Db::name('grade')
+			->where('is_open', 1)
+			->where('is_delete', 0)
+			->select();
+
+		response_success($gradeList);
+	}
 
     /**
      * [uploadFile 上传头像/认证视频 app 原生调用]
