@@ -1,29 +1,30 @@
 // 保存全局变量
-let $action,
-    $room_id,
-    $user_id,
-    $to_user_id,
-    $data,
-    $client_id,
+let $action = '',
+    $room_id = '',
+    $user_id = '',
+    $to_user_id = '',
+    $data = {},
+    $client_id = '',
     $knowledgeList = [],
     $user2_answer = '',
     $user2_isright = '',
     $touserinfo = {}
 
-let patentHeight = $(".jindu").height();
-let userHeight_1 = 0;
-let userHeight_2 = 0;
-let $quset_index = 0;
-let $timer = 10;
-let timeText = 0;
-let $_index = 0;  // 渲染
-let $is_choose_2 = false;
-let $can_choose  = false;
-let $score_1 = 0;
-let $score_2 = 0;
-let $winer_id = '';
-let $sendResult_data = {}
-let $result = '';
+let patentHeight = $(".jindu").height(),
+    userHeight_1 = 0,
+    userHeight_2 = 0,
+    $quset_index = 0,
+    timeText = 0,
+    $_index = 0,  // 渲
+    $is_choose_2 = false,
+    $can_choose  = false,
+    $score_1 = 0,
+    $score_2 = 0,
+    $winer_id = '',
+    $sendResult_data = {},
+    $result = '',
+    $time_number = 10,
+    $time_text = 0;
 
 // 保存用户登陆信息
 $user_id = $userinfo.user_id;
@@ -72,8 +73,6 @@ ws.onmessage = function (event) {
     // 接受者接到通知
     if($data.action == 'invite') {
         console.log("action **************** invite")
-        console.log("发起者 action")
-        console.log("通知被邀请者进入房间")
         console.log($data)
         $room_id = $data.room_id;
         $(".tanchutn-wrapper").css("display","block")
@@ -86,13 +85,8 @@ ws.onmessage = function (event) {
         },false)
     }
 
-    
     if($data.action == 'intoRoom') {
         console.log("action **************** intoroom")
-        // console.log("接受者 action")
-        // console.log($room_id,$user_id)
-        // console.log($data)
-        // $knowledgeList = $data.knowledgeList;
     }
 
     // 接受者开始游戏
@@ -113,9 +107,7 @@ ws.onmessage = function (event) {
         $user2_isright = $data.is_right;
         
         console.log("接收选择答案")
-        console.log($is_choose_2)
-        console.log( $user2_answer)
-        console.log( $user2_isright)
+        console.log("$is_choose_2", $is_choose_2, "$user2_answer",$user2_answer, "$user2_isright", $user2_isright);
 
         if($user2_isright == 1) {
             $.each($(".choose-wrapper .choose-btn"),function(index,item) {
@@ -141,6 +133,7 @@ ws.onmessage = function (event) {
             })
         }
     }
+
     // 结束 --- 胜利者
     if($data.action == 'sendResult') {
         console.log("action **************** sendResult")
@@ -170,8 +163,9 @@ ws.onmessage = function (event) {
                 $to_user_id = data.data.userinfo.user_id
                 $touserinfo = data.data.touserinfo;
                 $userinfo = data.data.userinfo;
-                createUser();
-                gameStart();
+                // createUser();
+                // gameStart();
+                gameTimerStart()
                 console.log("接受者 agreen*******************************************")
             },
             error: function(e) {
@@ -189,9 +183,6 @@ ws.onclose = function() {
     console.log("socket---close")
 }
 
-
-
-
 // 点击开始--进入PK
 $(".begin").click(function () {
     createUser();
@@ -200,7 +191,7 @@ $(".begin").click(function () {
     $("#pk-display").css("display","block");
     $(".pk-end-wrapper").css("display","none");
     
-    console.log("发起者---开始游戏")
+    console.log("发起者---开始游戏",$to_user_id)
     $.ajax({
         type: 'POST',
         url: "http://tounao.staraise.com.cn/Api/pk/start",
@@ -214,13 +205,9 @@ $(".begin").click(function () {
             console.log("通知发起者开始答题 ---- error")
         }
     })
-    gameStart();
+    // gameStart();
+    gameTimerStart();
 })
-
-
-// *********************************************************************************
-
-
 
 // 渲染列表
 $(document).ready(function(){
@@ -288,6 +275,7 @@ $(document).ready(function(){
                     console.log("邀请PK失败")
                 }
             })
+            // 显示加载页面
             $("#load-wrapper").css("display","block");
             $(".list-wrapper").css("display","none");
             $("#pk-display").css("display","none");
@@ -305,8 +293,7 @@ $(document).ready(function(){
       })
 })
 
-// *************************************
-
+// TODO  ---- > 渲染位置相同
 // 渲染对战用户信息
 function createUser() {
     console.log($userinfo)
@@ -324,28 +311,30 @@ function createUser() {
 
 // *************************************
 
-function gameStart() {
-    createQuestion($_index);
-    gameTimer();
-}
+// 游戏开始函数
+// function gameStart() {
+//     createQuestion($_index);
+//     // gameTimer();
+// }
 
-// 定时器
-function gameTimer () {
-    setInterval(function () {
+// 答题定时器
+function gameTimerStart () {
+    var $timerstart =  setInterval(function () {
         // 渲染页面时间
-    }, 1000)
-    setTimeout(function () {
-        console.log($_index);
-        if($_index < 5) {
+        $time_number --;
+        $(".daojishi-content").text($time_number);
+        if($time_number == 0) {
+            if($_index == 5) {
+                clearInterval($timerstart);
+            }
+            createQuestion($_index);
             $_index++;
         }
-        gameStart();
-    }, $timer * 1000)
+    },  1000)
 }
 
 // 渲染题目
 function createQuestion(index) {
-    // timeText = 10;
     $is_choose_2 = false;
     $can_choose = false;
     let questionsWrapper = '';
@@ -377,20 +366,16 @@ function createQuestion(index) {
 // 选择答案部分
 $(".choose-wrapper").delegate(".choose-btn","click", function () {
     
-    console.log("$_index", $_index ,"$can_choose",$can_choose)
     var $answer = $(".questions-wrapper").attr("data-answer")
     var _this = $(this);
-    console.log($answer)
-
-    // if($(".user1-active").length > 0) { return }
-    // if($_index == 5 && timeText == 0) {
+    
     if($(".user1-active").length > 0 || $_index >= 5) { return }
     if($_index < 5) { $(".user1-active").removeClass("user1-active");}
     
-    $_index ++;
-    console.log("$_index", $_index ,"$can_choose",$can_choose)
+    // $_index ++;
     _this.addClass("user1-active")
-
+    
+    console.log("$_index", $_index ,"$can_choose",$can_choose, "$answer", $answer)
     if($(this).attr("data") == $answer) {
         console.log("user1 ------- 回答正确！")
         setTimeout(function() {
@@ -400,9 +385,9 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
                 $(".user1_jindu-con").animate({height:userHeight_1},"fast");
                 $score_1 = Number($("#user1-number").get(0).innerText) + 100;
                 $("#user1-number").text($score_1);
-                // $("#user1-number").get(0).innerText = Number($("#user1-number").get(0).innerText) + 100;
             })
         }, 500)
+        
         var postData = {
             room_knowledge_id: $(".questions-wrapper").attr("data-know_id"),
             user_id: $user_id,
@@ -429,16 +414,19 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
         setTimeout(function() {
             _this.addClass("user1-cuo");
         }, 500)
+
+        var postData = {
+            room_knowledge_id: $(".questions-wrapper").attr("data-know_id"),
+            user_id: $user_id,
+            to_user_id: $to_user_id,
+            answer:	$(this).attr("data"),
+            is_right:2
+        }
+        console.log(postData)
         $.ajax({
             type: 'POST',
             url: "http://tounao.staraise.com.cn/Api/pk/choose",
-            data: {
-                room_knowledge_id: $(".questions-wrapper").attr("data-know_id"),
-                user_id: $user_id,
-                to_user_id: $to_user_id,
-                answer:	$(this).attr("data"),
-                is_right:2
-            },
+            data: postData ,
             dataType: "json",
             success: function (data) {
                 console.log(data)
@@ -449,15 +437,18 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
             }
         })
     }
+
     // 判断user2是否选择完
     let timer = setInterval(function () {
-        console.log($is_choose_2)
+        console.log($is_choose_2);
         if($is_choose_2) {
+            $time_number = 1;
             $can_choose = true;
             console.log("$_index", $_index ,"$can_choose",$can_choose)
             setTimeout(function () {
                 createQuestion($_index);
                 if($_index == 5 ) {
+                    // 判断胜负
                     if($score_1 > $score_2) {
                         $winer_id = $user_id
                         $result = 1
@@ -473,25 +464,28 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
                         $result = 3
                         $(".pk-end-wrapper .info").text("平局");
                     }
+                    // 答题分数
+                    $("#score1").text($score_1);
+                    $("#score2").text($score_2);
+
+                    // 胜负页面显示
                     $("#load-wrapper").css("display","none");
                     $(".list-wrapper").css("display","none");
                     $("#pk-display").css("display","none");
                     $(".pk-end-wrapper").css("display","block");
 
-                    $("#score1").text($score_1);
-                    $("#score2").text($score_2);
-                    console.log($score_1)
-                    console.log($score_2)
-                    console.log("$winer_id", $winer_id ,"***************************************************************************")
-                    alert("结束")
+                    console.log("postData", postData ,"***************************************************************************")
+
+                    var postData =  {
+                        room_id :$room_id,
+                        user_id: $user_id,
+                        score: $score_1,
+                        res: $result
+                    }
                     $.ajax({
                         type: 'POST',
                         url: "http://tounao.staraise.com.cn/Api/pk/sendResult",
-                        data: { room_id :$room_id,
-                                user_id: $user_id,
-                                score: $score_1,
-                                res: $result
-                        },
+                        data: postData,
                         dataType: "json",
                         success: function (data) {
                             console.log(data)
@@ -526,7 +520,7 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
     },500)
 })
 
-// 选择样式
+// 清除样式
 function remove() {
     $(".user1-active").removeClass("user1-active");
     $(".user1-dui").removeClass("user1-dui");
@@ -535,6 +529,7 @@ function remove() {
     $(".user2-cuo").removeClass("user2-cuo");
 }
 
+// 点击继续挑战按钮  ----》 跳转首页
 $(".contain-btn").on("click", function () {
     window.location.href='http://tounao.staraise.com.cn/index.php/mobile/weixin/get_userinfo'
 })
