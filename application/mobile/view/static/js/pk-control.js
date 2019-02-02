@@ -650,7 +650,8 @@ $(".contain-btn").on("click", function () {
 
             $("#user1-number").text($score_1);
             $("#user2-number").text($score_2);
-            $questionsWrapper = '';          
+            // $questionsWrapper = '';          
+            $(".choose-wrapper").html($questionsWrapper);
             $(".user1_jindu-con").animate({height:0},"fast")
             $(".user2_jindu-con").animate({height:0},"fast")
 
