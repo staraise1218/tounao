@@ -551,6 +551,6 @@ $(".contain-btn").on("click", function () {
 // 点击头像跳转我的页面
 $(".user-btn").on("click", function () {
     console.log("go mine")
-    window.location.href='http://tounao.staraise.com.cn/index.php/mobile/index/mine'
+    window.location.href='http://tounao.staraise.com.cn/index.php/mobile/user/index'
 })
 
