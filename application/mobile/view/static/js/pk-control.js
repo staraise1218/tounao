@@ -539,6 +539,6 @@ function remove() {
 }
 
 // 点击继续挑战按钮  ----》 跳转首页
-$(".contain-btn").on("click", function () {
-    window.location.href='http://tounao.staraise.com.cn/index.php/mobile/weixin/get_userinfo'
-})
+// $(".contain-btn").on("click", function () {
+//     window.location.href='http://tounao.staraise.com.cn/index.php/mobile/weixin/get_userinfo'
+// })
