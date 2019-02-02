@@ -262,7 +262,6 @@ $(document).ready(function(){
               }
           })
           
-
         // 邀请PK
         $(".pk").click(function () {
             console.log(this)
