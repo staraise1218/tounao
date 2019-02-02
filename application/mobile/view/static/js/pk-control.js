@@ -296,15 +296,14 @@ $(document).ready(function(){
 function createUser() {
     console.log($userinfo)
     console.log($touserinfo)
-    $(".user1-wrapper .poster img").get(0).src = $touserinfo.head_pic;
-    $(".user1-wrapper .user1_name").text($touserinfo.nickname)
-    $(".user2-wrapper .poster img").get(0).src = $userinfo.head_pic;
-    $(".user2-wrapper .user2_name").text($userinfo.nickname)
 
-    $(".user1-title-wrapper img").get(0).src = $userinfo.head_pic;
-    $(".user1-title-wrapper .user1-name").text($userinfo.nickname);
-    $(".user2-title-wrapper img").get(0).src = $touserinfo.head_pic;
-    $(".user2-title-wrapper .user2-name").text($touserinfo.nickname);
+// LOAD
+    // user2
+    $(".load-wrapper .user1-wrapper user1-poster-wrapper img").get(0).src = $userinfo.head_pic;
+    $(".load-wrapper .user1-name").text($userinfo.nickname);
+    // user1
+    $(".load-wrapper user2-poster-wrapper img").get(0).src = $touserinfo.head_pic;
+    $(".load-wrapper .user2-name").text($touserinfo.nickname);
 }
 
 // *************************************
