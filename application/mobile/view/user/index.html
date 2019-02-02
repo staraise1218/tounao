@@ -88,7 +88,7 @@
             data: {user_id:$user_id},
             success: function (data) {
                 console.log(data)
-                $userinfo = data;               
+                $userinfo = data.data;               
                 // 渲染
                 $(".user-poster-wrapper img").attr("src",data.head_pic);
                 $("#user-name").text($userinfo.nickname);
