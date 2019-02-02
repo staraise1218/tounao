@@ -310,7 +310,7 @@ function createUser() {
     $(".pk-end-wrapper .user2 img").get(0).src = $touserinfo.head_pic;
     $(".pk-end-wrapper .user2 .user-name").text($touserinfo.nickname);
 // END
-    if($winer_id == $to_user_id) {
+    if($winer_id == $$to_user_id) {
         $(".pk-end-wrapper .user1-info img").get(0).src = $userinfo.head_pic;
     } else {
         $(".pk-end-wrapper .user1-info img").get(0).src = $touserinfo.head_pic;
