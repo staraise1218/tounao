@@ -42,7 +42,7 @@
     height: 1.4rem;
     /* border: 1px solid red */
 }
-.user1-wrapper .user1-poster-wrapper::after {
+/* .user1-wrapper .user1-poster-wrapper::after {
     content: "接受者";
     display: block;
     color: rgb(124, 111, 253);
@@ -59,7 +59,7 @@
     background-position: -0.9rem -3.8rem;
     width: 1.3rem;
     height: 0.8rem;
-}
+} */
 .user1-wrapper .user1-poster-wrapper .poster {
     width: 0.8rem;
     height: 0.8rem;
@@ -132,7 +132,7 @@
     width: 0.8rem;
     height: 1.4rem
 }
-.user2-wrapper .user2-poster-wrapper::after {
+/* .user2-wrapper .user2-poster-wrapper::after {
     content: "发起者";
     display: block;
     color: rgb(124, 111, 253);
@@ -149,7 +149,7 @@
     background-position: -0.8rem 0.2rem;
     width: 1.3rem;
     height: 0.8rem;
-}
+} */
 .user2-wrapper .user2-poster-wrapper .poster {
     width: 0.8rem;
     height: 0.8rem;

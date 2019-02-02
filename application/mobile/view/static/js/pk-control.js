@@ -165,8 +165,6 @@ ws.onmessage = function (event) {
                 $to_user_id = data.data.userinfo.user_id
                 $touserinfo = data.data.touserinfo;
                 $userinfo = data.data.userinfo;
-                // createUser();
-                // gameStart();
                 console.log("接受者 agreen*******************************************")
             },
             error: function(e) {
@@ -320,9 +318,6 @@ function gameTimerStart () {
         if($time_number > 0) {
             $time_number --;
         }
-        // console.log($(".daojishi-wrapper .daojishi-content"))
-
-        console.log($time_number)
         var $time_str = "" + $time_number;
         $(".daojishi-wrapper .daojishi-content").text($time_str);
         if($_index == 0) {
@@ -369,7 +364,6 @@ function createQuestion(index) {
         $(".choose-wrapper").html(questionsWrapper);
     }
 }
-
 
 
 // 选择答案部分
