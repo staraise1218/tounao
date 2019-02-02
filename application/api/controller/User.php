@@ -39,7 +39,7 @@ class User extends Base {
 			->where('is_open', 1)
 			->where('is_delete', 0)
 			->select();
-
+p($gradeList);
 		response_success($gradeList);
 	}
 
