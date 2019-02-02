@@ -378,7 +378,7 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
     var $answer = $(".questions-wrapper").attr("data-answer")
     var _this = $(this);
     
-    if($(".user1-active").length > 0 || $_index >= 5) { return }
+    if($(".user1-active").length > 0 || $_index > 5) { return }
     if($_index < 5) { $(".user1-active").removeClass("user1-active");}
     
     // $_index ++;
