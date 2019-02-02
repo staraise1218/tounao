@@ -35,7 +35,7 @@ var ws = new WebSocket("ws://120.92.10.2:2345");
 ws.onopen=function(){
     ws.send("youaremybaby")
     console.log("socket open  链接建立")
-
+}
 
 // 初始化页面
 $(".list-wrapper").get(0).style.display = 'block'
@@ -144,7 +144,7 @@ ws.onmessage = function (event) {
 
 
     // 接受邀请 
-    $(".agreen").click(function() {    
+    $(".agreen").click(function() {
         $("body").addClass("pk-bg");
         console.log($room_id,$user_id)
         console.log("接受者 agreen")
@@ -165,8 +165,7 @@ ws.onmessage = function (event) {
                 $to_user_id = data.data.userinfo.user_id
                 $touserinfo = data.data.touserinfo;
                 $userinfo = data.data.userinfo;
-                console.log("接受者 agreen*******************************************")        
-                // createUser();
+                console.log("接受者 agreen*******************************************")
             },
             error: function(e) {
                 console.log("接受者 agreen error");
@@ -185,7 +184,7 @@ ws.onclose = function() {
 
 // 点击开始--进入PK
 $(".begin").click(function () {
-    // createUser();
+    createUser();
     $("#load-wrapper").css("display","none");
     $(".list-wrapper").css("display","none");
     $("#pk-display").css("display","block");
@@ -245,17 +244,13 @@ $(document).ready(function(){
             console.log($($(this).parents()).eq(0))
             console.log($($(this).parents()).get(0))
 
-            var $Li = $($(this).parents()).get(0);
-            console.log($("$Li .user-name").text())
-            console.log($("$Li img").prop("src"))
-
-
-            // console.log($("$Li img").prop("src"));
-            // console.log($("$Li img").attr("src"));
+            // var $Li = $($(this).parents()).get(0);
+            // console.log($("$Li img").prop("src"))
+            // console.log($("$Li img").attr("src"))
             // $touserinfo.nickname = $("$Li .user-name").text();
             // $touserinfo.head_pic = $("$Li img").prop("src")
 
-            // createUser();
+            createUser();
             $to_user_id = $(this).data("id");
             var postData = {
                 user_id : $user_id,
@@ -299,20 +294,24 @@ $(document).ready(function(){
 // TODO  ---- > 渲染位置相同
 // 渲染对战用户信息
 function createUser() {
-    console.log($userinfo)
-    console.log($touserinfo)
+    // console.log($userinfo)
+    // console.log($touserinfo)
+    // $(".user1-wrapper .poster img").get(0).src = $touserinfo.head_pic;
+    // $(".user1-wrapper .user1_name").text($touserinfo.nickname)
+    // $(".user2-wrapper .poster img").get(0).src = $userinfo.head_pic;
+    // $(".user2-wrapper .user2_name").text($userinfo.nickname)
 
-// LOAD
-    // user2
-    // $(".load-wrapper .user1-wrapper user1-poster-wrapper img").get(0).src = $touserinfo.head_pic;
-    // $(".load-wrapper .user1-name").text($userinfo.nickname);
+    // $(".user1-title-wrapper img").get(0).src = $userinfo.head_pic;
+    // $(".user1-title-wrapper .user1-name").text($userinfo.nickname);
+    // $(".user2-title-wrapper img").get(0).src = $touserinfo.head_pic;
     // // user1
-    // $(".load-wrapper user2-poster-wrapper img").get(0).src = $userinfo.head_pic;
-    // $(".load-wrapper .user2-name").text($touserinfo.nickname);
+    // $(".user2-title-wrapper .user2-name").text($touserinfo.nickname);
 }
 
+// *************************************
 
 // 游戏开始函数
+
 // 答题定时器
 function gameTimerStart () {
     var $timerstart =  setInterval(function () {
@@ -539,6 +538,6 @@ function remove() {
 }
 
 // 点击继续挑战按钮  ----》 跳转首页
-// $(".contain-btn").on("click", function () {
-//     window.location.href='http://tounao.staraise.com.cn/index.php/mobile/weixin/get_userinfo'
-// })
+$(".contain-btn").on("click", function () {
+    window.location.href='http://tounao.staraise.com.cn/index.php/mobile/weixin/get_userinfo'
+})
