@@ -171,7 +171,7 @@ ws.onmessage = function (event) {
             error: function(e) {
                 console.log("接受者 agreen error");
             }
-        })       
+        })
     })
 };
 
