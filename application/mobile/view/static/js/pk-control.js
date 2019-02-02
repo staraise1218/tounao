@@ -544,7 +544,8 @@ function remove() {
 
 // 点击继续挑战按钮  ----》 跳转首页
 $(".contain-btn").on("click", function () {
-    window.location.href='http://tounao.staraise.com.cn/index.php/mobile/weixin/get_userinfo'
+    // window.location.href='http://tounao.staraise.com.cn/index.php/mobile/weixin/get_userinfo'
+
 })
 
 // 点击头像跳转我的页面
