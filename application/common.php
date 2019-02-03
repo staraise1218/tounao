@@ -1158,7 +1158,9 @@ function getPayBody($order_id){
 
 function headPic($head_pic){
     if($head_pic == '') return '';
-    if( ! strpos($head_pic, 'http')){
+
+    if( FALSE === strpos($head_pic, 'http')){
         return 'http://tounao.staraise.com.cn'.$head_pic;
     }
+    return $head_pic;
 }

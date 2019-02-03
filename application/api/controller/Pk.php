@@ -22,8 +22,8 @@ class Pk extends Base {
 
 
 		if($user_id == $to_user_id) response_error('', '不能邀请自己');
-		// if(!Gateway::isUidOnline($user_id)) response_error('', '您不在线');
-		// if(!Gateway::isUidOnline($to_user_id)) response_error('', '对方不在线');
+		if(!Gateway::isUidOnline($user_id)) response_error('', '您不在线');
+		if(!Gateway::isUidOnline($to_user_id)) response_error('', '对方不在线');
 
 		// 获取用户信息
 		$user = Db::name('users')->where('user_id', $user_id)->find();
