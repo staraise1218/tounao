@@ -28,8 +28,11 @@ class User extends Base {
 		if($userinfo['grade_id']){
 			$grade = Db::name('grade')->where('id', $userinfo['grade_id'])->find();
 			$userinfo['grade'] = $grade['title'];
-			unset($userinfo['grade']);
+		} else {
+			$userinfo['grade'] = '';
 		}
+		unset($userinfo['grade']);
+
 
 		response_success($userinfo);
 	}
