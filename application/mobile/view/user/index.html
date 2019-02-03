@@ -98,7 +98,7 @@
                 </select>
             </div>
         </div>
-        <div class="item-wrapper">
+        <div class="item-wrapper location-wrapper">
             <div class="item">
                 <i class="icon6 icon-user-location"></i>
                 <p id="location"></p>
@@ -110,7 +110,7 @@
                 <p id="goldcoin"></p>
             </div>
         </div>
-        <div class="item-wrapper">
+        <div class="item-wrapper school-wrapper">
             <div class="item school-btn">
                 <i class="icon6 icon-user-school"></i>
                 <p id="school"></p>
@@ -247,6 +247,7 @@
                     oDiv.style.display = 'none';
                 })
                 return oDiv;
+
             }
         })()
 
@@ -254,6 +255,18 @@
         $(".user-name-wrapper").on("click", function () {
             console.log("alert")
             var oDiv = singleAlert($("#user-name"),$("#user-name").text());
+            oDiv.style.display = 'block';
+        })
+        // 修改地址
+        $(".location-wrapper").on("click", function () {
+            console.log("alert")
+            var oDiv = singleAlert($("#location"),$("#location").text());
+            oDiv.style.display = 'block';
+        })
+        // 修改学校
+        $(".school-wrapper").on("click", function () {
+            console.log("alert")
+            var oDiv = singleAlert($("#school"),$("#school").text());
             oDiv.style.display = 'block';
         })
     </script>
