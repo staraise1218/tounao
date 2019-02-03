@@ -47,13 +47,12 @@
         <div class="item-wrapper">
             <div class="item jinbi">
                 <i class="icon6 icon-user-jinbi"></i>
-                <p></p>
+                <p id="goldcoin"></p>
             </div>
         </div>
         <div class="item-wrapper">
             <div class="item school-btn">
                 <i class="icon6 icon-user-school"></i>
-                <!-- <p>请输入您就读的学校</p> -->
                 <p id="school"></p>
             </div>
         </div>
@@ -103,8 +102,12 @@
                 $("#user-name").text($userinfo.nickname);
                 // $("#grade").text($userinfo.school_display);
                 $(".icon-user-location").text($userinfo.grade_id)
-                $(".jinbi p").text($userinfo.goldcoin);
+                $("#goldcoin").text($userinfo.goldcoin);
                 $("#school").text($userinfo.school);
+                
+                if($userinfo.school == '') {
+                    $("#school").text("请填写学校")
+                }
             },
             error: function () {
                 console.log('error')
@@ -130,14 +133,11 @@
                 console.log('error')
             }
         })
-
-        
-        if($("#location").is(":empty")) {
+        if ($('#location').is(":empty")) {
             $("#location").text("请填写地址")
         }
-        if($("#school").is(":empty")) {
-            $("#school").text("请填写学校")
-        }
+
+        
 
     </script>
 
