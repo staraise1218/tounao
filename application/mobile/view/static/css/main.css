@@ -207,7 +207,7 @@ html {
 
 
 
-
+/* 弹窗 */
 .edit-info-wrapper {
     position: absolute;
     left: 0;
@@ -216,14 +216,12 @@ html {
     height: 100%;
     background: rgba(0,0,0,0.3);
     z-index: 90;
-    /* color: #fff; */
 }
 .edit-info-wrapper .edit-content {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* transform: translateX(-50%); */
     width: 5rem;
     text-align: center;
     background: #fff;
@@ -265,6 +263,118 @@ html {
     color: #FFFFFF;
 }
 
+/* 弹窗 */
+.edit-location {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    z-index: 90;
+}
+.edit-location .edit-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 5rem;
+    text-align: center;
+    background: #fff;
+    border-radius: 0.3rem;
+    overflow: hidden;
+    padding-bottom: 0.4rem;
+}
+.edit-location .edit-content .title {
+    background-image: url(../image/bg123.png);
+    line-height: 1rem;
+    color: #FFFFFF;
+}
+.edit-location .edit-content .content {
+    margin-top: 0.6rem;
+}
+.edit-location .edit-content .content #username-edi {
+    text-align: center;
+    display: block;
+    margin: 0.3rem auto;
+    margin-bottom: 0.1rem;
+    color: #8b8b8b;
+    border: 0;
+}
+.edit-location .edit-content .content .icon5 {
+    display: block;
+    width: 100%;
+    height: 0.1rem;
+    /* border: 1px solid red; */
+    margin-bottom: 0.2rem;
+    background-position: -1.5rem -3.6rem;
+}
+.edit-location .edit-content .content input:last-child {
+    padding: 0.1rem 0.65rem;
+    border-radius: 0.4rem;
+    background: linear-gradient(90deg,rgb(92, 111, 249),rgb(146, 173, 221));
+    border-color: rgb(146, 173, 221);
+    border-top: 0;
+    border-right: 0;
+    color: #FFFFFF;
+}
+
+
+/* 弹窗 */
+.edit-school {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    z-index: 90;
+}
+.edit-school .edit-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 5rem;
+    text-align: center;
+    background: #fff;
+    border-radius: 0.3rem;
+    overflow: hidden;
+    padding-bottom: 0.4rem;
+}
+.edit-school .edit-content .title {
+    background-image: url(../image/bg123.png);
+    line-height: 1rem;
+    color: #FFFFFF;
+}
+.edit-school .edit-content .content {
+    margin-top: 0.6rem;
+}
+.edit-school .edit-content .content #username-edi {
+    text-align: center;
+    display: block;
+    margin: 0.3rem auto;
+    margin-bottom: 0.1rem;
+    color: #8b8b8b;
+    border: 0;
+}
+.edit-school .edit-content .content .icon5 {
+    display: block;
+    width: 100%;
+    height: 0.1rem;
+    /* border: 1px solid red; */
+    margin-bottom: 0.2rem;
+    background-position: -1.5rem -3.6rem;
+}
+.edit-school .edit-content .content input:last-child {
+    padding: 0.1rem 0.65rem;
+    border-radius: 0.4rem;
+    background: linear-gradient(90deg,rgb(92, 111, 249),rgb(146, 173, 221));
+    border-color: rgb(146, 173, 221);
+    border-top: 0;
+    border-right: 0;
+    color: #FFFFFF;
+}
 
 
 .login-wrapper {
