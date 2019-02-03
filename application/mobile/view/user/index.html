@@ -222,7 +222,7 @@
         var singleAlert = (function () {
             var str = '';
             var oDiv = document.createElement('div');
-            $("oDiv").html("");
+            $("oDiv").html(str);
             return function (el,value) {
                 str +=`<div class="alert-window">
                             <div class="alert-window-content">
@@ -241,7 +241,7 @@
                 $("#sub").on("click",function () {
                     console.log("sub")
                     el.text($("#alert-value").val());
-                    $("oDiv").css("display","none");
+                    oDiv.style.display = 'none'; 
                 })
                 return oDiv;
             }
