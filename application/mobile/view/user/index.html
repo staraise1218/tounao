@@ -38,7 +38,7 @@
             padding-bottom: 0.4rem;
         }
         .alert-window .alert-window-content .title {
-            background-image: url('../image/bg123.png');
+            background-image: url('__STATIC__/image/bg123.png');
             line-height: 1rem;
             color: #FFFFFF;
         }
@@ -231,9 +231,9 @@
                             <div class="alert-window-content">
                                 <div class="title">编辑信息</div>
                                 <div class="alert-content">
-                                    <input type="text" id="alert-value" value="${value}">
+                                    <input type="text" id="alert-value" value="${value}" style="display:block;margin:0 auto;border:none;">
                                     <i class="icon5"></i>
-                                    <input type="submit" id="sub" value="保存">
+                                    <input type="submit" id="sub" value="保存" style="border:none;background:rgba(74, 77, 177);padding: 0 1rem;color:#fff;margin-top:0.3rem;">
                                 </div>
                             </div>
                         </div>`
@@ -255,7 +255,7 @@
             console.log("alert")
             var oDiv = singleAlert($("#user-name"),$("#user-name").text());
             oDiv.style.display = 'block';
-        }) 
+        })
 
     </script>
 </body>
