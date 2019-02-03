@@ -10,11 +10,16 @@
     <script src="__STATIC__/js/rem.js"></script>
     <link rel="stylesheet" href="__STATIC__/css/global.css">
     <link rel="stylesheet" href="__STATIC__/css/main.css">
+    <style>
+        #grade {
+            border: none;
+        }
+    </style>
 </head>
 <body class="body-wrapper">
      <div class="user-poster-wrapper">
         <div>
-            <img src="__STATIC__/image/poster1.png" alt="">
+            <img src="" alt="">
         </div>
     </div>
 
@@ -22,31 +27,34 @@
         <div class="item-wrapper">
             <div class="item">
                 <i class="icon6 icon-user-name"></i>
-                <p id="user-name">晴天还是雨天</p>
+                <p id="user-name"></p>
             </div>
         </div>
         <div class="item-wrapper">
             <div class="item">
                 <i class="icon6 icon-user-grade"></i>
-                <p id="grade">二年级学生</p>
+                <select name="grade" id="grade">
+                    <option value=""></option>
+                </select>
             </div>
         </div>
         <div class="item-wrapper">
             <div class="item">
                 <i class="icon6 icon-user-location"></i>
-                <p>请输入您当前的位置</p>
+                <p id="location"></p>
             </div>
         </div>
         <div class="item-wrapper">
             <div class="item jinbi">
                 <i class="icon6 icon-user-jinbi"></i>
-                <p>您当前的金币</p>
+                <p></p>
             </div>
         </div>
         <div class="item-wrapper">
             <div class="item school-btn">
                 <i class="icon6 icon-user-school"></i>
-                <p>请输入您就读的学校</p>
+                <!-- <p>请输入您就读的学校</p> -->
+                <p id="school"></p>
             </div>
         </div>
     </div>
@@ -68,8 +76,8 @@
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script>
         // 全局变量
-        var $userinfo = {};
-        var $user_id = JSON.parse(localStorage.getItem("mUserInfo")).user_id;
+        var $userinfo = JSON.parse(localStorage.getItem("mUserInfo")) || {};
+        // var $user_id = JSON.parse(localStorage.getItem("mUserInfo")).user_id;
 
         // 更改昵称
         $("#user-name").on("click", function() {
@@ -82,28 +90,54 @@
             $(".edit-info-wrapper").css("display","none");
         })
 
+        // userinfo
         $.ajax({
             type:"POST",
             url: "http://tounao.staraise.com.cn/api/user/userinfo",
-            data: {user_id:$user_id},
+            data: {user_id:$userinfo.user_id},
             success: function (data) {
                 console.log(data)
                 $userinfo = data.data;               
                 // 渲染
                 $(".user-poster-wrapper img").prop("src",$userinfo.head_pic);
                 $("#user-name").text($userinfo.nickname);
-                $("#grade").text($userinfo.school_display);
+                // $("#grade").text($userinfo.school_display);
                 $(".icon-user-location").text($userinfo.grade_id)
                 $(".jinbi p").text($userinfo.goldcoin);
-                $(".school-btn p").text($userinfo.school);
-
-
+                $("#school").text($userinfo.school);
             },
             error: function () {
                 console.log('error')
             }
         })
-    
+        // 获取年级列表
+        $.ajax({
+            type:"POST",
+            url: "http://tounao.staraise.com.cn/Api/user/gradeList",
+            data: {user_id:$userinfo.user_id},
+            success: function (data) {
+                console.log(data)               
+                // 渲染
+                var $str_gradeList = '';
+                for(var i = 0; i < data.data.length; i++) {
+                    $str_gradeList += `
+                        <option id="${data.data[i].id}">${data.data[i].title}</option>
+                    `
+                }
+                $("#grade").html($str_gradeList);
+            },
+            error: function () {
+                console.log('error')
+            }
+        })
+
+        
+        if($("#location").is(":empty")) {
+            $("#location").text("请填写地址")
+        }
+        if($("#school").is(":empty")) {
+            $("#school").text("请填写学校")
+        }
 
     </script>
 
