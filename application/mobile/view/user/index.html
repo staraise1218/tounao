@@ -242,9 +242,8 @@
                 document.body.appendChild(oDiv);
                 console.log(oDiv);
                 var $sub = document.getElementById("sub");
-                var $alert_value = document.getElementById("alert-value");
                 $sub.onclick = function () {
-                    el.text($alert_value.value);
+                    el.text($("#alert-value"));
                     oDiv.style.display = 'none';
                 }
                 return oDiv;
