@@ -10,7 +10,7 @@ let $action = '',
     $user2_isright = '',
     $touserinfo = {}
     $comeMe=false//告诉我进来了
-
+    
 let patentHeight = $(".jindu").height(),
     userHeight_1 = 0,
     userHeight_2 = 0,
@@ -26,7 +26,11 @@ let patentHeight = $(".jindu").height(),
     $result = '',
     $time_number = 10,
     $time_text = 0,
-    $answer_end = false;
+    $answer_end = false,
+    $questionsWrapper = '',
+    $is_online = "对方不在线";
+
+
 
 // 保存用户登陆信息
 $user_id = $userinfo.user_id;
@@ -81,6 +85,8 @@ ws.onmessage = function (event) {
         console.log($data)
         $room_id = $data.room_id;
         $(".tanchutn-wrapper").css("display","block")
+        var $fheihgt = $(".list-wrapper").height();
+        $(".tanchutn-wrapper").css("height",$fheihgt)
         document.addEventListener("touchmove",function(e){
             if($(".tanchutn-wrapper").css("display")=='block'){
                $("html,body").addClass("overHiden")
@@ -149,7 +155,8 @@ ws.onmessage = function (event) {
 
 
     // 接受邀请 
-    $(".agreen").click(function() {
+    $(".agreen").click(function() {        
+        $("body").removeClass("pkb-bg");
         $("body").addClass("pk-bg");
         console.log($room_id,$user_id)
         console.log("接受者 agreen")
@@ -222,17 +229,18 @@ $(".begin").click(function () {
 
 // 渲染列表
 $(document).ready(function(){
+    $(".dangqian img").get(0).src = $userinfo.head_pic;
     $.ajax({
         type: 'POST',
         url: "http://tounao.staraise.com.cn/Api/index/index",
         data: {page:1},
         dataType: "json",
         success: function(res){
-          res.data.forEach(function(item){
+          res.data.forEach(function(item, index){
              $("#userList").append(`
                   <li class="item">
                       <div class="left">
-                          <div class="number">1</div>
+                          <div class="number">${index + 1}</div>
                           <div class="poster">
                               <img src="${item.head_pic}" alt="">
                           </div>
@@ -247,11 +255,17 @@ $(document).ready(function(){
                       <div class="pk" data-id="${item.user_id}">PK</div>
                   </li>
               `) 
+              if(item.user_id == $user_id) {
+                // linear-gradient(#fddb92,#fee140)
+                $(".item").eq(index).css("background","linear-gradient( #FDEB71, #FDD819)")
+                $(".item").eq(index).find($(".pk")).css("display","none");
+                // var $paiming = index + 1 + '/' + $(".item").length;
+                // $("#paiming").text($paiming)
+              }
           })
-        
+          
         // 邀请PK
         $(".pk").click(function () {
-            $("body").addClass("pk-bg");
             console.log(this)
             $touserinfo.nickname = $(this).parent().find(".user-name").text();
             $touserinfo.head_pic = $(this).parent().find("img").attr("src");
@@ -272,6 +286,17 @@ $(document).ready(function(){
                 success: function (data) {
                     console.log("邀请PK成功")
                     console.log(data)
+                    if(data.msg != "对方不在线") {
+                        // 显示加载页面
+                        $("body").removeClass("pkb-bg");
+                        $("body").addClass("pk-bg");
+                        $("#load-wrapper").css("display","block");
+                        $(".list-wrapper").css("display","none");
+                        $("#pk-display").css("display","none");
+                        $(".pk-end-wrapper").css("display","none");                        
+                    } else {
+                        alert("对方不在线！")
+                    }
                     $room_id = data.room_id;              
                     $knowledgeList = data.data.knowledgeList;
                     console.log($knowledgeList)
@@ -280,11 +305,6 @@ $(document).ready(function(){
                     console.log("邀请PK失败")
                 }
             })
-            // 显示加载页面
-            $("#load-wrapper").css("display","block");
-            $(".list-wrapper").css("display","none");
-            $("#pk-display").css("display","none");
-            $(".pk-end-wrapper").css("display","none");
         })
 
         //   拒绝邀请
@@ -371,6 +391,8 @@ function gameTimerStart () {
                     $("#score2").text($score_2);
 
                     // 胜负页面显示
+                    $questionsWrapper = '';          
+                    $(".choose-wrapper").html($questionsWrapper);
                     $("#load-wrapper").css("display","none");
                     $(".list-wrapper").css("display","none");
                     $("#pk-display").css("display","none");
@@ -412,12 +434,12 @@ function createQuestion(index) {
     $is_choose_2 = false;
     $can_choose = false;
     $time_number = 10;
-    let questionsWrapper = '';
+    // let questionsWrapper = '';
     if($_index < 5) {
         remove();
     }
     if(index < 5) {
-        questionsWrapper = `<form class="questions-wrapper" action="" data-know_id = ${$knowledgeList[index].room_knowledge_id} data-answer=${$knowledgeList[index].answer}>
+        $questionsWrapper = `<form class="questions-wrapper" action="" data-know_id = ${$knowledgeList[index].room_knowledge_id} data-answer=${$knowledgeList[index].answer}>
                                 <h5> ${$knowledgeList[index].title} </h5>
                                 <label class="choose-btn" for="a" data="a">
                                     <input type="checkbox" name="" style="display:none"> ${$knowledgeList[index].a}
@@ -432,7 +454,7 @@ function createQuestion(index) {
                                     <input type="checkbox" name="" style="display:none"> ${$knowledgeList[index].d}
                                 </label>
                             </form>`
-        $(".choose-wrapper").html(questionsWrapper);
+        $(".choose-wrapper").html($questionsWrapper);
     }
 }
 
@@ -546,7 +568,9 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
                     $("#score1").text($score_1);
                     $("#score2").text($score_2);
 
-                    // 胜负页面显示
+                    // 胜负页面显示        
+                    $questionsWrapper = '';          
+                    $(".choose-wrapper").html($questionsWrapper);
                     $("#load-wrapper").css("display","none");
                     $(".list-wrapper").css("display","none");
                     $("#pk-display").css("display","none");
@@ -649,10 +673,43 @@ $(".contain-btn").on("click", function () {
 
             $("#user1-number").text($score_1);
             $("#user2-number").text($score_2);
-})
+            // $questionsWrapper = '';          
+            // $(".choose-wrapper").html($questionsWrapper);
+            $(".user1_jindu-con").animate({height:0},"fast")
+            $(".user2_jindu-con").animate({height:0},"fast")
+            
+            let  $questionsWrapper = `<form class="questions-wrapper" action="" data-know_id = ${$knowledgeList[index].room_knowledge_id} data-answer=${$knowledgeList[index].answer}>
+                                <h5></h5>
+                                <label class="choose-btn" for="a" data="a">
+                                    <input type="checkbox" name="" style="display:none">
+                                </label>
+                                <label class="choose-btn" for="a" data="b">
+                                    <input type="checkbox" name="" style="display:none"> 
+                                </label>
+                                <label class="choose-btn" for="a" data="c">
+                                    <input type="checkbox" name="" style="display:none"> 
+                                </label>
+                                <label class="choose-btn" for="a" data="d">
+                                    <input type="checkbox" name="" style="display:none">
+                                </label>
+                            </form>`
+            $(".choose-wrapper").html($questionsWrapper);
+        })
 
 // 点击头像跳转我的页面
 $(".user-btn").on("click", function () {
     console.log("go mine")
     window.location.href='http://tounao.staraise.com.cn/index.php/mobile/user/index'
+})
+
+$(".abandon-b").on("click", function () {
+    // 显示加载页面
+    $(".list-wrapper").css("display","block");
+    $("#load-wrapper").css("display","none");
+    $("#pk-display").css("display","none");
+    $(".pk-end-wrapper").css("display","none");
+    $(".tanchutn-wrapper").css("display","none");
+    
+    $(".pk-bg").removeClass("pk-bg");
+    $("body").addClass("pkb-bg");
 })
