@@ -31,7 +31,7 @@ class User extends Base {
 		} else {
 			$userinfo['grade'] = '';
 		}
-		unset($userinfo['grade']);
+		unset($userinfo['grade_id']);
 
 
 		response_success($userinfo);
