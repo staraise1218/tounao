@@ -223,14 +223,14 @@
         }
 
         // 单例弹窗
+        oDiv = document.createElement('div');
         var singleAlert = (function () {
-            var oDiv = null;
+            // var oDiv = null;
             var str = '';
             return function (el,value) {
-                if(oDiv !== null) {
-                    return oDiv;
-                }
-                oDiv = document.createElement('div');
+                // if(oDiv !== null) {
+                //     return oDiv;
+                // }
                 str +=`<div class="alert-window">
                             <div class="alert-window-content">
                                 <div class="title">编辑信息</div>
