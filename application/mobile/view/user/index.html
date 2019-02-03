@@ -242,10 +242,10 @@
                 oDiv.style.display = 'none';
                 document.body.appendChild(oDiv);
                 console.log(oDiv);
-                $("#sub").onclick = function () {
+                $("#sub").on("click",function () {
                     el.text($("#alert-value").val());
                     oDiv.style.display = 'none';
-                }
+                })
                 return oDiv;
             }
         })()
