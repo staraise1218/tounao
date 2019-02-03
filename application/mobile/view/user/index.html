@@ -221,8 +221,10 @@
         // 单例弹窗
         var singleAlert = (function () {
             var str = '';
-            var oDiv = document.createElement('div');
-            $("oDiv").html(str);
+            var oDiv = null;
+            if(oDiv !== null) {
+                return oDiv
+            }
             return function (el,value) {
                 str +=`<div class="alert-window">
                             <div class="alert-window-content">
@@ -234,6 +236,7 @@
                                 </div>
                             </div>
                         </div>`
+                oDiv = document.createElement('div');
                 oDiv.innerHTML = str;
                 oDiv.style.display = 'none';
                 document.body.appendChild(oDiv);
@@ -241,8 +244,7 @@
                 $("#sub").on("click",function () {
                     console.log("sub")
                     el.text($("#alert-value").val());
-                    oDiv.style.display = 'none'; 
-                    $("oDiv").detach();
+                    oDiv.style.display = 'none';
                 })
                 return oDiv;
             }
