@@ -70,6 +70,30 @@
             </div>
         </div>
     </div>
+    <!-- 地址弹框 -->
+    <div class="edit-location" style="display:none;">
+        <div class="location-content">
+            <div class="title">编辑信息</div>
+            <div class="content">
+                <input type="text" id="location-edi" 
+                    value="请输入您的昵称">
+                <i class="icon5"></i>
+                <input type="submit" id="tijiao" value="保存">
+            </div>
+        </div>
+    </div>
+        <!-- 学校弹框 -->
+        <div class="edit-school" style="display:none;">
+            <div class="school-content">
+                <div class="title">编辑信息</div>
+                <div class="content">
+                    <input type="text" id="location-edi" 
+                        value="请输入您的昵称">
+                    <i class="icon5"></i>
+                    <input type="submit" id="tijiao" value="保存">
+                </div>
+            </div>
+        </div>
 
 
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -84,10 +108,34 @@
             $(".edit-info-wrapper").css("display","block");
         })
         $("#tijiao").on("click", function() {
-            $("#user-name").text($("#username-edi").val())
+            $("#user").text($("#username-edi").val())
             console.log($("#username-edi").val())
             $(".edit-info-wrapper").css("display","none");
         })
+
+        // 更改地址
+        $("#location").on("click", function() {
+            $("#location-edi").val($("#location").text())
+            $(".edit-location").css("display","block");
+        })
+        $("#tijiao").on("click", function() {
+            $("#location").text($("#location-edi").val())
+            console.log($("#location-edi").val())
+            $(".edit-location").css("display","none");
+        })
+        
+        // 更改学校
+        $("#school").on("click", function() {
+            $("#school-edi").val($("#school").text())
+            $(".edit-school").css("display","block");
+        })
+        $("#tijiao").on("click", function() {
+            $("#school").text($("#school-edi").val())
+            console.log($("#school-edi").val())
+            $(".edit-school").css("display","none");
+        })
+
+
 
         // userinfo
         $.ajax({
