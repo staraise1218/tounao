@@ -224,6 +224,10 @@
             var oDiv = null;
             var str = '';
             return function (el,value) {
+                if(oDiv !== null) {
+                    return oDiv;
+                }
+                oDiv = document.createElement('div');
                 str +=`<div class="alert-window">
                             <div class="alert-window-content">
                                 <div class="title">编辑信息</div>
@@ -234,21 +238,15 @@
                                 </div>
                             </div>
                         </div>`
-                if(oDiv !== null) {
-                    oDiv.innerHTML = str;
-                    oDiv.style.display = 'none';
-                } else {
-                    oDiv = document.createElement('div');
-                    oDiv.innerHTML = str;
-                    oDiv.style.display = 'none';
-                    document.body.appendChild(oDiv);
-                }
-
+                oDiv.innerHTML = str;
+                oDiv.style.display = 'none';
+                document.body.appendChild(oDiv);
                 console.log(oDiv);
                 $("#sub").on("click",function () {
                     console.log("sub")
                     el.text($("#alert-value").val());
-                    oDiv.style.display = 'none';
+                    // oDiv.style.display = 'none';
+                    $("oDiv").remove();
                 })
                 return oDiv;
             }
