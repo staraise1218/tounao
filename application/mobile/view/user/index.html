@@ -10,11 +10,16 @@
     <script src="__STATIC__/js/rem.js"></script>
     <link rel="stylesheet" href="__STATIC__/css/global.css">
     <link rel="stylesheet" href="__STATIC__/css/main.css">
+    <style>
+        #school {
+            border: none;
+        }
+    </style>
 </head>
 <body class="body-wrapper">
      <div class="user-poster-wrapper">
         <div>
-            <img src="__STATIC__/image/poster1.png" alt="">
+            <img src="" alt="">
         </div>
     </div>
 
@@ -115,13 +120,13 @@
             success: function (data) {
                 console.log(data)               
                 // 渲染
-                var $str_gradeList = '';
-                data.data.forEach(item, index, function () {
-                    $str_gradeList += `
-                        <option id="${item.id}">${item.title}</option>
-                    `
-                })
-                $("#school").html($str_gradeList);
+                // var $str_gradeList = '';
+                // data.data.forEach(item, index, function () {
+                //     $str_gradeList += `
+                //         <option id="${item.id}">${item.title}</option>
+                //     `
+                // })
+                // $("#school").html($str_gradeList);
             },
             error: function () {
                 console.log('error')
