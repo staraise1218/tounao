@@ -226,7 +226,7 @@
             return function (el,value) {
                 if(oDiv !== null) {
                     return oDiv;
-                } 
+                }
                 oDiv = document.createElement('div');
                 str +=`<div class="alert-window">
                             <div class="alert-window-content">
@@ -244,9 +244,11 @@
                 console.log(oDiv);
                 $("#sub").on("click",function () {
                     el.text($("#alert-value").val());
-                    oDiv = '';
+                    oDiv.style.display = 'none';
+                    oDiv.text("");
                 })
                 return oDiv;
+
             }
         })()
 
