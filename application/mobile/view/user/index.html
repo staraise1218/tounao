@@ -33,7 +33,9 @@
         <div class="item-wrapper">
             <div class="item">
                 <i class="icon6 icon-user-grade"></i>
-                <p id="grade"></p>
+                <select name="grade" id="grade">
+                    <option value=""></option>
+                </select>
             </div>
         </div>
         <div class="item-wrapper">
@@ -52,9 +54,7 @@
             <div class="item school-btn">
                 <i class="icon6 icon-user-school"></i>
                 <!-- <p>请输入您就读的学校</p> -->
-                <select name="school" id="school">
-                    <option value=""></option>
-                </select>
+                <p id="school"></p>
             </div>
         </div>
     </div>
@@ -101,12 +101,10 @@
                 // 渲染
                 $(".user-poster-wrapper img").prop("src",$userinfo.head_pic);
                 $("#user-name").text($userinfo.nickname);
-                $("#grade").text($userinfo.school_display);
+                // $("#grade").text($userinfo.school_display);
                 $(".icon-user-location").text($userinfo.grade_id)
                 $(".jinbi p").text($userinfo.goldcoin);
-                $(".school-btn p").text($userinfo.school);
-
-
+                $("#school").text($userinfo.school);
             },
             error: function () {
                 console.log('error')
@@ -126,7 +124,7 @@
                         <option id="${data.data[i].id}">${data.data[i].title}</option>
                     `
                 }
-                $("#school").html($str_gradeList);
+                $("#grade").html($str_gradeList);
             },
             error: function () {
                 console.log('error')
