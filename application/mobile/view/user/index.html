@@ -243,11 +243,11 @@
                 document.body.appendChild(oDiv);
                 console.log(oDiv);
                 $("#sub").on("click",function () {
+                    console.log("sub")
                     el.text($("#alert-value").val());
                     oDiv.style.display = 'none';
                 })
                 return oDiv;
-
             }
         })()
 
