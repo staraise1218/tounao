@@ -158,7 +158,6 @@
     <script>
         // 全局变量
         var $userinfo = JSON.parse(localStorage.getItem("mUserInfo")) || {};
-        // var $user_id = JSON.parse(localStorage.getItem("mUserInfo")).user_id;
         var $user_name = '',
             $user_grade = '',
             $user_location = '',
@@ -170,9 +169,6 @@
             $("#location").text($user_location = $user_location == '' ? "请输入地址" : $user_location);
             $("#school").text($school = $school == '' ? "请输入学校" : $school);
         }
-
-
-
 
         // userinfo
         $.ajax({
