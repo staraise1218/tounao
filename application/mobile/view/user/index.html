@@ -111,7 +111,7 @@
         $.ajax({
             type:"POST",
             url: "http://tounao.staraise.com.cn/Api/user/gradeList",
-            data: {user_id:$user_id},
+            data: {user_id:$userinfo.user_id},
             success: function (data) {
                 console.log(data)               
                 // 渲染
