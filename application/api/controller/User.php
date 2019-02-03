@@ -5,6 +5,7 @@ namespace app\api\controller;
 use think\Db;
 use app\api\logic\FileLogic;
 use app\api\logic\GeographyLogic;
+use think\Image;
 
 class User extends Base {
 

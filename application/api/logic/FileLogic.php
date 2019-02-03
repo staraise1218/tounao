@@ -6,7 +6,6 @@
 namespace app\api\logic;
 use think\Db;
 use think\Controller;
-use think\Image;
 
 class FileLogic extends Controller {
 
@@ -29,7 +28,7 @@ class FileLogic extends Controller {
                 if(in_array($suffix, array('jpeg', 'jpg', 'gif', 'png', 'bmp'))){
                     // 图片压缩
                     $origin_path = '.'.$fullPath;
-                    $ImageObj = Image::open($origin_path);
+                    $ImageObj = \think\Image::open($origin_path);
                     $ImageObj->save($origin_path, null, 60);
                 }
             }   
