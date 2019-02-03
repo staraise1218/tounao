@@ -14,7 +14,66 @@
         #grade {
             border: none;
         }
-    </style>
+
+
+        .alert-window {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    z-index: 90;
+    /* color: #fff; */
+}
+.alert-window .alert-window-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* transform: translateX(-50%); */
+    width: 5rem;
+    text-align: center;
+    background: #fff;
+    border-radius: 0.3rem;
+    overflow: hidden;
+    padding-bottom: 0.4rem;
+}
+.alert-window .alert-window-content .title {
+    background-image: url('../image/bg123.png');
+    line-height: 1rem;
+    color: #FFFFFF;
+}
+.alert-window .alert-window-content .content {
+    margin-top: 0.6rem;
+}
+.alert-window .alert-window-content .content #username-edi {
+    text-align: center;
+    display: block;
+    margin: 0.3rem auto;
+    margin-bottom: 0.1rem;
+    color: #8b8b8b;
+    border: 0;
+}
+.alert-window .alert-window-content .content .icon5 {
+    display: block;
+    width: 100%;
+    height: 0.1rem;
+    /* border: 1px solid red; */
+    margin-bottom: 0.2rem;
+    background-position: -1.5rem -3.6rem;
+}
+.alert-window .alert-window-content .content input:last-child {
+    padding: 0.1rem 0.65rem;
+    border-radius: 0.4rem;
+    background: linear-gradient(90deg,rgb(92, 111, 249),rgb(146, 173, 221));
+    border-color: rgb(146, 173, 221);
+    border-top: 0;
+    border-right: 0;
+    color: #FFFFFF;
+}
+
+</style>
 </head>
 <body class="body-wrapper">
      <div class="user-poster-wrapper">
@@ -102,16 +161,16 @@
         var $userinfo = JSON.parse(localStorage.getItem("mUserInfo")) || {};
         // var $user_id = JSON.parse(localStorage.getItem("mUserInfo")).user_id;
 
-        // 更改昵称
-        $("#user-name").on("click", function() {
-            $("#username-edi").val($("#user-name").text())
-            $(".edit-info-wrapper").css("display","block");
-        })
-        $("#tijiao").on("click", function() {
-            $("#user").text($("#username-edi").val())
-            console.log($("#username-edi").val())
-            $(".edit-info-wrapper").css("display","none");
-        })
+        // // 更改昵称
+        // $("#user-name").on("click", function() {
+        //     $("#username-edi").val($("#user-name").text())
+        //     $(".edit-info-wrapper").css("display","block");
+        // })
+        // $("#tijiao").on("click", function() {
+        //     $("#user").text($("#username-edi").val())
+        //     console.log($("#username-edi").val())
+        //     $(".edit-info-wrapper").css("display","none");
+        // })
 
         // userinfo
         $.ajax({
@@ -161,73 +220,45 @@
             $("#location").text("请填写地址")
         }
 
-        
+        // 单例弹窗
+        var singleAlert = (function () {
+            var oDiv = null;
+            var str = '';
+            return function (el,value) {
+                if(oDiv !== null) {
+                    return oDiv;
+                }
+                oDiv = document.createElement('div');
+                str +=`<div class="alert-window">
+                            <div class="alert-window-content">
+                                <div class="title">编辑信息</div>
+                                <div class="alert-content">
+                                    <input type="text" id="alert-value" value="${value}">
+                                    <i class="icon5"></i>
+                                    <input type="submit" id="sub" value="保存">
+                                </div>
+                            </div>
+                        </div>`
+                oDiv.innerHTML = str;
+                oDiv.style.display = 'none';
+                document.body.appendChild(oDiv);
+                console.log(oDiv);
+                var $sub = document.getElementById("sub");
+                var $alert_value = document.getElementById("alert-value");
+                $sub.onclick = function () {
+                    el.innerText = $alert_value.value;
+                    oDiv.style.display = 'none';
+                }
+                return oDiv;
+            }
+        })()
 
-    </script>
+        // 修改姓名
+        $("#user-name").onclick = function () {
+            var oDiv = singleAlert($("#user-name"),$("#user-name").text());
+            oDiv.style.display = 'block';
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script>
-        // let postData = {
-        //     page: 1
-        // }
-        // var obj = {};
-
-        // $.ajax({
-        //     type: 'POST',
-        //     data: postData,
-        //     url: 'http://tounao.staraise.com.cn/api/weixin/get_code',
-        //     success: function(data) {
-        //         console.log(data)
-        //         obj = data;
-        //     },
-        //     error: function(e) {
-        //         console.log("error -- 关闭页面");
-        //     }
-        // })
-
-
-
-        // // 登陆
-        // var str = `    <div class="login-wrapper">
-        //                     <h4>用户登陆</h4> 
-        //                     <span class="wx-close">X</span>
-        //                     <div id="wx-login">微信用户快速登陆</div>
-        //                 </div>`
-        // $("#login").on("click", function() {
-        //     $(".body-wrapper").append(str)
-        // })
-        // $(".body-wrapper").delegate(".wx-close","click", function() {
-        //     $(".login-wrapper").hide();
-        // })
-        // $(".body-wrapper").delegate("#wx-login","click", function() {
-        //     //判断是否授权过
-        //     let userInfo= localStorage.getItem("mUserInfo")
-        //     console.log(userInfo)
-        //     // if(userInfo!=null){
-        //     //    window.location.href="http://tounao.staraise.com.cn/application/mobile/view/weixin/get_userinfo.html"
-        //     // }else{
-        //     //     window.location.href='http://tounao.staraise.com.cn/index.php/mobile/weixin/get_code'
-        //     // }
-        //     // window.location.href = obj.data.authUrl;
-        //      window.location.href='http://tounao.staraise.com.cn/index.php/mobile/weixin/get_code'
-        // })
     </script>
 </body>
 </html>
