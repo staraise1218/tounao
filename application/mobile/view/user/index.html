@@ -224,9 +224,21 @@
             var oDiv = null;
             var str = '';
             return function (el,value) {
-                // if(oDiv !== null) {
-                //     return oDiv;
-                // }
+                if(oDiv !== null) {
+                    str +=`<div class="alert-window">
+                            <div class="alert-window-content">
+                                <div class="title">编辑信息</div>
+                                <div class="alert-content">
+                                    <input type="text" id="alert-value" value="${value}" style="display:block;margin:0 auto;border:none;text-align:center;margin-top:0.5rem;">
+                                    <i class="icon5"></i>
+                                    <input type="submit" id="sub" value="保存" style="border:none;background:rgba(74, 77, 177);padding: 0 1rem;color:#fff;margin-top:0.3rem;line-height:0.6rem;">
+                                </div>
+                            </div>
+                        </div>`
+                    oDiv.innerHTML = str;
+                    oDiv.style.display = 'none';
+                    // document.body.appendChild(oDiv);
+                }
                 oDiv = document.createElement('div');
                 str +=`<div class="alert-window">
                             <div class="alert-window-content">
