@@ -46,7 +46,10 @@
         <div class="item-wrapper">
             <div class="item school-btn">
                 <i class="icon6 icon-user-school"></i>
-                <p>请输入您就读的学校</p>
+                <!-- <p>请输入您就读的学校</p> -->
+                <select name="school" id="school">
+                    <option value="">请输入您就读的学校</option>
+                </select>
             </div>
         </div>
     </div>
@@ -82,6 +85,7 @@
             $(".edit-info-wrapper").css("display","none");
         })
 
+        // userinfo
         $.ajax({
             type:"POST",
             url: "http://tounao.staraise.com.cn/api/user/userinfo",
@@ -98,6 +102,26 @@
                 $(".school-btn p").text($userinfo.school);
 
 
+            },
+            error: function () {
+                console.log('error')
+            }
+        })
+        // 获取年级列表
+        $.ajax({
+            type:"POST",
+            url: "http://tounao.staraise.com.cn/Api/user/gradeList",
+            data: {user_id:$user_id},
+            success: function (data) {
+                console.log(data)               
+                // 渲染
+                var $str_gradeList = '';
+                data.data.forEach(item, index, function () {
+                    $str_gradeList += `
+                        <option id="${item.id}">${item.title}</option>
+                    `
+                })
+                $("#school").html($str_gradeList);
             },
             error: function () {
                 console.log('error')
