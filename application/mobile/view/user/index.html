@@ -41,7 +41,7 @@
         <div class="item-wrapper">
             <div class="item">
                 <i class="icon6 icon-user-location"></i>
-                <p></p>
+                <p id="location"></p>
             </div>
         </div>
         <div class="item-wrapper">
@@ -130,7 +130,14 @@
                 console.log('error')
             }
         })
-    
+
+        
+        if($("#location").is(":empty")) {
+            $("#location").text("请填写地址")
+        }
+        if($("#school").is(":empty")) {
+            $("#school").text("请填写学校")
+        }
 
     </script>
 
