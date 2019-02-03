@@ -32,6 +32,11 @@ class User extends Base {
 			$userinfo['grade'] = '';
 		}
 		unset($userinfo['grade_id']);
+		if($userinfo['head_pic']){
+			if( ! strpos($userinfo['head_pic'], 'http')){
+				$userinfo['head_pic'] = 'http://tounao.staraise.com.cn'.$userinfo['head_pic'];
+			}
+		}
 
 
 		response_success($userinfo);
@@ -47,14 +52,9 @@ class User extends Base {
 		response_success($gradeList);
 	}
 
-    /**
-     * [uploadFile 上传头像/认证视频 app 原生调用]
-     * @param [type] $[type] [文件类型 head_pic 头像 auth_video 视频认证]
-     * @param  $[action] [ 默认 add 添加 edit 修改]
-     * @return [type] [description]
-     */
+    // 修改头像
     public function changeHeadPic(){
-        $user_id = $this->user_id;
+        $user_id = I('user_id');
 
         $uploadPath = UPLOAD_PATH.'head_pic/';
 
@@ -65,7 +65,7 @@ class User extends Base {
 
             Db::name('users')->update(array('user_id'=>$user_id, 'head_pic'=>$fullPath));
 
-            $resultdata = array('head_pic'=>$fullPath);
+            $resultdata = array('head_pic'=>'http://tounao.staraise.com.cn'.$fullPath);
             response_success($resultdata, '上传成功');
             
         } else {
@@ -74,6 +74,7 @@ class User extends Base {
     }
 
     public function changeField(){
+    	$user_id = I('user_id');
         $field = input('post.field');
         $fieldValue = input('post.fieldValue');
 

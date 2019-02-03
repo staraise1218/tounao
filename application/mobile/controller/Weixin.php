@@ -59,6 +59,12 @@ class Weixin extends Base{
         	}
         }
 
+        if($user['head_pic']){
+            if( ! strpos($userinfo['head_pic'], 'http')){
+                $userinfo['head_pic'] = 'http://tounao.staraise.com.cn'.$userinfo['head_pic'];
+            }
+        }
+
         $this->assign('userinfo', json_encode($users));
         return $this->fetch();
     }
