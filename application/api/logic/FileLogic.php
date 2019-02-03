@@ -47,7 +47,7 @@ class FileLogic extends Controller {
         if($info){
             $parentDir = '/'.date('Ymd'); // 系统默认在上传目录下创建了日期目录
             $fullPath = '/'.$uploadPath.$parentDir.'/'.$info->getFilename();
-
+p($fullPath);
             $suffix = substr(strrchr($fullPath, '.'), 1);
             if(in_array($suffix, array('jpeg', 'jpg', 'gif', 'png', 'bmp'))){
                 // 图片压缩
