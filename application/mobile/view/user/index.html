@@ -224,9 +224,9 @@
             var oDiv = null;
             var str = '';
             return function (el,value) {
-                if(oDiv !== null) {
-                    return oDiv;
-                }
+                // if(oDiv !== null) {
+                //     return oDiv;
+                // }
                 oDiv = document.createElement('div');
                 str +=`<div class="alert-window">
                             <div class="alert-window-content">
@@ -254,19 +254,16 @@
 
         // 修改姓名
         $(".user-name-wrapper").on("click", function () {
-            console.log("alert")
             var oDiv = singleAlert($("#user-name"),$("#user-name").text());
             oDiv.style.display = 'block';
         })
         // 修改地址
         $(".location-wrapper").on("click", function () {
-            console.log("alert")
             var oDiv = singleAlert($("#location"),$("#location").text());
             oDiv.style.display = 'block';
         })
         // 修改学校
         $(".school-wrapper").on("click", function () {
-            console.log("alert")
             var oDiv = singleAlert($("#school"),$("#school").text());
             oDiv.style.display = 'block';
         })
