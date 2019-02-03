@@ -29,7 +29,7 @@ class FileLogic extends Controller {
                 if(in_array($suffix, array('jpeg', 'jpg', 'gif', 'png', 'bmp'))){
                     // 图片压缩
                     $origin_path = '.'.$fullPath;
-                    $ImageObj = \think\Image::open($origin_path);
+                    $ImageObj = Image::open($origin_path);
                     $ImageObj->save($origin_path, null, 60);
                 }
             }   
