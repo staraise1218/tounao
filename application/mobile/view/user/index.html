@@ -242,6 +242,7 @@
                     console.log("sub")
                     el.text($("#alert-value").val());
                     oDiv.style.display = 'none'; 
+                    $("oDiv").detach();
                 })
                 return oDiv;
             }
@@ -249,18 +250,18 @@
 
         // 修改姓名
         $(".user-name-wrapper").on("click", function () {
-            var $name = singleAlert($("#user-name"),$("#user-name").text());
-            $name.style.display = 'block';
+            var oDiv = singleAlert($("#user-name"),$("#user-name").text());
+            oDiv.style.display = 'block';
         })
         // 修改地址
         $(".location-wrapper").on("click", function () {
-            var $Location = singleAlert($("#location"),$("#location").text());
-            $Location.style.display = 'block';
+            var oDiv = singleAlert($("#location"),$("#location").text());
+            oDiv.style.display = 'block';
         })
         // 修改学校
         $(".school-wrapper").on("click", function () {
-            var $school = singleAlert($("#school"),$("#school").text());
-            $name.style.display = 'block';
+            var oDiv = singleAlert($("#school"),$("#school").text());
+            oDiv.style.display = 'block';
         })
     </script>
 </body>
