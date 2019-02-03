@@ -222,10 +222,10 @@
         var singleAlert = (function () {
             var str = '';
             var oDiv = null;
-            if(oDiv !== null) {
-                return oDiv
-            }
             return function (el,value) {
+                if(oDiv !== null) {
+                    return oDiv
+                }
                 str +=`<div class="alert-window">
                             <div class="alert-window-content">
                                 <div class="title">编辑信息</div>
