@@ -81,7 +81,7 @@
     </div>
 
     <div class="content-wrapper">
-        <div class="item-wrapper">
+        <div class="item-wrapper user-name-wrapper">
             <div class="item">
                 <i class="icon6 icon-user-name"></i>
                 <p id="user-name"></p>
@@ -252,7 +252,7 @@
         })()
 
         // 修改姓名
-        $("#user-name").on("click", function () {
+        $(".user-name-wrapper").on("click", function () {
             console.log("alert")
             var oDiv = singleAlert($("#user-name"),$("#user-name").text());
             oDiv.style.display = 'block';
