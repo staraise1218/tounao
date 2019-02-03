@@ -109,7 +109,7 @@ html {
     border: 0.05rem solid #fff;
     overflow: hidden;
 }
-.user-poster-wrapper > div img {
+.user-poster-wrapper > div label img {
     width: 100%;
     height: 100%;
 }

@@ -76,7 +76,10 @@
 <body class="body-wrapper">
      <div class="user-poster-wrapper">
         <div>
-            <img src="" alt="">
+            <label for="user-poster">
+                <img src="" alt="">
+                <input type="file">
+            </label>
         </div>
     </div>
 
@@ -239,7 +242,7 @@
                 oDiv.style.display = 'none';
                 document.body.appendChild(oDiv);
                 console.log(oDiv);
-                $("sub").onclick = function () {
+                $("#sub").onclick = function () {
                     el.text($("#alert-value").val());
                     oDiv.style.display = 'none';
                 }
