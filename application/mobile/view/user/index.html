@@ -120,13 +120,13 @@
             success: function (data) {
                 console.log(data)               
                 // 渲染
-                // var $str_gradeList = '';
-                // data.data.forEach(item, index, function () {
-                //     $str_gradeList += `
-                //         <option id="${item.id}">${item.title}</option>
-                //     `
-                // })
-                // $("#school").html($str_gradeList);
+                var $str_gradeList = '';
+                for(var i = 0; i < data.data.length; i++) {
+                    $str_gradeList += `
+                        <option id="${data.data[i].id}">${data.data[i].title}</option>
+                    `
+                }
+                $("#school").html($str_gradeList);
             },
             error: function () {
                 console.log('error')
