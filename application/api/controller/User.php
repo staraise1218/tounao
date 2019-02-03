@@ -33,11 +33,7 @@ class User extends Base {
 			$userinfo['grade'] = '';
 		}
 		unset($userinfo['grade_id']);
-		if($userinfo['head_pic']){
-			if( ! strpos($userinfo['head_pic'], 'http')){
-				$userinfo['head_pic'] = 'http://tounao.staraise.com.cn'.$userinfo['head_pic'];
-			}
-		}
+		$userinfo['head_pic'] = headPic($userinfo['head_pic']);
 
 
 		response_success($userinfo);

@@ -27,6 +27,7 @@ class Pk extends Base {
 
 		// 获取用户信息
 		$user = Db::name('users')->where('user_id', $user_id)->find();
+		$user['head_pic'] = headPic($user['head_pic']);
 
 		$room_id  = Db::name('room')->insertGetId(array(
 			'user_id' => $user_id,
@@ -77,10 +78,13 @@ class Pk extends Base {
 			->where('user_id', $room['user_id'])
 			->field('user_id, head_pic, nickname')
 			->find();
+		$userinfo['head_pic'] = headPic($userinfo['head_pic']);
+		
 		$touserinfo = Db::name('users')
 			->where('user_id', $to_user_id)
 			->field('user_id, head_pic, nickname')
 			->find();
+		$touserinfo['head_pic'] = headPic($touserinfo['head_pic']);
 
 		$result['userinfo'] = $userinfo;
 		$result['touserinfo'] = $touserinfo;

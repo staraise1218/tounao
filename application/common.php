@@ -1154,3 +1154,11 @@ function getPayBody($order_id){
     $payBody = getSubstr($gns, 0, 18);
     return $payBody;
 }
+
+
+function headPic($head_pic){
+    if($head_pic == '') return '';
+    if( ! strpos($head_pic, 'http')){
+        return 'http://tounao.staraise.com.cn'.$head_pic;
+    }
+}
