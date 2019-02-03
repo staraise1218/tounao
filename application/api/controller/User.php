@@ -38,8 +38,9 @@ class User extends Base {
 		$gradeList = Db::name('grade')
 			->where('is_open', 1)
 			->where('is_delete', 0)
+			->field('id, title')
 			->select();
-p($gradeList);
+
 		response_success($gradeList);
 	}
 
