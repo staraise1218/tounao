@@ -244,7 +244,7 @@
                 var $sub = document.getElementById("sub");
                 var $alert_value = document.getElementById("alert-value");
                 $sub.onclick = function () {
-                    el.innerText = $alert_value.value;
+                    el.text($alert_value.value);
                     oDiv.style.display = 'none';
                 }
                 return oDiv;
