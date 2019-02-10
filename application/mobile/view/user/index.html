@@ -148,7 +148,7 @@
                 <div class="title">编辑信息</div>
                 <div class="content">
                     <input type="text" id="school-edi" 
-                        value="请输入您的昵称">
+                        value="请输入您的学校">
                     <i class="icon5"></i>
                     <input type="submit" id="tijiao-school" value="保存">
                 </div>
@@ -288,7 +288,7 @@
 
         // 修改学校
         $(".school-wrapper").on("click", function () {
-            $("#school").val($("#school-edi").text());
+            $("#school-edi").val($("#school").text());
             $(".edit-school").css("display","block");
         })
         $("#tijiao-school").on("click", function () {
