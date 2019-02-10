@@ -70,7 +70,7 @@
             border-right: 0;
             color: #FFFFFF;
         }
-        #user-poster {
+        /* #user-poster {
             position: relative;
         }
         #user-poster input {
@@ -81,7 +81,7 @@
             height: 100%;
             display: inline-block;
             width: 2.1rem;
-        }
+        } */
 </style>
 </head>
 <body class="body-wrapper">
@@ -89,7 +89,7 @@
         <div id="user-poster">
             <label for="user-poster">
                 <img id="header-upload" src="" alt="">
-                <input type="file">
+                <input id="header-change" type="file">
             </label>
         </div>
     </div>
@@ -259,8 +259,8 @@
         })()
 
         // 修改头像
-        $("#user-poster").on('click', function () {
-
+        $("#user-poster").delegate('header-change','click', function () {
+            
         })
 
         // 修改姓名
