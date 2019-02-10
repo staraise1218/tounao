@@ -259,9 +259,15 @@
         })()
 
         // 修改头像
-        $("#user-poster").on('click', function () {
-            $("#header-change").click();
-        })
+        // $("#user-poster").on('click', function () {
+        //     $("#header-change").click();
+        // })
+        $(document).ready(function(){
+            $('#user-poster').click(function(){
+                $('#header-change').click();
+            });
+        });
+
 
         // 修改姓名
         $(".user-name-wrapper").on("click", function () {
