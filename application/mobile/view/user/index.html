@@ -256,11 +256,21 @@
         //     oDiv.style.display = 'block';
         // })
         $(".user-name-wrapper").on("click", function () {
+            $("#username-edi").val($("#user-name").text());
             $(".edit-info-wrapper").css("display","block");
         })
         $("#tijiao").on("click", function () {
+            $("#user-name").text($("#alert-value").val());
             $(".edit-info-wrapper").css("display","none");
         })
+
+
+
+
+
+
+
+
         // 修改地址
         // $(".location-wrapper").on("click", function () {
         //     var oDiv = singleAlert($("#location"),$("#location").text());
@@ -281,7 +291,7 @@
             $(".edit-school").css("display","block");
         })
         $("#tijiao-school").on("click", function () {
-            $(".school-wrapper").css("display","none");
+            $(".school-school").css("display","none");
         })
     </script>
 </body>
