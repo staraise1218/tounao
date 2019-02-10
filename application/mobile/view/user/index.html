@@ -74,8 +74,8 @@
             position: relative;
         }
         #user-poster input {
+            display: none;
             position: absolute;
-            /* border: 1px solid red; */
             left: 0;
             top: 0;
             height: 100%;
@@ -259,8 +259,8 @@
         })()
 
         // 修改头像
-        $("#user-poster").delegate('header-change','click', function () {
-
+        $("#user-poster").on('click', function () {
+            $("#header-change").onclick();
         })
 
         // 修改姓名
