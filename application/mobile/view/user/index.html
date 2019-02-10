@@ -184,7 +184,7 @@
                 $("#goldcoin").text($userinfo.goldcoin);
                 $("#ldcoin").text(localStorage.getItem("userlocation"));
                 $("#user-name").text(localStorage.getItem("username") || $userinfo.nickname);
-                $("#location").text(localStorage.getItem("userlocation"));
+                $("#location").text(localStorage.getItem("userlocation") || '请输入您的位置');
                 $("#school").text(localStorage.getItem("userlocation") || $userinfo.school);
                 
                 if($userinfo.school == '') {
