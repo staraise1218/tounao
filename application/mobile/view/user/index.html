@@ -182,10 +182,9 @@
                 $(".user-poster-wrapper img").prop("src",$userinfo.head_pic);
                 // $("#grade").text($userinfo.school_display);
                 $("#goldcoin").text($userinfo.goldcoin);
-                $("#ldcoin").text(localStorage.getItem("userlocation"));
                 $("#user-name").text(localStorage.getItem("username") || $userinfo.nickname);
                 $("#location").text(localStorage.getItem("userlocation") || '请输入您的位置');
-                $("#school").text(localStorage.getItem("userlocation") || $userinfo.school);
+                $("#school").text(localStorage.getItem("userschool") || $userinfo.school);
                 
                 if($userinfo.school == '') {
                     $("#school").text("请填写学校")
