@@ -70,14 +70,25 @@
             border-right: 0;
             color: #FFFFFF;
         }
-
+        #user-poster {
+            position: relative;
+        }
+        #user-poster input {
+            position: absolute;
+            border: 1px solid red;
+            left: 0;
+            top: 0;
+            height: 100%;
+            display: inline-block;
+            width: 2.1rem;
+        }
 </style>
 </head>
 <body class="body-wrapper">
      <div class="user-poster-wrapper">
-        <div>
+        <div id="user-poster">
             <label for="user-poster">
-                <img src="" alt="">
+                <img id="header-upload" src="" alt="">
                 <input type="file">
             </label>
         </div>
@@ -246,6 +257,11 @@
                 return oDiv;
             }
         })()
+
+        // 修改头像
+        $("#user-poster").on('click', function () {
+
+        })
 
         // 修改姓名
         $(".user-name-wrapper").on("click", function () {
