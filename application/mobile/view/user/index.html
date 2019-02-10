@@ -182,7 +182,7 @@
                 $(".user-poster-wrapper img").prop("src",$userinfo.head_pic);
                 // $("#grade").text($userinfo.school_display);
                 $("#goldcoin").text($userinfo.goldcoin);
-                $("#user-name").text(localStorage.getItem("username") || $userinfo.nickname);
+                $("#user-name").text(localStorage.getItem("username") || $userinfo.nickname || '请输入昵称');
                 $("#location").text(localStorage.getItem("userlocation") || '请输入您的位置');
                 $("#school").text(localStorage.getItem("userschool") || $userinfo.school || '请输入学校');
             },
@@ -200,6 +200,7 @@
                 // 渲染
                 var $str_gradeList = '';
                 for(var i = 0; i < data.data.length; i++) {
+                    var $ac = '<option></option>';
                     $str_gradeList += `
                         <option id="${data.data[i].id}">${data.data[i].title}</option>
                     `
@@ -281,6 +282,21 @@
             $("#location").text($("#location-edi").val());
             $(".edit-location").css("display","none");
             localStorage.setItem("userlocation", $("#location-edi").val());
+            $.ajax({
+                type:"POST",
+                url: "http://tounao.staraise.com.cn/Api/user/changeField",
+                data: {
+                    user_id: $userinfo.user_id,
+                    field: 'location',
+                    fieldValue: $("#location-edi").val()
+                },
+                success: function (data) {
+                    console.log(data)
+                },
+                error: function () {
+                    console.log('error')
+                }
+            })
         })
 
         // 修改学校
@@ -292,6 +308,21 @@
             $("#school").text($("#school-edi").val());
             $(".edit-school").css("display","none");
             localStorage.setItem("userschool", $("#school-edi").val());
+            $.ajax({
+                type:"POST",
+                url: "http://tounao.staraise.com.cn/Api/user/changeField",
+                data: {
+                    user_id: $userinfo.user_id,
+                    field: 'school',
+                    fieldValue: $("#school-edi").val()
+                },
+                success: function (data) {
+                    console.log(data)
+                },
+                error: function () {
+                    console.log('error')
+                }
+            })
         })
     </script>
 </body>
