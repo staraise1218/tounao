@@ -258,6 +258,7 @@
         $("#tijiao").on("click", function () {
             $("#user-name").text($("#username-edi").val());
             $(".edit-info-wrapper").css("display","none");
+            localStorage.setItem("username", $("#username-edi").val());
             $.ajax({
                 type:"POST",
                 url: "http://tounao.staraise.com.cn/Api/user/changeField",
@@ -280,9 +281,10 @@
             $("#location-edi").val($("#location").text());
             $(".edit-location").css("display","block");
         })
-        $("#tijiao-school").on("click", function () {
+        $("#tijiao-location").on("click", function () {
             $("#location").text($("#location-edi").val());
             $(".edit-location").css("display","none");
+            localStorage.setItem("userlocation", $("#location-edi").val());
         })
 
         // 修改学校
@@ -293,6 +295,7 @@
         $("#tijiao-school").on("click", function () {
             $("#school").text($("#school-edi").val());
             $(".edit-school").css("display","none");
+            localStorage.setItem("userschool", $("#school-edi").val());
         })
     </script>
 </body>
