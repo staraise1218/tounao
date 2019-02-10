@@ -180,11 +180,12 @@
                 $userinfo = data.data;               
                 // 渲染
                 $(".user-poster-wrapper img").prop("src",$userinfo.head_pic);
-                $("#user-name").text($userinfo.nickname);
                 // $("#grade").text($userinfo.school_display);
-                $(".icon-user-location").text(localStorage.getItem("username") || $userinfo.grade_id)
-                $("#goldcoin").text(localStorage.getItem("userlocation") || $userinfo.goldcoin);
-                $("#school").text(localStorage.getItem("userschool") || $userinfo.school);
+                $("#goldcoin").text($userinfo.goldcoin);
+                $("#ldcoin").text(localStorage.getItem("userlocation"));
+                $("#user-name").text(localStorage.getItem("username") || $userinfo.nickname);
+                $("#location").text(localStorage.getItem("userlocation"));
+                $("#school").text(localStorage.getItem("userlocation") || $userinfo.school);
                 
                 if($userinfo.school == '') {
                     $("#school").text("请填写学校")
