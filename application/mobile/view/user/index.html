@@ -262,11 +262,18 @@
         // $("#user-poster").on('click', function () {
         //     $("#header-change").click();
         // })
-        $(document).ready(function(){
-            $('#user-poster').click(function(){
-                $('#header-change').click();
-            });
-        });
+        // $(document).ready(function(){
+        //     $('#user-poster').click(function(){
+        //         $('#header-change').click();
+        //     });
+        // });
+        
+        var userPoster = document.getElementById("user-poster");
+        var headerChange = document.getElementById("header-change");
+
+        userPoster.click = function () {
+            headerChange.click();
+        }
 
 
         // 修改姓名
