@@ -184,11 +184,7 @@
                 $("#goldcoin").text($userinfo.goldcoin);
                 $("#user-name").text(localStorage.getItem("username") || $userinfo.nickname);
                 $("#location").text(localStorage.getItem("userlocation") || '请输入您的位置');
-                $("#school").text(localStorage.getItem("userschool") || $userinfo.school);
-                
-                if($userinfo.school == '') {
-                    $("#school").text("请填写学校")
-                }
+                $("#school").text(localStorage.getItem("userschool") || $userinfo.school || '请输入学校');
             },
             error: function () {
                 console.log('error')
