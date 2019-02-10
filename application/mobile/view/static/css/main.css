@@ -205,10 +205,10 @@ html {
     background-position: -4.69rem -0.44rem;
 }
 
-
-
 /* 弹窗 */
-.edit-info-wrapper {
+.edit-info-wrapper,
+.edit-location,
+.edit-school {
     position: absolute;
     left: 0;
     top: 0;
@@ -217,7 +217,9 @@ html {
     background: rgba(0,0,0,0.3);
     z-index: 90;
 }
-.edit-info-wrapper .edit-content {
+.edit-info-wrapper .edit-content,
+.edit-location .location-content,
+.edit-school .school-content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -229,15 +231,21 @@ html {
     overflow: hidden;
     padding-bottom: 0.4rem;
 }
-.edit-info-wrapper .edit-content .title {
+.edit-info-wrapper .edit-content .title,
+.edit-location .location-content .title,
+.edit-school .school-content .title {
     background-image: url(../image/bg123.png);
     line-height: 1rem;
     color: #FFFFFF;
 }
-.edit-info-wrapper .edit-content .content {
+.edit-info-wrapper .edit-content .content,
+.edit-location .location-content .content,
+.edit-school .school-content .content {
     margin-top: 0.6rem;
 }
-.edit-info-wrapper .edit-content .content #username-edi {
+.edit-info-wrapper .edit-content .content #username-edi,
+.edit-location .location-content .content #location-edi, 
+.edit-school .school-content .content #school-edi {
     text-align: center;
     display: block;
     margin: 0.3rem auto;
@@ -245,7 +253,9 @@ html {
     color: #8b8b8b;
     border: 0;
 }
-.edit-info-wrapper .edit-content .content .icon5 {
+.edit-info-wrapper .edit-content .content .icon5,
+.edit-location .location-content .content .icon5,
+.edit-school .school-content .content .icon5 {
     display: block;
     width: 100%;
     height: 0.1rem;
@@ -253,7 +263,9 @@ html {
     margin-bottom: 0.2rem;
     background-position: -1.5rem -3.6rem;
 }
-.edit-info-wrapper .edit-content .content input:last-child {
+.edit-info-wrapper .edit-content .content input:last-child,
+.edit-location .location-content .content input:last-child,
+.edit-school .school-content .content input:last-child {
     padding: 0.1rem 0.65rem;
     border-radius: 0.4rem;
     background: linear-gradient(90deg,rgb(92, 111, 249),rgb(146, 173, 221));
@@ -262,10 +274,7 @@ html {
     border-right: 0;
     color: #FFFFFF;
 }
-
-
-
-
+/* 弹窗 end */
 
 .login-wrapper {
     width: 100%;
