@@ -261,11 +261,12 @@
         // 修改头像        
         var userPoster = document.getElementById("user-poster");
         var headerChange = document.getElementById("header-change");
-
-        userPoster.onclick = function () {
-            headerChange.click();
-        }
-
+        
+        $(document).ready(function(){
+            userPoster.click = function () {
+                headerChange.click();
+            }
+        })
 
         // 修改姓名
         $(".user-name-wrapper").on("click", function () {
