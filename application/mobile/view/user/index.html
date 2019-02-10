@@ -269,6 +269,22 @@
         $(document).ready(function(){
             $('#user-poster').click(function(){
                 headerChange.click();
+                // headerChange.click(function () {
+                //     $.ajax({
+                //         type:"POST",
+                //         url: "http://tounao.staraise.com.cn/Api/user/changeHeadPic",
+                //         data: {
+                //             user_id: $userinfo.user_id,
+                //             // file: ''
+                //         },
+                //         success: function (data) {
+                //             console.log(data)
+                //         },
+                //         error: function () {
+                //             console.log('error')
+                //         }
+                //     })
+                // })
             });
     
         });
