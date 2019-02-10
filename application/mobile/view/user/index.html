@@ -251,19 +251,37 @@
         })()
 
         // 修改姓名
+        // $(".user-name-wrapper").on("click", function () {
+        //     var oDiv = singleAlert($("#user-name"),$("#user-name").text());
+        //     oDiv.style.display = 'block';
+        // })
         $(".user-name-wrapper").on("click", function () {
-            var oDiv = singleAlert($("#user-name"),$("#user-name").text());
-            oDiv.style.display = 'block';
+            $(".edit-info-wrapper").css("display","block");
+        })
+        $("#tijiao").on("click", function () {
+            $(".edit-info-wrapper").css("display","none");
         })
         // 修改地址
+        // $(".location-wrapper").on("click", function () {
+        //     var oDiv = singleAlert($("#location"),$("#location").text());
+        //     oDiv.style.display = 'block';
+        // })
         $(".location-wrapper").on("click", function () {
-            var oDiv = singleAlert($("#location"),$("#location").text());
-            oDiv.style.display = 'block';
+            $(".edit-location").css("display","block");
+        })
+        $("#tijiao-location").on("click", function () {
+            $(".location-wrapper").css("display","none");
         })
         // 修改学校
+        // $(".school-wrapper").on("click", function () {
+        //     var oDiv = singleAlert($("#school"),$("#school").text());
+        //     oDiv.style.display = 'block';
+        // })
         $(".school-wrapper").on("click", function () {
-            var oDiv = singleAlert($("#school"),$("#school").text());
-            oDiv.style.display = 'block';
+            $(".edit-school").css("display","block");
+        })
+        $("#tijiao-school").on("click", function () {
+            $(".school-wrapper").css("display","none");
         })
     </script>
 </body>
