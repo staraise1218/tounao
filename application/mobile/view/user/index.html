@@ -136,7 +136,7 @@
             <div class="title">编辑信息</div>
             <div class="content">
                 <input type="text" id="location-edi" 
-                    value="请输入您的昵称">
+                    value="请输入您的位置">
                 <i class="icon5"></i>
                 <input type="submit" id="tijiao-location" value="保存">
             </div>
@@ -277,21 +277,23 @@
         //     oDiv.style.display = 'block';
         // })
         $(".location-wrapper").on("click", function () {
+            $("#location-edi").val($("#location").text());
             $(".edit-location").css("display","block");
         })
-        $("#tijiao-location").on("click", function () {
-            $(".location-wrapper").css("display","none");
+        $("#tijiao-school").on("click", function () {
+            $("#location").text($("#location-edi").val());
+            $(".edit-location").css("display","none");
         })
+
+
         // 修改学校
-        // $(".school-wrapper").on("click", function () {
-        //     var oDiv = singleAlert($("#school"),$("#school").text());
-        //     oDiv.style.display = 'block';
-        // })
         $(".school-wrapper").on("click", function () {
+            $("#school").val($("#school-edi").text());
             $(".edit-school").css("display","block");
         })
         $("#tijiao-school").on("click", function () {
-            $(".school-school").css("display","none");
+            $("#school").text($("#school-edi").val());
+            $(".edit-school").css("display","none");
         })
     </script>
 </body>
