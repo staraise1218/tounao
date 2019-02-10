@@ -272,15 +272,11 @@
 
 
         // 修改地址
-        // $(".location-wrapper").on("click", function () {
-        //     var oDiv = singleAlert($("#location"),$("#location").text());
-        //     oDiv.style.display = 'block';
-        // })
         $(".location-wrapper").on("click", function () {
             $("#location-edi").val($("#location").text());
             $(".edit-location").css("display","block");
         })
-        $("#tijiao-school").on("click", function () {
+        $("#tijiao-location").on("click", function () {
             $("#location").text($("#location-edi").val());
             $(".edit-location").css("display","none");
         })
