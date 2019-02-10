@@ -251,10 +251,6 @@
         })()
 
         // 修改姓名
-        // $(".user-name-wrapper").on("click", function () {
-        //     var oDiv = singleAlert($("#user-name"),$("#user-name").text());
-        //     oDiv.style.display = 'block';
-        // })
         $(".user-name-wrapper").on("click", function () {
             $("#username-edi").val($("#user-name").text());
             $(".edit-info-wrapper").css("display","block");
@@ -262,25 +258,32 @@
         $("#tijiao").on("click", function () {
             $("#user-name").text($("#username-edi").val());
             $(".edit-info-wrapper").css("display","none");
+            $.ajax({
+                type:"POST",
+                url: "http://tounao.staraise.com.cn/Api/user/changeField",
+                data: {
+                    user_id: $userinfo.user_id,
+                    field: 'nickname',
+                    fieldValue: $("#username-edi").val()
+                },
+                success: function (data) {
+                    console.log(data)
+                },
+                error: function () {
+                    console.log('error')
+                }
+            })
         })
-
-
-
-
-
-
-
 
         // 修改地址
         $(".location-wrapper").on("click", function () {
             $("#location-edi").val($("#location").text());
             $(".edit-location").css("display","block");
         })
-        $("#tijiao-location").on("click", function () {
+        $("#tijiao-school").on("click", function () {
             $("#location").text($("#location-edi").val());
             $(".edit-location").css("display","none");
         })
-
 
         // 修改学校
         $(".school-wrapper").on("click", function () {
