@@ -278,6 +278,7 @@
             var file     = this.files[0];//获取文件名
             var id       = this.id;//本input的id
             var url      = 'http://tounao.staraise.com.cn/Api/user/changeHeadPic';//接受处理本JS方法的路径
+            console.log(formData,file,id,url)
             formData.append("sfz", file);//append方法用于向formdata中注入内容
 
             $.ajax({
