@@ -279,7 +279,7 @@
             var id       = this.id;//本input的id
             var url      = 'http://tounao.staraise.com.cn/Api/user/changeHeadPic';//接受处理本JS方法的路径
             var user_id = $userinfo.user_id;
-            console.log(formData,file,id,url)
+            console.log(formData,file,id,url,user_id)
             formData.append(user_id, file);//append方法用于向formdata中注入内容
 
             $.ajax({
