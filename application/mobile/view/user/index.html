@@ -279,7 +279,7 @@
             var id       = this.id;//本input的id
             var url      = 'http://tounao.staraise.com.cn/Api/user/changeHeadPic';//接受处理本JS方法的路径
             console.log(formData,file,id,url)
-            formData.append("sfz", file);//append方法用于向formdata中注入内容
+            formData.append($userinfo.user_id, file);//append方法用于向formdata中注入内容
 
             $.ajax({
                 type: "post",
@@ -287,7 +287,7 @@
                 //async:false,
                 contentType: false,
                 processData: false,
-                data: formData,//传过来
+                data: formData,
                 dataType: 'json',
                 xhrFields: {
                     withCredentials: true
