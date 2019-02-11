@@ -272,7 +272,7 @@
             });
         });
 
-        $('#header-change').on('change',function(){//当 input file 已经选中时触发js
+        $('#header-change').on('change',function(){
             console.log('change')
             var formData = new FormData();//先实例化formdata
             var file     = this.files[0];//获取文件名
