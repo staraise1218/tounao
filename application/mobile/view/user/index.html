@@ -89,7 +89,9 @@
         <div id="user-poster">
             <label for="user-poster">
                 <img id="header-upload" src="" alt="">
-                <input id="header-change" type="file">
+                <form id="fileForm">
+                    <input id="header-change" type="file">
+                </form>
             </label>
         </div>
     </div>
@@ -335,6 +337,7 @@ $('#header-change').change(function(){
         type: 'POST',
         data: formData,
         success: function (res) {
+            console.log(res)
             if (res.status==200) {
                 alert('上传成功！');
             }else if(res.status == 404){
@@ -346,6 +349,9 @@ $('#header-change').change(function(){
             }
         }
     }
+    
+    $('#fileForm').ajaxSubmit(options);
+    return false
 })
 
 
