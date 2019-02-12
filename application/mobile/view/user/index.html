@@ -277,18 +277,19 @@
 
         $('#header-change').on('change',function(){
             console.log('change')
-            var formData = new FormData();//先实例化formdata
-            var file     = this.files[0];//获取文件名
-            var id       = this.id;//本input的id
-            var url      = 'http://tounao.staraise.com.cn/Api/user/changeHeadPic';//接受处理本JS方法的路径
+            var formData = new FormData();
+            var file = this.files[0];
+            var id       = this.id;
+            var url      = 'http://tounao.staraise.com.cn/Api/user/changeHeadPic';
             var user_id = JSON.parse(localStorage.getItem("mUserInfo")).user_id;
-            console.log(formData,file,id,url,user_id)
-            formData.append(user_id, file);//append方法用于向formdata中注入内容
+            formData.append(user_id, file);
+            console.log(formData)
+            console.log(file,id,url,user_id)
 
             $.ajax({
                 type: "post",
                 url: url,
-                //async:false,
+                async:true,
                 contentType: false,
                 processData: false,
                 data: formData,
@@ -297,10 +298,7 @@
                     withCredentials: true
                 },
                 success: function (data) {
-            //         $('#'+id+"1").val(data.url);//在隐藏的hidden中返回文件的路径
-            // 　　　　　　　$('#'+id+"2").attr('src',data.url);//改变当前的显示图片
                     console.log(data);
-
                 }
             });
         })
@@ -314,6 +312,7 @@
             $("#user-name").text($("#username-edi").val());
             $(".edit-info-wrapper").css("display","none");
             localStorage.setItem("username", $("#username-edi").val());
+            console.log($("#username-edi").val())
             $.ajax({
                 type:"POST",
                 url: "http://tounao.staraise.com.cn/Api/user/changeField",
