@@ -284,7 +284,10 @@
             var user_id = JSON.parse(localStorage.getItem("mUserInfo")).user_id;
             formData.append(user_id, file);
             console.log(formData)
-            console.log(file,id,url,user_id)
+            console.log(file)
+            console.log(id)
+            console.log(url)
+            console.log(user_id)
 
             $.ajax({
                 type: "post",
