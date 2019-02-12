@@ -309,6 +309,20 @@
 
         /* 文件改变时触发文件上传 */
 $('#header-change').change(function(){
+
+            var formData = new FormData();
+            var file = this.files[0];
+            var id       = this.id;
+            var url      = 'http://tounao.staraise.com.cn/Api/user/changeHeadPic';
+            var user_id = JSON.parse(localStorage.getItem("mUserInfo")).user_id;
+            formData.append(user_id, file);
+            console.log(formData)
+            console.log(id)
+            console.log(url)
+            console.log(user_id)
+            console.log(file)
+
+
     // 设置ajax参数
     var options = {
         //target: '#output',          //把服务器返回的内容放入id为output的元素中
@@ -319,6 +333,7 @@ $('#header-change').change(function(){
         //timeout: 3000,            //限制请求的时间，当请求大于3秒后，跳出请求
         url : 'http://tounao.staraise.com.cn/Api/user/changeHeadPic',
         type: 'POST',
+        data: formData,
         success: function (res) {
             if (res.status==200) {
                 alert('上传成功！');
