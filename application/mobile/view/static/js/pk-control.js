@@ -10,7 +10,7 @@ let $action = '',
     $user2_isright = '',
     $touserinfo = {}
     $comeMe=false//告诉我进来了
-    
+
 let patentHeight = $(".jindu").height(),
     userHeight_1 = 0,
     userHeight_2 = 0,
@@ -29,8 +29,6 @@ let patentHeight = $(".jindu").height(),
     $answer_end = false,
     $questionsWrapper = '',
     $is_online = "对方不在线";
-
-
 
 // 保存用户登陆信息
 $user_id = $userinfo.user_id;
@@ -111,7 +109,6 @@ ws.onmessage = function (event) {
         gameTimerStart();
     }
 
-
     // 收到对方选择
     if($data.action == 'choose') {
         console.log("action **************** choose")
@@ -153,7 +150,6 @@ ws.onmessage = function (event) {
         console.log($sendResult_data)
     }
 
-
     // 接受邀请 
     $(".agreen").click(function() {        
         $("body").removeClass("pkb-bg");
@@ -186,7 +182,7 @@ ws.onmessage = function (event) {
             }
         })
     })
-};
+}
 
 ws.onerror = function () {
     console.log("socket---error")
@@ -194,7 +190,6 @@ ws.onerror = function () {
 
 ws.onclose = function(data) {
     console.log("断开连接啦啦啦啦啦啦")
-    console.log("socket---close")
     console.log(data)
 }
 
@@ -306,7 +301,6 @@ $(document).ready(function(){
                 }
             })
         })
-
         //   拒绝邀请
           $(".back").click(function(){
               $(".tanchutn-wrapper").hide()
@@ -421,8 +415,6 @@ function gameTimerStart () {
                         }
                     })
                 }
-
-
             }
             $_index++;
         }
@@ -458,10 +450,8 @@ function createQuestion(index) {
     }
 }
 
-
 // 选择答案部分
 $(".choose-wrapper").delegate(".choose-btn","click", function () {
-    
     var $answer = $(".questions-wrapper").attr("data-answer")
     var _this = $(this);
     
@@ -539,7 +529,6 @@ $(".choose-wrapper").delegate(".choose-btn","click", function () {
         console.log($is_choose_2);
         if($is_choose_2) {
             $time_number = 1;
-            
             $can_choose = true;
             if($_index == 5) {
                 $answer_end = true;
