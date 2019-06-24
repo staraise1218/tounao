@@ -25,7 +25,7 @@ class Index extends Base {
 			->where($where)
 			->page($page)
 			->limit(10)
-			->field('user_id, nickname, head_pic, province_code, city_code, school, location')
+			->field('user_id, nickname, head_pic, province, city, school')
 			->select();
 
 		if(is_array($list) && !empty($list)){

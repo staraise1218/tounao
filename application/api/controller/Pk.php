@@ -49,7 +49,7 @@ class Pk extends Base {
 			$knowledgeList = Db::name('knowledge')
 				->where('is_open', 1)
 				->where('is_delete', 0)
-				->order('id desc')
+				->orderRaw('rand()')
 				->limit(5)
 				->field('title, a, b, c, d, answer')
 				->select();
